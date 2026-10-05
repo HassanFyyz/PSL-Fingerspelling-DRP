@@ -30,6 +30,9 @@ sofi_segmentation.py
 # rather than quietly deleting them from the working tree.
 
 # ─── Model weights / training runs (the CNN work will produce these) ────────
+*.task
+letter_crops.npz
+letter_crops_hog.npy
 *.pt
 *.pth
 *.onnx
@@ -38,6 +41,7 @@ sofi_segmentation.py
 *.tflite
 *.pkl
 *.joblib
+models/
 checkpoints/
 runs/
 wandb/
@@ -75,6 +79,12 @@ web/*.local.*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ─── Personal / local-only notes ────────────────────────────────────────────
+# NOTES.local.md is a private catch-up report, deliberately not shared.
+# README.md is the version for other people.
+*.local.md
+NOTES.local.md
 
 # ─── Scratch ────────────────────────────────────────────────────────────────
 scratch/

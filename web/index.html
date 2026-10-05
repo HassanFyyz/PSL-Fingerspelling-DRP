@@ -72,6 +72,8 @@
     <div class="row" style="margin-top:10px">
       <button id="start">Start camera</button>
       <button id="reset" disabled>Reset</button>
+      <button id="modelView" disabled>Show model view</button>
+      <button id="save" disabled>Save crops</button>
       <span id="status">idle</span>
     </div>
     <div class="note">
@@ -156,7 +158,9 @@ const sctx = small.getContext("2d", { willReadFrequently: true });
 // The hold is confirmed `delay` frames after it occurred, so the frame we want
 // to show has already gone by. Keep a short ring buffer of recent frames.
 const RING = 64;
-const ring = [];   // {idx, canvas, box}
+const ring = [];        // {idx, canvas, model}
+const captured = [];    // {n, model} for every confirmed hold, for export
+let showModelView = false;
 
 function fitCanvas(c) {
   const r = c.getBoundingClientRect();
@@ -165,29 +169,58 @@ function fitCanvas(c) {
   }
 }
 
-/** Hand bounding box in normalized coords, padded — mirrors the dataset's HRS crop. */
-function handBox(lm, pad = 0.28) {
+// Crop geometry must match crop_dataset.py exactly, or a model trained on the
+// dataset sees a different distribution at inference than it did in training.
+// Mirrored there: SQUARE box (so resizing never distorts the hand's aspect
+// ratio), BOX_PAD on each side, and grayscale (colour is skin tone and
+// clothing, i.e. signer identity -- the confound that sank the landmark
+// features).
+const BOX_PAD = 0.30;        // crop_dataset.BOX_PAD
+const MODEL_SIZE = 64;       // crop_dataset.IMG_SIZE
+
+/** Square padded hand box in pixels of the video frame. */
+function handBox(lm, pad = BOX_PAD) {
   let x0 = 1, y0 = 1, x1 = 0, y1 = 0;
   for (const p of lm) { x0 = Math.min(x0,p.x); y0 = Math.min(y0,p.y);
                         x1 = Math.max(x1,p.x); y1 = Math.max(y1,p.y); }
-  const w = x1-x0, h = y1-y0;
-  x0 -= w*pad; x1 += w*pad; y0 -= h*pad; y1 += h*pad;
-  return { x0: Math.max(0,x0), y0: Math.max(0,y0),
-           x1: Math.min(1,x1), y1: Math.min(1,y1) };
+  const vw = video.videoWidth, vh = video.videoHeight;
+  const cx = (x0+x1)/2*vw, cy = (y0+y1)/2*vh;
+  const side = Math.max((x1-x0)*vw, (y1-y0)*vh) * (1 + 2*pad);
+  return { cx, cy, side };
 }
 
+/** Display thumbnail (colour, un-mirrored) for the hold strip. */
 function snapshot(box) {
-  // store a small crop of the current video frame
   const c = document.createElement("canvas");
-  c.width = 68 * 2; c.height = 84 * 2;
-  const vw = video.videoWidth, vh = video.videoHeight;
-  const sx = box.x0*vw, sy = box.y0*vh;
-  const sw = Math.max(1,(box.x1-box.x0)*vw), sh = Math.max(1,(box.y1-box.y0)*vh);
+  c.width = 68 * 2; c.height = 68 * 2;
   const ctx = c.getContext("2d");
-  ctx.save(); ctx.translate(c.width,0); ctx.scale(-1,1);   // un-mirror for display
-  ctx.drawImage(video, sx, sy, sw, sh, 0, 0, c.width, c.height);
+  ctx.save(); ctx.translate(c.width,0); ctx.scale(-1,1);
+  ctx.drawImage(video, box.cx-box.side/2, box.cy-box.side/2, box.side, box.side,
+                0, 0, c.width, c.height);
   ctx.restore();
   return c;
+}
+
+/** Exactly what a letter model would receive: 64x64 grayscale square crop. */
+const modelCanvas = document.createElement("canvas");
+modelCanvas.width = MODEL_SIZE; modelCanvas.height = MODEL_SIZE;
+const mctx = modelCanvas.getContext("2d", { willReadFrequently: true });
+
+function modelCrop(box) {
+  mctx.drawImage(video, box.cx-box.side/2, box.cy-box.side/2, box.side, box.side,
+                 0, 0, MODEL_SIZE, MODEL_SIZE);
+  const d = mctx.getImageData(0, 0, MODEL_SIZE, MODEL_SIZE);
+  const px = d.data;
+  // BT.601 luma, matching cv2.cvtColor(..., COLOR_BGR2GRAY)
+  for (let i = 0; i < px.length; i += 4) {
+    const g = 0.299*px[i] + 0.587*px[i+1] + 0.114*px[i+2];
+    px[i] = px[i+1] = px[i+2] = g;
+  }
+  mctx.putImageData(d, 0, 0);
+  const out = document.createElement("canvas");
+  out.width = MODEL_SIZE; out.height = MODEL_SIZE;
+  out.getContext("2d").drawImage(modelCanvas, 0, 0);
+  return out;
 }
 
 function drawOverlay(lm) {
@@ -262,10 +295,14 @@ function onHold(h) {
   div.className = "hold";
   div.innerHTML = `<b>${holdCount}</b>`;
   const c = document.createElement("canvas");
-  c.width = 68*2; c.height = 84*2;
-  c.getContext("2d").drawImage(slot.canvas, 0, 0);
+  c.width = 68*2; c.height = 68*2;
+  c.getContext("2d").drawImage(showModelView && slot.model ? slot.model : slot.canvas,
+                               0, 0, c.width, c.height);
   div.appendChild(c);
+  div._slot = slot;
   el("holds").appendChild(div);
+  captured.push({ n: holdCount, model: slot.model });
+  el("save").disabled = false;
 }
 
 async function loop() {
@@ -286,7 +323,8 @@ async function loop() {
     let kx = null, ky = null;
     if (lm) {
       kx = lm.map(p => p.x); ky = lm.map(p => p.y);
-      ring.push({ idx: frameIdx, canvas: snapshot(handBox(lm)) });
+      const _b = handBox(lm);
+      ring.push({ idx: frameIdx, canvas: snapshot(_b), model: modelCrop(_b) });
       if (ring.length > RING) ring.shift();
     }
 
@@ -361,6 +399,7 @@ el("start").onclick = async () => {
     el("status").textContent = "measuring framerate…";
     running = true;
     el("reset").disabled = false;
+    el("modelView").disabled = false;
     setTimeout(() => { if (running) el("status").textContent = "running"; }, 2000);
     loop();
   } catch (err) {
@@ -372,9 +411,40 @@ el("start").onclick = async () => {
 el("reset").onclick = () => {
   frameIdx = 0; holdCount = 0;
   trace.length = 0; traceHolds.length = 0; ring.length = 0;
-  recent.length = 0; sinceCheck = 0;
+  recent.length = 0; sinceCheck = 0; captured.length = 0;
   el("holds").innerHTML = ""; el("sHolds").textContent = "0";
+  el("save").disabled = true;
   if (measuredFps) buildSegmenter(measuredFps);
+};
+
+// Toggle between the colour thumbnail and the 64x64 grayscale square crop a
+// model actually receives. Worth looking at: if the model view is cut off or
+// off-centre, no classifier will work however good it is.
+el("modelView").onclick = () => {
+  showModelView = !showModelView;
+  el("modelView").textContent = showModelView ? "Show camera view" : "Show model view";
+  document.querySelectorAll(".hold").forEach(div => {
+    const c = div.querySelector("canvas"), s = div._slot;
+    if (!s) return;
+    const ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.drawImage(showModelView && s.model ? s.model : s.canvas, 0, 0, c.width, c.height);
+  });
+};
+
+// Export the captured crops as PNGs. These are exactly the format
+// crop_dataset.py produces, so they can seed a per-user calibration set --
+// the response to cross-signer collapse described in the README.
+el("save").onclick = async () => {
+  for (const { n, model } of captured) {
+    if (!model) continue;
+    const url = model.toDataURL("image/png");
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `hold_${String(n).padStart(3, "0")}.png`;
+    a.click();
+    await new Promise(r => setTimeout(r, 120));   // browsers throttle bulk downloads
+  }
 };
 </script>
 </body>

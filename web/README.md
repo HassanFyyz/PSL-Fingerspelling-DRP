@@ -26,9 +26,26 @@ certificate is needed for local development.
 
 ## What it does not do
 
-Letter recognition is not wired up. `letter_classifier.ipynb` found that the keypoint-geometry
-features do not transfer across signers (6.8 % against a 9.1 % majority baseline), so there is
-no honest model to plug in yet. The page shows segmentation only rather than emitting noise.
+Letter recognition is still not wired up. `letter_cnn.ipynb` found that appearance features do
+cross the majority baseline cross-signer (HOG ~1.31× where landmark geometry was 0.75×), which
+is the right direction — but absolute accuracy is far too low to put predictions on screen. A
+recognition box would be emitting noise with a confident-looking label on it.
+
+## Model view and crop export
+
+Two controls exist to support the classifier work:
+
+- **Show model view** toggles the hold thumbnails between the colour camera crop and the
+  **64×64 grayscale square crop a model actually receives**. Worth checking: if the model view
+  is off-centre or cut off, no classifier will work however good it is.
+- **Save crops** downloads those crops as PNGs, in exactly the format `crop_dataset.py`
+  produces. This is how you would seed a per-user calibration set.
+
+The crop geometry here is kept **identical to `crop_dataset.py`** — square box (so resizing
+never distorts the hand's aspect ratio), `BOX_PAD = 0.30`, grayscale via BT.601 luma to match
+`cv2.COLOR_BGR2GRAY`. If those two drift apart, a model trained on the dataset sees a different
+distribution at inference than it did in training, which is the kind of bug that shows up only
+as unexplained poor accuracy.
 
 ## Files
 
