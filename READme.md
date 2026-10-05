@@ -76,6 +76,14 @@
 
     *Caveat, stated in the notebook:* angle is perfectly confounded with signer (each person was recorded from one angle only). The matched-training-size design is the strongest control this dataset allows; a clean answer needs the same person from multiple angles, which PSL-CFRT lacks. Worth raising with the authors as a dataset recommendation.
 
+14. **The app now recognises words end to end** (`export_model.py`, `web/hog.js`, `web/classifier.js`). Camera → keypoints → holds → hand crop → HOG → logistic regression → lexicon decode, all client-side; the model is 276KB of weights and inference is one matrix multiply, so no runtime is shipped.
+
+    Measured leave-one-signer-out: **13.0% per letter** (9.8% majority, 40 classes) but **33.1% word top-1 and 55.0% top-3** against a 54-word lexicon, vs ~1.9% chance. Individual letters are usually wrong; the word survives because the decoder scores the *whole* sequence against the vocabulary using full probability distributions rather than argmax letters, and filters candidates by the detected hold count (±1) — legitimate, since segmentation is the reliable half of the pipeline (MAE ~1.2).
+
+    Per-signer word top-1: 46.9 / 34.7 / 46.7% for the front signers vs 14.3 / 23.1% for the tilted ones — independently reproducing the angle finding in #13.
+
+    *Two bugs worth remembering:* (a) Node `Buffer.buffer` ignores `byteOffset` and silently returned the wrong weights — parity caught it, nothing else would have; (b) `crop_dataset.py` extracts ~5 frames per hold, and a first evaluation treated each crop as a separate letter, making the decoder's length filter reject every candidate and report a flat 0.0% word accuracy. The real number is 33.1%. The page now averages frames within a hold to match the evaluation protocol.
+
 **Immediate next actions (in progress or queued):**
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.
 - [ ] Human spot-check of `spot_check/*.png` (needs someone who reads Urdu + knows PSL handshapes) to put a number on pseudo-label noise. Two sheets inspected informally look clean — distinct, settled handshapes matching the captions.
@@ -105,6 +113,8 @@ Run the notebooks in this order; each depends on the artifacts of the previous o
 | `letter_cnn.py` | Small CNN + batched augmentation; ready for a Colab run |
 | `letter_cnn.ipynb` | HOG/raw-pixel/CNN comparison — appearance vs geometry |
 | `angle_evaluation.ipynb` | Leave-one-angle-out; localises the viewpoint penalty to recognition |
+| `export_model.py` | Trains the deployment classifier and exports it for the browser |
+| `practice_cards/` | Handshape sequences to copy when testing the live app |
 | `letter_sheets/` | One sheet per letter, plus `_alphabet.png` (one exemplar each) |
 | `sofi_streaming.py` | **Causal** Algorithm 2 for live input. Parameters in *seconds*, not frames |
 | `streaming_segmentation.ipynb` | Streaming-vs-offline parity, framerate transfer, browser parity test |

@@ -24,12 +24,47 @@ certificate is needed for local development.
 - Captures the cropped hand at each detected hold, in signing order — exactly the input a
   letter classifier will consume.
 
-## What it does not do
+## Recognition
 
-Letter recognition is still not wired up. `letter_cnn.ipynb` found that appearance features do
-cross the majority baseline cross-signer (HOG ~1.31× where landmark geometry was 0.75×), which
-is the right direction — but absolute accuracy is far too low to put predictions on screen. A
-recognition box would be emitting noise with a confident-looking label on it.
+The page now predicts a **word**, end to end: camera → keypoints → holds → hand crop →
+HOG → logistic regression → lexicon decode.
+
+Measured leave-one-signer-out:
+
+| | result | chance / baseline |
+|---|---|---|
+| per letter | 13.0 % | 9.8 % majority (40 classes) |
+| **word top-1** | **33.1 %** | ~1.9 % (54-word lexicon) |
+| word top-3 | 55.0 % | ~5.6 % |
+
+Per-signer word top-1: signer1-F 46.9 %, signer2-F 34.7 %, signer3-F 46.7 %, signer4-L 14.3 %,
+signer5-R 23.1 % — front-facing signers do roughly twice as well as tilted ones, exactly as
+`angle_evaluation.ipynb` predicts.
+
+**Individual letters are usually wrong, and the page says so.** The word guess survives that
+because it scores the *whole* sequence against the vocabulary using the full per-letter
+probability distributions rather than the argmax letters, so runner-up guesses still contribute.
+Candidate words are filtered to those matching the detected hold count (±1), which is a real
+constraint rather than a trick: segmentation is the reliable half of this pipeline (MAE ~1.2),
+so hold count is far better evidence than any single letter.
+
+The shipped model is trained on **all five signers** — for a demo you want every scrap of data —
+so its training accuracy is meaningless. The honest number for a new person at a webcam is the
+leave-one-signer-out one above.
+
+### Files
+
+| File | Purpose |
+|---|---|
+| `hog.js` | HOG, ported from `export_model.ref_hog`, itself verified against skimage to ~1e-7 |
+| `classifier.js` | Weight loading, softmax, lexicon decoder |
+| `model/` | `letter_model.json` (manifest + lexicon), `letter_w.bin`, `letter_b.bin` (276 KB) |
+| `test_classifier.mjs` | JS vs Python parity on real crops |
+| `test_decode.mjs` | End-to-end word decode, no browser needed |
+
+Regenerate the model with `python export_model.py`, then re-run both tests. A silent numerical
+drift between `hog.js` and the Python HOG would make every prediction wrong with no error
+message, which is why it is checked rather than assumed.
 
 ## Model view and crop export
 

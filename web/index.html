@@ -45,6 +45,17 @@
     color: var(--accent); font-size: 10px; padding: 1px 4px; border-bottom-right-radius: 5px;
   }
   .note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+  #readout { border:1px solid var(--line); border-radius:9px; padding:11px 12px; margin-bottom:11px;
+             background:#12151c; }
+  .reading { margin-bottom:9px; }
+  .rlabel { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+  .wordbig { font-size:30px; line-height:1.35; direction:rtl; text-align:right;
+             font-family:"Segoe UI","Noto Nastaliq Urdu",Tahoma,sans-serif; color:var(--accent); }
+  .wordraw { font-size:21px; direction:rtl; text-align:right; color:var(--fg);
+             font-family:"Segoe UI",Tahoma,sans-serif; opacity:.85; }
+  .alts { direction:rtl; text-align:right; color:var(--muted); font-size:13px; margin-top:3px; }
+  .caveat { color:#fcd77f; font-size:11.5px; border-top:1px solid var(--line); padding-top:8px; }
+  .hold b.pl { left:auto; right:0; color:#9fd0ff; border-radius:0 0 0 5px; }
   .warnbox {
     background: #3a2a10; border: 1px solid #7c5a17; color: #fcd77f;
     border-radius: 7px; padding: 9px 11px; font-size: 12.5px; margin-bottom: 10px;
@@ -85,8 +96,29 @@
 
   <div class="panel">
     <div id="warn" class="warnbox" hidden></div>
+
+    <div id="readout">
+      <div class="reading">
+        <span class="rlabel">best word guess</span>
+        <div id="wordOut" class="wordbig">—</div>
+        <div id="wordAlts" class="alts"></div>
+      </div>
+      <div class="reading">
+        <span class="rlabel">letters as predicted</span>
+        <div id="rawOut" class="wordraw">—</div>
+      </div>
+      <div class="caveat">
+        Measured leave-one-signer-out: <b>13 % per letter</b> (40 classes, 9.8 %
+        baseline) but <b>33 % word top-1</b> and <b>55 % top-3</b> against a
+        54-word vocabulary, vs ~1.9 % chance. Individual letters are usually
+        wrong; the word guess survives that because it scores the whole
+        sequence against the vocabulary. Front-facing signers score 35&ndash;47 %,
+        tilted angles 14&ndash;23 %.
+      </div>
+    </div>
     <div class="stat"><span>processing fps</span><span id="sFps">&mdash;</span></div>
     <div class="stat"><span>inference</span><span id="sDel">&mdash;</span></div>
+    <div class="stat"><span>letter model</span><span id="sModel">&mdash;</span></div>
     <div class="stat"><span>hand detected</span><span id="sHand">&mdash;</span></div>
     <div class="stat"><span>holds detected</span><span id="sHolds">0</span></div>
     <div class="stat"><span>latency</span><span id="sLat">&mdash;</span></div>
@@ -103,6 +135,7 @@
 import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 import { StreamingSegmenter, MIN_VIABLE_FPS } from "./sofi_streaming.js";
+import { LetterClassifier } from "./classifier.js";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
@@ -161,6 +194,39 @@ const RING = 64;
 const ring = [];        // {idx, canvas, model}
 const captured = [];    // {n, model} for every confirmed hold, for export
 let showModelView = false;
+
+// --- recognition state -------------------------------------------------
+let classifier = null;      // null until the model loads; page works without it
+let probSeq = [];           // per-hold probability vectors, in signing order
+let lastTop = null;         // top-1 letter of the most recent hold, for its badge
+
+/** Grayscale pixels of a model crop, as the classifier expects them. */
+function grayOf(canvas) {
+  const g = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+  const out = new Float64Array(canvas.width * canvas.height);
+  for (let i = 0, j = 0; i < g.length; i += 4, j++) out[j] = g[i];   // already gray
+  return out;
+}
+
+function renderWord() {
+  if (!classifier || !probSeq.length) {
+    el("wordOut").textContent = "—";
+    el("rawOut").textContent = "—";
+    el("wordAlts").textContent = "";
+    return;
+  }
+  el("rawOut").textContent = classifier.rawWord(probSeq);
+  const cands = classifier.decodeWord(probSeq);
+  if (!cands.length) {
+    el("wordOut").textContent = "(no word of this length)";
+    el("wordAlts").textContent = "";
+    return;
+  }
+  el("wordOut").textContent = cands[0].word;
+  el("wordAlts").textContent = cands.length > 1
+    ? "also considered: " + cands.slice(1, 4).map(c => c.word).join("  ·  ")
+    : "";
+}
 
 function fitCanvas(c) {
   const r = c.getBoundingClientRect();
@@ -294,6 +360,7 @@ function onHold(h) {
   const div = document.createElement("div");
   div.className = "hold";
   div.innerHTML = `<b>${holdCount}</b>`;
+  if (lastTop) div.innerHTML += `<b class="pl">${lastTop}</b>`;
   const c = document.createElement("canvas");
   c.width = 68*2; c.height = 68*2;
   c.getContext("2d").drawImage(showModelView && slot.model ? slot.model : slot.canvas,
@@ -301,6 +368,28 @@ function onHold(h) {
   div.appendChild(c);
   div._slot = slot;
   el("holds").appendChild(div);
+  renderWord();
+  lastTop = null;
+  if (classifier && slot.model) {
+    try {
+      // Average several frames across the hold rather than classifying one.
+      // The offline evaluation averages ~5 crops per hold, and matching that
+      // here is worth ~a third of the word accuracy; a single frame can catch
+      // the hand mid-settle.
+      const frames = ring.filter(r => r.model && r.idx >= h.start && r.idx <= h.end);
+      const use = frames.length ? frames : [slot];
+      let p = null;
+      for (const fr of use) {
+        const q = classifier.predict(grayOf(fr.model));
+        if (!p) { p = q; } else { for (let i = 0; i < p.length; i++) p[i] += q[i]; }
+      }
+      for (let i = 0; i < p.length; i++) p[i] /= use.length;
+      probSeq.push(p);
+      lastTop = classifier.top(p, 1)[0].letter;
+    } catch (err) {
+      console.warn("classify failed", err);
+    }
+  }
   captured.push({ n: holdCount, model: slot.model });
   el("save").disabled = false;
 }
@@ -391,6 +480,16 @@ el("start").onclick = async () => {
       });
     }
     el("sDel").textContent = `${delegate} @ ${DETECT_W}x${DETECT_H}`;
+
+    // Recognition is optional: if the model is missing the page still runs as
+    // a segmentation demo rather than failing to start.
+    try {
+      classifier = await LetterClassifier.load("./model");
+      el("sModel").textContent = `${classifier.nClasses} letters, ${Object.keys(classifier.lexicon).length} words`;
+    } catch (err) {
+      el("sModel").textContent = "not loaded (segmentation only)";
+      console.warn("classifier unavailable", err);
+    }
     el("status").textContent = "requesting camera…";
     stream = await navigator.mediaDevices.getUserMedia({
       video: { width: { ideal: 960 }, height: { ideal: 720 } }, audio: false });
@@ -412,6 +511,7 @@ el("reset").onclick = () => {
   frameIdx = 0; holdCount = 0;
   trace.length = 0; traceHolds.length = 0; ring.length = 0;
   recent.length = 0; sinceCheck = 0; captured.length = 0;
+  probSeq.length = 0; lastTop = null; renderWord();
   el("holds").innerHTML = ""; el("sHolds").textContent = "0";
   el("save").disabled = true;
   if (measuredFps) buildSegmenter(measuredFps);
