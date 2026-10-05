@@ -60,6 +60,22 @@
 
     Also visible in `_alphabet.png`: a large family of letters that are near-identical fist variants in 2D, differing only in thumb position and finger contact. That is a direct visual explanation for why 2D landmark geometry cannot separate them. Two exemplars are bad picks (`ت` catches motion blur, `ج` catches a face) — the dataset's "cropped" videos are not uniformly hand-cropped.
 
+12. **Appearance features beat landmark geometry** (`crop_dataset.py`, `letter_cnn.py`). Cross-signer, occurrence-level, leave-one-signer-out: landmark geometry 6.8% (0.75x majority), raw pixels 7.3% (0.74x), **HOG + LogReg 12.9% (1.31x)** — the first representation to clear the baseline. Sharper than "appearance wins": raw pixels do *no better than landmarks*; it is specifically HOG, which encodes local gradient **orientation** and discards absolute intensity. So the letter signal is in finger edge/contour structure, and raw pixels bury it under lighting, skin tone and clothing — the same confounds that defeated the landmarks.
+    - **Coordinate-space trap:** the keypoints in `hand_keypoints_features.csv` are **not** in the space of the 240×350 cropped videos (they put the hand on the signer's jacket, one landmark off-frame; implied hand aspect 0.23 vs a real 0.45–0.65, or 0.60 assuming a 16:9 source). `crop_dataset.py` re-runs MediaPipe on the cropped videos. Nothing else depends on that mapping.
+    - CNN on CPU is **not competitive**: fold 1 gave 1.17x against HOG's 1.47x on the same signer, at 250 min/fold. Small model, 64px, 25 epochs, one seed. The proper run belongs on Colab; `letter_cnn.py` is ready for it.
+
+13. **Leave-one-ANGLE-out: the viewpoint penalty is entirely in recognition** (`angle_evaluation.ipynb`). The paper reports 67.84% front → 48.07% tilted end-to-end but never says which stage loses it. Measuring the stages separately, with training held at exactly two front signers so within- and cross-angle conditions are matched:
+
+    | | retention under angle change |
+    |---|---|
+    | paper, end-to-end | 0.709 |
+    | **ours, recognition only** | **0.690** |
+    | **ours, segmentation only** | **1.155 (no penalty)** |
+
+    The published drop reproduces almost exactly — and localises. **Segmentation is viewpoint-robust**; cross-angle MAE (1.37) is inside the within-angle spread (1.08–2.02). Recognition loses ~31% and its surviving lift is 1.07x, barely above guessing. Makes sense in hindsight: Algorithm 2 keys on the *timing* of motion minima, which is a property of how a person signs, not where the camera is.
+
+    *Caveat, stated in the notebook:* angle is perfectly confounded with signer (each person was recorded from one angle only). The matched-training-size design is the strongest control this dataset allows; a clean answer needs the same person from multiple angles, which PSL-CFRT lacks. Worth raising with the authors as a dataset recommendation.
+
 **Immediate next actions (in progress or queued):**
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.
 - [ ] Human spot-check of `spot_check/*.png` (needs someone who reads Urdu + knows PSL handshapes) to put a number on pseudo-label noise. Two sheets inspected informally look clean — distinct, settled handshapes matching the captions.
@@ -85,6 +101,10 @@ Run the notebooks in this order; each depends on the artifacts of the previous o
 | `pseudo_labeling.ipynb` | Builds the pseudo-labels, diagnostics, exports, and the spot-check contact sheets |
 | `letter_classifier.ipynb` | Letter classification + the negative result and its controls |
 | `letter_reference.ipynb` | Per-letter sheets + the alphabet reference; the label-verification step |
+| `crop_dataset.py` | Hand-crop extraction (re-detects MediaPipe on the cropped videos) |
+| `letter_cnn.py` | Small CNN + batched augmentation; ready for a Colab run |
+| `letter_cnn.ipynb` | HOG/raw-pixel/CNN comparison — appearance vs geometry |
+| `angle_evaluation.ipynb` | Leave-one-angle-out; localises the viewpoint penalty to recognition |
 | `letter_sheets/` | One sheet per letter, plus `_alphabet.png` (one exemplar each) |
 | `sofi_streaming.py` | **Causal** Algorithm 2 for live input. Parameters in *seconds*, not frames |
 | `streaming_segmentation.ipynb` | Streaming-vs-offline parity, framerate transfer, browser parity test |
@@ -190,7 +210,7 @@ The end deliverable is a **live camera → segmented video → recognized letter
 ## ✅ Summary Checklist (in order)
 
 - [~] Get PSL-CFRT videos + annotations, reproduce current baseline — *videos + keypoint CSV in hand; letter-level annotations still pending from Kamran*
-- [x] Build leave-one-signer-out / leave-one-angle-out evaluation protocol — *now applied for real: LOSO on segmentation (Algorithm 2) and on letter classification, with label-shuffle controls, occurrence-level grouping, and a demonstration that frame-level splits inflate results 10.9×*
+- [x] Build leave-one-signer-out / **leave-one-angle-out** evaluation protocol — *now applied for real: LOSO on segmentation (Algorithm 2) and on letter classification, with label-shuffle controls, occurrence-level grouping, and a demonstration that frame-level splits inflate results 10.9×*
 - [~] Replace heuristic segmentation with a learned boundary detector — *Algorithm 2 (dynamic local-minima) built and validated, 3.5× better than Algorithm 1 and LOSO-stable. Still a heuristic, not learned — but it is now a strong baseline for a learned detector to beat*
 - [x] Build letter-level labels without the missing annotations — *constrained-DP pseudo-labelling, 14,530 hold frames across 40 classes*
 - [ ] **Appearance-based letter model (CNN on hand crops at hold frames)** — *the key open experiment, and no longer a gamble: the per-letter sheets confirm the labels are sound, so a CNN would be training on good data. Keypoint-geometry features are proven insufficient*
