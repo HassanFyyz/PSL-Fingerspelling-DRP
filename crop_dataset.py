@@ -51,6 +51,29 @@ IMG_SIZE = 64
 BOX_PAD = 0.30          # fraction of box size added on each side
 FRAMES_PER_HOLD = 5     # sampled evenly across the hold's span
 
+# Mask everything outside the hand before computing features.
+#
+# This is the single most important preprocessing step for live use. The
+# dataset is shot against a plain green screen; a webcam sees a room. HOG is a
+# gradient descriptor, so background edges inside the crop box compete directly
+# with finger edges. Measured on the unmasked model: adding texture to the
+# outer ring of a crop changes the predicted letter 66.7% of the time -- which
+# is exactly the "same pose, random letter" behaviour seen live.
+#
+# The mask is the convex hull of the 21 landmarks, dilated to keep finger
+# width and a little context, with everything outside set to a flat value so it
+# contributes no gradients.
+# The edge is FEATHERED rather than hard. A hard mask boundary is itself a
+# strong gradient, so HOG keys on it -- and then a one-pixel difference in how
+# the mask is rasterised flips the prediction. That made the browser port
+# disagree with Python on 11 of 25 crops despite only 2.3% of pixels differing.
+# Defining the mask by distance-to-hull with a soft falloff makes both
+# implementations analytically identical and the boundary nearly gradient-free.
+MASK_BACKGROUND = True
+MASK_DILATE = 0.16      # fraction of the box side, hard radius
+MASK_FEATHER = 0.08     # fraction of the box side, soft falloff beyond it
+MASK_FILL = 128
+
 
 def ensure_model(path: str = MODEL_PATH) -> str:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -72,24 +95,50 @@ def make_detector(model_path: str = None, min_conf: float = 0.3):
 
 
 def detect_box(detector, img_bgr, pad: float = BOX_PAD):
-    """Square, padded hand box in pixels, or None. Square so the crop does not
-    distort the hand's aspect ratio when resized."""
+    """(box, landmarks_px, handedness) or (None, None, None).
+
+    The box is square so the crop does not distort the hand's aspect ratio when
+    resized. Landmarks are returned in pixels so the caller can build a mask.
+    """
     import mediapipe as mp
     mp_img = mp.Image(image_format=mp.ImageFormat.SRGB,
                       data=cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB))
     res = detector.detect(mp_img)
     if not res.hand_landmarks:
-        return None
+        return None, None, None
     lm = res.hand_landmarks[0]
     h, w = img_bgr.shape[:2]
-    xs = [p.x * w for p in lm]
-    ys = [p.y * h for p in lm]
-    cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
-    side = max(max(xs) - min(xs), max(ys) - min(ys)) * (1 + 2 * pad)
-    return cx, cy, side
+    pts = np.array([[p.x * w, p.y * h] for p in lm], dtype=np.float32)
+    xs, ys = pts[:, 0], pts[:, 1]
+    cx, cy = (xs.min() + xs.max()) / 2, (ys.min() + ys.max()) / 2
+    side = max(xs.max() - xs.min(), ys.max() - ys.min()) * (1 + 2 * pad)
+    hand = res.handedness[0][0].category_name if res.handedness else None
+    return (cx, cy, side), pts, hand
 
 
-def crop_square(img_bgr, box, size: int = IMG_SIZE):
+def hand_mask(pts_px, box, size: int = IMG_SIZE, dilate: float = MASK_DILATE,
+              feather: float = MASK_FEATHER):
+    """Soft hand mask in [0,1], from signed distance to the landmark hull.
+
+    alpha = 1 within `dilate` of the hull, falling linearly to 0 over the next
+    `feather`. web/handmask.js computes exactly this.
+    """
+    cx, cy, side = box
+    scale = size / side
+    local = (pts_px - np.array([cx - side / 2, cy - side / 2])) * scale
+    hull = cv2.convexHull(local.astype(np.float32))
+    r = dilate * size
+    f = max(1e-6, feather * size)
+
+    alpha = np.zeros((size, size), np.float32)
+    for y in range(size):
+        for x in range(size):
+            sd = cv2.pointPolygonTest(hull, (float(x), float(y)), True)  # + inside
+            alpha[y, x] = min(1.0, max(0.0, (sd + r + f) / f))
+    return alpha
+
+
+def crop_square(img_bgr, box, size: int = IMG_SIZE, mask=None, fill=MASK_FILL):
     """Grayscale square crop, edge-replicated where the box leaves the frame."""
     cx, cy, side = box
     h, w = img_bgr.shape[:2]
@@ -108,7 +157,11 @@ def crop_square(img_bgr, box, size: int = IMG_SIZE):
     if patch.size == 0:
         return None
     patch = cv2.cvtColor(patch, cv2.COLOR_BGR2GRAY)
-    return cv2.resize(patch, (size, size), interpolation=cv2.INTER_AREA)
+    patch = cv2.resize(patch, (size, size), interpolation=cv2.INTER_AREA)
+    if mask is not None:
+        blended = patch.astype(np.float32) * mask + float(fill) * (1.0 - mask)
+        patch = np.clip(np.rint(blended), 0, 255).astype(np.uint8)
+    return patch
 
 
 def build(segments_csv="pseudo_label_segments.csv",
@@ -125,7 +178,7 @@ def build(segments_csv="pseudo_label_segments.csv",
     detector = make_detector()
 
     images, letters, signers, videos, occ_ids, flags = [], [], [], [], [], []
-    no_hand = no_frame = 0
+    no_hand = no_frame = left_handed = 0
 
     for (sg, vid), grp in seg.groupby(["signer_id", "video_id"], sort=True):
         cap = cv2.VideoCapture(os.path.join(video_root, sg, vid))
@@ -139,10 +192,18 @@ def build(segments_csv="pseudo_label_segments.csv",
                 no_frame += 1
                 continue
             # detect once at the hold's centre; the hand barely moves during it
-            box = detect_box(detector, key_img)
+            box, pts, hand = detect_box(detector, key_img)
             if box is None:
                 no_hand += 1
                 continue
+            # All five dataset signers sign right-handed (verified with
+            # MediaPipe handedness). Mirroring a left hand would make it a
+            # different letter, so a left-handed clip is excluded rather than
+            # flipped.
+            if hand == "Left":
+                left_handed += 1
+                continue
+            mask = hand_mask(pts, box, size) if MASK_BACKGROUND else None
 
             span = np.linspace(r.start, r.end, frames_per_hold).round().astype(int)
             occ = f"{sg}|{vid}|{r.letter_index}"
@@ -151,7 +212,7 @@ def build(segments_csv="pseudo_label_segments.csv",
                 got, img = cap.read()
                 if not got:
                     continue
-                patch = crop_square(img, box, size)
+                patch = crop_square(img, box, size, mask=mask)
                 if patch is None:
                     continue
                 images.append(patch)
@@ -172,11 +233,14 @@ def build(segments_csv="pseudo_label_segments.csv",
     )
     summary = {"images": len(X), "occurrences": len(set(occ_ids)),
                "letters": len(set(letters)), "no_hand": no_hand,
-               "no_frame": no_frame, "path": out_path}
+               "no_frame": no_frame, "left_handed": left_handed,
+               "masked": MASK_BACKGROUND, "path": out_path}
     if verbose:
         print(f"{summary['images']} crops from {summary['occurrences']} occurrences, "
               f"{summary['letters']} letters")
-        print(f"holds where MediaPipe found no hand: {no_hand}; unreadable frames: {no_frame}")
+        print(f"holds where MediaPipe found no hand: {no_hand}; unreadable frames: {no_frame}; "
+              f"left-handed holds skipped: {left_handed}")
+        print(f"background masking: {MASK_BACKGROUND}")
         print(f"wrote {out_path}")
     return summary
 

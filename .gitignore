@@ -31,8 +31,11 @@ sofi_segmentation.py
 
 # ─── Model weights / training runs (the CNN work will produce these) ────────
 *.task
-letter_crops.npz
-letter_crops_hog.npy
+# extracted crop datasets and feature caches: regenerable from the videos via
+# crop_dataset.py, and large (16MB + 48MB), so never committed
+letter_crops*.npz
+letter_crops*_hog.npy
+*_hog.npy
 *.pt
 *.pth
 *.onnx

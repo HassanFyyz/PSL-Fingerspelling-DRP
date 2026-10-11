@@ -51,22 +51,29 @@
   "ے"
  ],
  "n_classes": 40,
- "train_occurrences": 1359,
+ "train_occurrences": 1345,
+ "masked": true,
+ "mask": {
+  "dilate": 0.16,
+  "feather": 0.08,
+  "fill": 128
+ },
+ "handedness": "right",
  "honest_accuracy": {
-  "protocol": "leave-one-signer-out; the shipped model is trained on all signers, so never quote its training accuracy",
-  "letter_acc": 0.13,
+  "protocol": "leave-one-signer-out; the shipped model trains on all signers, so never quote its training accuracy",
+  "letter_acc": 0.132,
   "letter_majority": 0.098,
   "word_top1": 0.331,
-  "word_top3": 0.55,
+  "word_top3": 0.558,
   "word_chance": 0.018518518518518517,
   "per_signer_word_top1": {
-   "signer1-F": 0.469,
-   "signer2-F": 0.347,
-   "signer3-F": 0.467,
-   "signer4-L": 0.143,
+   "signer1-F": 0.408,
+   "signer2-F": 0.408,
+   "signer3-F": 0.422,
+   "signer4-L": 0.184,
    "signer5-R": 0.231
   },
-  "note": "front-facing signers score 35-47% word top-1; the two tilted-angle signers score 14-23%, consistent with angle_evaluation.ipynb"
+  "note": "feathered background mask. A hard mask edge scored higher offline (0.391 top-1) but was unusable live: the edge is itself a strong gradient, so prediction flipped on 31% of small box wobbles and the JS port disagreed with Python. Feathering trades that accuracy for stability (11% flip rate) and exact cross-language agreement."
  },
  "lexicon": {
   "آئی یونٹ": [

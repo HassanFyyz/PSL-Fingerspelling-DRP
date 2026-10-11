@@ -109,11 +109,12 @@
       </div>
       <div class="caveat">
         Measured leave-one-signer-out: <b>13 % per letter</b> (40 classes, 9.8 %
-        baseline) but <b>33 % word top-1</b> and <b>55 % top-3</b> against a
+        baseline) but <b>33 % word top-1</b> and <b>56 % top-3</b> against a
         54-word vocabulary, vs ~1.9 % chance. Individual letters are usually
         wrong; the word guess survives that because it scores the whole
-        sequence against the vocabulary. Front-facing signers score 35&ndash;47 %,
-        tilted angles 14&ndash;23 %.
+        sequence against the vocabulary. Front-facing signers score ~41 %,
+        tilted angles 18&ndash;23 %. Use your <b>right hand</b> &mdash; every
+        dataset signer is right-handed and a mirrored hand is a different shape.
       </div>
     </div>
     <div class="stat"><span>processing fps</span><span id="sFps">&mdash;</span></div>
@@ -136,6 +137,7 @@ import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 import { StreamingSegmenter, MIN_VIABLE_FPS } from "./sofi_streaming.js";
 import { LetterClassifier } from "./classifier.js";
+import { applyHandMask } from "./handmask.js";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
@@ -243,6 +245,9 @@ function fitCanvas(c) {
 // features).
 const BOX_PAD = 0.30;        // crop_dataset.BOX_PAD
 const MODEL_SIZE = 64;       // crop_dataset.IMG_SIZE
+let MODEL_MASKED = true;     // set from the model manifest
+let lastHandedness = null;   // "Right" / "Left" from MediaPipe
+let leftWarned = false;
 
 /** Square padded hand box in pixels of the video frame. */
 function handBox(lm, pad = BOX_PAD) {
@@ -272,21 +277,37 @@ const modelCanvas = document.createElement("canvas");
 modelCanvas.width = MODEL_SIZE; modelCanvas.height = MODEL_SIZE;
 const mctx = modelCanvas.getContext("2d", { willReadFrequently: true });
 
-function modelCrop(box) {
+/**
+ * The 64x64 grayscale masked crop the model receives.
+ * Mirrors crop_dataset.crop_square + hand_mask exactly.
+ */
+function modelGray(box, pts) {
   mctx.drawImage(video, box.cx-box.side/2, box.cy-box.side/2, box.side, box.side,
                  0, 0, MODEL_SIZE, MODEL_SIZE);
   const d = mctx.getImageData(0, 0, MODEL_SIZE, MODEL_SIZE);
   const px = d.data;
+  const gray = new Float64Array(MODEL_SIZE * MODEL_SIZE);
   // BT.601 luma, matching cv2.cvtColor(..., COLOR_BGR2GRAY)
-  for (let i = 0; i < px.length; i += 4) {
-    const g = 0.299*px[i] + 0.587*px[i+1] + 0.114*px[i+2];
-    px[i] = px[i+1] = px[i+2] = g;
+  for (let i = 0, j = 0; i < px.length; i += 4, j++) {
+    gray[j] = 0.299*px[i] + 0.587*px[i+1] + 0.114*px[i+2];
   }
-  mctx.putImageData(d, 0, 0);
-  const out = document.createElement("canvas");
-  out.width = MODEL_SIZE; out.height = MODEL_SIZE;
-  out.getContext("2d").drawImage(modelCanvas, 0, 0);
-  return out;
+  if (pts && MODEL_MASKED) applyHandMask(gray, pts, box, MODEL_SIZE);
+  return gray;
+}
+
+/** Render a gray array to a canvas, for the model-view thumbnails. */
+function grayToCanvas(gray) {
+  const c = document.createElement("canvas");
+  c.width = MODEL_SIZE; c.height = MODEL_SIZE;
+  const ctx = c.getContext("2d");
+  const im = ctx.createImageData(MODEL_SIZE, MODEL_SIZE);
+  for (let j = 0; j < gray.length; j++) {
+    const v = Math.max(0, Math.min(255, gray[j]));
+    im.data[j*4] = im.data[j*4+1] = im.data[j*4+2] = v;
+    im.data[j*4+3] = 255;
+  }
+  ctx.putImageData(im, 0, 0);
+  return c;
 }
 
 function drawOverlay(lm) {
@@ -370,26 +391,46 @@ function onHold(h) {
   el("holds").appendChild(div);
   renderWord();
   lastTop = null;
-  if (classifier && slot.model) {
+  let modelCanvas0 = null;
+
+  // One box per hold, not one per frame.
+  //
+  // crop_dataset.py detects the hand ONCE at the hold's centre and reuses that
+  // box for every frame of the hold. The page used to recompute a box each
+  // frame, so landmark jitter moved the crop (and the mask edge with it)
+  // between frames. Measured: a +/-2px, +/-6% box wobble flips the predicted
+  // letter ~31% of the time with the masked model. Averaging the box over the
+  // hold removes most of that and matches how the model was trained.
+  const inHold = ring.filter(r => r.box && r.idx >= h.start && r.idx <= h.end);
+  const use = inHold.length ? inHold : (slot ? [slot] : []);
+
+  if (classifier && use.length) {
     try {
-      // Average several frames across the hold rather than classifying one.
-      // The offline evaluation averages ~5 crops per hold, and matching that
-      // here is worth ~a third of the word accuracy; a single frame can catch
-      // the hand mid-settle.
-      const frames = ring.filter(r => r.model && r.idx >= h.start && r.idx <= h.end);
-      const use = frames.length ? frames : [slot];
+      const mean = (f) => use.reduce((a, r) => a + f(r), 0) / use.length;
+      const box = { cx: mean(r => r.box.cx), cy: mean(r => r.box.cy),
+                    side: mean(r => r.box.side) };
+      const pts = use[use.length >> 1].pts;     // landmarks from the middle frame
+
+      // Test-time augmentation: the descriptor is sensitive to exact framing,
+      // so average over small box perturbations instead of trusting one.
+      const jit = [[0,0,1.0],[2,0,1.0],[-2,0,1.0],[0,2,1.0],[0,-2,1.0],[0,0,1.06],[0,0,0.94]];
       let p = null;
-      for (const fr of use) {
-        const q = classifier.predict(grayOf(fr.model));
-        if (!p) { p = q; } else { for (let i = 0; i < p.length; i++) p[i] += q[i]; }
+      for (const [dx, dy, sc] of jit) {
+        const b2 = { cx: box.cx + dx, cy: box.cy + dy, side: box.side * sc };
+        const g = modelGray(b2, pts);
+        if (!modelCanvas0) modelCanvas0 = grayToCanvas(g);
+        const q = classifier.predict(g);
+        if (!p) p = q; else for (let i = 0; i < p.length; i++) p[i] += q[i];
       }
-      for (let i = 0; i < p.length; i++) p[i] /= use.length;
+      for (let i = 0; i < p.length; i++) p[i] /= jit.length;
       probSeq.push(p);
       lastTop = classifier.top(p, 1)[0].letter;
     } catch (err) {
       console.warn("classify failed", err);
     }
   }
+  if (slot && !slot.model) slot.model = modelCanvas0;
+
   captured.push({ n: holdCount, model: slot.model });
   el("save").disabled = false;
 }
@@ -404,8 +445,19 @@ async function loop() {
     sctx.drawImage(video, 0, 0, DETECT_W, DETECT_H);
     const res = landmarker.detectForVideo(small, now);
     const lm = res.landmarks && res.landmarks.length ? res.landmarks[0] : null;
+    lastHandedness = (res.handedness && res.handedness.length)
+      ? res.handedness[0][0].categoryName : null;
+    el("sHand").textContent = lm ? (lastHandedness || "yes") : "no";
+    if (lm && lastHandedness === "Left" && !leftWarned) {
+      leftWarned = true;
+      const w = el("warn");
+      w.hidden = false;
+      w.innerHTML = `<b>That looks like your left hand.</b><br>
+        All five dataset signers sign right-handed, and a mirrored hand is a
+        different shape to this model &mdash; a horizontal flip changes the
+        predicted letter 95&nbsp;% of the time. Use your <b>right hand</b>.`;
+    }
     drawOverlay(lm);
-    el("sHand").textContent = lm ? "yes" : "no";
 
     // Do the per-frame capture work in BOTH phases, so the rate we measure is
     // the rate the real loop runs at rather than a cheaper version of it.
@@ -413,7 +465,9 @@ async function loop() {
     if (lm) {
       kx = lm.map(p => p.x); ky = lm.map(p => p.y);
       const _b = handBox(lm);
-      ring.push({ idx: frameIdx, canvas: snapshot(_b), model: modelCrop(_b) });
+      const _pts = lm.map(p => [p.x * video.videoWidth, p.y * video.videoHeight]);
+      ring.push({ idx: frameIdx, canvas: snapshot(_b), box: _b, pts: _pts,
+                  hand: lastHandedness });
       if (ring.length > RING) ring.shift();
     }
 
@@ -485,7 +539,10 @@ el("start").onclick = async () => {
     // a segmentation demo rather than failing to start.
     try {
       classifier = await LetterClassifier.load("./model");
-      el("sModel").textContent = `${classifier.nClasses} letters, ${Object.keys(classifier.lexicon).length} words`;
+      MODEL_MASKED = classifier.manifest.masked !== false;
+      el("sModel").textContent =
+        `${classifier.nClasses} letters, ${Object.keys(classifier.lexicon).length} words`
+        + (MODEL_MASKED ? ", masked" : "");
     } catch (err) {
       el("sModel").textContent = "not loaded (segmentation only)";
       console.warn("classifier unavailable", err);
@@ -511,7 +568,7 @@ el("reset").onclick = () => {
   frameIdx = 0; holdCount = 0;
   trace.length = 0; traceHolds.length = 0; ring.length = 0;
   recent.length = 0; sinceCheck = 0; captured.length = 0;
-  probSeq.length = 0; lastTop = null; renderWord();
+  probSeq.length = 0; lastTop = null; leftWarned = false; renderWord();
   el("holds").innerHTML = ""; el("sHolds").textContent = "0";
   el("save").disabled = true;
   if (measuredFps) buildSegmenter(measuredFps);

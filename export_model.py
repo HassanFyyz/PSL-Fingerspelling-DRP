@@ -66,8 +66,8 @@ def ref_hog(img, orientations=HOG_ORIENTATIONS, ppc=HOG_PPC, cpb=HOG_CPB, eps=EP
     return out.ravel()
 
 
-def build(crops_path="letter_crops.npz", mapping_path="word_letter_mapping.json",
-          out_dir=OUT_DIR, hog_cache="letter_crops_hog.npy"):
+def build(crops_path="letter_crops_masked.npz", mapping_path="word_letter_mapping.json",
+          out_dir=OUT_DIR, hog_cache="letter_crops_masked_hog.npy"):
     from sklearn.linear_model import LogisticRegression
     from sklearn.preprocessing import StandardScaler
 
@@ -102,10 +102,18 @@ def build(crops_path="letter_crops.npz", mapping_path="word_letter_mapping.json"
         "classes": classes,
         "n_classes": len(classes),
         "train_occurrences": int(len(set(d["occurrences"]))),
-        "honest_accuracy": {"loso_acc": 0.129, "majority": 0.098, "lift": 1.31,
-                            "note": "leave-one-signer-out; the model shipped here is "
-                                    "trained on all signers, so do not quote its "
-                                    "training accuracy"},
+        "masked": True,
+        "mask": {"dilate": 0.16, "fill": 128},
+        "handedness": "right",
+        "honest_accuracy": {
+            "protocol": "leave-one-signer-out; the shipped model trains on all "
+                        "signers, so never quote its training accuracy",
+            "letter_acc": 0.158, "letter_majority": 0.098,
+            "word_top1": 0.391, "word_top3": 0.641, "word_chance": 1/54,
+            "per_signer_word_top1": {"signer1-F": 0.469, "signer2-F": 0.449,
+                                     "signer3-F": 0.489, "signer4-L": 0.122,
+                                     "signer5-R": 0.423},
+            "note": "background-masked crops; unmasked was 0.130/0.331/0.550"},
         "lexicon": {w: list(ls) for w, ls in mapping.items()},
     }
     with open(os.path.join(out_dir, "letter_model.json"), "w", encoding="utf-8") as f:
