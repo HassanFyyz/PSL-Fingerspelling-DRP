@@ -83,6 +83,11 @@ web/*.local.*
 Thumbs.db
 desktop.ini
 
+# ─── Papers ─────────────────────────────────────────────────────────────────
+# The three group papers are copyrighted (IEEE / SSRN). Keep them locally for
+# reference and for PAPER_FACTS.md, but do not redistribute via the repo.
+*.pdf
+
 # ─── Personal / local-only notes ────────────────────────────────────────────
 # NOTES.local.md is a private catch-up report, deliberately not shared.
 # README.md is the version for other people.
