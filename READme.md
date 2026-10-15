@@ -85,6 +85,7 @@
     *Two bugs worth remembering:* (a) Node `Buffer.buffer` ignores `byteOffset` and silently returned the wrong weights — parity caught it, nothing else would have; (b) `crop_dataset.py` extracts ~5 frames per hold, and a first evaluation treated each crop as a separate letter, making the decoder's length filter reject every candidate and report a flat 0.0% word accuracy. The real number is 33.1%. The page now averages frames within a hold to match the evaluation protocol.
 
 **Immediate next actions (in progress or queued):**
+- [ ] **PERSONAL CALIBRATION — top priority for a working demo.** Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.
 - [ ] Human spot-check of `spot_check/*.png` (needs someone who reads Urdu + knows PSL handshapes) to put a number on pseudo-label noise. Two sheets inspected informally look clean — distinct, settled handshapes matching the captions.
 - [ ] Measure signer-invariance explicitly (the 97% signer accuracy is a ready-made metric); consider gradient-reversal / adversarial signer removal.
@@ -223,7 +224,8 @@ The end deliverable is a **live camera → segmented video → recognized letter
 - [x] Build leave-one-signer-out / **leave-one-angle-out** evaluation protocol — *now applied for real: LOSO on segmentation (Algorithm 2) and on letter classification, with label-shuffle controls, occurrence-level grouping, and a demonstration that frame-level splits inflate results 10.9×*
 - [~] Replace heuristic segmentation with a learned boundary detector — *Algorithm 2 (dynamic local-minima) built and validated, 3.5× better than Algorithm 1 and LOSO-stable. Still a heuristic, not learned — but it is now a strong baseline for a learned detector to beat*
 - [x] Build letter-level labels without the missing annotations — *constrained-DP pseudo-labelling, 14,530 hold frames across 40 classes*
-- [ ] **Appearance-based letter model (CNN on hand crops at hold frames)** — *the key open experiment, and no longer a gamble: the per-letter sheets confirm the labels are sound, so a CNN would be training on good data. Keypoint-geometry features are proven insufficient*
+- [~] **Appearance-based letter model** — *HOG beats landmark geometry (13.2% vs 6.8%, first to clear the 9.8% baseline) but is still far too weak to use: when it predicts alif it is right 19% of the time. CNN on GPU still pending*
+- [ ] **Per-user calibration: train on Hassan's own letter photos, test on Hassan** — *the realistic path to a demo that actually works; see Immediate next actions*
 - [ ] Replace heuristic post-processing (consecutive-count / mode) with CTC or temporal transformer decoding
 - [ ] Multi-seed runs + reported variance for all experiments
 - [ ] Extend to dynamic/motion letters
