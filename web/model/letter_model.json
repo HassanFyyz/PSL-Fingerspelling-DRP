@@ -73,7 +73,9 @@
    "signer4-L": 0.184,
    "signer5-R": 0.231
   },
-  "note": "feathered background mask. A hard mask edge scored higher offline (0.391 top-1) but was unusable live: the edge is itself a strong gradient, so prediction flipped on 31% of small box wobbles and the JS port disagreed with Python. Feathering trades that accuracy for stability (11% flip rate) and exact cross-language agreement."
+  "note": "feathered background mask. A hard mask edge scored higher offline (0.391 top-1) but was unusable live: the edge is itself a strong gradient, so prediction flipped on 31% of small box wobbles and the JS port disagreed with Python. Feathering trades that accuracy for stability (11% flip rate) and exact cross-language agreement.",
+  "word_chance_informed": 0.058,
+  "word_chance_note": "1/54 = 1.85% is the NAIVE chance baseline and overstates the result. The decoder only considers words whose length matches the detected hold count within 1, which leaves ~17.3 candidates on average, so the fair comparison is ~5.8%. Word top-1 of 33.1% is therefore about 5.7x chance, not 18x."
  },
  "lexicon": {
   "آئی یونٹ": [

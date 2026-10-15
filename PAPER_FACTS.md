@@ -118,7 +118,8 @@ We borrow **Retention Under Change** from this paper for `angle_evaluation.ipynb
 | landmark letters 6.8 % vs 9.1 % majority; signer ID 97.0 % | `letter_classifier.ipynb` |
 | frame-level 74.6 % vs occurrence-level 6.8 % = 10.9× inflation | `letter_classifier.ipynb` |
 | raw pixels 8.3 % (0.85×), HOG 13.0 % (1.33×), HOG+mask 13.2 % (1.35×) | `letter_cnn.ipynb` |
-| word top-1 33.1 %, top-3 55.8 %, chance 1.85 % | `letter_cnn.ipynb` |
+| word top-1 33.1 %, top-3 55.8 % | `letter_cnn.ipynb` |
+| word chance: 1.85 % naive, **5.8 % after the length filter** (~17.3 candidates) | computed from `word_letter_mapping.json` |
 | angle retention: recognition 0.690, segmentation 1.155 | `angle_evaluation.ipynb` |
 
 Note our **40** letter classes vs the paper's **38**: the difference is three
