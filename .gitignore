@@ -34,6 +34,8 @@ sofi_segmentation.py
 # extracted crop datasets and feature caches: regenerable from the videos via
 # crop_dataset.py, and large (16MB + 48MB), so never committed
 letter_crops*.npz
+# hold_landmarks.npy / hold_meta.csv ARE tracked: small (430KB) and they let
+# scarce_data_recognition.ipynb run without re-running MediaPipe over 1,345 holds
 letter_crops*_hog.npy
 *_hog.npy
 *.pt

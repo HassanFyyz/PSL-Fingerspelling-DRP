@@ -84,6 +84,26 @@
 
     *Two bugs worth remembering:* (a) Node `Buffer.buffer` ignores `byteOffset` and silently returned the wrong weights — parity caught it, nothing else would have; (b) `crop_dataset.py` extracts ~5 frames per hold, and a first evaluation treated each crop as a separate letter, making the decoder's length filter reject every candidate and report a flat 0.0% word accuracy. The real number is 33.1%. The page now averages frames within a hold to match the evaluation protocol.
 
+15. **Landmark geometry was not dead after all — recognition accuracy doubled** (`hand_geometry.py`, `scarce_data_recognition.ipynb`). Prof. Awais asked what works under data scarcity. Testing it reversed finding #8: the earlier "landmark geometry fails" conclusion rested on three handicaps compounding, not on a property of landmarks.
+    - **raw coordinates** still encode hand size and finger length, so they describe the person;
+    - the CSV coordinate space is **anisotropic** (normalised by the original 16:9 frame), so any angle computed from it is skewed;
+    - **logistic regression is linear**, and 40 classes over ~1,300 samples is not linearly separable.
+
+    Replacing coordinates with **joint angles + palm-normalised distances** (74 features, invariant to hand size by construction) and LogReg with an **RBF-kernel SVM**:
+
+    | features | dims | LogReg | SVM-RBF |
+    |---|---|---|---|
+    | landmark coordinates | 40 | 11.5% | 17.4% |
+    | joint angles | 19 | 12.7% | 22.0% |
+    | normalised distances | 55 | 16.5% | 23.5% |
+    | **angles + distances** | 74 | 17.2% | **26.5%** |
+    | HOG image (previous best) | 1764 | 12.9% | 17.6% |
+    | HOG + angles + distances | 1838 | 15.3% | 19.1% |
+
+    **Nested-tuned (hyperparameters selected inside training signers only): letters 13.2% → 25.9%, word top-1 33.1% → 53.1%, top-3 55.8% → 76.2%.**
+
+    Three lessons: (a) **the estimator mattered more than the representation** — the RBF kernel improved *every* feature set by ~1.5x, including the image features; (b) combining HOG with geometry *hurts* (19.1% vs 26.5%) because 1,764 dims drown 74; (c) invariance engineered into the features beats hoping a model learns it from 34 examples per class.
+
 **Immediate next actions (in progress or queued):**
 - [ ] **PERSONAL CALIBRATION — top priority for a working demo.** Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.
@@ -113,6 +133,8 @@ Run the notebooks in this order; each depends on the artifacts of the previous o
 | `crop_dataset.py` | Hand-crop extraction (re-detects MediaPipe on the cropped videos) |
 | `letter_cnn.py` | Small CNN + batched augmentation; ready for a Colab run |
 | `letter_cnn.ipynb` | HOG/raw-pixel/CNN comparison — appearance vs geometry |
+| `hand_geometry.py` | Morphology-invariant joint-angle + normalised-distance features |
+| `scarce_data_recognition.ipynb` | **Current best model.** Representation x estimator grid, nested-tuned |
 | `angle_evaluation.ipynb` | Leave-one-angle-out; localises the viewpoint penalty to recognition |
 | `export_model.py` | Trains the deployment classifier and exports it for the browser |
 | `practice_cards/` | Handshape sequences to copy when testing the live app |
