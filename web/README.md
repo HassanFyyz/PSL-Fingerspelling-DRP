@@ -3,6 +3,12 @@
 Camera → MediaPipe hand keypoints → SOFI Algorithm 2 (causal) → letter boundaries, running
 entirely in the browser.
 
+## Two pages
+
+- **`index.html`** — the live demo: camera → segmentation → letter → word.
+- **`capture.html`** — calibration capture: record yourself signing letters, to train a model
+  on your own hand. Opens at `http://localhost:8000/web/capture.html`.
+
 ## Run
 
 ```bash
@@ -61,6 +67,7 @@ leave-one-signer-out one above.
 | `model/` | `letter_model.json` (manifest + lexicon), `letter_w.bin`, `letter_b.bin` (276 KB) |
 | `test_classifier.mjs` | JS vs Python parity on real crops |
 | `test_decode.mjs` | End-to-end word decode, no browser needed |
+| `capture.html` | Calibration capture; exports landmarks + masked crops as JSON for `calibrate.py` |
 
 Regenerate the model with `python export_model.py`, then re-run both tests. A silent numerical
 drift between `hog.js` and the Python HOG would make every prediction wrong with no error
