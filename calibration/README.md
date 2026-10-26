@@ -13,6 +13,7 @@ user's own examples closes most of that gap.
 | file | date | letters | takes | frames |
 |---|---|---|---|---|
 | `calibration_2026-10-22.json` | 22 Oct 2026 | ا, ک | 10 (5 each) | 375 |
+| `calibration_2026-10-26.json` | 26 Oct 2026 | ا, ک | 10 (5 each) | 371 |
 
 ## Format
 
@@ -45,9 +46,19 @@ Three caveats recorded at the time:
 3. **The gain was mostly on kaf.** Retrained with zero user examples of the
    test letter: alif 5/5, kaf 2/5. Alif already worked from the dataset alone.
 
-**Open test:** record 2–3 takes per letter in a *different session* — another
-day, different light — and score them against this one. That removes the
-same-session advantage and is what would make the result quotable.
+**Open test — now answered.** A second session, `calibration_2026-10-26.json`,
+recorded 4 days later, was scored against a model trained on the dataset plus
+only the 22 Oct session — the 26 Oct frames never entered training:
+
+- **50%** no calibration — dataset signers only (alif 5/5, kaf 0/5; it defaults
+  to alif every time)
+- **100%** cross-session — dataset + 22 Oct, scored on the unseen 26 Oct session
+- **100%** same-session upper bound — dataset + 22 Oct + 26 Oct's own sibling
+  takes
+
+Cross-session matches the same-session ceiling, so the 22 Oct calibration
+generalises to a different day/light/seat rather than memorising one sitting.
+Run via `python cross_session_test.py calibration/calibration_2026-10-26.json`.
 
 ## In the training data
 
@@ -80,4 +91,5 @@ quoting overall accuracy.
 
 ```bash
 python calibrate.py calibration/calibration_2026-10-22.json
+python cross_session_test.py calibration/calibration_2026-10-26.json
 ```
