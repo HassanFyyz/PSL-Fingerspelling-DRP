@@ -49,6 +49,33 @@ Three caveats recorded at the time:
 day, different light — and score them against this one. That removes the
 same-session advantage and is what would make the result quotable.
 
+## In the training data
+
+The 22 Oct session has been merged into `hold_landmarks.npy` / `hold_meta.csv`
+as signer **`user-hassan`**, via:
+
+```bash
+python add_calibration.py calibration/calibration_2026-10-22.json --signer user-hassan
+```
+
+**One row per take, not one per frame.** Ten takes became ten rows, each the
+median frame of its take. The 375 recorded frames are near-duplicates within
+their takes, so counting them individually would treat 10 real examples as 375
+and make one person 22% of the training data for two letters. At one row per
+take it is 0.7%, which is honest.
+
+If the user's examples should outweigh the dataset — reasonable for personal
+calibration — use sample weights at training time rather than duplicating rows.
+Padding the row count inflates every accuracy computed from this file.
+
+Effect on the headline number: leave-one-signer-out over the five dataset
+signers went 26.5% → 26.9%, i.e. unchanged within noise, which is what 10 extra
+rows should do.
+
+**Note for evaluation:** LOSO now has a sixth fold containing only 2 letters.
+It is not comparable to the 40-letter folds and should be filtered out when
+quoting overall accuracy.
+
 ## Usage
 
 ```bash
