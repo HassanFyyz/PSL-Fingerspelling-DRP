@@ -60,6 +60,26 @@ Cross-session matches the same-session ceiling, so the 22 Oct calibration
 generalises to a different day/light/seat rather than memorising one sitting.
 Run via `python cross_session_test.py calibration/calibration_2026-10-26.json`.
 
+## Adversarial check: is it reading hand shape or cheating?
+
+To test this directly, a third recording deliberately swapped the labels:
+takes labeled ا were actually signed as ک and vice versa (confirmed frame by
+frame -- every frame of every "mislabeled" take measured as the swapped
+shape, not a partial or noisy transition). Scored against the model trained
+on the dataset + 22 Oct (which never saw this file):
+
+- Against the **typed label**: 0/10 correct.
+- Against the **true shape actually made**: **10/10 correct.**
+
+The base model ignored the wrong label and correctly read the real hand
+shape every time -- it is reading geometry, not some session-specific
+artifact. Retraining on this file's own (mislabeled) other takes flips that
+exactly: 10/10 against the wrong label, 0/10 against the true shape, because
+that is what supervised learning does when fed wrong labels. This is not
+leakage, it is calibration having no defense against a bad take -- which is
+why `add_calibration.py` now checks each take against the current model
+before merging it (see below).
+
 ## In the training data
 
 The 22 Oct session has been merged into `hold_landmarks.npy` / `hold_meta.csv`
@@ -86,6 +106,25 @@ rows should do.
 **Note for evaluation:** LOSO now has a sixth fold containing only 2 letters.
 It is not comparable to the 40-letter folds and should be filtered out when
 quoting overall accuracy.
+
+## Mislabel check before merging
+
+`add_calibration.py` now scores every take against a model trained on the
+current dataset (never including this session) before merging it. If the
+model disagrees with a take's label, that take is flagged and the merge is
+refused by default:
+
+```bash
+python add_calibration.py calibration/some_session.json --signer whoever
+# ... if a take is flagged:
+python add_calibration.py calibration/some_session.json --signer whoever --drop-suspicious  # merge the rest
+python add_calibration.py calibration/some_session.json --signer whoever --force            # merge anyway
+python add_calibration.py calibration/some_session.json --signer whoever --no-check          # skip the check
+```
+
+This exists because a deliberately mislabeled take (see the adversarial check
+above) would otherwise have been merged silently and taught the model the
+wrong thing for that letter.
 
 ## Usage
 

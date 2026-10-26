@@ -24,6 +24,22 @@ If you want the user's examples to carry MORE weight than the dataset -- which
 is a legitimate thing to want for personal calibration -- do it with explicit
 sample weights at training time, not by duplicating near-identical rows. Padding
 the row count inflates every accuracy estimate computed from this file.
+
+Mislabel check
+---------------
+Before merging, each take is scored against a model trained on the CURRENT
+dataset only (this take's own session is never in that model, so there is no
+leakage). If that model's prediction disagrees with the take's stated letter,
+the take is flagged: either the label is wrong, or that letter genuinely looks
+like another one for this person, and either way it should not be merged
+silently. This was not a hypothetical -- a deliberately mislabeled take (alif
+recorded under a kaf label) was caught exactly this way: the base model called
+it correctly while the label said otherwise. See calibration/README.md.
+
+By default a flagged take blocks the write. Use --drop-suspicious to merge
+everything else and skip just the flagged takes, or --force to merge
+everything including the flagged ones (only if you are sure the label, not
+the model, is right).
 """
 import argparse
 import json
@@ -31,6 +47,11 @@ import os
 
 import numpy as np
 import pandas as pd
+
+from hand_geometry import hand_features
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+from sklearn.svm import SVC
 
 PTS_PATH = "hold_landmarks.npy"
 META_PATH = "hold_meta.csv"
@@ -58,6 +79,29 @@ def pick_frames(pts, n):
     return pts[np.clip(idx, 0, len(pts) - 1)]
 
 
+def check_takes(takes, P, M):
+    """Score each take against a model trained on the current dataset only.
+
+    Returns a dict take_key -> (claimed_letter, predicted_letter, top3) for
+    every take whose claimed letter the base model disagrees with.
+    """
+    model = make_pipeline(StandardScaler(),
+                          SVC(C=10, gamma="scale", class_weight="balanced", probability=True))
+    model.fit(hand_features(P), M.letter.to_numpy())
+    classes = model.named_steps["svc"].classes_
+
+    flagged = {}
+    for t in takes:
+        feats = hand_features(t["pts"])
+        probs = model.predict_proba(feats).mean(0)
+        order = np.argsort(probs)[::-1]
+        pred = classes[order[0]]
+        if pred != t["letter"]:
+            top3 = [(classes[i], probs[i]) for i in order[:3]]
+            flagged[f"{t['letter']}#{t['take']}"] = (t["letter"], pred, top3)
+    return flagged
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("capture")
@@ -65,6 +109,12 @@ def main():
                     help="signer id for these rows (default: user-<date>)")
     ap.add_argument("--frames-per-take", type=int, default=1)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--no-check", action="store_true",
+                    help="skip the mislabel check entirely")
+    ap.add_argument("--drop-suspicious", action="store_true",
+                    help="merge everything except flagged takes")
+    ap.add_argument("--force", action="store_true",
+                    help="merge flagged takes anyway, trusting the label over the model")
     args = ap.parse_args()
 
     takes, meta = load_takes(args.capture)
@@ -79,6 +129,31 @@ def main():
         print(f"\n'{signer}' is already present ({int((M.signer==signer).sum())} rows).")
         print("Remove those rows first, or pass a different --signer.")
         return
+
+    if not args.no_check:
+        print("\nchecking takes against the current model (not trained on this session)...")
+        flagged = check_takes(takes, P, M)
+        if flagged:
+            print(f"\n{len(flagged)} take(s) disagree with the model trained on everyone else:")
+            for key, (claimed, pred, top3) in flagged.items():
+                alts = ", ".join(f"{L} {100*p:.0f}%" for L, p in top3)
+                print(f"   {key:<10} you labeled '{claimed}'  but the model says '{pred}'   [top3: {alts}]")
+            if args.force:
+                print("\n--force: merging flagged takes anyway, trusting the label.")
+            elif args.drop_suspicious:
+                takes = [t for t in takes if f"{t['letter']}#{t['take']}" not in flagged]
+                print(f"\n--drop-suspicious: merging the other {len(takes)} take(s), skipping flagged ones.")
+                if not takes:
+                    print("nothing left to merge.")
+                    return
+            else:
+                print("\nRefusing to merge. Either the label or the recording is wrong for")
+                print("the take(s) above -- check it before trusting it into training data.")
+                print("Re-run with --drop-suspicious to merge the rest, or --force to merge")
+                print("everything anyway.")
+                return
+        else:
+            print("all takes agree with the model. proceeding.")
 
     new_pts, rows = [], []
     for t in takes:
