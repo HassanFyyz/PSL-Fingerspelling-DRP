@@ -83,8 +83,6 @@
     <div class="row" style="margin-top:10px">
       <button id="start">Start camera</button>
       <button id="reset" disabled>Reset</button>
-      <button id="modelView" disabled>Show model view</button>
-      <button id="save" disabled>Save crops</button>
       <span id="status">idle</span>
     </div>
     <div class="note">
@@ -192,22 +190,12 @@ const sctx = small.getContext("2d", { willReadFrequently: true });
 // The hold is confirmed `delay` frames after it occurred, so the frame we want
 // to show has already gone by. Keep a short ring buffer of recent frames.
 const RING = 64;
-const ring = [];        // {idx, canvas, model}
-const captured = [];    // {n, model} for every confirmed hold, for export
-let showModelView = false;
+const ring = [];        // {idx, canvas, box, pts, hand}
 
 // --- recognition state -------------------------------------------------
 let classifier = null;      // null until the model loads; page works without it
 let probSeq = [];           // per-hold probability vectors, in signing order
 let lastTop = null;         // top-1 letter of the most recent hold, for its badge
-
-/** Grayscale pixels of a model crop, as the classifier expects them. */
-function grayOf(canvas) {
-  const g = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
-  const out = new Float64Array(canvas.width * canvas.height);
-  for (let i = 0, j = 0; i < g.length; i += 4, j++) out[j] = g[i];   // already gray
-  return out;
-}
 
 function renderWord() {
   if (!classifier || !probSeq.length) {
@@ -236,15 +224,9 @@ function fitCanvas(c) {
   }
 }
 
-// Crop geometry must match crop_dataset.py exactly, or a model trained on the
-// dataset sees a different distribution at inference than it did in training.
-// Mirrored there: SQUARE box (so resizing never distorts the hand's aspect
-// ratio), BOX_PAD on each side, and grayscale (colour is skin tone and
-// clothing, i.e. signer identity -- the confound that sank the landmark
-// features).
-const BOX_PAD = 0.30;        // crop_dataset.BOX_PAD
-const MODEL_SIZE = 64;       // crop_dataset.IMG_SIZE
-let MODEL_MASKED = true;     // set from the model manifest
+// Padded square box, used only for the colour thumbnail strip -- the
+// classifier itself works from landmarks, not this crop.
+const BOX_PAD = 0.30;
 let lastHandedness = null;   // "Right" / "Left" from MediaPipe
 let leftWarned = false;
 
@@ -268,44 +250,6 @@ function snapshot(box) {
   ctx.drawImage(video, box.cx-box.side/2, box.cy-box.side/2, box.side, box.side,
                 0, 0, c.width, c.height);
   ctx.restore();
-  return c;
-}
-
-/** Exactly what a letter model would receive: 64x64 grayscale square crop. */
-const modelCanvas = document.createElement("canvas");
-modelCanvas.width = MODEL_SIZE; modelCanvas.height = MODEL_SIZE;
-const mctx = modelCanvas.getContext("2d", { willReadFrequently: true });
-
-/**
- * The 64x64 grayscale masked crop the model receives.
- * Mirrors crop_dataset.crop_square + hand_mask exactly.
- */
-function modelGray(box, pts) {
-  mctx.drawImage(video, box.cx-box.side/2, box.cy-box.side/2, box.side, box.side,
-                 0, 0, MODEL_SIZE, MODEL_SIZE);
-  const d = mctx.getImageData(0, 0, MODEL_SIZE, MODEL_SIZE);
-  const px = d.data;
-  const gray = new Float64Array(MODEL_SIZE * MODEL_SIZE);
-  // BT.601 luma, matching cv2.cvtColor(..., COLOR_BGR2GRAY)
-  for (let i = 0, j = 0; i < px.length; i += 4, j++) {
-    gray[j] = 0.299*px[i] + 0.587*px[i+1] + 0.114*px[i+2];
-  }
-  if (pts && MODEL_MASKED) applyHandMask(gray, pts, box, MODEL_SIZE);
-  return gray;
-}
-
-/** Render a gray array to a canvas, for the model-view thumbnails. */
-function grayToCanvas(gray) {
-  const c = document.createElement("canvas");
-  c.width = MODEL_SIZE; c.height = MODEL_SIZE;
-  const ctx = c.getContext("2d");
-  const im = ctx.createImageData(MODEL_SIZE, MODEL_SIZE);
-  for (let j = 0; j < gray.length; j++) {
-    const v = Math.max(0, Math.min(255, gray[j]));
-    im.data[j*4] = im.data[j*4+1] = im.data[j*4+2] = v;
-    im.data[j*4+3] = 255;
-  }
-  ctx.putImageData(im, 0, 0);
   return c;
 }
 
@@ -530,7 +474,6 @@ el("start").onclick = async () => {
     el("status").textContent = "measuring framerate…";
     running = true;
     el("reset").disabled = false;
-    el("modelView").disabled = false;
     setTimeout(() => { if (running) el("status").textContent = "running"; }, 2000);
     loop();
   } catch (err) {
@@ -542,41 +485,10 @@ el("start").onclick = async () => {
 el("reset").onclick = () => {
   frameIdx = 0; holdCount = 0;
   trace.length = 0; traceHolds.length = 0; ring.length = 0;
-  recent.length = 0; sinceCheck = 0; captured.length = 0;
+  recent.length = 0; sinceCheck = 0;
   probSeq.length = 0; lastTop = null; leftWarned = false; renderWord();
   el("holds").innerHTML = ""; el("sHolds").textContent = "0";
-  el("save").disabled = true;
   if (measuredFps) buildSegmenter(measuredFps);
-};
-
-// Toggle between the colour thumbnail and the 64x64 grayscale square crop a
-// model actually receives. Worth looking at: if the model view is cut off or
-// off-centre, no classifier will work however good it is.
-el("modelView").onclick = () => {
-  showModelView = !showModelView;
-  el("modelView").textContent = showModelView ? "Show camera view" : "Show model view";
-  document.querySelectorAll(".hold").forEach(div => {
-    const c = div.querySelector("canvas"), s = div._slot;
-    if (!s) return;
-    const ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
-    ctx.drawImage(showModelView && s.model ? s.model : s.canvas, 0, 0, c.width, c.height);
-  });
-};
-
-// Export the captured crops as PNGs. These are exactly the format
-// crop_dataset.py produces, so they can seed a per-user calibration set --
-// the response to cross-signer collapse described in the README.
-el("save").onclick = async () => {
-  for (const { n, model } of captured) {
-    if (!model) continue;
-    const url = model.toDataURL("image/png");
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `hold_${String(n).padStart(3, "0")}.png`;
-    a.click();
-    await new Promise(r => setTimeout(r, 120));   // browsers throttle bulk downloads
-  }
 };
 </script>
 </body>
