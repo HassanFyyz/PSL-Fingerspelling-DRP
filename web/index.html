@@ -136,8 +136,7 @@
 import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 import { StreamingSegmenter, MIN_VIABLE_FPS } from "./sofi_streaming.js";
-import { LetterClassifier } from "./classifier.js";
-import { applyHandMask } from "./handmask.js";
+import { SvmClassifier } from "./svm_classifier.js";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
@@ -384,55 +383,28 @@ function onHold(h) {
   if (lastTop) div.innerHTML += `<b class="pl">${lastTop}</b>`;
   const c = document.createElement("canvas");
   c.width = 68*2; c.height = 68*2;
-  c.getContext("2d").drawImage(showModelView && slot.model ? slot.model : slot.canvas,
-                               0, 0, c.width, c.height);
+  c.getContext("2d").drawImage(slot.canvas, 0, 0, c.width, c.height);
   div.appendChild(c);
   div._slot = slot;
   el("holds").appendChild(div);
   renderWord();
   lastTop = null;
-  let modelCanvas0 = null;
 
-  // One box per hold, not one per frame.
-  //
-  // crop_dataset.py detects the hand ONCE at the hold's centre and reuses that
-  // box for every frame of the hold. The page used to recompute a box each
-  // frame, so landmark jitter moved the crop (and the mask edge with it)
-  // between frames. Measured: a +/-2px, +/-6% box wobble flips the predicted
-  // letter ~31% of the time with the masked model. Averaging the box over the
-  // hold removes most of that and matches how the model was trained.
-  const inHold = ring.filter(r => r.box && r.idx >= h.start && r.idx <= h.end);
+  // Every frame's landmarks across the hold, not just one -- the classifier
+  // averages the per-frame vote distribution (same idea as calibrate.py's
+  // take_vote: trust the whole hold, not a single possibly-jittery frame).
+  const inHold = ring.filter(r => r.pts && r.idx >= h.start && r.idx <= h.end);
   const use = inHold.length ? inHold : (slot ? [slot] : []);
 
   if (classifier && use.length) {
     try {
-      const mean = (f) => use.reduce((a, r) => a + f(r), 0) / use.length;
-      const box = { cx: mean(r => r.box.cx), cy: mean(r => r.box.cy),
-                    side: mean(r => r.box.side) };
-      const pts = use[use.length >> 1].pts;     // landmarks from the middle frame
-
-      // Test-time augmentation: the descriptor is sensitive to exact framing,
-      // so average over small box perturbations instead of trusting one.
-      const jit = [[0,0,1.0],[2,0,1.0],[-2,0,1.0],[0,2,1.0],[0,-2,1.0],[0,0,1.06],[0,0,0.94]];
-      let p = null;
-      for (const [dx, dy, sc] of jit) {
-        const b2 = { cx: box.cx + dx, cy: box.cy + dy, side: box.side * sc };
-        const g = modelGray(b2, pts);
-        if (!modelCanvas0) modelCanvas0 = grayToCanvas(g);
-        const q = classifier.predict(g);
-        if (!p) p = q; else for (let i = 0; i < p.length; i++) p[i] += q[i];
-      }
-      for (let i = 0; i < p.length; i++) p[i] /= jit.length;
+      const p = classifier.predict(use.map(r => r.pts));
       probSeq.push(p);
       lastTop = classifier.top(p, 1)[0].letter;
     } catch (err) {
       console.warn("classify failed", err);
     }
   }
-  if (slot && !slot.model) slot.model = modelCanvas0;
-
-  captured.push({ n: holdCount, model: slot.model });
-  el("save").disabled = false;
 }
 
 async function loop() {
@@ -465,7 +437,10 @@ async function loop() {
     if (lm) {
       kx = lm.map(p => p.x); ky = lm.map(p => p.y);
       const _b = handBox(lm);
-      const _pts = lm.map(p => [p.x * video.videoWidth, p.y * video.videoHeight]);
+      // isotropic: x,y,z all scaled by the same factor (videoWidth), matching
+      // the calibration recordings and hand_geometry's scale-invariance
+      const vw = video.videoWidth;
+      const _pts = lm.map(p => [p.x * vw, p.y * video.videoHeight, p.z * vw]);
       ring.push({ idx: frameIdx, canvas: snapshot(_b), box: _b, pts: _pts,
                   hand: lastHandedness });
       if (ring.length > RING) ring.shift();
@@ -538,11 +513,11 @@ el("start").onclick = async () => {
     // Recognition is optional: if the model is missing the page still runs as
     // a segmentation demo rather than failing to start.
     try {
-      classifier = await LetterClassifier.load("./model");
-      MODEL_MASKED = classifier.manifest.masked !== false;
+      classifier = await SvmClassifier.load("./model_geom");
+      const calibrated = classifier.manifest.train_signers.some(s => s.startsWith("user-"));
       el("sModel").textContent =
         `${classifier.nClasses} letters, ${Object.keys(classifier.lexicon).length} words`
-        + (MODEL_MASKED ? ", masked" : "");
+        + (calibrated ? ", calibrated" : "");
     } catch (err) {
       el("sModel").textContent = "not loaded (segmentation only)";
       console.warn("classifier unavailable", err);
