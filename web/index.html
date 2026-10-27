@@ -68,9 +68,8 @@
 
 <h1>PSL Live Segmentation</h1>
 <div class="sub">
-  Camera &rarr; MediaPipe hand keypoints &rarr; SOFI Algorithm&nbsp;2 (causal). Everything runs in
-  this tab; no video is uploaded. Letter <em>recognition</em> is not wired up yet &mdash; this
-  demonstrates boundary detection only.
+  Camera &rarr; MediaPipe hand keypoints &rarr; SOFI Algorithm&nbsp;2 (causal) &rarr; hand-geometry
+  + SVM letter recognition. Everything runs in this tab; no video is uploaded.
 </div>
 
 <div class="wrap">
@@ -106,13 +105,15 @@
         <div id="rawOut" class="wordraw">—</div>
       </div>
       <div class="caveat">
-        Measured leave-one-signer-out: <b>13 % per letter</b> (40 classes, 9.8 %
-        baseline) but <b>33 % word top-1</b> and <b>56 % top-3</b> against a
-        54-word vocabulary, vs ~1.9 % chance. Individual letters are usually
-        wrong; the word guess survives that because it scores the whole
-        sequence against the vocabulary. Front-facing signers score ~41 %,
-        tilted angles 18&ndash;23 %. Use your <b>right hand</b> &mdash; every
-        dataset signer is right-handed and a mirrored hand is a different shape.
+        Measured leave-one-signer-out: <b>27 % per letter</b> (40 classes, 9.8 %
+        baseline). Word-level accuracy for this model has not been measured yet
+        -- the lexicon decoder below is unchanged from the previous model, just
+        fed this model's per-letter distribution. This build also includes two
+        of the developer's own calibration sessions, which scored 100% on
+        ا (alif) and ک (kaf) held out across sessions; that does not
+        generalise to other letters or other people. Use your <b>right hand</b>
+        &mdash; every dataset signer is right-handed and a mirrored hand is a
+        different shape.
       </div>
     </div>
     <div class="stat"><span>processing fps</span><span id="sFps">&mdash;</span></div>
