@@ -34,6 +34,10 @@ SESSIONS = [
 OUT_ROOT = "letter_sheets/user-hassan"
 SHEET_DIR = "letter_sheets"
 CROP_SIZE = 64
+# individual saved crops are upscaled for viewing -- 64x64 raw is too small to
+# see clearly. LANCZOS rather than NEAREST since these are real recordings,
+# not something where blockiness should be preserved as information.
+SAVE_SIZE = 320
 
 
 def decode_crop(b64str):
@@ -56,7 +60,8 @@ def extract_all():
                 img = decode_crop(fr["crop"])
                 caption = f"{tag} take{t['take']} f{fi:02d}"
                 name = f"{tag}_take{t['take']}_f{fi:02d}.png"
-                Image.fromarray(img, mode="L").save(os.path.join(letter_dir, name))
+                big = Image.fromarray(img, mode="L").resize((SAVE_SIZE, SAVE_SIZE), Image.LANCZOS)
+                big.save(os.path.join(letter_dir, name))
                 by_letter.setdefault(letter, []).append((img, caption, t["take"], tag))
     return by_letter
 
@@ -81,18 +86,18 @@ def append_to_sheet(letter, entries, ncol=5):
     n = len(picks)
     ncol2 = min(ncol, n)
     nrow = int(np.ceil(n / ncol2))
-    fig, axes = plt.subplots(nrow, ncol2, figsize=(2.05 * ncol2, 2.3 * nrow), squeeze=False)
+    fig, axes = plt.subplots(nrow, ncol2, figsize=(4.1 * ncol2, 4.6 * nrow), squeeze=False)
     for ax in axes.ravel():
         ax.axis("off")
     for k, (img, caption) in enumerate(picks):
         ax = axes[k // ncol2][k % ncol2]
-        ax.imshow(img, cmap="gray", vmin=0, vmax=255)
-        ax.set_title(caption, fontsize=7.5)
+        ax.imshow(img, cmap="gray", vmin=0, vmax=255, interpolation="lanczos")
+        ax.set_title(caption, fontsize=13)
     fig.suptitle(f"developer's own calibration recordings (64x64 masked, {n} takes shown)",
-                 fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, 0.95])
+                 fontsize=20)
+    fig.tight_layout(rect=[0, 0, 1, 0.96])
     panel_path = sheet_path + ".usertmp.png"
-    fig.savefig(panel_path, dpi=80, bbox_inches="tight")
+    fig.savefig(panel_path, dpi=110, bbox_inches="tight")
     plt.close(fig)
 
     top = Image.open(sheet_path).convert("RGB")
