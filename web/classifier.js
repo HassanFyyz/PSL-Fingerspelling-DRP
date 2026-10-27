@@ -22,6 +22,7 @@
  */
 
 import { hog } from "./hog.js";
+import * as wd from "./word_decode.js";
 
 export class LetterClassifier {
   constructor(manifest, W, b) {
@@ -69,17 +70,10 @@ export class LetterClassifier {
     return p;
   }
 
-  top(probs, k = 3) {
-    return Array.from(probs)
-      .map((p, i) => ({ letter: this.classes[i], p }))
-      .sort((a, b) => b.p - a.p)
-      .slice(0, k);
-  }
+  top(probs, k = 3) { return wd.top(this.classes, probs, k); }
 
   /** argmax letter sequence — what the model literally predicted. */
-  rawWord(probSeq) {
-    return probSeq.map(p => this.classes[p.indexOf(Math.max(...p))]).join("");
-  }
+  rawWord(probSeq) { return wd.rawWord(this.classes, probSeq); }
 
   /**
    * Best lexicon match, scored against the full probability distributions.
@@ -90,26 +84,7 @@ export class LetterClassifier {
    * much better evidence than any individual letter. `slack` allows for the
    * segmenter being off by one.
    */
-  decodeWord(probSeq, { slack = 1, topN = 5 } = {}) {
-    const n = probSeq.length;
-    if (!n) return [];
-    const scored = [];
-    for (const [word, letters] of Object.entries(this.lexicon)) {
-      if (Math.abs(letters.length - n) > slack) continue;
-      const L = Math.min(letters.length, n);
-      let logp = 0, ok = true;
-      for (let i = 0; i < L; i++) {
-        const ci = this.classIndex.get(letters[i]);
-        if (ci === undefined) { ok = false; break; }
-        logp += Math.log(Math.max(probSeq[i][ci], 1e-12));
-      }
-      if (!ok) continue;
-      // length-normalise so short words are not unfairly favoured, and
-      // penalise a length mismatch with the detected hold count
-      scored.push({ word, letters: letters.join(""),
-                    score: logp / L - 0.7 * Math.abs(letters.length - n) });
-    }
-    scored.sort((a, b) => b.score - a.score);
-    return scored.slice(0, topN);
+  decodeWord(probSeq, opts = {}) {
+    return wd.decodeWord(this.classIndex, this.lexicon, probSeq, opts);
   }
 }
