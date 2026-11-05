@@ -183,6 +183,23 @@ function grayCrop(box, pts){
 
 function b64(u8){ let s=""; for(const b of u8) s+=String.fromCharCode(b); return btoa(s); }
 
+/** A take's hand: majority over its labelled frames; null on a tie or no labels. */
+function takeHand(h){
+  if(h.Right===h.Left) return null;
+  return h.Right>h.Left ? "Right" : "Left";
+}
+
+/**
+ * Session-level summary, kept under the old top-level `handedness` key that
+ * calibrate.py prints: the hand if every take agrees, "mixed" if they differ.
+ * It used to be the label of whatever frame was last seen before download,
+ * which is why the 22 and 26 Oct sessions recorded null.
+ */
+function sessionHand(ts){
+  const s=new Set(ts.map(t=>t.handedness).filter(Boolean));
+  return s.size===0 ? null : s.size===1 ? [...s][0] : "mixed";
+}
+
 function refresh(){
   const byLetter = {};
   for(const t of takes) byLetter[t.letter]=(byLetter[t.letter]||0)+1;
@@ -218,9 +235,11 @@ async function loop(){
 
     if(lm && lastHand==="Left"){
       const w=el("warn"); w.hidden=false;
-      w.innerHTML=`<b>That looks like your left hand.</b><br>
-        All five dataset signers are right-handed, and a mirrored hand is a different
-        shape to the model. Record with your <b>right hand</b>.`;
+      w.innerHTML=`<b>Left hand detected.</b><br>
+        The letter model reads joint angles and distances, which are the same for a
+        left hand and its mirror-image right hand, so left-handed signing is read the
+        same way. All training signers used their right hand, and left-hand accuracy
+        hasn't been measured. Each take records which hand it used.`;
     }
 
     if(recording && current && lm){
@@ -228,6 +247,7 @@ async function loop(){
       const box=handBox(lm);
       const keepCrop = current.frames.length < MAX_CROPS_PER_TAKE;
       current.frames.push({ pts, crop: keepCrop ? b64(grayCrop(box,pts)) : null });
+      current.hands[lastHand==="Left"||lastHand==="Right" ? lastHand : "unknown"]++;
     }
   }
   requestAnimationFrame(loop);
@@ -259,7 +279,7 @@ el("record").onclick = () => {
   if(recording) return;
   const letter=sel.value;
   const n=takes.filter(t=>t.letter===letter).length;
-  current={letter, take:n, frames:[]};
+  current={letter, take:n, frames:[], hands:{Right:0, Left:0, unknown:0}};
   recording=true;
   el("record").classList.add("rec"); el("record").textContent="recording…";
   el("record").disabled=true;
@@ -272,8 +292,10 @@ el("record").onclick = () => {
     el("record").classList.remove("rec"); el("record").textContent="Record take";
     el("record").disabled=false; el("barfill").style.width="0%";
     if(current.frames.length>=5){
+      current.handedness=takeHand(current.hands);
       takes.push(current);
-      el("status").textContent=`saved ${letter} take ${current.take+1} — ${current.frames.length} frames. Lower your hand, then record again.`;
+      el("status").textContent=`saved ${letter} take ${current.take+1} — ${current.frames.length} frames, `+
+        `${current.handedness||"unknown"} hand. Lower your hand, then record again.`;
     }else{
       el("status").textContent="too few frames with a hand detected — try again, keeping your hand in view";
     }
@@ -289,10 +311,12 @@ el("download").onclick = () => {
   const payload={
     created:new Date().toISOString(),
     img_size:MODEL_SIZE, box_pad:BOX_PAD, mask:{dilate:0.16,feather:0.08,fill:128},
-    handedness:lastHand, fps:Math.round(fps*10)/10,
+    handedness:sessionHand(takes), fps:Math.round(fps*10)/10,
     note:"landmarks are in isotropic VIDEO PIXEL coords (x*width, y*height, z*width); "+
-         "crops are 64x64 grayscale, background-masked, base64 raw bytes",
-    takes:takes.map(t=>({letter:t.letter,take:t.take,frames:t.frames})),
+         "crops are 64x64 grayscale, background-masked, base64 raw bytes; "+
+         "takes[].handedness is the MediaPipe label by majority over that take's frames",
+    takes:takes.map(t=>({letter:t.letter,take:t.take,handedness:t.handedness,
+                         hand_frames:t.hands,frames:t.frames})),
   };
   const blob=new Blob([JSON.stringify(payload)],{type:"application/json"});
   const a=document.createElement("a");
