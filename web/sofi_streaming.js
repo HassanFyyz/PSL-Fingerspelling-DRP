@@ -35,6 +35,34 @@ export const GAP_TOLERANCE_SEC = 0.20;
 // dataset clips are pre-trimmed to actual signing, a live hand can sit idle.
 export const MIN_CONTRAST = 1.10;
 
+// Live-only hold gates, in physical units: palm lengths (wrist to middle-finger
+// knuckle) and seconds. OFI is displacement *per frame* in screen units, so its
+// jitter floor does not scale with fps or with distance to the camera while real
+// motion does -- at 60 fps a still hand's jitter dips pass MIN_CONTRAST every
+// few hundred ms. These gates are measured in units that do not move with fps.
+// Off by default (null) so the class still matches sofi_streaming.py exactly;
+// the live page turns them on.
+//
+// STILL_SPEED: mean hand speed at the hold (+/- SPEED_WINDOW_SEC/2) must be below
+//   this, so a slow-down while still forming the handshape is not taken as a hold.
+// MOVE_DIST:   since the last still pose, the hand must have departed from it by
+//   at least this much, sustained for SPEED_WINDOW_SEC, so one sustained pose
+//   gives one hold. Departure is the mean of the 3 landmarks that moved most:
+//   letters differ in a few fingers, and a mean over all 21 dilutes that (the
+//   wrist and knuckles barely move). Translation counts, so a re-articulated
+//   doubled letter still gives two holds.
+// Starting values, not tuned on data: the page shows the live speed and why
+// each candidate was dropped, and accepts ?still= / ?move= to adjust them.
+// MIN_STILL_SEC: a stretch this long below STILL_SPEED is itself a hold
+//   candidate. Needed because a truly still hand gives a FLAT, noisy OFI, and
+//   whether Algorithm 2 finds a local minimum inside it is down to the noise:
+//   several (the duplicates) or none (a missed letter). Algorithm 2 minima still
+//   catch letters signed without a full stop; MOVE_DIST dedups the two sources.
+export const STILL_SPEED = 0.6;       // palm lengths per second
+export const MOVE_DIST = 0.35;        // palm lengths
+export const MIN_STILL_SEC = 0.25;
+export const SPEED_WINDOW_SEC = 0.10; // speed is measured across this interval
+
 function framesFor(seconds, fps, odd = false, minimum = 1) {
   let n = Math.max(minimum, Math.round(seconds * fps));
   if (odd && n % 2 === 0) n += 1;
@@ -47,6 +75,29 @@ function mean(arr, lo, hi) {
   return s / (hi - lo);
 }
 
+/** Mean per-landmark distance between two interleaved [x0,y0,x1,y1,...] poses. */
+function poseDist(a, b) {
+  let s = 0;
+  for (let i = 0; i < a.length; i += 2) s += Math.hypot(a[i] - b[i], a[i + 1] - b[i + 1]);
+  return s / (a.length / 2);
+}
+
+/** Mean distance of the 3 landmarks that differ most between two poses. */
+function poseChange(a, b) {
+  let d1 = 0, d2 = 0, d3 = 0;
+  for (let i = 0; i < a.length; i += 2) {
+    const d = Math.hypot(a[i] - b[i], a[i + 1] - b[i + 1]);
+    if (d > d1) { d3 = d2; d2 = d1; d1 = d; }
+    else if (d > d2) { d3 = d2; d2 = d; }
+    else if (d > d3) d3 = d;
+  }
+  return (d1 + d2 + d3) / 3;
+}
+
+// Pose history older than this is dropped; only the stretch since the last
+// still pose is ever looked at.
+const POSE_HISTORY_SEC = 30;
+
 export class StreamingSegmenter {
   /**
    * @param {object} opts
@@ -55,11 +106,16 @@ export class StreamingSegmenter {
    * @param {number} [opts.runSec]    minimum-window half-width, seconds
    * @param {number} [opts.minSepSec] minimum separation between holds, seconds
    * @param {number} [opts.segLenSec] emitted hold span, seconds
+   * @param {number} [opts.aspect]    frame width / height, so x and y share units
+   * @param {?number} [opts.stillSpeed] palm lengths/s; null disables the gate
+   * @param {?number} [opts.moveDist]   palm lengths; null disables the gate
    */
   constructor({ fps = TUNED_FPS, smoothSec = SMOOTH_SEC, runSec = RUN_SEC,
                 minSepSec = MIN_SEP_SEC, segLenSec = SEG_LEN_SEC,
                 requireHand = true, gapToleranceSec = GAP_TOLERANCE_SEC,
-                minContrast = MIN_CONTRAST } = {}) {
+                minContrast = MIN_CONTRAST, aspect = 1, stillSpeed = null,
+                moveDist = null, speedWindowSec = SPEED_WINDOW_SEC,
+                minStillSec = MIN_STILL_SEC } = {}) {
     this.fps = fps;
     this.smoothWin = Math.max(MIN_SMOOTH, framesFor(smoothSec, fps, true));
     if (this.smoothWin % 2 === 0) this.smoothWin += 1;
@@ -83,10 +139,34 @@ export class StreamingSegmenter {
     this.pending = [];
     this.lastEmitted = -1e9;
     this.scannedTo = -1;
+
+    this.aspect = aspect;
+    this.stillSpeed = stillSpeed;
+    this.moveDist = moveDist;
+    this.speedHalf = Math.max(1, framesFor(speedWindowSec / 2, fps));
+    this.historyFrames = framesFor(POSE_HISTORY_SEC, fps);
+    this.pose = [];         // per frame: Float64Array [x0,y0,...] or null if no hand
+    this.palm = [];         // per frame: wrist -> middle knuckle length, same units
+    this.speed = [];        // centred hand speed, palm lengths/s; NaN if unknown
+    this.anchor = null;     // {frame, pose, palm} of the last still pose seen
+    this.dropped = { moving: 0, noMove: 0 };
+    // never shorter than the emitted span, so the whole span is inside the stillness
+    this.minStill = Math.max(this.segLen, framesFor(minStillSec, fps));
+    this.stillRun = 0;      // consecutive frames below stillSpeed
+    this.stillFired = false;
+    this.stillOut = [];     // holds found by stillness, returned by the next push()
   }
 
   /** Inherent latency of the method, in milliseconds. */
   get latencyMs() { return 1000 * this.delay / this.fps; }
+
+  /** Most recent hand speed in palm lengths per second, or NaN. */
+  get speedNow() {
+    for (let i = this.speed.length - 1; i >= 0 && i >= this.speed.length - 5; i--) {
+      if (Number.isFinite(this.speed[i])) return this.speed[i];
+    }
+    return NaN;
+  }
 
   /**
    * Feed one frame.
@@ -98,7 +178,13 @@ export class StreamingSegmenter {
     this._pushOfi(kx, ky);
     this._updateSmooth();
     this._scanMinima();
-    return this._emitReady(false);
+    return this._collect(this._emitReady(false));
+  }
+
+  /** Merge stillness holds with Algorithm 2 holds, in temporal order. */
+  _collect(out) {
+    if (!this.stillOut.length) return out;
+    return this.stillOut.splice(0).concat(out).sort((a, b) => a.frame - b.frame);
   }
 
   /** End of stream: flush anything still pending. */
@@ -109,7 +195,7 @@ export class StreamingSegmenter {
       this.smooth.push(mean(this.raw, Math.max(0, i - this.half), this.n));
     }
     this._scanMinima();
-    return this._emitReady(true);
+    return this._collect(this._emitReady(true));
   }
 
   _pushOfi(kx, ky) {
@@ -133,6 +219,116 @@ export class StreamingSegmenter {
       this.prev = [Float64Array.from(kx), Float64Array.from(ky)];
     }
     this.n += 1;
+    if (this.stillSpeed != null || this.moveDist != null) this._pushPose(kx, ky);
+  }
+
+  _pushPose(kx, ky) {
+    if (kx == null || ky == null) {
+      this.pose.push(null);
+      this.palm.push(0);
+    } else {
+      const p = new Float64Array(kx.length * 2);
+      for (let i = 0; i < kx.length; i++) { p[2 * i] = kx[i] * this.aspect; p[2 * i + 1] = ky[i]; }
+      this.pose.push(p);
+      this.palm.push(Math.hypot(p[18] - p[0], p[19] - p[1]));   // landmark 9 - landmark 0
+    }
+    const old = this.pose.length - 1 - this.historyFrames;
+    if (old >= 0) this.pose[old] = null;
+
+    const h = this.speedHalf;
+    while (this.speed.length <= this.pose.length - 1 - h) {
+      const c = this.speed.length;
+      const a = c - h >= 0 ? this.pose[c - h] : null, b = this.pose[c + h];
+      const palm = (this.palm[c - h] + this.palm[c + h]) / 2;
+      const v = a && b && palm > 1e-6 ? poseDist(a, b) / palm / (2 * h / this.fps) : NaN;
+      this.speed.push(v);
+      if (this.stillSpeed != null) this._trackStill(c, v);
+    }
+  }
+
+  /** One candidate per stretch of stillness, centred on its first emitted span. */
+  _trackStill(c, v) {
+    if (!(v <= this.stillSpeed)) { this.stillRun = 0; this.stillFired = false; return; }
+    this.stillRun++;
+    if (this.stillFired) {
+      // This stillness already had its candidate. Keep the anchor on the
+      // current pose so slow arm sag through a long hold never adds up to a
+      // "movement" -- only motion since the hand last stopped counts.
+      if (this.anchor && this.moveDist != null && this.stillRun % this.minStill === 0) {
+        const here = this._meanPose(c - this.minStill + 1, c);
+        if (here) this.anchor = { frame: c, pose: here.pose, palm: here.palm };
+      }
+      return;
+    }
+    if (this.stillRun < this.minStill) return;
+    this.stillFired = true;
+    const f = c - this.stillRun + 1 + (this.segLen >> 1);
+    this._tryEmit(f, NaN, this.stillOut);
+  }
+
+  /** minSep, then the live gates; pushes the hold onto `out` if it survives. */
+  _tryEmit(frame, ofi, out) {
+    if (frame - this.lastEmitted <= this.minSep) return;
+    const info = {};
+    const why = (this.stillSpeed != null || this.moveDist != null)
+      ? this._gate(frame, info) : null;
+    if (why) { this.dropped[why]++; return; }
+    this.lastEmitted = frame;
+    const h = this.segLen >> 1;
+    out.push({ frame, ofi, start: Math.max(0, frame - h), end: frame + h, ...info });
+  }
+
+  /** Mean pose and palm length over frames [lo, hi], skipping absent frames. */
+  _meanPose(lo, hi) {
+    let acc = null, palm = 0, k = 0;
+    for (let j = Math.max(0, lo); j <= hi && j < this.pose.length; j++) {
+      const p = this.pose[j];
+      if (!p) continue;
+      if (!acc) acc = new Float64Array(p.length);
+      for (let i = 0; i < p.length; i++) acc[i] += p[i];
+      palm += this.palm[j]; k++;
+    }
+    if (!k) return null;
+    for (let i = 0; i < acc.length; i++) acc[i] /= k;
+    return { pose: acc, palm: palm / k };
+  }
+
+  /**
+   * Live-only gates on a confirmed minimum. Returns null if it may be emitted,
+   * else the reason it was dropped ("moving" or "noMove").
+   */
+  _gate(f, info) {
+    const h = this.segLen >> 1;
+    if (this.stillSpeed != null) {
+      let s = 0, k = 0;
+      for (let j = f - this.speedHalf; j <= f + this.speedHalf; j++) {
+        const v = this.speed[j];
+        if (Number.isFinite(v)) { s += v; k++; }
+      }
+      info.speed = k ? s / k : NaN;
+      if (k && info.speed > this.stillSpeed) return "moving";
+    }
+    if (this.moveDist == null) return null;
+
+    const here = this._meanPose(f - h, f + h);
+    if (!here) return null;
+    let moved = Infinity;
+    if (this.anchor) {
+      // furthest the hand got from the last still pose, held for 2*speedHalf+1
+      // frames, so a one-frame tracking glitch cannot count as movement
+      moved = 0;
+      const a = this.anchor, need = 2 * this.speedHalf + 1, win = [];
+      for (let j = a.frame + 1; j <= f + h && j < this.pose.length; j++) {
+        win.push(this.pose[j] ? poseChange(this.pose[j], a.pose) / a.palm : 0);
+        if (win.length > need) win.shift();
+        if (win.length === need) moved = Math.max(moved, Math.min(...win));
+      }
+    }
+    info.moved = moved;
+    // Re-anchor on every still pose, emitted or not, so slow drift through a
+    // long hold never accumulates into a fake "movement".
+    this.anchor = { frame: f + h, pose: here.pose, palm: here.palm };
+    return moved < this.moveDist ? "noMove" : null;
   }
 
   _updateSmooth() {
@@ -207,12 +403,7 @@ export class StreamingSegmenter {
 
       let best = chain[0];
       for (const c of chain) if (c[1] < best[1]) best = c;
-      if (best[0] - this.lastEmitted > this.minSep) {
-        this.lastEmitted = best[0];
-        const h = this.segLen >> 1;
-        out.push({ frame: best[0], ofi: best[1],
-                   start: Math.max(0, best[0] - h), end: best[0] + h });
-      }
+      this._tryEmit(best[0], best[1], out);
     }
     return out;
   }
