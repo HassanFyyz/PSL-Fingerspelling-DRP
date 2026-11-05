@@ -123,6 +123,9 @@
     <div class="stat"><span>holds detected</span><span id="sHolds">0</span></div>
     <div class="stat"><span>latency</span><span id="sLat">&mdash;</span></div>
     <div class="stat"><span>smooth / run / sep</span><span id="sCfg">&mdash;</span></div>
+    <div class="stat"><span>hold gates</span><span id="sGates">&mdash;</span></div>
+    <div class="stat"><span>hand speed</span><span id="sSpeed">&mdash;</span></div>
+    <div class="stat"><span>dropped: moving / no move</span><span id="sDropped">0 / 0</span></div>
     <div id="holds"></div>
     <div class="note">
       Thumbnails are the cropped hand at each detected hold, in signing order &mdash; exactly the
@@ -134,7 +137,7 @@
 <script type="module">
 import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
-import { StreamingSegmenter, MIN_VIABLE_FPS } from "./sofi_streaming.js";
+import { StreamingSegmenter, MIN_VIABLE_FPS, STILL_SPEED, MOVE_DIST } from "./sofi_streaming.js";
 import { SvmClassifier } from "./svm_classifier.js";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
@@ -196,7 +199,14 @@ const ring = [];        // {idx, canvas, box, pts, hand}
 // --- recognition state -------------------------------------------------
 let classifier = null;      // null until the model loads; page works without it
 let probSeq = [];           // per-hold probability vectors, in signing order
-let lastTop = null;         // top-1 letter of the most recent hold, for its badge
+
+// Hold gates (see sofi_streaming.js). Overridable for live tuning without
+// editing code: ?still=0.8&move=0.25, or ?gates=off for the old behaviour.
+const params = new URLSearchParams(location.search);
+const GATES_ON = params.get("gates") !== "off";
+const numParam = (k, d) => { const v = parseFloat(params.get(k)); return Number.isFinite(v) ? v : d; };
+const STILL = GATES_ON ? numParam("still", STILL_SPEED) : null;
+const MOVE = GATES_ON ? numParam("move", MOVE_DIST) : null;
 
 function renderWord() {
   if (!classifier || !probSeq.length) {
@@ -298,9 +308,13 @@ function drawTrace() {
 }
 
 function buildSegmenter(fps) {
-  segmenter = new StreamingSegmenter({ fps });
+  const aspect = video.videoWidth && video.videoHeight
+    ? video.videoWidth / video.videoHeight : DETECT_W / DETECT_H;
+  segmenter = new StreamingSegmenter({ fps, aspect, stillSpeed: STILL, moveDist: MOVE });
   el("sLat").textContent = `${Math.round(segmenter.latencyMs)} ms (${segmenter.delay} frames)`;
   el("sCfg").textContent = `${segmenter.smoothWin} / ${segmenter.run} / ${segmenter.minSep}`;
+  el("sGates").textContent = GATES_ON
+    ? `still < ${STILL} palm/s, move > ${MOVE} palm` : "off";
   el("delayNote").textContent = `${Math.round(segmenter.latencyMs)} ms later`;
 
   const warn = el("warn");
@@ -322,18 +336,7 @@ function onHold(h) {
   const slot = ring.find(r => r.idx === h.frame) ||
                ring.reduce((a,b) => Math.abs(b.idx-h.frame) < Math.abs(a.idx-h.frame) ? b : a, ring[0]);
   if (!slot) return;
-  const div = document.createElement("div");
-  div.className = "hold";
-  div.innerHTML = `<b>${holdCount}</b>`;
-  if (lastTop) div.innerHTML += `<b class="pl">${lastTop}</b>`;
-  const c = document.createElement("canvas");
-  c.width = 68*2; c.height = 68*2;
-  c.getContext("2d").drawImage(slot.canvas, 0, 0, c.width, c.height);
-  div.appendChild(c);
-  div._slot = slot;
-  el("holds").appendChild(div);
-  renderWord();
-  lastTop = null;
+  let top = null;
 
   // Every frame's landmarks across the hold, not just one -- the classifier
   // averages the per-frame vote distribution (same idea as calibrate.py's
@@ -345,11 +348,26 @@ function onHold(h) {
     try {
       const p = classifier.predict(use.map(r => r.pts));
       probSeq.push(p);
-      lastTop = classifier.top(p, 1)[0].letter;
+      top = classifier.top(p, 1)[0].letter;
     } catch (err) {
       console.warn("classify failed", err);
     }
   }
+
+  // Draw only after classifying, so the badge and the word include THIS hold.
+  const div = document.createElement("div");
+  div.className = "hold";
+  div.innerHTML = `<b>${holdCount}</b>`;
+  if (top) div.innerHTML += `<b class="pl">${top}</b>`;
+  const fmt = v => (Number.isFinite(v) ? v.toFixed(2) : "–");
+  div.title = `speed ${fmt(h.speed)} palm/s, moved ${fmt(h.moved)} palm since last pose`;
+  const c = document.createElement("canvas");
+  c.width = 68*2; c.height = 68*2;
+  c.getContext("2d").drawImage(slot.canvas, 0, 0, c.width, c.height);
+  div.appendChild(c);
+  div._slot = slot;
+  el("holds").appendChild(div);
+  renderWord();
 }
 
 async function loop() {
@@ -410,6 +428,9 @@ async function loop() {
       // below the viable framerate the windows degenerate and essentially
       // everything reads as a hold, so show nothing rather than nonsense
       if (segmenter.viable) for (const h of holds) onHold(h);
+      const v = segmenter.speedNow;
+      el("sSpeed").textContent = Number.isFinite(v) ? `${v.toFixed(2)} palm/s` : "—";
+      el("sDropped").textContent = `${segmenter.dropped.moving} / ${segmenter.dropped.noMove}`;
       trace.push(segmenter.smooth.at(-1) ?? 0);
       if (trace.length > 1200) trace.shift();
       frameIdx++;
@@ -487,7 +508,7 @@ el("reset").onclick = () => {
   frameIdx = 0; holdCount = 0;
   trace.length = 0; traceHolds.length = 0; ring.length = 0;
   recent.length = 0; sinceCheck = 0;
-  probSeq.length = 0; lastTop = null; leftWarned = false; renderWord();
+  probSeq.length = 0; leftWarned = false; renderWord();
   el("holds").innerHTML = ""; el("sHolds").textContent = "0";
   if (measuredFps) buildSegmenter(measuredFps);
 };
