@@ -153,64 +153,115 @@ def verify_against_cache(n=150, seed=0, video_root=VIDEO_ROOT):
     return pd.DataFrame(rows)
 
 
-def loso_clips(scores="vote", seed=0, make_model=None, free_pts=OUT_PTS, free_meta=OUT_META):
-    """Per-clip class scores for every clip, each scored by a model that never
-    saw its signer.
+_DATA = {}
 
-    Training always uses the pseudo-labelled holds of the other four signers.
-    Each clip gets two score sequences from the same model:
 
-      "oracle"  the held-out signer's pseudo-labelled holds (letter count known)
-      "free"    the holds Algorithm 2 found unaided (what a live system has)
+def _data(free_pts=OUT_PTS, free_meta=OUT_META):
+    """Features and metadata for both hold sets, loaded once."""
+    key = (free_pts, free_meta)
+    if key not in _DATA:
+        import json
+        import evaluation as ev
+        P, M = ev.load_dataset()
+        F = ev.geometry_features(P)
+        Pf, Mf = np.load(free_pts), pd.read_csv(free_meta)
+        ok = Mf.detected.to_numpy() == 1
+        Ff = np.zeros((len(Pf), F.shape[1]))
+        Ff[ok] = ev.geometry_features(Pf[ok])
+        seg = pd.read_csv(SEGMENTS_PATH).drop_duplicates(["signer_id", "video_id"])
+        spell = {(r.signer_id, r.video_id): r.spelling for r in seg.itertuples()}
+        lex = json.load(open("word_letter_mapping.json", encoding="utf-8"))
+        _DATA[key] = dict(F=F, y=M.letter.to_numpy(), sg=M.signer.to_numpy(), vd=M.video.to_numpy(),
+                          Ff=Ff, fsg=Mf.signer.to_numpy(), fvd=Mf.video.to_numpy(), fok=ok,
+                          spell=spell, lex=lex)
+    return _DATA[key]
+
+
+def clips_for(train_signers, test_signer, scores="vote", seed=0, make_model=None):
+    """Clips of `test_signer`, scored by a model fitted on `train_signers` only.
+
+    Each clip carries two score sequences from that one model:
+      "oracle"  the pseudo-labelled holds (letter count known)
+      "free"    the holds Algorithm 2 found unaided
+    and `prior`, the letter frequencies of the training signers.
+    """
+    import evaluation as ev
+    from word_decode import vote_share
+
+    d = _data()
+    tr = np.isin(d["sg"], list(train_signers))
+    if make_model is not None:
+        model = make_model(seed).fit(d["F"][tr], d["y"][tr])
+        score = model.predict_proba
+    else:
+        model = ev.svm(probability=(scores == "proba"), seed=seed).fit(d["F"][tr], d["y"][tr])
+        score = model.predict_proba if scores == "proba" else (lambda X: vote_share(model, X))
+    classes = list(model.classes_)
+    prior = pd.Series(d["y"][tr]).value_counts(normalize=True).to_dict()
+    clips = []
+    for v in sorted(set(d["vd"][d["sg"] == test_signer])):
+        orc = np.where((d["sg"] == test_signer) & (d["vd"] == v))[0]
+        fr = np.where((d["fsg"] == test_signer) & (d["fvd"] == v) & d["fok"])[0]
+        word = d["spell"][(test_signer, v)]
+        clips.append({"signer": test_signer, "video": v, "word": word,
+                      "n_true": len(d["lex"][word]), "classes": classes, "prior": prior,
+                      "oracle": score(d["F"][orc]),
+                      "free": score(d["Ff"][fr]) if len(fr) else np.zeros((0, len(classes)))})
+    return clips
+
+
+def signers():
+    return sorted(set(_data()["sg"]))
+
+
+def loso_clips(scores="vote", seed=0, make_model=None):
+    """Every clip, each scored by a model that never saw its signer.
 
     `scores` is "vote" (one-vs-one vote share, what the browser computes;
     deterministic) or "proba" (Platt probabilities; depends on `seed`).
     `make_model(seed)` may return any estimator with predict_proba; it then
-    replaces the SVM and `scores` is ignored.
-
-    Returns a list of dicts: signer, video, word, n_true, classes, oracle, free.
+    replaces the SVM and `scores` is ignored. Returns (clips, lexicon).
     """
-    import json
-    import evaluation as ev
-    from word_decode import vote_share
-
-    P, M = ev.load_dataset()
-    F = ev.geometry_features(P)
-    y, sg, vd = M.letter.to_numpy(), M.signer.to_numpy(), M.video.to_numpy()
-    Pf, Mf = np.load(free_pts), pd.read_csv(free_meta)
-    ok = Mf.detected.to_numpy() == 1
-    Ff = np.zeros((len(Pf), F.shape[1]))
-    Ff[ok] = ev.geometry_features(Pf[ok])
-    lex = json.load(open("word_letter_mapping.json", encoding="utf-8"))
-
+    S = signers()
     clips = []
-    for s in sorted(set(sg)):
-        tr = sg != s
-        if make_model is not None:
-            model = make_model(seed).fit(F[tr], y[tr])
-            score = model.predict_proba
-        else:
-            model = ev.svm(probability=(scores == "proba"), seed=seed).fit(F[tr], y[tr])
-            score = model.predict_proba if scores == "proba" else (lambda X: vote_share(model, X))
-        classes = list(model.classes_)
-        for v in sorted(set(vd[sg == s])):
-            fr = np.where((Mf.signer.to_numpy() == s) & (Mf.video.to_numpy() == v) & ok)[0]
-            word = Mf.spelling[(Mf.signer == s) & (Mf.video == v)].iloc[0] if len(fr) else None
-            if word is None:
-                word = pd.read_csv(SEGMENTS_PATH).query("signer_id == @s and video_id == @v").spelling.iloc[0]
-            orc = np.where((sg == s) & (vd == v))[0]
-            clips.append({"signer": s, "video": v, "word": word, "n_true": len(lex[word]),
-                          "classes": classes,
-                          "oracle": score(F[orc]),
-                          "free": score(Ff[fr]) if len(fr) else np.zeros((0, len(classes)))})
-    return clips, lex
+    for s in S:
+        clips += clips_for([t for t in S if t != s], s, scores, seed, make_model)
+    return clips, _data()["lex"]
+
+
+def nested_clips(scores="proba", seed=0, make_model=None):
+    """For tuning a decoder without touching the held-out signer.
+
+    Returns ({signer: {"test": clips, "tune": clips}}, lexicon). "test" is the
+    held-out signer scored by the model trained on the other four. "tune" is
+    those four signers, each scored by a model trained on the remaining three
+    -- so decoder settings can be chosen on clips the letter model had not
+    seen, and that the test signer never touches.
+    """
+    S = signers()
+    out = {}
+    for s in S:
+        train = [t for t in S if t != s]
+        tune = []
+        for h in train:
+            tune += clips_for([t for t in train if t != h], h, scores, seed, make_model)
+        out[s] = {"test": clips_for(train, s, scores, seed, make_model), "tune": tune}
+    return out, _data()["lex"]
 
 
 def word_table(clips, lex, decoder, which="free"):
-    """DataFrame per clip: top1, top3 under `decoder(probs, classes, lex)`."""
+    """DataFrame per clip: top1, top3 under `decoder`.
+
+    `decoder(probs, classes, lex)`, or `decoder(probs, classes, lex, clip)` if
+    it has a parameter named `clip` (for decoders that need the training-signer
+    prior carried on the clip).
+    """
+    import inspect
+    wants_clip = "clip" in inspect.signature(decoder).parameters
     rows = []
     for c in clips:
-        ranked = decoder(c[which], c["classes"], lex)
+        ranked = (decoder(c[which], c["classes"], lex, c) if wants_clip
+                  else decoder(c[which], c["classes"], lex))
         rows.append({"signer": c["signer"], "video": c["video"], "word": c["word"],
                      "n_true": c["n_true"], "n_holds": len(c[which]),
                      "top1": float(ranked[:1] == [c["word"]]), "top3": float(c["word"] in ranked[:3])})
