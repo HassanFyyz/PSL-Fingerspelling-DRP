@@ -5,6 +5,13 @@ light, different seat -- without ever training on that second session?
 
 Usage:
     python cross_session_test.py calibration/calibration_2026-10-26.json
+    python cross_session_test.py <test_session.json> --calibrated-on user-hassan
+
+`--calibrated-on` names the signer id of the EARLIER session in hold_meta.csv
+(default user-hassan, the 22 Oct session). Every other `user-*` row is left out
+of both models. That matters: the 26 Oct session was later merged into the
+training data as `user-hassan-session2`, and without this filter its own takes
+sat inside the "no calibration" model and the script printed 100/100/100.
 
 Three numbers, all scored on the SAME held-out 26 Oct takes:
 
@@ -63,21 +70,32 @@ def take_vote(model, F):
     return cls[order[0]], [(cls[i], P[i]) for i in order[:3]]
 
 
-def main(path):
+def main(path, calibrated_on="user-hassan"):
     Md = pd.read_csv(DATASET_META)
     Pd = np.load(DATASET_PTS)
     Fd_all = hand_features(Pd)
 
-    is_old_session = Md.signer.to_numpy() == "user-hassan"
-    Fd_base, yd_base = Fd_all[~is_old_session], Md.letter.to_numpy()[~is_old_session]
-    Fd_cal, yd_cal = Fd_all, Md.letter.to_numpy()
+    signer = Md.signer.to_numpy()
+    letters = Md.letter.to_numpy()
+    is_user = Md.signer.str.startswith("user-").to_numpy()
+    is_old_session = signer == calibrated_on
+    if not is_old_session.any():
+        sys.exit(f"no rows for signer '{calibrated_on}' in {DATASET_META}")
+    # base: the five dataset signers only. cal: those plus the ONE earlier
+    # session. No other user-* rows in either -- they may be the test session.
+    in_cal = ~is_user | is_old_session
+    Fd_base, yd_base = Fd_all[~is_user], letters[~is_user]
+    Fd_cal, yd_cal = Fd_all[in_cal], letters[in_cal]
+    left_out = sorted(set(signer[is_user & ~is_old_session]))
+    if left_out:
+        print(f"left out of both models: {', '.join(left_out)}")
 
     Pu, yu, takes, meta = load_user(path)
     Fu = hand_features(Pu)
     user_letters = sorted(set(yu))
 
     print(f"dataset (5 signers) : {len(Fd_base)} holds")
-    print(f"+ 22 Oct session    : {is_old_session.sum()} holds (user-hassan)")
+    print(f"+ earlier session   : {is_old_session.sum()} holds ({calibrated_on})")
     print(f"26 Oct session      : {len(Fu)} frames, {len(set(takes))} takes, letters {' '.join(user_letters)}")
     print(f"                      recorded at {meta.get('fps','?')} fps")
 
@@ -150,4 +168,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(__doc__)
         sys.exit(1)
-    main(sys.argv[1])
+    on = "user-hassan"
+    if "--calibrated-on" in sys.argv:
+        on = sys.argv[sys.argv.index("--calibrated-on") + 1]
+    main(sys.argv[1], on)
