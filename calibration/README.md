@@ -88,12 +88,13 @@ Both sessions have been merged into `hold_landmarks.npy` / `hold_meta.csv`:
 |---|---|---|
 | 22 Oct | `user-hassan` | 10 |
 | 26 Oct | `user-hassan-session2` | 10 |
-| 12 Nov (file `calibration_2026-11-11.json`, dated in UTC) | `user-hassan-session3` | 15 (be, alif, kaf) |
+| 12 Nov (file `calibration_2026-11-11.json`, dated in UTC) | `user-hassan-session3` | 5 (be only; this session's alif and kaf takes were recorded but left out, since both letters already have two sessions) |
 
 ```bash
 python add_calibration.py calibration/calibration_2026-10-22.json --signer user-hassan
 python add_calibration.py calibration/calibration_2026-10-26.json --signer user-hassan-session2
 python add_calibration.py calibration/calibration_2026-11-11.json --signer user-hassan-session3 --force
+# then the session-3 alif and kaf rows were removed from hold_meta.csv / hold_landmarks.npy
 ```
 
 The third session needed `--force`: the mislabel check flagged one kaf take
