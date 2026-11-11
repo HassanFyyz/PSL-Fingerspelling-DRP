@@ -82,18 +82,30 @@ before merging it (see below).
 
 ## In the training data
 
-The 22 Oct session has been merged into `hold_landmarks.npy` / `hold_meta.csv`
-as signer **`user-hassan`**, via:
+Both sessions have been merged into `hold_landmarks.npy` / `hold_meta.csv`:
+
+| session | signer id | rows |
+|---|---|---|
+| 22 Oct | `user-hassan` | 10 |
+| 26 Oct | `user-hassan-session2` | 10 |
 
 ```bash
 python add_calibration.py calibration/calibration_2026-10-22.json --signer user-hassan
+python add_calibration.py calibration/calibration_2026-10-26.json --signer user-hassan-session2
 ```
 
-**One row per take, not one per frame.** Ten takes became ten rows, each the
-median frame of its take. The 375 recorded frames are near-duplicates within
-their takes, so counting them individually would treat 10 real examples as 375
-and make one person 22% of the training data for two letters. At one row per
-take it is 0.7%, which is honest.
+Because the 26 Oct session is now in the training file, `cross_session_test.py`
+leaves every `user-*` row out of both models except the one earlier session
+named by `--calibrated-on` (default `user-hassan`). Before that fix (10 Nov) the
+26 Oct takes sat inside the "no calibration" model and the script printed
+100/100/100. `calibrate.py` likewise trains its "before" and "after" models on
+the dataset signers only.
+
+**One row per take, not one per frame.** Ten takes became ten rows per session,
+each the median frame of its take. The 375 recorded frames of a session are
+near-duplicates within their takes, so counting them individually would treat 10
+real examples as 375 and make one person 22% of the training data for two
+letters. At one row per take the two sessions together are 1.5%.
 
 If the user's examples should outweigh the dataset — reasonable for personal
 calibration — use sample weights at training time rather than duplicating rows.
@@ -103,9 +115,14 @@ Effect on the headline number: leave-one-signer-out over the five dataset
 signers went 26.5% → 26.9%, i.e. unchanged within noise, which is what 10 extra
 rows should do.
 
-**Note for evaluation:** LOSO now has a sixth fold containing only 2 letters.
-It is not comparable to the 40-letter folds and should be filtered out when
-quoting overall accuracy.
+**Note for evaluation:** the file now has two extra signers holding only 2
+letters each. They are not comparable to the 40-letter folds.
+`evaluation.load_dataset()` drops `user-*` rows by default, and the headline
+numbers are computed that way.
+
+**How far the 100% goes.** 10/10 has a 95% interval of 69-100%, the takes within
+a session are not independent, and the whole gain is ک going from 0/5 to 5/5.
+Treat it as a two-letter pilot.
 
 ## Mislabel check before merging
 
