@@ -36,6 +36,9 @@ sofi_segmentation.py
 letter_crops*.npz
 # hold_landmarks.npy / hold_meta.csv ARE tracked: small (430KB) and they let
 # scarce_data_recognition.ipynb run without re-running MediaPipe over 1,345 holds
+# add_calibration.py writes a backup of both before every merge; those are local
+*.bak.npy
+*.bak.csv
 letter_crops*_hog.npy
 *_hog.npy
 *.pt
