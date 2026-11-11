@@ -128,4 +128,5 @@ export class SvmClassifier {
   top(probs, k = 3) { return wd.top(this.classes, probs, k); }
   rawWord(probSeq) { return wd.rawWord(this.classes, probSeq); }
   decodeWord(probSeq, opts = {}) { return wd.decodeWord(this.classIndex, this.lexicon, probSeq, opts); }
+  decodeAligned(probSeq, opts = {}) { return wd.decodeAligned(this.classIndex, this.lexicon, probSeq, opts); }
 }
