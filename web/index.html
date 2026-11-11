@@ -148,8 +148,13 @@
 import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 import { StreamingSegmenter, MIN_VIABLE_FPS, STILL_SPEED, MOVE_DIST } from "./sofi_streaming.js";
-import { SvmClassifier } from "./svm_classifier.js";
-import { MIN_HOLDS } from "./word_decode.js";
+// ?v= forces the browser to refetch these when they change. Without it a
+// cached older copy can lack an export this page imports, and then the whole
+// script fails to load and Start camera does nothing. Bump it with any edit
+// to svm_classifier.js or word_decode.js (and the same string inside
+// svm_classifier.js).
+import { SvmClassifier } from "./svm_classifier.js?v=20261112";
+import { MIN_HOLDS } from "./word_decode.js?v=20261112";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
