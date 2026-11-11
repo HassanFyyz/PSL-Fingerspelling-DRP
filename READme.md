@@ -193,7 +193,7 @@ Run the notebooks in this order; each depends on the artifacts of the previous o
 | `alignment_decoder.ipynb` | **Current best word result.** Ablation, controls and seeds for the new decoder |
 | `EXPERIMENTS.md` | Dated log of every result with its config, seed and command |
 | `practice_cards/` | Handshape sequences to copy when testing the live app |
-| `letter_sheets/` | One sheet per letter, plus `_alphabet.png` (one exemplar each) |
+| `letter_sheets/` | One folder per letter (`sheet.png` from the dataset, `user-hassan/` calibration crops, `official/` reference images kept local), plus `_alphabet.png` |
 | `sofi_streaming.py` | **Causal** Algorithm 2 for live input. Parameters in *seconds*, not frames |
 | `streaming_segmentation.ipynb` | Streaming-vs-offline parity, framerate transfer, browser parity test |
 | `web/` | Stage-1 demo app: live segmentation in the browser (`web/README.md` to run it) |
