@@ -559,6 +559,22 @@ el("reset").onclick = () => {
   el("holds").innerHTML = ""; el("sHolds").textContent = "0"; el("sLeft").textContent = "0";
   if (measuredFps) buildSegmenter(measuredFps);
 };
+
+// Tells the guard below that this module loaded and its handlers are attached.
+window.__pslReady = true;
+</script>
+<script>
+  // Guard: if the module above fails to load (a stale cached script, no
+  // internet for the MediaPipe library), its buttons are dead and nothing says
+  // why. This plain script runs regardless and reports it.
+  window.addEventListener("error", e => { window.__pslError = e.message || "script error"; });
+  setTimeout(() => {
+    if (window.__pslReady) return;
+    const st = document.getElementById("status");
+    if (st) st.textContent = "page script failed to load" +
+      (window.__pslError ? " (" + window.__pslError + ")" : "") +
+      " — press Ctrl+Shift+R; if it persists, check the internet connection and the console (F12)";
+  }, 5000);
 </script>
 </body>
 </html>
