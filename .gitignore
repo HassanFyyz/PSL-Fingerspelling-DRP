@@ -29,6 +29,10 @@ sofi_segmentation.py
 # to history permanently. If the repo gets heavy, prune these from history
 # rather than quietly deleting them from the working tree.
 
+# Official PSL reference images (screenshots from the PSL website) are kept
+# locally for checking labels. They are someone else's material, so they are
+# not redistributed through this repo.
+letter_sheets/*/official/
 # ─── Model weights / training runs (the CNN work will produce these) ────────
 *.task
 # extracted crop datasets and feature caches: regenerable from the videos via
