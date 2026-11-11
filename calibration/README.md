@@ -88,11 +88,19 @@ Both sessions have been merged into `hold_landmarks.npy` / `hold_meta.csv`:
 |---|---|---|
 | 22 Oct | `user-hassan` | 10 |
 | 26 Oct | `user-hassan-session2` | 10 |
+| 12 Nov (file `calibration_2026-11-11.json`, dated in UTC) | `user-hassan-session3` | 15 (be, alif, kaf) |
 
 ```bash
 python add_calibration.py calibration/calibration_2026-10-22.json --signer user-hassan
 python add_calibration.py calibration/calibration_2026-10-26.json --signer user-hassan-session2
+python add_calibration.py calibration/calibration_2026-11-11.json --signer user-hassan-session3 --force
 ```
+
+The third session needed `--force`: the mislabel check flagged one kaf take
+(model said re 14%, kaf 14%, a near tie). Its crops show the same two-finger
+shape as the other four kaf takes, so the label was kept. Scored before merging
+(`python score_session.py ...`): be 5/5 with no calibration at all, alif 5/5,
+kaf 0/5 with no calibration and 4/5 with only the two October sessions.
 
 Because the 26 Oct session is now in the training file, `cross_session_test.py`
 leaves every `user-*` row out of both models except the one earlier session
