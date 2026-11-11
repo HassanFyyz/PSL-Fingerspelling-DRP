@@ -5,10 +5,10 @@ and append them to the existing alif/kahf letter reference sheets.
 Usage: python add_calibration_to_sheets.py
 
 Two outputs:
-  1. letter_sheets/user-hassan/<codepoint>_<letter>/*.png -- every individual
+  1. letter_sheets/<codepoint>_<letter>/user-hassan/*.png -- every individual
      crop, one file per recorded frame (20 per take, 5 takes per letter per
      session = 100 per letter per session).
-  2. letter_sheets/<codepoint>_<letter>.png -- the existing dataset reference
+  2. letter_sheets/<codepoint>_<letter>/sheet.png -- the existing dataset reference
      sheet (built by letter_reference.ipynb), with a new panel appended below
      showing one representative frame per take of the developer's own
      recordings, clearly captioned and visually separated from the dataset
@@ -31,8 +31,8 @@ SESSIONS = [
     ("calibration/calibration_2026-10-22.json", "session1"),
     ("calibration/calibration_2026-10-26.json", "session2"),
 ]
-OUT_ROOT = "letter_sheets/user-hassan"
 SHEET_DIR = "letter_sheets"
+USER_DIR = "user-hassan"      # inside each letter's folder
 CROP_SIZE = 64
 # individual saved crops are upscaled for viewing -- 64x64 raw is too small to
 # see clearly. LANCZOS rather than NEAREST since these are real recordings,
@@ -52,7 +52,7 @@ def extract_all():
         d = json.load(open(path, encoding="utf-8"))
         for t in d["takes"]:
             letter = t["letter"]
-            letter_dir = os.path.join(OUT_ROOT, f"U{ord(letter):04X}_{letter}")
+            letter_dir = os.path.join(SHEET_DIR, f"U{ord(letter):04X}_{letter}", USER_DIR)
             os.makedirs(letter_dir, exist_ok=True)
             for fi, fr in enumerate(t["frames"]):
                 if fr.get("crop") is None:
@@ -68,7 +68,7 @@ def extract_all():
 
 def append_to_sheet(letter, entries, ncol=5):
     """Append one representative frame per take to the existing dataset sheet."""
-    sheet_path = os.path.join(SHEET_DIR, f"U{ord(letter):04X}_{letter}.png")
+    sheet_path = os.path.join(SHEET_DIR, f"U{ord(letter):04X}_{letter}", "sheet.png")
     if not os.path.exists(sheet_path):
         print(f"no existing sheet for {letter!r}, skipping append")
         return
@@ -117,5 +117,5 @@ if __name__ == "__main__":
     by_letter = extract_all()
     for letter, entries in by_letter.items():
         print(f"{letter}: extracted {len(entries)} crops to "
-              f"{OUT_ROOT}/U{ord(letter):04X}_{letter}/")
+              f"{SHEET_DIR}/U{ord(letter):04X}_{letter}/{USER_DIR}/")
         append_to_sheet(letter, entries)
