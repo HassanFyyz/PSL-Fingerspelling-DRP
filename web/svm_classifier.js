@@ -20,7 +20,7 @@
  * confidence and good enough for top-k display and lexicon scoring.
  */
 import { handFeatures } from "./hand_geometry.js";
-import * as wd from "./word_decode.js";
+import * as wd from "./word_decode.js?v=20261112";   // keep in step with index.html
 
 export class SvmClassifier {
   constructor(manifest, sv, dualCoef, intercept, scalerMean, scalerScale) {
@@ -46,9 +46,12 @@ export class SvmClassifier {
   }
 
   static async load(base = "./model_geom") {
-    const manifest = await (await fetch(`${base}/geom_model.json`)).json();
+    // no-cache = always revalidate with the server: the weights change on every
+    // re-export, and a stale .bin beside a fresh manifest fails the size checks.
+    const opt = { cache: "no-cache" };
+    const manifest = await (await fetch(`${base}/geom_model.json`, opt)).json();
     const f32 = async (name) =>
-      new Float32Array(await (await fetch(`${base}/${name}`)).arrayBuffer());
+      new Float32Array(await (await fetch(`${base}/${name}`, opt)).arrayBuffer());
     const [sv, dualCoef, intercept, mean, scale] = await Promise.all([
       f32("geom_sv.bin"), f32("geom_dualcoef.bin"), f32("geom_intercept.bin"),
       f32("geom_scaler_mean.bin"), f32("geom_scaler_scale.bin"),
