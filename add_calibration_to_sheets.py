@@ -1,8 +1,17 @@
 """
-Extract the embedded hand crops from both calibration sessions as PNG files,
-and append them to the existing alif/kahf letter reference sheets.
+Extract the embedded hand crops from the calibration sessions as PNG files,
+and append them to the letter reference sheets.
 
-Usage: python add_calibration_to_sheets.py
+Usage: python add_calibration_to_sheets.py <letter> [<letter> ...]
+       e.g.  python add_calibration_to_sheets.py ب ل
+
+Letters must be named explicitly. Each run APPENDS a panel to sheet.png, so
+running it again for a letter that already has one adds a second copy. The
+letters already done are listed in DONE below; the script refuses them unless
+--again is passed.
+
+Only takes that went into the training data are used (see SESSIONS): a
+session's takes of a letter that was left out of training are not shown.
 
 Two outputs:
   1. letter_sheets/<codepoint>_<letter>/user-hassan/*.png -- every individual
@@ -27,10 +36,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 
+# (file, tag used in crop names and captions, letters from that file that are
+# in the training data -- None means all of them)
 SESSIONS = [
-    ("calibration/calibration_2026-10-22.json", "session1"),
-    ("calibration/calibration_2026-10-26.json", "session2"),
+    ("calibration/calibration_2026-10-22.json", "session1", None),
+    ("calibration/calibration_2026-10-26.json", "session2", None),
+    ("calibration/calibration_2026-11-11.json", "session3", {"\u0628"}),   # be only
+    ("calibration/calibration_2026-11-12.json", "session4", {"\u0644"}),   # lam only
 ]
+# letters whose sheet.png already carries the calibration panel
+DONE = {"\u0627", "\u06a9", "\u0628", "\u0644"}
 SHEET_DIR = "letter_sheets"
 USER_DIR = "user-hassan"      # inside each letter's folder
 CROP_SIZE = 64
@@ -45,13 +60,15 @@ def decode_crop(b64str):
     return np.frombuffer(raw, dtype=np.uint8).reshape(CROP_SIZE, CROP_SIZE)
 
 
-def extract_all():
-    """Save every embedded crop as its own PNG, grouped by letter."""
+def extract_all(letters):
+    """Save every embedded crop of `letters` as its own PNG, grouped by letter."""
     by_letter = {}  # letter -> [(img, caption), ...]
-    for path, tag in SESSIONS:
+    for path, tag, allowed in SESSIONS:
         d = json.load(open(path, encoding="utf-8"))
         for t in d["takes"]:
             letter = t["letter"]
+            if letter not in letters or (allowed is not None and letter not in allowed):
+                continue
             letter_dir = os.path.join(SHEET_DIR, f"U{ord(letter):04X}_{letter}", USER_DIR)
             os.makedirs(letter_dir, exist_ok=True)
             for fi, fr in enumerate(t["frames"]):
@@ -114,7 +131,15 @@ def append_to_sheet(letter, entries, ncol=5):
 
 
 if __name__ == "__main__":
-    by_letter = extract_all()
+    import sys
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if not args:
+        sys.exit(__doc__)
+    already = [l for l in args if l in DONE]
+    if already and "--again" not in sys.argv:
+        sys.exit(f"{' '.join(already)} already has a calibration panel on its sheet "
+                 "(see DONE). Pass --again to append another one anyway.")
+    by_letter = extract_all(set(args))
     for letter, entries in by_letter.items():
         print(f"{letter}: extracted {len(entries)} crops to "
               f"{SHEET_DIR}/U{ord(letter):04X}_{letter}/{USER_DIR}/")
