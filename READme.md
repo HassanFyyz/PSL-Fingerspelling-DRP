@@ -177,8 +177,9 @@
       | 11 Nov, same setting as calibration | 10/10 | 10/10 | not tested |
       | 11 Nov, different room | 9/10 (one read as ذ) | 10/10 | not tested |
       | 12 Nov, after adding ب | 5/5 | 5/5 | 7/7 |
+      | 12 Nov, after adding ل (ل: 4/5 overall; the miss was a left-hand hold, so 5/5 right-handed) | 5/5 | 5/5 | 5/5 |
 
-      Pooled over the three tests: 61 of 62 holds. This is one person, three letters, and letters that either needed no calibration (ا, ب) or were calibrated (ک).
+      ل live: 4/5 in the fourth test, the one miss a hold signed with the left hand. Pooled over the four tests: 80 of 82 holds. This is one person, four letters, and letters that either needed no calibration (ا, ب, ل) or were calibrated (ک).
     - **A second person, not calibrated:** ک 0/3 for Hassan's mother. Calibration is per person; his takes do not carry to her. That is the same result he had before calibrating (0/5), and it matches 26% cross-signer accuracy.
     - **Official reference images.** Screenshots of the official sign from the PSL website now sit in `letter_sheets/<letter>/official/` (kept local, not in git). For ب, the first letter done, MediaPipe finds the hand, the dataset-only model reads it as ب (ranked 1 of 40), and about two thirds of the dataset's 85 ب examples resemble the official shape, varying from 16/19 for one signer to about half for two others. This is the first check of the model, and of the labels, against a label that can be trusted. Still to do for the other 39 letters.
     - **`letter_sheets/` is now one folder per letter:** `sheet.png` from the dataset, `user-hassan/` calibration crops, `official/` reference images.
