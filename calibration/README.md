@@ -89,6 +89,7 @@ Both sessions have been merged into `hold_landmarks.npy` / `hold_meta.csv`:
 | 22 Oct | `user-hassan` | 10 |
 | 26 Oct | `user-hassan-session2` | 10 |
 | 12 Nov (file `calibration_2026-11-11.json`, dated in UTC) | `user-hassan-session3` | 5 (be only; this session's alif and kaf takes were recorded but left out, since both letters already have two sessions) |
+| 12 Nov evening (`calibration_2026-11-12.json`) | `user-hassan-session4` | 5 (lam only; the session's alif takes were recorded but left out) |
 
 ```bash
 python add_calibration.py calibration/calibration_2026-10-22.json --signer user-hassan
