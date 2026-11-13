@@ -97,21 +97,28 @@
 
     <div id="readout">
       <div class="reading">
-        <span class="rlabel">best word guess</span>
-        <div id="wordOut" class="wordbig">—</div>
-        <div id="wordAlts" class="alts"></div>
+        <span class="rlabel">letters you signed</span>
+        <div id="rawOut" class="wordbig">—</div>
+        <div id="rawNote" class="alts"></div>
       </div>
       <div class="reading">
-        <span class="rlabel">letters as predicted</span>
-        <div id="rawOut" class="wordraw">—</div>
+        <span class="rlabel">closest dictionary word</span>
+        <div id="wordOut" class="wordraw">—</div>
+        <div id="wordAlts" class="alts"></div>
       </div>
       <div class="caveat">
-        Measured leave-one-signer-out: <b>27 % per letter</b> (40 classes, 9.8 %
-        baseline). Word-level accuracy for this model has not been measured yet
-        -- the lexicon decoder below is unchanged from the previous model, just
-        fed this model's per-letter distribution. This build also includes two
-        of the developer's own calibration sessions, which scored 100% on
-        ا (alif) and ک (kaf) held out across sessions; that does not
+        The top line is what was read, one letter per hold, with nothing
+        changed. A dictionary word is suggested only when at least 3 letters
+        were signed and at least 60 % of that word's letters match what was
+        read (each within the model's top 3 for its hold); otherwise none is
+        shown. The match allows one hold to be extra or missing. On the dataset
+        clips a word is suggested about half the time and is right about 79 %
+        of the time when it is; the dictionary has 54 words, so anything else
+        can only appear in the top line.
+        Measured leave-one-signer-out: <b>26 % per letter</b> (40 classes, 10 %
+        baseline). This build also includes the developer's own recordings of
+        ا (alif), ک (kaf) and ب (be). Those three letters were read
+        correctly on 61 of 62 live holds for him; that does not
         generalise to other letters or other people. Either hand is read the
         same way (the model uses joint angles and distances, which mirroring
         does not change), but every training signer used their right hand, so
@@ -141,7 +148,13 @@
 import { HandLandmarker, FilesetResolver } from
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 import { StreamingSegmenter, MIN_VIABLE_FPS, STILL_SPEED, MOVE_DIST } from "./sofi_streaming.js";
-import { SvmClassifier } from "./svm_classifier.js";
+// ?v= forces the browser to refetch these when they change. Without it a
+// cached older copy can lack an export this page imports, and then the whole
+// script fails to load and Start camera does nothing. Bump it with any edit
+// to svm_classifier.js or word_decode.js (and the same string inside
+// svm_classifier.js).
+import { SvmClassifier } from "./svm_classifier.js?v=20261112";
+import { MIN_HOLDS } from "./word_decode.js?v=20261112";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
@@ -215,20 +228,39 @@ function renderWord() {
   if (!classifier || !probSeq.length) {
     el("wordOut").textContent = "—";
     el("rawOut").textContent = "—";
+    el("rawNote").textContent = "";
     el("wordAlts").textContent = "";
     return;
   }
+  // 1. What was signed: the model's top letter for each hold, unaltered.
+  const n = probSeq.length;
   el("rawOut").textContent = classifier.rawWord(probSeq);
-  const cands = classifier.decodeWord(probSeq);
-  if (!cands.length) {
-    el("wordOut").textContent = "(no word of this length)";
-    el("wordAlts").textContent = "";
+  el("rawNote").textContent = `${n} letter${n === 1 ? "" : "s"} read`;
+
+  // 2. A dictionary word, only if the letters actually support one. The
+  //    aligned decoder ranks every word; `shown` is the support test in
+  //    word_decode.js. Nothing is suggested from one or two holds.
+  const out = el("wordOut"), alts = el("wordAlts");
+  out.style.direction = alts.style.direction = "ltr";
+  out.style.opacity = ".55";
+  if (n < MIN_HOLDS) {
+    out.textContent = "—";
+    alts.textContent = `needs at least ${MIN_HOLDS} letters`;
     return;
   }
-  el("wordOut").textContent = cands[0].word;
-  el("wordAlts").textContent = cands.length > 1
-    ? "also considered: " + cands.slice(1, 4).map(c => c.word).join("  ·  ")
-    : "";
+  const cands = classifier.decodeAligned(probSeq);
+  const best = cands[0];
+  if (!best || !best.shown) {
+    out.textContent = "no close match";
+    alts.textContent = "none of the dictionary words fits these letters well enough to suggest";
+    return;
+  }
+  out.style.direction = "rtl";
+  out.style.opacity = "1";
+  out.textContent = best.word;
+  const others = cands.slice(1).filter(c => c.shown).slice(0, 2).map(c => c.word);
+  alts.textContent = `${best.agree} of ${best.nLetters} letters match`
+    + (others.length ? `   ·   also fits: ${others.join("  ·  ")}` : "");
 }
 
 function fitCanvas(c) {
@@ -527,6 +559,22 @@ el("reset").onclick = () => {
   el("holds").innerHTML = ""; el("sHolds").textContent = "0"; el("sLeft").textContent = "0";
   if (measuredFps) buildSegmenter(measuredFps);
 };
+
+// Tells the guard below that this module loaded and its handlers are attached.
+window.__pslReady = true;
+</script>
+<script>
+  // Guard: if the module above fails to load (a stale cached script, no
+  // internet for the MediaPipe library), its buttons are dead and nothing says
+  // why. This plain script runs regardless and reports it.
+  window.addEventListener("error", e => { window.__pslError = e.message || "script error"; });
+  setTimeout(() => {
+    if (window.__pslReady) return;
+    const st = document.getElementById("status");
+    if (st) st.textContent = "page script failed to load" +
+      (window.__pslError ? " (" + window.__pslError + ")" : "") +
+      " — press Ctrl+Shift+R; if it persists, check the internet connection and the console (F12)";
+  }, 5000);
 </script>
 </body>
 </html>

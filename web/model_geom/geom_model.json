@@ -1,8 +1,8 @@
 {
  "kind": "handgeom+svm-rbf-ovo",
  "n_feat": 74,
- "n_sv": 1351,
- "gamma": 0.013698630158975246,
+ "n_sv": 1360,
+ "gamma": 0.013698630094760975,
  "classes": [
   "آ",
   "ؤ",
@@ -51,7 +51,7 @@
   7,
   22,
   140,
-  82,
+  86,
   19,
   4,
   16,
@@ -71,7 +71,7 @@
   10,
   14,
   10,
-  75,
+  80,
   56,
   112,
   77,
@@ -89,7 +89,7 @@
   14
  ],
  "n_pairs": 780,
- "train_holds": 1365,
+ "train_holds": 1375,
  "train_signers": [
   "signer1-F",
   "signer2-F",
@@ -97,7 +97,9 @@
   "signer4-L",
   "signer5-R",
   "user-hassan",
-  "user-hassan-session2"
+  "user-hassan-session2",
+  "user-hassan-session3",
+  "user-hassan-session4"
  ],
  "handedness": "right",
  "honest_accuracy": {

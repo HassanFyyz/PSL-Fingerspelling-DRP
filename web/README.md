@@ -44,22 +44,32 @@ only 2 letters each and are excluded as not comparable):
 
 | | result | chance / baseline |
 |---|---|---|
-| per letter | 27.0 % | 9.8 % majority (40 classes) |
+| per letter | 26.4 % (interval 22.6–30.4 %) | 10.0 % majority (40 classes) |
+| word, unaided holds, old decoder | 23.6 % top-1 | 1.9 % (1 in 54) |
+| word, unaided holds, alignment decoder (what the page runs) | 51.9 % top-1, 70.7 % top-3 | |
 
-Word-level accuracy for this model (top-1/top-3 against the 54-word lexicon) has not been
-measured yet — `word_decode.js` is unchanged from the HOG model, it is just fed a different
-per-letter distribution. Don't quote word numbers for this model until that is measured.
+The letter figure excludes the calibration rows from training and test. The word figures are
+measured with the segmenter finding the holds itself; see `end_to_end_words.ipynb` and
+`alignment_decoder.ipynb`. With Platt probabilities and a likelihood ratio the same decoder
+reaches 75 % offline, but the browser model exports vote share, not probabilities.
 
-The shipped model also includes two of the developer's own calibration sessions (recorded four
-days apart with `capture.html`), which scored 100 % on ا (alif) and ک (kaf) held out
-cross-session — see `calibration/README.md`. That is evidence the geometry features read real
-hand shape, not a general-purpose accuracy claim; it covers two visually distinct letters for
-one person.
+**What the page shows.** The top line is the letter read for each hold, unaltered. A
+dictionary word is suggested only when at least 3 holds were signed and at least 60 % of the
+word's letters match a hold's top 3; otherwise the page says there is no close match. On the
+dataset clips a word is then shown about half the time and is right about 79 % of the time
+when shown (threshold chosen on those clips, so optimistic). `node web/test_align.mjs` checks
+the decoder's behaviour.
 
-**Individual letters are usually wrong, and the page says so.** The word guess, when it is
-eventually re-measured, would survive that the same way the old model's did: by scoring the
-*whole* sequence against the vocabulary using the full per-letter distributions rather than the
-argmax letters, filtered to words matching the detected hold count (±1).
+**Calibration.** The shipped model includes the developer's own recordings: ا (alif) and ک
+(kaf) from two October sessions and ب (be) from 12 November. Live, right hand, those three
+letters were read correctly on 61 of 62 holds across three tests and two rooms. Only ک
+needed the calibration (0/5 without it); ا and ب are read correctly from the dataset alone.
+A second, uncalibrated person got ک 0/3. So this is three letters for one person, not a
+general accuracy claim — see `calibration/README.md`.
+
+**If Start camera does nothing,** the browser is holding an older cached script. Press
+Ctrl+Shift+R, or open the page in an Incognito window. The page now reports this itself
+within five seconds.
 
 The shipped model is trained on **everyone available** — all five dataset signers plus the
 calibration sessions — so its training accuracy is meaningless. The honest number for a new

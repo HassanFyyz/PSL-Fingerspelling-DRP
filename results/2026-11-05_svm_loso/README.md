@@ -47,7 +47,7 @@ Live scores are much higher than offline. Live holds are deliberate, held still,
 **م: 57 examples from all 5 signers (14/13/12/11/7), but inconsistent.**
 - Its examples are the 5th most spread out of 40 letters.
 - Each signer's average م differs from another's by up to 14.5, against a median gap of 5.6 between different letters.
-- Several of signer4-L's م frames have the index finger up (see `letter_sheets/U0645_م.png`).
+- Several of signer4-L's م frames have the index finger up (see `letter_sheets/U0645_م/sheet.png`).
 - **Not close to س:** by median, س is the 19th–21st nearest of 39 letters.
 - **The live م → س confusion is not explained by the training data.** Hypothesis, not tested: dataset م is too scattered to form a region the model can learn, and many dataset س examples are closed fists.
 

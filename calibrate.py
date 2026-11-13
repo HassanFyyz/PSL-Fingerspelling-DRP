@@ -74,6 +74,11 @@ def take_vote(model, F):
 def main(path):
     Pd = np.load(DATASET_PTS)
     Md = pd.read_csv(DATASET_META)
+    # Dataset signers only. Calibration sessions already merged into the file
+    # (user-*) may be the very session being scored, so they stay out of both
+    # the BEFORE and the AFTER model.
+    keep = ~Md.signer.str.startswith("user-").to_numpy()
+    Pd, Md = Pd[keep], Md[keep].reset_index(drop=True)
     Fd, yd = hand_features(Pd), Md.letter.to_numpy()
 
     Pu, yu, takes, meta = load_user(path)
