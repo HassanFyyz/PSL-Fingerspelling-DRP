@@ -1,0 +1,11 @@
+{
+  "comparison": "plus_new_session minus previous_calibration, original five test signers",
+  "pooled_difference": 0.011152416356877323,
+  "paired_signer_bootstrap_95_interval": [
+    -0.0049301561216105174,
+    0.02807486631016043
+  ],
+  "bootstrap_seed": 0,
+  "bootstrap_resamples": 20000,
+  "note": "Only five test signers; exploratory interval. Includes zero."
+}

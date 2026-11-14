@@ -1,5 +1,33 @@
 # Calibration recordings
 
+## 13 November mixed Abdullah/Hassan session
+
+`calibration_2026-11-13.json` contains 261 takes across 26 letters from Abdullah
+and Hassan. Take-level signer identity was not recorded, so it is merged under
+the source-group ID `user-mixed-abdullah-hassan-2026-11-13`; that ID does not
+represent a separate person. Each take adds one median-frame landmark row.
+All 261 supplied takes were kept. The raw file's ten MediaPipe Left tags
+(all for ق) are preserved; the participants report right-handed signing.
+
+Standalone hamza ء was deliberately included as a new class, expanding the
+classifier to 41 letters. Training now has 1,636 rows, including the existing
+1,375. Photos decoded from embedded early-frame crops are for inspection;
+the SVM learns angles and distances from landmarks.
+
+Same-session whole-take five-fold validation: 83/261 before, 241/261 (92.3%)
+after. Restricting to the 251 takes from existing classes: 33.1% → 92.8%.
+Original-dataset signer LOSO with calibration added only to training:
+26.8% before these takes → 28.0% after. The dataset-only baseline remains
+26.4%. These are different protocols; neither proves new-person accuracy.
+No counted live result after this update has been recorded yet. Abdullah
+reports strong recognition in a later setting with changed lighting and the
+same camera; the number of attempts and errors was not recorded.
+
+See `results/2026-11-13_calibration_audit/README.md` for the full evaluation,
+snapshots, pictures and before/after live servers. The new session is now
+merged: do not score it with `score_session.py`'s already-merged baseline and
+call that an unseen-session result. Use the frozen experiment inputs instead.
+
 Sessions recorded with `web/capture.html`, to train a letter model on a specific
 person's own hand rather than on the five dataset signers.
 

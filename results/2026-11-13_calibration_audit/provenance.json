@@ -1,0 +1,24 @@
+{
+  "git_base": "5c7962896d39b05d286a8d56fe20572120c3bbeb",
+  "source_sha256": "758bdf5612da8b04e83b1af88f0eca56b7881256f9e5cea522c173f85b07cbe5",
+  "code_sha256": {
+    "hand_geometry.py": "afd80fae3a86189f10512c9f8c402da90f0fd37b7e2783dd75d614baa8411039",
+    "web/hand_geometry.js": "b7549b3ffa50ee981f650223ffe6c22f7dd62c390aa8bf4edbcd1d56d0f38476",
+    "web/svm_classifier.js": "66aba56d0324d639013f949be17c96d44c23255d36ad26b9308bab191dd5435d",
+    "web/word_decode.js": "4048a5484610eaf9dc64f4ec7693248b2fdf7b6e1e2b363c9ada535eb801b999",
+    "web/sofi_streaming.js": "c8a866770a8e9a11e0acabcbb182ef2f4fa6ee28f016cb532460c6979f7ebcda",
+    "export_geometry_model.py": "7ed0be53d7dae48ae4e0a5403ce2b0e1d6bc69fe503638ba7a37c3f2b7271ffd"
+  },
+  "test_svm": {
+    "cases": 1636,
+    "mismatches": 0
+  },
+  "test_align": "all eight checks pass",
+  "http_profiles": {
+    "before": 40,
+    "after": 41
+  },
+  "source_identity": "Both Abdullah and Hassan; per-take signer unknown (confirmed by Abdullah)",
+  "class_decision": "Include standalone hamza ء as new class (confirmed by Abdullah)",
+  "capture_quality": "All finite 21x3 landmarks, no repeated (letter,take) IDs; 5220 valid raw crops; no take dropped by model agreement."
+}

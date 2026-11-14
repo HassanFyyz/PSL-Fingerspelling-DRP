@@ -1,0 +1,116 @@
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Same-session fold 1/5: 53 whole takes tested
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Same-session fold 2/5: 52 whole takes tested
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Same-session fold 3/5: 52 whole takes tested
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Same-session fold 4/5: 52 whole takes tested
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Same-session fold 5/5: 52 whole takes tested
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Dataset LOSO signer1-F: completed all three conditions
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Dataset LOSO signer2-F: completed all three conditions
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Dataset LOSO signer3-F: completed all three conditions
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Dataset LOSO signer4-L: completed all three conditions
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+Dataset LOSO signer5-R: completed all three conditions
+/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/.venv/lib/python3.14/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+{
+  "versions": {
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 17.0.0 (clang-1700.6.4.2)]",
+    "platform": "macOS-15.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1"
+  },
+  "source_sha256": "758bdf5612da8b04e83b1af88f0eca56b7881256f9e5cea522c173f85b07cbe5",
+  "settings": {
+    "C": 10,
+    "gamma": "scale",
+    "class_weight": "balanced",
+    "probability": false
+  },
+  "session": {
+    "after_same_session_5fold": {
+      "n_takes": 261,
+      "n_correct": 241,
+      "accuracy": 0.9233716475095786,
+      "macro_recall_26_recorded_letters": 0.9241258741258741
+    },
+    "before_frozen_browser": {
+      "n_takes": 261,
+      "n_correct": 83,
+      "accuracy": 0.31800766283524906,
+      "macro_recall_26_recorded_letters": 0.31923076923076926
+    }
+  },
+  "dataset": {
+    "dataset_only": {
+      "n": 1345,
+      "n_correct": 355,
+      "pooled_accuracy": 0.26394052044609667,
+      "mean_signer_accuracy": 0.2651932582746704,
+      "macro_recall_40_dataset_letters": 0.23710107388323629
+    },
+    "plus_new_session": {
+      "n": 1345,
+      "n_correct": 376,
+      "pooled_accuracy": 0.2795539033457249,
+      "mean_signer_accuracy": 0.27995902064293665,
+      "macro_recall_40_dataset_letters": 0.2493110482994531
+    },
+    "previous_calibration": {
+      "n": 1345,
+      "n_correct": 361,
+      "pooled_accuracy": 0.2684014869888476,
+      "mean_signer_accuracy": 0.2703326804947698,
+      "macro_recall_40_dataset_letters": 0.23804474761212563
+    }
+  },
+  "elapsed_s": 6.814500416992814,
+  "limitations": [
+    "mixed known people, unknown per-take identity",
+    "one sitting",
+    "same-session take CV is optimistic",
+    "dataset test labels are pseudo-labels",
+    "40-to-41-class change",
+    "no new-person or new-day test",
+    "training on one median frame differs from averaging live frames"
+  ]
+}

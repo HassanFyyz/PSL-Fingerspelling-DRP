@@ -1,9 +1,10 @@
 {
  "kind": "handgeom+svm-rbf-ovo",
  "n_feat": 74,
- "n_sv": 1360,
- "gamma": 0.013698630094760975,
+ "n_sv": 1558,
+ "gamma": 0.013698630212101317,
  "classes": [
+  "ء",
   "آ",
   "ؤ",
   "ئ",
@@ -45,51 +46,52 @@
   "ی",
   "ے"
  ],
- "n_classes": 40,
+ "n_classes": 41,
  "n_support": [
+  8,
   13,
   7,
   22,
   140,
   86,
-  19,
-  4,
+  27,
+  11,
   16,
-  26,
-  5,
-  13,
-  5,
-  120,
-  12,
-  52,
-  8,
-  4,
-  10,
-  4,
-  10,
-  12,
-  10,
+  33,
   14,
-  10,
-  80,
-  56,
-  112,
-  77,
-  45,
-  5,
-  8,
-  47,
-  4,
-  5,
-  97,
   21,
   13,
+  129,
   20,
-  134,
-  14
+  60,
+  8,
+  10,
+  18,
+  9,
+  16,
+  22,
+  18,
+  23,
+  17,
+  79,
+  56,
+  112,
+  86,
+  45,
+  14,
+  16,
+  54,
+  4,
+  12,
+  93,
+  31,
+  13,
+  20,
+  143,
+  19
  ],
- "n_pairs": 780,
- "train_holds": 1375,
+ "n_pairs": 820,
+ "train_holds": 1636,
  "train_signers": [
   "signer1-F",
   "signer2-F",
@@ -99,14 +101,14 @@
   "user-hassan",
   "user-hassan-session2",
   "user-hassan-session3",
-  "user-hassan-session4"
+  "user-hassan-session4",
+  "user-mixed-abdullah-hassan-2026-11-13"
  ],
  "handedness": "right",
  "honest_accuracy": {
-  "protocol": "leave-one-signer-out over the 40-letter folds; the two calibration-session folds (2 letters each) are excluded as not comparable. The shipped model trains on everyone.",
-  "letter_acc": 0.27,
-  "letter_majority": 0.098,
-  "note": "No lexicon decoding changes here -- same word-decode logic as the HOG model, scored against the same 54-word vocabulary."
+  "protocol": "Five original dataset test signers, one held out at a time. Training includes other four dataset signers plus 30 prior Hassan rows and all 261 new mixed-session rows. Test labels are pseudo-labels; test has 40 letters, classifier has 41. Mixed session is never a claimed signer-held-out fold.",
+  "letter_acc": 0.27995902064293665,
+  "note": "Same-session calibration and transfer-to-dataset results are separate; no measured new-session or live accuracy after this update."
  },
  "lexicon": {
   "آئی یونٹ": [
@@ -576,5 +578,22 @@
    "ن",
    "ک"
   ]
+ },
+ "new_calibration": {
+  "file": "calibration/calibration_2026-11-13.json",
+  "sha256": "758bdf5612da8b04e83b1af88f0eca56b7881256f9e5cea522c173f85b07cbe5",
+  "n_takes": 261,
+  "training_rows_per_take": 1,
+  "recorders": [
+   "abdullah",
+   "hassan"
+  ],
+  "take_identity": "unknown",
+  "new_class": "ء",
+  "reported_physical_hand": "right",
+  "mediapipe_take_hands": {
+   "Right": 251,
+   "Left": 10
+  }
  }
 }
