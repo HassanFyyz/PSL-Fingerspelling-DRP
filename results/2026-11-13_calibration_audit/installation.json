@@ -1,0 +1,53 @@
+{
+  "copied": [
+    {
+      "path": "hold_landmarks.npy",
+      "before_sha256": "bc123216a2ba677cea29b08d5b6e5ee7b2594526ddce87ebd9f0e08d69c6d03c",
+      "after_sha256": "d4a8fddb8c7fb62d0d176966e42550b28b458c76e1afed8ad982511d1ae179b7"
+    },
+    {
+      "path": "hold_meta.csv",
+      "before_sha256": "302bcb7bce9eb1ff5cb8867059fa34f4432e72081e8bf7b6eb1a21cf6aacbb02",
+      "after_sha256": "eb1d76cb683bda7c35435b89480b420408b1fec8bff95d1ff8e69143be896bef"
+    },
+    {
+      "path": "web/model_geom/geom_dualcoef.bin",
+      "before_sha256": "c35c65766ddcf3b9d504558a18c64ad2b0bc5493a9a3b8a62427d17d8b2e1b5f",
+      "after_sha256": "f03ac00c9b06f036cdcf4ce99d214e1a0c904725d06b82a09f20231b11caf071"
+    },
+    {
+      "path": "web/model_geom/geom_intercept.bin",
+      "before_sha256": "db82243a9939554412a5c4169cbea7def76b9d0c3613f26f0c88cba9277a3891",
+      "after_sha256": "b536543a3595d32ac77c13ae1cae04f5b16bce8fd8556666eb53cf684b450505"
+    },
+    {
+      "path": "web/model_geom/geom_model.json",
+      "before_sha256": "417c3e88fe3db41229aebadb9b5e610c0c9d4222498f51d253851e742d72cfa2",
+      "after_sha256": "c5d02db4e2110443a770b4ae5680afe0303e7f67875bc34a788e12c2659db5c3"
+    },
+    {
+      "path": "web/model_geom/geom_scaler_mean.bin",
+      "before_sha256": "e59c9205f6c9148e4c17954816d02eb24d0622f9871a9a8e98f24d60e9a24393",
+      "after_sha256": "4cb24ecd2f7487e66545203185f5d6244477e26b9223a7f53a8ad1df8b1fba07"
+    },
+    {
+      "path": "web/model_geom/geom_scaler_scale.bin",
+      "before_sha256": "558a72fb53f11afd213fa23f0f353505a575364fe311f3fe3728e5c5dcfbc701",
+      "after_sha256": "82de5e71bcbe2802fa100572dafdbe07de9f2e2abd9279efa03c88a0c2db005e"
+    },
+    {
+      "path": "web/model_geom/geom_sv.bin",
+      "before_sha256": "e5b7f1e0bfe9bef316c013239efb11e4171231d6fe012a69741b1a31830db080",
+      "after_sha256": "4100d55cd0fd332a839bf0acc3815a7af933d8d4395ee7e6cbce267389142328"
+    }
+  ],
+  "backup": "/Users/abdullahiqbal/Desktop/7/PSL-Fingerspelling-DRP/results/2026-11-13_calibration_audit",
+  "source": "calibration/calibration_2026-11-13.json",
+  "mixed_recorders": [
+    "Abdullah",
+    "Hassan"
+  ],
+  "take_identity": "unknown; do not treat as a single new person",
+  "row_policy": "one median landmark frame per take; all 261 takes kept",
+  "class_policy": "41 classes, adding standalone hamza ء as requested"
+}

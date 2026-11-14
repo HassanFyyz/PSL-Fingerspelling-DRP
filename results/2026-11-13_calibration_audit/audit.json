@@ -1,0 +1,5492 @@
+{
+  "source": "/Users/abdullahiqbal/Desktop/calibration_2026-11-13.json",
+  "source_sha256": "758bdf5612da8b04e83b1af88f0eca56b7881256f9e5cea522c173f85b07cbe5",
+  "n_takes": 261,
+  "n_letters": 26,
+  "n_frames": 34029,
+  "n_crops": 5220,
+  "takes": [
+    {
+      "letter": "خ",
+      "take": 0,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_000"
+    },
+    {
+      "letter": "خ",
+      "take": 1,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_001"
+    },
+    {
+      "letter": "خ",
+      "take": 2,
+      "n_frames": 107,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 107,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        107,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_002"
+    },
+    {
+      "letter": "خ",
+      "take": 3,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_003"
+    },
+    {
+      "letter": "خ",
+      "take": 4,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_004"
+    },
+    {
+      "letter": "چ",
+      "take": 0,
+      "n_frames": 128,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 128,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 64,
+      "landmarks_shape": [
+        128,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_000"
+    },
+    {
+      "letter": "چ",
+      "take": 1,
+      "n_frames": 133,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 133,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 66,
+      "landmarks_shape": [
+        133,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_001"
+    },
+    {
+      "letter": "چ",
+      "take": 2,
+      "n_frames": 142,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 142,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        142,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_002"
+    },
+    {
+      "letter": "چ",
+      "take": 3,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_003"
+    },
+    {
+      "letter": "چ",
+      "take": 4,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_004"
+    },
+    {
+      "letter": "ح",
+      "take": 0,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_000"
+    },
+    {
+      "letter": "ح",
+      "take": 1,
+      "n_frames": 135,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 135,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        135,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_001"
+    },
+    {
+      "letter": "ح",
+      "take": 2,
+      "n_frames": 134,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 134,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        134,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_002"
+    },
+    {
+      "letter": "ح",
+      "take": 3,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_003"
+    },
+    {
+      "letter": "ح",
+      "take": 4,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_004"
+    },
+    {
+      "letter": "ر",
+      "take": 0,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_000"
+    },
+    {
+      "letter": "ر",
+      "take": 1,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_001"
+    },
+    {
+      "letter": "ر",
+      "take": 2,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_002"
+    },
+    {
+      "letter": "ر",
+      "take": 3,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_003"
+    },
+    {
+      "letter": "ر",
+      "take": 4,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_004"
+    },
+    {
+      "letter": "چ",
+      "take": 5,
+      "n_frames": 111,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 110,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 55,
+      "landmarks_shape": [
+        111,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_005"
+    },
+    {
+      "letter": "چ",
+      "take": 6,
+      "n_frames": 116,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 116,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 58,
+      "landmarks_shape": [
+        116,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_006"
+    },
+    {
+      "letter": "چ",
+      "take": 7,
+      "n_frames": 108,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 108,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        108,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_007"
+    },
+    {
+      "letter": "چ",
+      "take": 8,
+      "n_frames": 101,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 101,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 50,
+      "landmarks_shape": [
+        101,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_008"
+    },
+    {
+      "letter": "چ",
+      "take": 9,
+      "n_frames": 100,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 100,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 50,
+      "landmarks_shape": [
+        100,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0686_چ/take_009"
+    },
+    {
+      "letter": "ح",
+      "take": 5,
+      "n_frames": 130,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 130,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 65,
+      "landmarks_shape": [
+        130,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_005"
+    },
+    {
+      "letter": "ح",
+      "take": 6,
+      "n_frames": 131,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 131,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 65,
+      "landmarks_shape": [
+        131,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_006"
+    },
+    {
+      "letter": "ح",
+      "take": 7,
+      "n_frames": 122,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 122,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        122,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_007"
+    },
+    {
+      "letter": "ح",
+      "take": 8,
+      "n_frames": 128,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 128,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 64,
+      "landmarks_shape": [
+        128,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_008"
+    },
+    {
+      "letter": "ح",
+      "take": 9,
+      "n_frames": 129,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 129,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 64,
+      "landmarks_shape": [
+        129,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062D_ح/take_009"
+    },
+    {
+      "letter": "خ",
+      "take": 5,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_005"
+    },
+    {
+      "letter": "خ",
+      "take": 6,
+      "n_frames": 130,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 130,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 65,
+      "landmarks_shape": [
+        130,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_006"
+    },
+    {
+      "letter": "خ",
+      "take": 7,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_007"
+    },
+    {
+      "letter": "خ",
+      "take": 8,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_008"
+    },
+    {
+      "letter": "خ",
+      "take": 9,
+      "n_frames": 123,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 123,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        123,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062E_خ/take_009"
+    },
+    {
+      "letter": "ر",
+      "take": 5,
+      "n_frames": 122,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 122,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        122,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_005"
+    },
+    {
+      "letter": "ر",
+      "take": 6,
+      "n_frames": 119,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 118,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        119,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_006"
+    },
+    {
+      "letter": "ر",
+      "take": 7,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_007"
+    },
+    {
+      "letter": "ر",
+      "take": 8,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_008"
+    },
+    {
+      "letter": "ر",
+      "take": 9,
+      "n_frames": 116,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 116,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 58,
+      "landmarks_shape": [
+        116,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0631_ر/take_009"
+    },
+    {
+      "letter": "پ",
+      "take": 0,
+      "n_frames": 137,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 137,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        137,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_000"
+    },
+    {
+      "letter": "پ",
+      "take": 1,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_001"
+    },
+    {
+      "letter": "پ",
+      "take": 2,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_002"
+    },
+    {
+      "letter": "پ",
+      "take": 3,
+      "n_frames": 143,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 143,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_003"
+    },
+    {
+      "letter": "پ",
+      "take": 4,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_004"
+    },
+    {
+      "letter": "پ",
+      "take": 5,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_005"
+    },
+    {
+      "letter": "پ",
+      "take": 6,
+      "n_frames": 107,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 107,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        107,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_006"
+    },
+    {
+      "letter": "پ",
+      "take": 7,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_007"
+    },
+    {
+      "letter": "پ",
+      "take": 8,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_008"
+    },
+    {
+      "letter": "پ",
+      "take": 9,
+      "n_frames": 103,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 102,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 51,
+      "landmarks_shape": [
+        103,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_009"
+    },
+    {
+      "letter": "پ",
+      "take": 10,
+      "n_frames": 91,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 90,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 45,
+      "landmarks_shape": [
+        91,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U067E_پ/take_010"
+    },
+    {
+      "letter": "ت",
+      "take": 0,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_000"
+    },
+    {
+      "letter": "ت",
+      "take": 1,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_001"
+    },
+    {
+      "letter": "ت",
+      "take": 2,
+      "n_frames": 104,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 104,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        104,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_002"
+    },
+    {
+      "letter": "ت",
+      "take": 3,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_003"
+    },
+    {
+      "letter": "ت",
+      "take": 4,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_004"
+    },
+    {
+      "letter": "ت",
+      "take": 5,
+      "n_frames": 123,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 123,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        123,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_005"
+    },
+    {
+      "letter": "ت",
+      "take": 6,
+      "n_frames": 112,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 112,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 56,
+      "landmarks_shape": [
+        112,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_006"
+    },
+    {
+      "letter": "ت",
+      "take": 7,
+      "n_frames": 127,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 127,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 63,
+      "landmarks_shape": [
+        127,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_007"
+    },
+    {
+      "letter": "ت",
+      "take": 8,
+      "n_frames": 122,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 122,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        122,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_008"
+    },
+    {
+      "letter": "ت",
+      "take": 9,
+      "n_frames": 118,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 117,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        118,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062A_ت/take_009"
+    },
+    {
+      "letter": "ث",
+      "take": 0,
+      "n_frames": 138,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 138,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        138,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_000"
+    },
+    {
+      "letter": "ث",
+      "take": 1,
+      "n_frames": 136,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 136,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        136,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_001"
+    },
+    {
+      "letter": "ث",
+      "take": 2,
+      "n_frames": 135,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 135,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        135,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_002"
+    },
+    {
+      "letter": "ث",
+      "take": 3,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_003"
+    },
+    {
+      "letter": "ث",
+      "take": 4,
+      "n_frames": 143,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 143,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_004"
+    },
+    {
+      "letter": "ث",
+      "take": 5,
+      "n_frames": 122,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 122,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        122,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_005"
+    },
+    {
+      "letter": "ث",
+      "take": 6,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_006"
+    },
+    {
+      "letter": "ث",
+      "take": 7,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_007"
+    },
+    {
+      "letter": "ث",
+      "take": 8,
+      "n_frames": 124,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 124,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        124,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_008"
+    },
+    {
+      "letter": "ث",
+      "take": 9,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062B_ث/take_009"
+    },
+    {
+      "letter": "د",
+      "take": 0,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_000"
+    },
+    {
+      "letter": "د",
+      "take": 1,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_001"
+    },
+    {
+      "letter": "د",
+      "take": 2,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_002"
+    },
+    {
+      "letter": "د",
+      "take": 3,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_003"
+    },
+    {
+      "letter": "د",
+      "take": 4,
+      "n_frames": 136,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 136,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        136,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_004"
+    },
+    {
+      "letter": "د",
+      "take": 5,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_005"
+    },
+    {
+      "letter": "د",
+      "take": 6,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_006"
+    },
+    {
+      "letter": "د",
+      "take": 7,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_007"
+    },
+    {
+      "letter": "د",
+      "take": 8,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_008"
+    },
+    {
+      "letter": "د",
+      "take": 9,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U062F_د/take_009"
+    },
+    {
+      "letter": "ذ",
+      "take": 0,
+      "n_frames": 118,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 118,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        118,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_000"
+    },
+    {
+      "letter": "ذ",
+      "take": 1,
+      "n_frames": 114,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 114,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 57,
+      "landmarks_shape": [
+        114,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_001"
+    },
+    {
+      "letter": "ذ",
+      "take": 2,
+      "n_frames": 116,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 115,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 58,
+      "landmarks_shape": [
+        116,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_002"
+    },
+    {
+      "letter": "ذ",
+      "take": 3,
+      "n_frames": 125,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 125,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 62,
+      "landmarks_shape": [
+        125,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_003"
+    },
+    {
+      "letter": "ذ",
+      "take": 4,
+      "n_frames": 121,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 121,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 60,
+      "landmarks_shape": [
+        121,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_004"
+    },
+    {
+      "letter": "ذ",
+      "take": 5,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_005"
+    },
+    {
+      "letter": "ذ",
+      "take": 6,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_006"
+    },
+    {
+      "letter": "ذ",
+      "take": 7,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_007"
+    },
+    {
+      "letter": "ذ",
+      "take": 8,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_008"
+    },
+    {
+      "letter": "ذ",
+      "take": 9,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0630_ذ/take_009"
+    },
+    {
+      "letter": "ڈ",
+      "take": 0,
+      "n_frames": 116,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 116,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 58,
+      "landmarks_shape": [
+        116,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_000"
+    },
+    {
+      "letter": "ڈ",
+      "take": 1,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_001"
+    },
+    {
+      "letter": "ڈ",
+      "take": 2,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_002"
+    },
+    {
+      "letter": "ڈ",
+      "take": 3,
+      "n_frames": 110,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 110,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 55,
+      "landmarks_shape": [
+        110,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_003"
+    },
+    {
+      "letter": "ڈ",
+      "take": 4,
+      "n_frames": 110,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 110,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 55,
+      "landmarks_shape": [
+        110,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_004"
+    },
+    {
+      "letter": "ڈ",
+      "take": 5,
+      "n_frames": 97,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 97,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 48,
+      "landmarks_shape": [
+        97,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_005"
+    },
+    {
+      "letter": "ڈ",
+      "take": 6,
+      "n_frames": 97,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 97,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 48,
+      "landmarks_shape": [
+        97,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_006"
+    },
+    {
+      "letter": "ڈ",
+      "take": 7,
+      "n_frames": 98,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 98,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 49,
+      "landmarks_shape": [
+        98,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_007"
+    },
+    {
+      "letter": "ڈ",
+      "take": 8,
+      "n_frames": 94,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 94,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 47,
+      "landmarks_shape": [
+        94,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_008"
+    },
+    {
+      "letter": "ڈ",
+      "take": 9,
+      "n_frames": 98,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 97,
+        "Left": 1,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 49,
+      "landmarks_shape": [
+        98,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0688_ڈ/take_009"
+    },
+    {
+      "letter": "ز",
+      "take": 0,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_000"
+    },
+    {
+      "letter": "ز",
+      "take": 1,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_001"
+    },
+    {
+      "letter": "ز",
+      "take": 2,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_002"
+    },
+    {
+      "letter": "ز",
+      "take": 3,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_003"
+    },
+    {
+      "letter": "ز",
+      "take": 4,
+      "n_frames": 143,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 143,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_004"
+    },
+    {
+      "letter": "ز",
+      "take": 5,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_005"
+    },
+    {
+      "letter": "ز",
+      "take": 6,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_006"
+    },
+    {
+      "letter": "ز",
+      "take": 7,
+      "n_frames": 104,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 104,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        104,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_007"
+    },
+    {
+      "letter": "ز",
+      "take": 8,
+      "n_frames": 102,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 102,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 51,
+      "landmarks_shape": [
+        102,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_008"
+    },
+    {
+      "letter": "ز",
+      "take": 9,
+      "n_frames": 104,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 104,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        104,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0632_ز/take_009"
+    },
+    {
+      "letter": "ژ",
+      "take": 0,
+      "n_frames": 143,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 143,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_000"
+    },
+    {
+      "letter": "ژ",
+      "take": 1,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_001"
+    },
+    {
+      "letter": "ژ",
+      "take": 2,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_002"
+    },
+    {
+      "letter": "ژ",
+      "take": 3,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_003"
+    },
+    {
+      "letter": "ژ",
+      "take": 4,
+      "n_frames": 142,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 142,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        142,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_004"
+    },
+    {
+      "letter": "ژ",
+      "take": 5,
+      "n_frames": 123,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 123,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 61,
+      "landmarks_shape": [
+        123,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_005"
+    },
+    {
+      "letter": "ژ",
+      "take": 6,
+      "n_frames": 151,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 151,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        151,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_006"
+    },
+    {
+      "letter": "ژ",
+      "take": 7,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_007"
+    },
+    {
+      "letter": "ژ",
+      "take": 8,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_008"
+    },
+    {
+      "letter": "ژ",
+      "take": 9,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0698_ژ/take_009"
+    },
+    {
+      "letter": "س",
+      "take": 0,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_000"
+    },
+    {
+      "letter": "س",
+      "take": 1,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_001"
+    },
+    {
+      "letter": "س",
+      "take": 2,
+      "n_frames": 138,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 138,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        138,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_002"
+    },
+    {
+      "letter": "س",
+      "take": 3,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_003"
+    },
+    {
+      "letter": "س",
+      "take": 4,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_004"
+    },
+    {
+      "letter": "س",
+      "take": 5,
+      "n_frames": 120,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 120,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 60,
+      "landmarks_shape": [
+        120,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_005"
+    },
+    {
+      "letter": "س",
+      "take": 6,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_006"
+    },
+    {
+      "letter": "س",
+      "take": 7,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_007"
+    },
+    {
+      "letter": "س",
+      "take": 8,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_008"
+    },
+    {
+      "letter": "س",
+      "take": 9,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0633_س/take_009"
+    },
+    {
+      "letter": "ص",
+      "take": 0,
+      "n_frames": 135,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 135,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        135,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_000"
+    },
+    {
+      "letter": "ص",
+      "take": 1,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_001"
+    },
+    {
+      "letter": "ص",
+      "take": 2,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_002"
+    },
+    {
+      "letter": "ص",
+      "take": 3,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_003"
+    },
+    {
+      "letter": "ص",
+      "take": 4,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_004"
+    },
+    {
+      "letter": "ص",
+      "take": 5,
+      "n_frames": 92,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 92,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 46,
+      "landmarks_shape": [
+        92,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_005"
+    },
+    {
+      "letter": "ص",
+      "take": 6,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_006"
+    },
+    {
+      "letter": "ص",
+      "take": 7,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_007"
+    },
+    {
+      "letter": "ص",
+      "take": 8,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_008"
+    },
+    {
+      "letter": "ص",
+      "take": 9,
+      "n_frames": 85,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 85,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 42,
+      "landmarks_shape": [
+        85,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0635_ص/take_009"
+    },
+    {
+      "letter": "ض",
+      "take": 0,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_000"
+    },
+    {
+      "letter": "ض",
+      "take": 1,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_001"
+    },
+    {
+      "letter": "ض",
+      "take": 2,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_002"
+    },
+    {
+      "letter": "ض",
+      "take": 3,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_003"
+    },
+    {
+      "letter": "ض",
+      "take": 4,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_004"
+    },
+    {
+      "letter": "ض",
+      "take": 5,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_005"
+    },
+    {
+      "letter": "ض",
+      "take": 6,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_006"
+    },
+    {
+      "letter": "ض",
+      "take": 7,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_007"
+    },
+    {
+      "letter": "ض",
+      "take": 8,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_008"
+    },
+    {
+      "letter": "ض",
+      "take": 9,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0636_ض/take_009"
+    },
+    {
+      "letter": "ط",
+      "take": 0,
+      "n_frames": 136,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 136,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        136,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_000"
+    },
+    {
+      "letter": "ط",
+      "take": 1,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_001"
+    },
+    {
+      "letter": "ط",
+      "take": 2,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_002"
+    },
+    {
+      "letter": "ط",
+      "take": 3,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_003"
+    },
+    {
+      "letter": "ط",
+      "take": 4,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_004"
+    },
+    {
+      "letter": "ط",
+      "take": 5,
+      "n_frames": 139,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 139,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        139,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_005"
+    },
+    {
+      "letter": "ط",
+      "take": 6,
+      "n_frames": 142,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 142,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        142,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_006"
+    },
+    {
+      "letter": "ط",
+      "take": 7,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_007"
+    },
+    {
+      "letter": "ط",
+      "take": 8,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_008"
+    },
+    {
+      "letter": "ط",
+      "take": 9,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0637_ط/take_009"
+    },
+    {
+      "letter": "ظ",
+      "take": 0,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_000"
+    },
+    {
+      "letter": "ظ",
+      "take": 1,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_001"
+    },
+    {
+      "letter": "ظ",
+      "take": 2,
+      "n_frames": 143,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 143,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_002"
+    },
+    {
+      "letter": "ظ",
+      "take": 3,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_003"
+    },
+    {
+      "letter": "ظ",
+      "take": 4,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_004"
+    },
+    {
+      "letter": "ظ",
+      "take": 5,
+      "n_frames": 108,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 108,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        108,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_005"
+    },
+    {
+      "letter": "ظ",
+      "take": 6,
+      "n_frames": 108,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 108,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        108,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_006"
+    },
+    {
+      "letter": "ظ",
+      "take": 7,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_007"
+    },
+    {
+      "letter": "ظ",
+      "take": 8,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_008"
+    },
+    {
+      "letter": "ظ",
+      "take": 9,
+      "n_frames": 108,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 108,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        108,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0638_ظ/take_009"
+    },
+    {
+      "letter": "ع",
+      "take": 0,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_000"
+    },
+    {
+      "letter": "ع",
+      "take": 1,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_001"
+    },
+    {
+      "letter": "ع",
+      "take": 2,
+      "n_frames": 130,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 130,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 65,
+      "landmarks_shape": [
+        130,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_002"
+    },
+    {
+      "letter": "ع",
+      "take": 3,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_003"
+    },
+    {
+      "letter": "ع",
+      "take": 4,
+      "n_frames": 135,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 135,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        135,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_004"
+    },
+    {
+      "letter": "ع",
+      "take": 5,
+      "n_frames": 135,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 135,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        135,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_005"
+    },
+    {
+      "letter": "ع",
+      "take": 6,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_006"
+    },
+    {
+      "letter": "ع",
+      "take": 7,
+      "n_frames": 137,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 137,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        137,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_007"
+    },
+    {
+      "letter": "ع",
+      "take": 8,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_008"
+    },
+    {
+      "letter": "ع",
+      "take": 9,
+      "n_frames": 137,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 137,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        137,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0639_ع/take_009"
+    },
+    {
+      "letter": "غ",
+      "take": 0,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_000"
+    },
+    {
+      "letter": "غ",
+      "take": 1,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_001"
+    },
+    {
+      "letter": "غ",
+      "take": 2,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_002"
+    },
+    {
+      "letter": "غ",
+      "take": 3,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_003"
+    },
+    {
+      "letter": "غ",
+      "take": 4,
+      "n_frames": 142,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 142,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        142,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_004"
+    },
+    {
+      "letter": "غ",
+      "take": 5,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_005"
+    },
+    {
+      "letter": "غ",
+      "take": 6,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_006"
+    },
+    {
+      "letter": "غ",
+      "take": 7,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_007"
+    },
+    {
+      "letter": "غ",
+      "take": 8,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_008"
+    },
+    {
+      "letter": "غ",
+      "take": 9,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U063A_غ/take_009"
+    },
+    {
+      "letter": "ف",
+      "take": 0,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_000"
+    },
+    {
+      "letter": "ف",
+      "take": 1,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_001"
+    },
+    {
+      "letter": "ف",
+      "take": 2,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_002"
+    },
+    {
+      "letter": "ف",
+      "take": 3,
+      "n_frames": 149,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 149,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        149,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_003"
+    },
+    {
+      "letter": "ف",
+      "take": 4,
+      "n_frames": 118,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 118,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        118,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_004"
+    },
+    {
+      "letter": "ف",
+      "take": 5,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_005"
+    },
+    {
+      "letter": "ف",
+      "take": 6,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_006"
+    },
+    {
+      "letter": "ف",
+      "take": 7,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_007"
+    },
+    {
+      "letter": "ف",
+      "take": 8,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_008"
+    },
+    {
+      "letter": "ف",
+      "take": 9,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0641_ف/take_009"
+    },
+    {
+      "letter": "ق",
+      "take": 0,
+      "n_frames": 148,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 148,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_000"
+    },
+    {
+      "letter": "ق",
+      "take": 1,
+      "n_frames": 138,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 138,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        138,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_001"
+    },
+    {
+      "letter": "ق",
+      "take": 2,
+      "n_frames": 145,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 145,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_002"
+    },
+    {
+      "letter": "ق",
+      "take": 3,
+      "n_frames": 146,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 146,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_003"
+    },
+    {
+      "letter": "ق",
+      "take": 4,
+      "n_frames": 137,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 137,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        137,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_004"
+    },
+    {
+      "letter": "ق",
+      "take": 5,
+      "n_frames": 145,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 145,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_005"
+    },
+    {
+      "letter": "ق",
+      "take": 6,
+      "n_frames": 150,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 150,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_006"
+    },
+    {
+      "letter": "ق",
+      "take": 7,
+      "n_frames": 147,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 147,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_007"
+    },
+    {
+      "letter": "ق",
+      "take": 8,
+      "n_frames": 143,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 143,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 71,
+      "landmarks_shape": [
+        143,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_008"
+    },
+    {
+      "letter": "ق",
+      "take": 9,
+      "n_frames": 134,
+      "handedness_recorded": "Left",
+      "hand_frames": {
+        "Right": 0,
+        "Left": 134,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 67,
+      "landmarks_shape": [
+        134,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0642_ق/take_009"
+    },
+    {
+      "letter": "گ",
+      "take": 0,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_000"
+    },
+    {
+      "letter": "گ",
+      "take": 1,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_001"
+    },
+    {
+      "letter": "گ",
+      "take": 2,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_002"
+    },
+    {
+      "letter": "گ",
+      "take": 3,
+      "n_frames": 145,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 145,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        145,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_003"
+    },
+    {
+      "letter": "گ",
+      "take": 4,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_004"
+    },
+    {
+      "letter": "گ",
+      "take": 5,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_005"
+    },
+    {
+      "letter": "گ",
+      "take": 6,
+      "n_frames": 110,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 110,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 55,
+      "landmarks_shape": [
+        110,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_006"
+    },
+    {
+      "letter": "گ",
+      "take": 7,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_007"
+    },
+    {
+      "letter": "گ",
+      "take": 8,
+      "n_frames": 109,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 109,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        109,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_008"
+    },
+    {
+      "letter": "گ",
+      "take": 9,
+      "n_frames": 108,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 108,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 54,
+      "landmarks_shape": [
+        108,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06AF_گ/take_009"
+    },
+    {
+      "letter": "و",
+      "take": 0,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_000"
+    },
+    {
+      "letter": "و",
+      "take": 1,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_001"
+    },
+    {
+      "letter": "و",
+      "take": 2,
+      "n_frames": 114,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 114,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 57,
+      "landmarks_shape": [
+        114,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_002"
+    },
+    {
+      "letter": "و",
+      "take": 3,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_003"
+    },
+    {
+      "letter": "و",
+      "take": 4,
+      "n_frames": 107,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 107,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        107,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_004"
+    },
+    {
+      "letter": "و",
+      "take": 5,
+      "n_frames": 93,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 93,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 46,
+      "landmarks_shape": [
+        93,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_005"
+    },
+    {
+      "letter": "و",
+      "take": 6,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_006"
+    },
+    {
+      "letter": "و",
+      "take": 7,
+      "n_frames": 137,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 137,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 68,
+      "landmarks_shape": [
+        137,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_007"
+    },
+    {
+      "letter": "و",
+      "take": 8,
+      "n_frames": 129,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 129,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 64,
+      "landmarks_shape": [
+        129,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_008"
+    },
+    {
+      "letter": "و",
+      "take": 9,
+      "n_frames": 138,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 138,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        138,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0648_و/take_009"
+    },
+    {
+      "letter": "ء",
+      "take": 0,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_000"
+    },
+    {
+      "letter": "ء",
+      "take": 1,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_001"
+    },
+    {
+      "letter": "ء",
+      "take": 2,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_002"
+    },
+    {
+      "letter": "ء",
+      "take": 3,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_003"
+    },
+    {
+      "letter": "ء",
+      "take": 4,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_004"
+    },
+    {
+      "letter": "ء",
+      "take": 5,
+      "n_frames": 140,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 140,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        140,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_005"
+    },
+    {
+      "letter": "ء",
+      "take": 6,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_006"
+    },
+    {
+      "letter": "ء",
+      "take": 7,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_007"
+    },
+    {
+      "letter": "ء",
+      "take": 8,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_008"
+    },
+    {
+      "letter": "ء",
+      "take": 9,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U0621_ء/take_009"
+    },
+    {
+      "letter": "ی",
+      "take": 0,
+      "n_frames": 146,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 146,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        146,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_000"
+    },
+    {
+      "letter": "ی",
+      "take": 1,
+      "n_frames": 148,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 148,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 74,
+      "landmarks_shape": [
+        148,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_001"
+    },
+    {
+      "letter": "ی",
+      "take": 2,
+      "n_frames": 141,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 141,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 70,
+      "landmarks_shape": [
+        141,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_002"
+    },
+    {
+      "letter": "ی",
+      "take": 3,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_003"
+    },
+    {
+      "letter": "ی",
+      "take": 4,
+      "n_frames": 150,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 150,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 75,
+      "landmarks_shape": [
+        150,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_004"
+    },
+    {
+      "letter": "ی",
+      "take": 5,
+      "n_frames": 119,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 117,
+        "Left": 2,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        119,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_005"
+    },
+    {
+      "letter": "ی",
+      "take": 6,
+      "n_frames": 118,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 118,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 59,
+      "landmarks_shape": [
+        118,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_006"
+    },
+    {
+      "letter": "ی",
+      "take": 7,
+      "n_frames": 147,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 147,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 73,
+      "landmarks_shape": [
+        147,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_007"
+    },
+    {
+      "letter": "ی",
+      "take": 8,
+      "n_frames": 104,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 104,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        104,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_008"
+    },
+    {
+      "letter": "ی",
+      "take": 9,
+      "n_frames": 103,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 103,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 51,
+      "landmarks_shape": [
+        103,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06CC_ی/take_009"
+    },
+    {
+      "letter": "ے",
+      "take": 0,
+      "n_frames": 138,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 138,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 69,
+      "landmarks_shape": [
+        138,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_000"
+    },
+    {
+      "letter": "ے",
+      "take": 1,
+      "n_frames": 144,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 144,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 72,
+      "landmarks_shape": [
+        144,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_001"
+    },
+    {
+      "letter": "ے",
+      "take": 2,
+      "n_frames": 131,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 131,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 65,
+      "landmarks_shape": [
+        131,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_002"
+    },
+    {
+      "letter": "ے",
+      "take": 3,
+      "n_frames": 128,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 128,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 64,
+      "landmarks_shape": [
+        128,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_003"
+    },
+    {
+      "letter": "ے",
+      "take": 4,
+      "n_frames": 103,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 103,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 51,
+      "landmarks_shape": [
+        103,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_004"
+    },
+    {
+      "letter": "ے",
+      "take": 5,
+      "n_frames": 104,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 104,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        104,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_005"
+    },
+    {
+      "letter": "ے",
+      "take": 6,
+      "n_frames": 107,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 107,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        107,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_006"
+    },
+    {
+      "letter": "ے",
+      "take": 7,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_007"
+    },
+    {
+      "letter": "ے",
+      "take": 8,
+      "n_frames": 106,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 106,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 53,
+      "landmarks_shape": [
+        106,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_008"
+    },
+    {
+      "letter": "ے",
+      "take": 9,
+      "n_frames": 105,
+      "handedness_recorded": "Right",
+      "hand_frames": {
+        "Right": 105,
+        "Left": 0,
+        "unknown": 0
+      },
+      "n_crops": 20,
+      "display_crop_frame": 10,
+      "training_frame": 52,
+      "landmarks_shape": [
+        105,
+        21,
+        3
+      ],
+      "finite": true,
+      "crop_dir": "crops/U06D2_ے/take_009"
+    }
+  ],
+  "interpretation": "Images decoded from embedded crops; no new MediaPipe inference. Not necessarily the training frame."
+}

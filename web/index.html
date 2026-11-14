@@ -111,15 +111,16 @@
         changed. A dictionary word is suggested only when at least 3 letters
         were signed and at least 60 % of that word's letters match what was
         read (each within the model's top 3 for its hold); otherwise none is
-        shown. The match allows one hold to be extra or missing. On the dataset
-        clips a word is suggested about half the time and is right about 79 %
-        of the time when it is; the dictionary has 54 words, so anything else
-        can only appear in the top line.
-        Measured leave-one-signer-out: <b>26 % per letter</b> (40 classes, 10 %
-        baseline). This build also includes the developer's own recordings of
-        ا (alif), ک (kaf) and ب (be). Those three letters were read
-        correctly on 61 of 62 live holds for him; that does not
-        generalise to other letters or other people. Either hand is read the
+        shown. The match allows extra or missing holds; the dictionary has
+        54 words, so anything else can only appear in the top line. Word-level
+        accuracy for this updated model has not yet been measured.
+        This experimental build recognises <b>41 letters</b>, including ء,
+        and includes calibration takes from Abdullah and Hassan. Held-out
+        takes from the same sitting scored <b>92.3 %</b>; this does not measure
+        performance on a new day or a new person. On the five original dataset
+        signers held out in turn, accuracy against pseudo-labels was
+        <b>28.0 %</b> with calibration (26.8 % before these new takes).
+        Either hand is read the
         same way (the model uses joint angles and distances, which mirroring
         does not change), but every training signer used their right hand, so
         left-hand accuracy has not been measured.
