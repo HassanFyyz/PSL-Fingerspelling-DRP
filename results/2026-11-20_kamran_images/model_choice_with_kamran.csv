@@ -1,0 +1,41 @@
+letters,model,test signer,accuracy %,macro recall %
+all letters,"SVM (shipped), predict",signer1-F,28.617363344051448,29.191650397532747
+all letters,"SVM, argmax probability",signer1-F,32.79742765273312,29.478499985852924
+all letters,ExtraTrees,signer1-F,28.938906752411576,27.219000226353163
+all letters,ensemble SVM+MLP+ET+LDA,signer1-F,29.260450160771708,26.37443058031293
+all letters,"SVM (shipped), predict",signer2-F,34.105960264900666,35.70185572081857
+all letters,"SVM, argmax probability",signer2-F,38.079470198675494,36.73514406989639
+all letters,ExtraTrees,signer2-F,35.430463576158935,39.28229845489907
+all letters,ensemble SVM+MLP+ET+LDA,signer2-F,38.41059602649007,38.05092091431101
+all letters,"SVM (shipped), predict",signer3-F,31.54121863799283,29.052724371013756
+all letters,"SVM, argmax probability",signer3-F,31.899641577060933,24.463693513558287
+all letters,ExtraTrees,signer3-F,32.61648745519714,27.899005353197374
+all letters,ensemble SVM+MLP+ET+LDA,signer3-F,33.691756272401435,34.287992483563826
+all letters,"SVM (shipped), predict",signer4-L,32.88135593220339,34.30232478220094
+all letters,"SVM, argmax probability",signer4-L,36.94915254237288,34.0835632805447
+all letters,ExtraTrees,signer4-L,36.94915254237288,39.6372905989779
+all letters,ensemble SVM+MLP+ET+LDA,signer4-L,33.89830508474576,34.064039675494776
+all letters,"SVM (shipped), predict",signer5-R,38.607594936708864,37.70032436699103
+all letters,"SVM, argmax probability",signer5-R,36.075949367088604,32.49461957795291
+all letters,ExtraTrees,signer5-R,36.075949367088604,40.93248572415239
+all letters,ensemble SVM+MLP+ET+LDA,signer5-R,36.075949367088604,39.86054840221506
+30 static letters,"SVM (shipped), predict",signer1-F,37.17948717948718,36.25943585375634
+30 static letters,"SVM, argmax probability",signer1-F,38.88888888888889,35.67683499732181
+30 static letters,ExtraTrees,signer1-F,36.75213675213676,33.87631750714915
+30 static letters,ensemble SVM+MLP+ET+LDA,signer1-F,37.17948717948718,34.305661658602844
+30 static letters,"SVM (shipped), predict",signer2-F,41.92139737991266,44.34761257863637
+30 static letters,"SVM, argmax probability",signer2-F,44.10480349344978,46.111250883323045
+30 static letters,ExtraTrees,signer2-F,44.10480349344978,50.01802439402524
+30 static letters,ensemble SVM+MLP+ET+LDA,signer2-F,43.66812227074236,47.91285289683923
+30 static letters,"SVM (shipped), predict",signer3-F,38.70967741935484,37.2605603610185
+30 static letters,"SVM, argmax probability",signer3-F,40.09216589861751,31.199615822019126
+30 static letters,ExtraTrees,signer3-F,41.013824884792626,35.5273723573192
+30 static letters,ensemble SVM+MLP+ET+LDA,signer3-F,42.3963133640553,43.13442667329847
+30 static letters,"SVM (shipped), predict",signer4-L,42.857142857142854,39.92665286782934
+30 static letters,"SVM, argmax probability",signer4-L,45.982142857142854,38.999074334041644
+30 static letters,ExtraTrees,signer4-L,43.75,42.23420340250405
+30 static letters,ensemble SVM+MLP+ET+LDA,signer4-L,44.642857142857146,41.69125355399865
+30 static letters,"SVM (shipped), predict",signer5-R,47.58064516129033,46.820348454963835
+30 static letters,"SVM, argmax probability",signer5-R,41.12903225806452,32.664365548980925
+30 static letters,ExtraTrees,signer5-R,46.774193548387096,48.376068376068375
+30 static letters,ensemble SVM+MLP+ET+LDA,signer5-R,47.58064516129033,48.23800131492439
