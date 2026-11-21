@@ -41,9 +41,45 @@ PTS_PATH = "hold_landmarks.npy"
 META_PATH = "hold_meta.csv"
 MAPPING_PATH = "word_letter_mapping.json"
 OUT_DIR = "web/model_geom"
+# Trained with Kamran's private letter-image set as well. The SVM stores
+# training rows (support vectors), so this export carries features of his
+# images and must never be committed or published: the folder is git-ignored
+# and the page only uses it when it exists locally.
+OUT_DIR_KAMRAN = "web/model_geom_kamran"
 
 
-def loso_accuracy(F, y, signers, exclude_single_letter_folds=True):
+def training_data(pts_path=PTS_PATH, meta_path=META_PATH, with_kamran=False,
+                  with_official=False, with_video=True):
+    """(F, y, signers): our holds + calibration takes, plus Kamran's / official images if asked.
+
+    with_video=False drops the pseudo-labelled video holds (signers without the
+    'user-' prefix) and keeps only the calibration takes from our own files.
+    Kamran's rows: hand found, exact duplicate files dropped, signer 'kamran-images'.
+    Official rows: the PSL website screenshots, signer 'official-psl'.
+    """
+    P = np.load(pts_path)
+    M = pd.read_csv(meta_path)
+    if not with_video:
+        keep = M.signer.str.startswith("user-").to_numpy()
+        P, M = P[keep], M[keep].reset_index(drop=True)
+    F, y, g = hand_features(P), M.letter.to_numpy(), M.signer.to_numpy()
+    if with_official:
+        import image_dataset
+        PO, MO = image_dataset.official()
+        F = np.vstack([F, hand_features(PO)])
+        y = np.concatenate([y, MO.letter.to_numpy()])
+        g = np.concatenate([g, np.array(["official-psl"] * len(MO), dtype=object)])
+    if with_kamran:
+        import image_dataset
+        PK, MK = image_dataset.load()
+        keep = ((MK.detected == 1) & ~MK.duplicated("sha1")).to_numpy()
+        F = np.vstack([F, hand_features(PK[keep])])
+        y = np.concatenate([y, MK.letter.to_numpy()[keep]])
+        g = np.concatenate([g, np.array(["kamran-images"] * int(keep.sum()), dtype=object)])
+    return F, y, g
+
+
+def loso_accuracy(F, y, signers, exclude_single_letter_folds=True, extra=None):
     """Leave-one-signer-out, filtering folds that hold too few letters to be
     comparable (a calibration signer with only 2 letters is not a 40-class
     test)."""
@@ -53,24 +89,42 @@ def loso_accuracy(F, y, signers, exclude_single_letter_folds=True):
         tr = ~te
         if exclude_single_letter_folds and len(set(y[te])) < 10:
             continue
+        Ftr, ytr = F[tr], y[tr]
+        if extra is not None:                  # rows that are always training (never a fold)
+            Ftr, ytr = np.vstack([Ftr, extra[0]]), np.concatenate([ytr, extra[1]])
+        sc = StandardScaler().fit(Ftr)
         clf = SVC(C=10, gamma="scale", class_weight="balanced")
-        clf.fit(StandardScaler().fit_transform(F[tr]), y[tr])
-        sc = StandardScaler().fit(F[tr])
+        clf.fit(sc.transform(Ftr), ytr)
         acc = (clf.predict(sc.transform(F[te])) == y[te]).mean()
         accs.append(acc)
     return float(np.mean(accs))
 
 
-def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out_dir=OUT_DIR):
+def video_test_accuracy(F, y, Fv, yv, sv):
+    """Train once on (F, y), score each video signer as an outside test; mean of signers."""
+    sc = StandardScaler().fit(F)
+    clf = SVC(C=10, gamma="scale", class_weight="balanced").fit(sc.transform(F), y)
+    pred = clf.predict(sc.transform(Fv))
+    return float(np.mean([(pred[sv == s] == yv[sv == s]).mean() for s in sorted(set(sv))]))
+
+
+def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out_dir=None,
+          with_kamran=False, with_official=False, with_video=True):
+    private = with_kamran or with_official
+    out_dir = out_dir or (OUT_DIR_KAMRAN if private else OUT_DIR)
     os.makedirs(out_dir, exist_ok=True)
-    P = np.load(pts_path)
-    M = pd.read_csv(meta_path)
-    F = hand_features(P)
-    y = M.letter.to_numpy()
-    signers = M.signer.to_numpy()
+    F, y, signers = training_data(pts_path, meta_path, with_kamran, with_official, with_video)
 
     print("computing leave-one-signer-out accuracy (40-letter folds only)...")
-    loso = loso_accuracy(F, y, signers)
+    if with_video:
+        own = ~np.isin(signers, ["kamran-images", "official-psl"])
+        loso = loso_accuracy(F[own], y[own], signers[own],
+                             extra=(F[~own], y[~own]) if private else None)
+    else:
+        # no video hold is in training, so the five video signers are an outside test
+        Fv, yv, sv = training_data(pts_path, meta_path)
+        v = ~pd.Series(sv).str.startswith("user-").to_numpy()
+        loso = video_test_accuracy(F, y, Fv[v], yv[v], sv[v])
     print(f"  LOSO: {loso:.3f}")
 
     scaler = StandardScaler().fit(F)
@@ -104,7 +158,15 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
         "train_holds": int(len(F)),
         "train_signers": sorted(set(signers)),
         "handedness": "right",
+        "private": bool(private),
+        "training_sources": {"video_holds": bool(with_video), "calibration": True,
+                             "kamran_images": bool(with_kamran), "official_psl": bool(with_official)},
         "honest_accuracy": {
+            "kamran_images": ("Kamran's images are in the training rows of every fold and are never "
+                              "a test fold; the test signer is always one of ours.") if with_kamran else None,
+            "no_video": ("No video hold is in training; letter_acc is the mean over the five video "
+                         "signers used as an outside test, scored against their pseudo-labels.")
+                        if not with_video else None,
             "protocol": "leave-one-signer-out over the 40-letter folds; the two "
                         "calibration-session folds (2 letters each) are excluded "
                         "as not comparable. The shipped model trains on everyone.",
@@ -127,4 +189,6 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
 
 
 if __name__ == "__main__":
-    build()
+    import sys
+    build(with_kamran="--with-kamran" in sys.argv, with_official="--with-official" in sys.argv,
+          with_video="--no-video" not in sys.argv)

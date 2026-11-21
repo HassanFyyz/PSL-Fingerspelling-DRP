@@ -4,6 +4,8 @@ PSL_Fingerspelling_Video_Dataset_Cropped_Mirrored/
 PSL_Fingerspelling_Video_Dataset_Cropped*.zip
 # Kamran's letter-image dataset (train/val, one folder per letter), via Drive
 PSL_Fingerspelling_Image_Dataset/
+# browser model trained with it: SVM support vectors are rows of its features
+web/model_geom_kamran/
 hand_keypoints_features.csv
 *.mp4
 *.MP4
