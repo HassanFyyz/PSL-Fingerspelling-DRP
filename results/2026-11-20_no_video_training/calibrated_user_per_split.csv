@@ -1,0 +1,31 @@
+model,training,seed,correct,n,macro recall %
+SVM (shipped),old (with video),0,52,58,90.0
+SVM (shipped),new (no video),0,55,58,95.0
+ExtraTrees,old (with video),0,53,58,91.66666666666666
+ExtraTrees,new (no video),0,53,58,91.66666666666666
+ensemble SVM+MLP+ET+LDA,old (with video),0,52,58,90.0
+ensemble SVM+MLP+ET+LDA,new (no video),0,53,58,91.66666666666666
+SVM (shipped),old (with video),1,53,58,91.66666666666666
+SVM (shipped),new (no video),1,54,58,93.33333333333333
+ExtraTrees,old (with video),1,52,58,90.0
+ExtraTrees,new (no video),1,52,58,90.0
+ensemble SVM+MLP+ET+LDA,old (with video),1,50,58,86.66666666666667
+ensemble SVM+MLP+ET+LDA,new (no video),1,50,58,86.66666666666667
+SVM (shipped),old (with video),2,57,58,98.33333333333333
+SVM (shipped),new (no video),2,55,58,95.0
+ExtraTrees,old (with video),2,54,58,93.33333333333333
+ExtraTrees,new (no video),2,54,58,93.33333333333333
+ensemble SVM+MLP+ET+LDA,old (with video),2,51,58,88.33333333333333
+ensemble SVM+MLP+ET+LDA,new (no video),2,51,58,88.33333333333333
+SVM (shipped),old (with video),3,53,58,91.66666666666666
+SVM (shipped),new (no video),3,54,58,93.33333333333333
+ExtraTrees,old (with video),3,53,58,91.66666666666666
+ExtraTrees,new (no video),3,53,58,91.66666666666666
+ensemble SVM+MLP+ET+LDA,old (with video),3,52,58,90.0
+ensemble SVM+MLP+ET+LDA,new (no video),3,53,58,91.66666666666666
+SVM (shipped),old (with video),4,52,58,90.0
+SVM (shipped),new (no video),4,53,58,91.66666666666666
+ExtraTrees,old (with video),4,51,58,88.33333333333333
+ExtraTrees,new (no video),4,50,58,86.66666666666667
+ensemble SVM+MLP+ET+LDA,old (with video),4,50,58,86.66666666666667
+ensemble SVM+MLP+ET+LDA,new (no video),4,51,58,88.33333333333333

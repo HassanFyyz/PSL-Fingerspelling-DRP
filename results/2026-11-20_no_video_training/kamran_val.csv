@@ -1,0 +1,7 @@
+model,training,accuracy %,macro recall %,n
+SVM (shipped),old (with video),81.2,81.1,894
+SVM (shipped),new (no video),82.4,82.4,894
+ExtraTrees,old (with video),93.2,93.0,894
+ExtraTrees,new (no video),93.7,93.7,894
+ensemble SVM+MLP+ET+LDA,old (with video),89.1,88.9,894
+ensemble SVM+MLP+ET+LDA,new (no video),88.4,87.9,894
