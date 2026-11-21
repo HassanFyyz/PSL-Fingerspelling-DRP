@@ -527,11 +527,20 @@ el("start").onclick = async () => {
     // Recognition is optional: if the model is missing the page still runs as
     // a segmentation demo rather than failing to start.
     try {
-      classifier = await SvmClassifier.load("./model_geom");
+      // The model that also learned from Kamran's private image set lives in a
+      // git-ignored folder and exists only on machines that built it; anywhere
+      // else (and on any published copy) the public model is used.
+      let privateModel = true;
+      try {
+        classifier = await SvmClassifier.load("./model_geom_kamran");
+      } catch (e) {
+        privateModel = false;
+        classifier = await SvmClassifier.load("./model_geom");
+      }
       const calibrated = classifier.manifest.train_signers.some(s => s.startsWith("user-"));
       el("sModel").textContent =
         `${classifier.nClasses} letters, ${Object.keys(classifier.lexicon).length} words`
-        + (calibrated ? ", calibrated" : "");
+        + (calibrated ? ", calibrated" : "") + (privateModel ? ", + image set" : "");
     } catch (err) {
       el("sModel").textContent = "not loaded (segmentation only)";
       console.warn("classifier unavailable", err);
