@@ -184,8 +184,34 @@
     - **Official reference images.** Screenshots of the official sign from the PSL website now sit in `letter_sheets/<letter>/official/` (kept local, not in git). For ب, the first letter done, MediaPipe finds the hand, the dataset-only model reads it as ب (ranked 1 of 40), and about two thirds of the dataset's 85 ب examples resemble the official shape, varying from 16/19 for one signer to about half for two others. This is the first check of the model, and of the labels, against a label that can be trusted. Still to do for the other 39 letters.
     - **`letter_sheets/` is now one folder per letter:** `sheet.png` from the dataset, `user-hassan/` calibration crops, `official/` reference images.
 
+23. **Scope set to the 30 static letters; proper train / validation / test splits; new models tried** (`splits.py`, `letter_models.py`, `torch_models.py`, `train_val_test_models.ipynb`, `static_letters_30.ipynb`).
+    - **Limitation, decided 15 Nov.** Eleven letters are signed with movement: آ ؤ ئ ج ش م ن ٹ ڑ ھ ہ. The system classifies one held hand shape and cannot represent them, so they are out of scope. The remaining 30 letters all have calibration takes (13 Nov session, Hassan and Abdullah, 261 takes). What it costs: 24% of the dataset holds are dynamic letters, and 44 of the 54 dictionary words contain at least one.
+    - **Splits.** New person: whole signers, three train, one validates, one tests, rotated. Calibrated user: whole takes per letter, 60 / 20 / 20, dataset signers all in training. Written to `data_splits.csv`.
+    - **Earlier results re-checked.** The four result notebooks re-run from scratch give identical numbers, except the unseeded shuffled-label controls (5.6 to 7.2% across runs; quote "about 6%").
+    - **New person, 29 static letters** (accuracy / macro recall, majority baseline 13.0%):
+
+      | model | static letters | all 40 letters |
+      |---|---|---|
+      | SVM (shipped recipe) | 36.3% / 30.1% | 26.5% / 23.7% |
+      | ExtraTrees | 39.6% / 33.3% | 31.8% / 27.3% |
+      | best of 20 models tried | 41.3% / 35.6% | 33.5% / 27.2% |
+      | chosen on the validation signer | 40.4% (37.2–43.2) | 33.7% |
+
+      ExtraTrees beats the SVM by 3.3 points (p = 0.03). Nothing reliably beats ExtraTrees (best +1.7, p = 0.10); the PyTorch MLP and a graph network on the skeleton are worse. About 2 of ExtraTrees' 8 extra points come from not having the dynamic classes to guess; the rest is those holds leaving the test.
+    - **Calibrated user, 30 static letters** (one frame / whole take, mean of five splits of 58 test takes):
+
+      | model | 30-letter model | 41-letter model |
+      |---|---|---|
+      | SVM (shipped recipe) | 91.7% / 92.8% | 87.6% / 88.3% |
+      | ExtraTrees | 91.7% / 93.1% | 91.7% / 94.1% |
+      | PyTorch MLP, 289 features | 96.6% / 97.2% | 95.2% / 95.5% |
+      | chosen on validation | 92.8% / 95.9% | 94.1% / 95.5% |
+
+      Retraining the SVM on 30 letters alone is worth about 4 points and needs only a re-export of the weights. The neural network is ahead of ExtraTrees (16 takes better, 2 worse, p = 0.001). Test takes are from the same sitting as the training takes, so these are not new-day numbers.
+    - **Not done:** the shipped browser model still has 41 classes; the word decoder has not been re-run without the dynamic letters; no new-day test of the 30 letters.
+
 **Immediate next actions (in progress or queued):**
-- [~] **PERSONAL CALIBRATION — top priority for a working demo.** *Three letters work live for Hassan (#16, #22): ا and ب need no calibration, ک needed it. 37 letters to go; calibrate each only after checking its dataset sheet against the official sign.* Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
+- [~] **PERSONAL CALIBRATION — top priority for a working demo.** *All 30 static letters now have calibration takes (#23); the 11 dynamic letters are out of scope. Still needed: a recording on a different day to test on, and a check of the 13 Nov labels against the official signs.* Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.
 - [ ] Human spot-check of `spot_check/*.png` (needs someone who reads Urdu + knows PSL handshapes) to put a number on pseudo-label noise. Two sheets inspected informally look clean — distinct, settled handshapes matching the captions. *Start with م, ح, خ and پ: their sheets show more than one handshape, or their signers disagree most (#18).*
 - [x] Port the alignment decoder to `web/word_decode.js` — *done for vote share (#21).*
@@ -347,13 +373,13 @@ The end deliverable is a **live camera → segmented video → recognized letter
 - [~] Replace heuristic segmentation with a learned boundary detector — *Algorithm 2 (dynamic local-minima) built and validated, 3.5× better than Algorithm 1 and LOSO-stable. Still a heuristic, not learned — but it is now a strong baseline for a learned detector to beat*
 - [x] Build letter-level labels without the missing annotations — *constrained-DP pseudo-labelling, 14,530 hold frames across 40 classes*
 - [~] **Appearance-based letter model** — *HOG cleared the baseline first (13.2% vs 6.8%) but was overtaken by landmark geometry with a kernel SVM (#15: 25.9%). The image pipeline has been removed from the browser. CNN on GPU never run*
-- [~] **Per-user calibration: train on Hassan's own letters, test on Hassan** — *three letters work live across three sessions and two rooms, 61 of 62 holds (#16, #22). Only ک needed calibration: 0/5 without, 4/5 to 5/5 with. 37 letters not recorded. Does not transfer to a second person*
+- [~] **Per-user calibration: train on Hassan's own letters, test on Hassan** — *three letters work live across three sessions and two rooms, 61 of 62 holds (#16, #22). Only ک needed calibration: 0/5 without, 4/5 to 5/5 with. All 30 static letters now recorded, 92–97% on held-out takes of the same sitting (#23); no new-day test yet. Does not transfer to a second person*
 - [~] Replace heuristic post-processing (consecutive-count / mode) with CTC or temporal transformer decoding — *not a learned sequence model, but the lexicon decoder now aligns holds to letters and scores by likelihood ratio: unaided word top-1 24.7% → 75.1% (#19), 81.4% with an ensemble letter model (#20). The alignment half runs in the browser (#21)*
 - [~] Multi-seed runs + reported variance for all experiments — *done for the headline letter and word results: signer-level intervals, a shuffled-label null and five seeds (#18, #19, `EXPERIMENTS.md`). Earlier notebooks not redone*
-- [ ] Extend to dynamic/motion letters
+- [ ] Extend to dynamic/motion letters — *kept as a stated limitation (#23): 11 letters, آ ؤ ئ ج ش م ن ٹ ڑ ھ ہ*
 - [x] Try landmark-based classification to reduce background dependence — *this is now the shipped model: 74 joint-angle and distance features with an RBF SVM (#15), running in the browser (#16)*
 - [~] Address confusable letter pairs — *measured, not fixed: per-letter recall and confusions in `results/2026-11-05_svm_loso/` (#17). ح and ر are close in feature space; م looks like a labelling problem (#18)*
-- [~] Build demo app — *live in `web/`: browser segmentation, geometry + SVM letters, the letters shown as read, and a dictionary word suggested only when supported (#9, #16, #17, #21). Pending: probabilities in the browser and the remaining 37 letters*
+- [~] Build demo app — *live in `web/`: browser segmentation, geometry + SVM letters, the letters shown as read, and a dictionary word suggested only when supported (#9, #16, #17, #21). Pending: probabilities in the browser and a 30-letter model (#23)*
 - [ ] Write up: how much did we close the generalization gap vs. the original pipeline?
 
 *(`[~]` = in progress / partially done, `[ ]` = not started, `[x]` = done — update as you go)*
