@@ -226,6 +226,7 @@
 - [ ] Official reference image for each of the remaining 39 letters, then the label audit: which dataset examples disagree with the official sign (#22).
 - [ ] Re-align the pseudo-labels using the letter model and the known word, and re-measure on the same folds.
 - [ ] **Video holds: remove only the bad ones, not all (#24, problem 11).** Removing all 1,345 cost 3 to 5 points for a new person. Instead, (a) score each hold for blur / distortion and for MediaPipe confidence, and (b) flag holds whose label the other signers' model ranks low (`letter_models.CleanedLabels`); drop those, retrain, and compare on the same tests as `no_video_training.ipynb`. Also get a test that does not come from the videos (a new person recorded live, or more official images), since the current new-person test favours keeping them. To be decided with Abdullah.
+- [ ] **Remember: not everything is in git.** Local only: Kamran's image set (`PSL_Fingerspelling_Image_Dataset/`, private), the private browser model (`web/model_geom_kamran/`, rebuild with `python export_geometry_model.py --with-kamran --with-official`), the official PSL screenshots (`letter_sheets/*/official/`), and 18 of the 20 crops per take of the 13 Nov calibration session (rebuild with `python add_calibration_to_sheets.py`). A fresh clone has none of these; keep a backup of the first three, which cannot be rebuilt from the repo.
 - [ ] Ask Kamran for the YOLO box labels of his image set, and whether his train / validation split shares recordings (it looks like it does).
 - [ ] Measure the live stillness and movement gates (#17) on the dataset clips; they are untuned starting values.
 - [ ] Measure signer-invariance explicitly (the 97% signer accuracy is a ready-made metric); consider gradient-reversal / adversarial signer removal.
@@ -273,7 +274,7 @@ Run the notebooks in this order; each depends on the artifacts of the previous o
 | `score_session.py` | Scores a new calibration session three ways without merging it |
 | `EXPERIMENTS.md` | Dated log of every result with its config, seed and command |
 | `practice_cards/` | Handshape sequences to copy when testing the live app |
-| `letter_sheets/` | One folder per letter (`sheet.png` from the dataset, `user-hassan/` calibration crops, `official/` reference images kept local), plus `_alphabet.png` |
+| `letter_sheets/` | One folder per letter (`sheet.png` from the dataset, `user-hassan/` and `user-mixed-abdullah-hassan/` calibration crops, `official/` reference images kept local), plus `_alphabet.png`. **13 Nov crops: only frames 5 and 15 of each take are in git** (522 of 5,220; the full 125 MB set is local and rebuilt by `add_calibration_to_sheets.py` from `calibration/calibration_2026-11-13.json`). See `letter_sheets/README.md` |
 | `sofi_streaming.py` | **Causal** Algorithm 2 for live input. Parameters in *seconds*, not frames |
 | `streaming_segmentation.ipynb` | Streaming-vs-offline parity, framerate transfer, browser parity test |
 | `web/` | Stage-1 demo app: live segmentation in the browser (`web/README.md` to run it) |
