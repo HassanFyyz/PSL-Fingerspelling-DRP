@@ -1,0 +1,7 @@
+model,training,correct of 8
+SVM (shipped),old (with video),6
+SVM (shipped),new (no video),6
+ExtraTrees,old (with video),6
+ExtraTrees,new (no video),6
+ensemble SVM+MLP+ET+LDA,old (with video),8
+ensemble SVM+MLP+ET+LDA,new (no video),6

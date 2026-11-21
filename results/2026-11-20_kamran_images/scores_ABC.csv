@@ -1,0 +1,17 @@
+letters,test,n train,model,n test,accuracy %,95% CI,macro recall %
+all letters,A. ours only -> Kamran val,1636,SVM (shipped),894,29.977628635346758,27.1-33.1,30.815494411942318
+all letters,A. ours only -> Kamran val,1636,ExtraTrees,894,35.90604026845637,32.8-39.1,36.7458125054948
+all letters,A. ours only -> all Kamran images,1636,SVM (shipped),2902,29.255685733976566,27.6-30.9,30.62310547584765
+all letters,A. ours only -> all Kamran images,1636,ExtraTrees,2902,35.2170916609235,33.5-37.0,36.83228584400605
+all letters,B. Kamran train -> Kamran val,2008,SVM (shipped),894,84.3400447427293,81.8-86.6,84.10169832858698
+all letters,B. Kamran train -> Kamran val,2008,ExtraTrees,894,93.6241610738255,91.8-95.0,93.72680447937212
+all letters,C. ours + Kamran train -> Kamran val,3644,SVM (shipped),894,81.4317673378076,78.8-83.8,81.27629655938884
+all letters,C. ours + Kamran train -> Kamran val,3644,ExtraTrees,894,92.84116331096197,91.0-94.4,92.71334079655688
+30 static letters,A. ours only -> Kamran val,1319,SVM (shipped),726,34.29752066115702,30.9-37.8,35.260586463079655
+30 static letters,A. ours only -> Kamran val,1319,ExtraTrees,726,39.66942148760331,36.2-43.3,40.71215772754974
+30 static letters,A. ours only -> all Kamran images,1319,SVM (shipped),2360,33.686440677966104,31.8-35.6,34.83856173794065
+30 static letters,A. ours only -> all Kamran images,1319,ExtraTrees,2360,38.47457627118644,36.5-40.5,39.94532515902608
+30 static letters,B. Kamran train -> Kamran val,1634,SVM (shipped),726,85.12396694214875,82.4-87.5,85.15309849180656
+30 static letters,B. Kamran train -> Kamran val,1634,ExtraTrees,726,94.90358126721763,93.1-96.3,95.11114364520094
+30 static letters,C. ours + Kamran train -> Kamran val,2953,SVM (shipped),726,84.15977961432507,81.3-86.6,84.31598589333969
+30 static letters,C. ours + Kamran train -> Kamran val,2953,ExtraTrees,726,94.49035812672176,92.6-95.9,94.66402840623218

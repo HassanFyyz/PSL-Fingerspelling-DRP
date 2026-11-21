@@ -2,6 +2,10 @@
 PSL_Fingerspelling_Video_Dataset_Cropped/
 PSL_Fingerspelling_Video_Dataset_Cropped_Mirrored/
 PSL_Fingerspelling_Video_Dataset_Cropped*.zip
+# Kamran's letter-image dataset (train/val, one folder per letter), via Drive
+PSL_Fingerspelling_Image_Dataset/
+# browser model trained with it: SVM support vectors are rows of its features
+web/model_geom_kamran/
 hand_keypoints_features.csv
 *.mp4
 *.MP4
@@ -33,6 +37,13 @@ sofi_segmentation.py
 # locally for checking labels. They are someone else's material, so they are
 # not redistributed through this repo.
 letter_sheets/*/official/
+# 13 Nov calibration crops: 20 per take, 5,220 files, about 125 MB. Only frames
+# 5 and 15 of each take are committed (522 files); the rest stay local. All of
+# them can be regenerated from calibration/calibration_2026-11-13.json with
+# add_calibration_to_sheets.py.
+letter_sheets/*/user-mixed-abdullah-hassan/*
+!letter_sheets/*/user-mixed-abdullah-hassan/*_f05.png
+!letter_sheets/*/user-mixed-abdullah-hassan/*_f15.png
 # ─── Model weights / training runs (the CNN work will produce these) ────────
 *.task
 # extracted crop datasets and feature caches: regenerable from the videos via

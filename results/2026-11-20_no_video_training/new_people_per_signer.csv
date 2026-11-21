@@ -1,0 +1,61 @@
+letters,model,test signer,training,accuracy %,macro recall %
+all letters,SVM (shipped),signer1-F,old (with video),30.54662379421222,29.454637410519762
+all letters,SVM (shipped),signer1-F,new (no video),26.688102893890676,25.810277141159492
+all letters,SVM (shipped),signer2-F,old (with video),35.099337748344375,38.21574460970746
+all letters,SVM (shipped),signer2-F,new (no video),30.4635761589404,34.40153620029781
+all letters,SVM (shipped),signer3-F,old (with video),31.899641577060933,32.23366494647766
+all letters,SVM (shipped),signer3-F,new (no video),24.014336917562723,28.514626903910194
+all letters,SVM (shipped),signer4-L,old (with video),32.88135593220339,33.790628875768185
+all letters,SVM (shipped),signer4-L,new (no video),33.559322033898304,35.97787618298454
+all letters,SVM (shipped),signer5-R,old (with video),37.9746835443038,40.59060538227205
+all letters,SVM (shipped),signer5-R,new (no video),29.11392405063291,34.37501541668209
+all letters,ExtraTrees,signer1-F,old (with video),29.903536977491964,27.016619273972214
+all letters,ExtraTrees,signer1-F,new (no video),28.617363344051448,27.63982966924143
+all letters,ExtraTrees,signer2-F,old (with video),37.086092715231786,39.059007856608474
+all letters,ExtraTrees,signer2-F,new (no video),31.125827814569533,36.50123255657311
+all letters,ExtraTrees,signer3-F,old (with video),33.691756272401435,31.240439274245908
+all letters,ExtraTrees,signer3-F,new (no video),28.31541218637993,27.93890728508714
+all letters,ExtraTrees,signer4-L,old (with video),37.28813559322034,37.51611756836215
+all letters,ExtraTrees,signer4-L,new (no video),35.932203389830505,39.37163305390858
+all letters,ExtraTrees,signer5-R,old (with video),36.075949367088604,37.90542019708687
+all letters,ExtraTrees,signer5-R,new (no video),31.645569620253166,33.280538905538904
+all letters,ensemble SVM+MLP+ET+LDA,signer1-F,old (with video),31.189710610932476,25.99347819936055
+all letters,ensemble SVM+MLP+ET+LDA,signer1-F,new (no video),27.331189710610932,24.039961944373708
+all letters,ensemble SVM+MLP+ET+LDA,signer2-F,old (with video),38.741721854304636,35.778193641583734
+all letters,ensemble SVM+MLP+ET+LDA,signer2-F,new (no video),32.78145695364238,33.90744429289321
+all letters,ensemble SVM+MLP+ET+LDA,signer3-F,old (with video),33.691756272401435,32.837137782709114
+all letters,ensemble SVM+MLP+ET+LDA,signer3-F,new (no video),26.881720430107524,28.470229942846576
+all letters,ensemble SVM+MLP+ET+LDA,signer4-L,old (with video),35.25423728813559,34.8260215017181
+all letters,ensemble SVM+MLP+ET+LDA,signer4-L,new (no video),34.23728813559322,35.780253673055526
+all letters,ensemble SVM+MLP+ET+LDA,signer5-R,old (with video),37.9746835443038,42.522585439252104
+all letters,ensemble SVM+MLP+ET+LDA,signer5-R,new (no video),29.746835443037973,37.83775637942304
+30 static letters,SVM (shipped),signer1-F,old (with video),38.46153846153847,35.39214222784201
+30 static letters,SVM (shipped),signer1-F,new (no video),33.33333333333333,32.497929161215154
+30 static letters,SVM (shipped),signer2-F,old (with video),43.23144104803494,47.112360434128334
+30 static letters,SVM (shipped),signer2-F,new (no video),38.427947598253276,43.90509251136986
+30 static letters,SVM (shipped),signer3-F,old (with video),40.09216589861751,41.08722757169984
+30 static letters,SVM (shipped),signer3-F,new (no video),35.483870967741936,38.78403847997119
+30 static letters,SVM (shipped),signer4-L,old (with video),45.089285714285715,45.33659272221364
+30 static letters,SVM (shipped),signer4-L,new (no video),42.410714285714285,40.07599275573132
+30 static letters,SVM (shipped),signer5-R,old (with video),47.58064516129033,48.79684418145956
+30 static letters,SVM (shipped),signer5-R,new (no video),40.32258064516129,40.22435897435897
+30 static letters,ExtraTrees,signer1-F,old (with video),35.8974358974359,33.26055396035112
+30 static letters,ExtraTrees,signer1-F,new (no video),34.18803418803419,33.205175487122744
+30 static letters,ExtraTrees,signer2-F,old (with video),41.92139737991266,48.27620299703143
+30 static letters,ExtraTrees,signer2-F,new (no video),40.61135371179039,47.235943954743995
+30 static letters,ExtraTrees,signer3-F,old (with video),41.474654377880185,39.67967120789392
+30 static letters,ExtraTrees,signer3-F,new (no video),36.86635944700461,35.030735533743155
+30 static letters,ExtraTrees,signer4-L,old (with video),44.19642857142857,42.434587924784
+30 static letters,ExtraTrees,signer4-L,new (no video),42.857142857142854,39.94978726187877
+30 static letters,ExtraTrees,signer5-R,old (with video),47.58064516129033,49.4732084155161
+30 static letters,ExtraTrees,signer5-R,new (no video),43.54838709677419,42.85585141354372
+30 static letters,ensemble SVM+MLP+ET+LDA,signer1-F,old (with video),36.75213675213676,30.816334893414005
+30 static letters,ensemble SVM+MLP+ET+LDA,signer1-F,new (no video),32.47863247863248,31.145664117266552
+30 static letters,ensemble SVM+MLP+ET+LDA,signer2-F,old (with video),44.97816593886463,46.69376547085525
+30 static letters,ensemble SVM+MLP+ET+LDA,signer2-F,new (no video),42.79475982532751,45.72464218935875
+30 static letters,ensemble SVM+MLP+ET+LDA,signer3-F,old (with video),41.935483870967744,41.888390208772115
+30 static letters,ensemble SVM+MLP+ET+LDA,signer3-F,new (no video),35.483870967741936,35.59911753048425
+30 static letters,ensemble SVM+MLP+ET+LDA,signer4-L,old (with video),45.982142857142854,41.91270240289848
+30 static letters,ensemble SVM+MLP+ET+LDA,signer4-L,new (no video),44.642857142857146,42.49250839937114
+30 static letters,ensemble SVM+MLP+ET+LDA,signer5-R,old (with video),48.38709677419355,50.96236028928336
+30 static letters,ensemble SVM+MLP+ET+LDA,signer5-R,new (no video),44.354838709677416,51.748027613412226

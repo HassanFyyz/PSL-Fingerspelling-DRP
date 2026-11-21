@@ -1,0 +1,5 @@
+,count,10%,50%,mean
+"our hold -> nearest hold, same signer",1303.0,1.55,4.14,5.06
+"our hold -> nearest hold, other signer",1345.0,2.65,4.49,4.96
+Kamran val -> nearest Kamran train,894.0,0.28,0.65,1.08
+our hold -> nearest Kamran image,1303.0,2.46,5.88,6.09
