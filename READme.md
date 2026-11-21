@@ -2,12 +2,13 @@
 
 ## 📌 Current Status / Progress Log
 
-*(Last updated: 12 Nov 2026. Update this section as work progresses — treat it as a running log, not a one-time summary.)*
+*(Last updated: 20 Nov 2026. Update this section as work progresses — treat it as a running log, not a one-time summary.)*
 
 **What we have in hand:**
 - Full PSL-CFRT video corpus: 353 clips across 5 signers (70–73 each), as **hand-cropped** clips (`PSL_Fingerspelling_Video_Dataset_Cropped/`) and a mirrored/augmented copy (`..._Mirrored/`), 240×350, 50fps.
 - `hand_keypoints_features.csv` — per-frame MediaPipe hand keypoints (21 landmarks × x/y), bounding boxes, detection confidence, and ~25 engineered geometric distance features, for every frame of every clip.
-- **Not yet received:** the letter-level annotated frame set (~2,913 YOLO-format images with per-letter bounding boxes + class IDs) that the published pipeline was actually trained on, and the noun→letter-sequence mapping behind the PSL-CFRT paper's Fig. 3 frequency table. Still the blocker for *reproducing the group's published baseline* (checklist item 1) — currently following up with Kamran. Note this is **no longer the blocker for making progress**: we now build our own letter-level labels (Progress Log #7), and the current bottleneck is the feature representation, not the labels (#8).
+- **Received 20 Nov:** Kamran's letter-image set, 2,014 train + 899 validation images (2,913), one folder per letter, 38 letters. Images only: **no bounding-box labels**, so the YOLO baseline still cannot be reproduced from it. Private: `PSL_Fingerspelling_Image_Dataset/` is git-ignored (#24).
+- **Not yet received:** the YOLO box annotations for that set, and the noun→letter-sequence mapping behind the PSL-CFRT paper's Fig. 3 frequency table. Still the blocker for *reproducing the group's published baseline* (checklist item 1) — currently following up with Kamran. Note this is **no longer the blocker for making progress**: we now build our own letter-level labels (Progress Log #7), and the current bottleneck is the feature representation, not the labels (#8).
 
 **What we've done with it so far:**
 1. **Data quality audit.** MediaPipe hand detection is near-100% for 4 of 5 signers, but **signer5 (recorded from the "converse" 45° angle) has only ~50% detection overall, with 16 of 73 clips at 0% detection across every frame**. Visually confirmed this isn't corrupted footage — the hand is clearly visible in those frames, but held directly in front of the (blurred) face, which appears to be a genuine MediaPipe hand-vs-face occlusion failure specific to this signer's signing style. This is a concrete, quantified instance of the viewpoint-sensitivity problem flagged in weakness #2 — worth citing directly when we get to the cross-angle evaluation.
@@ -220,7 +221,7 @@
 - [ ] Re-align the pseudo-labels using the letter model and the known word, and re-measure on the same folds.
 - [ ] Measure the live stillness and movement gates (#17) on the dataset clips; they are untuned starting values.
 - [ ] Measure signer-invariance explicitly (the 97% signer accuracy is a ready-made metric); consider gradient-reversal / adversarial signer removal.
-- [ ] Still chasing Kamran for the letter-level annotated frames **and** the noun→letter-sequence mapping for the 22 acronym words (~30% of vocabulary, and they disproportionately contain letters that are rare elsewhere).
+- [x] Kamran's letter-level image set received (2,913 images, 38 letters; private, git-ignored, `kamran_image_dataset.ipynb`). Still chasing him for the noun→letter-sequence mapping for the 22 acronym words (~30% of vocabulary, and they disproportionately contain letters that are rare elsewhere).
 
 ---
 
@@ -368,7 +369,7 @@ The end deliverable is a **live camera → segmented video → recognized letter
 
 ## ✅ Summary Checklist (in order)
 
-- [~] Get PSL-CFRT videos + annotations, reproduce current baseline — *videos + keypoint CSV in hand; letter-level annotations still pending from Kamran*
+- [~] Get PSL-CFRT videos + annotations, reproduce current baseline — *videos + keypoint CSV in hand; Kamran's 2,913-image letter set received 20 Nov 2026 (images sorted by letter, no YOLO box labels)*
 - [x] Build leave-one-signer-out / **leave-one-angle-out** evaluation protocol — *now applied for real: LOSO on segmentation (Algorithm 2) and on letter classification, with label-shuffle controls, occurrence-level grouping, and a demonstration that frame-level splits inflate results 10.9×*
 - [~] Replace heuristic segmentation with a learned boundary detector — *Algorithm 2 (dynamic local-minima) built and validated, 3.5× better than Algorithm 1 and LOSO-stable. Still a heuristic, not learned — but it is now a strong baseline for a learned detector to beat*
 - [x] Build letter-level labels without the missing annotations — *constrained-DP pseudo-labelling, 14,530 hold frames across 40 classes*
