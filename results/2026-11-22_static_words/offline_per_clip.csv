@@ -1,0 +1,437 @@
+signer,video,word,n_true,n_holds,top1,top3,ins,dele,dynamic_word,model
+signer1-F,آئی یونٹ.MP4,آئی یونٹ,7,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,آرٹیکل.MP4,آرٹیکل,6,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,آڑو.MP4,آڑو,3,2,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,الائیڈ بنک.MP4,الائیڈ بنک,9,11,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,الحبیب بنک.MP4,الحبیب بنک,9,9,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,الفلاح بنک.MP4,الفلاح بنک,9,12,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,اکرم.MP4,اکرم,4,6,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,تخلیق.MP4,تخلیق,5,6,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,ثمر.MP4,ثمر,3,3,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,جناح.MP4,جناح,4,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,جوہر ٹاون.MP4,جوہر ٹاؤن,8,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,جیل روڈ.MP4,جیل روڈ,6,7,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,جے ایس بنک.MP4,جے ایس بنک,8,10,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,حبیب بنک.MP4,حبیب بنک,7,7,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,دھرم پورہ.MP4,دھرم پورہ,8,9,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,ذرات.MP4,ذرات,4,5,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,رائیونڈ.MP4,رائیونڈ,7,10,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,راحت.MP4,راحت,4,5,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,سروسز.MP4,سروسز,5,5,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,سونیری بنک.MP4,سونیری بنک,9,9,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,سٹیشن.MP4,سٹیشن,5,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,سٹینڈرڈ چارٹرڈ بنك.MP4,سٹینڈرڈ چارٹرڈ بنک,16,7,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer1-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,ضلع.MP4,ضلع,3,3,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,طاقت.MP4,طاقت,4,6,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,ظروف.MP4,ظروف,4,5,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,ظلم.MP4,ظلم,3,4,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,عمران.MP4,عمران,5,5,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer1-F,عکسری بنک.MP4,عسکری بنک,8,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,غائب.MP4,غائب,4,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,غیر حاضر.MP4,غیر حاضر,7,9,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,فیصل بنک.MP4,فیصل بنک,7,11,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,مال روڈ.MP4,مال روڈ,6,8,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,مالمو.MP4,مالمو,5,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,10,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,میزان بنک.MP4,میزان بنک,8,11,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,میو.MP4,میو,3,2,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,ولید.MP4,ولید,4,7,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,13,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,چلڈرن.MP4,چلڈرن,5,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,ڈوسے.MP4,ڈوسے,4,4,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer1-F,ژالہ باری.MP4,ژالہ باری,8,11,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,کومل.MP4,کومل,4,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,13,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,گنگا رام.MP4,گنگا رام,7,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,گورمے.MP4,گورمے,5,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,گھرکی.MP4,گھرکی,5,4,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer1-F,یونائیٹڈ بنک.MP4,یونائیٹڈ بنک,11,13,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer2-F,آئی یونٹ.MP4,آئی یونٹ,7,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,آرٹیکل.MP4,آرٹیکل,6,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,آڑو.MP4,آڑو,3,3,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,الائیڈ بنک.MP4,الائیڈ بنک,9,8,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,الحبیب بنک.MP4,الحبیب بنک,9,10,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,الفلا ح بنک.MP4,الفلاح بنک,9,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,اکرم.MP4,اکرم,4,4,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,تخلیق.MP4,تخلیق,5,5,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,ثمر.MP4,ثمر,3,3,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,جناح.MP4,جناح,4,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,جوہر ٹاون.MP4,جوہر ٹاؤن,8,10,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,جیل روڈ.MP4,جیل روڈ,6,6,0.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,جے ایس بنک.MP4,جے ایس بنک,8,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,حبیب بنک.MP4,حبیب بنک,7,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,دھرم پورہ.MP4,دھرم پورہ,8,10,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,ذرات.MP4,ذرات,4,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,رائیونڈ.MP4,رائیونڈ,7,8,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,راحت.MP4,راحت,4,5,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,سروسز.MP4,سروسز,5,4,0.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,سونیری بنک.MP4,سونیری بنک,9,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,سٹیشن.MP4,سٹیشن,5,4,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,سٹینڈرڈچارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,17,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,شاہدرہ.MP4,شاہدرہ,6,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,ضلع.MP4,ضلع,3,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,طاقت.MP4,طاقت,4,5,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,ظروف.MP4,ظروف,4,3,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,ظلم.MP4,ظلم,3,3,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,عسکری بنک.MP4,عسکری بنک,8,5,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,عمران.MP4,عمران,5,6,0.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,غائب.MP4,غائب,4,5,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,غیر حاضر.MP4,غیر حاضر,7,6,0.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,فیصل بنک.MP4,فیصل بنک,7,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,مال روڈ.MP4,مال روڈ,6,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,مالمو.MP4,مالمو,5,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,11,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,میزان بنک.MP4,میزان بنک,8,7,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,میو.MP4,میو,3,3,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,ولید.MP4,ولید,4,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,12,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,چلڈرن.MP4,چلڈرن,5,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,ڈوسے.MP4,ڈوسے,4,6,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer2-F,ژالہ باری.MP4,ژالہ باری,8,9,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,کومل.MP4,کومل,4,4,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,10,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,گنگارام.MP4,گنگا رام,7,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,گورمے.MP4,گورمے,5,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,گھرکی.MP4,گھرکی,5,5,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer2-F,یونائیڈ بنک.MP4,یونائیڈ بنک,10,11,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer3-F,آئی یونٹ.MP4,آئی یونٹ,7,8,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,آرٹیکل.MP4,آرٹیکل,6,7,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,الائیڈ بنک.MP4,الائیڈ بنک,9,5,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,الحبیب بنک.MP4,الحبیب بنک,9,7,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,الفلاح بنک.MP4,الفلاح بنک,9,6,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,اکرم.MP4,اکرم,4,4,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,تخلیق.MP4,تخلیق,5,7,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,ثمر.MP4,ثمر,3,2,0.0,0.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,جناح.MP4,جناح,4,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,جیل روڈ.MP4,جیل روڈ,6,3,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,جے ایس بنک.MP4,جے ایس بنک,8,7,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,حبیب بنک.MP4,حبیب بنک,7,5,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,دھرم پورہ.MP4,دھرم پورہ,8,9,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,ذرات.MP4,ذرات,4,5,0.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,رائیونڈ.MP4,رائیونڈ,7,8,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,راحت.MP4,راحت,4,6,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,سروسز.MP4,سروسز,5,4,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,سونیری بنک.MP4,سونیری بنک,9,7,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,سٹیشن.MP4,سٹیشن,5,5,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,سٹینڈرڈ چارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,12,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,ضلع.MP4,ضلع,3,4,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,طاقت.MP4,طاقت,4,5,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,ظروف.MP4,ظروف,4,7,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,ظلم.MP4,ظلم,3,3,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,عمران.MP4,عمران,5,7,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,غائب.MP4,غائب,4,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,غیر حاضر.MP4,غیر حاضر,7,8,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,فیصل بنک.MP4,فیصل بنک,7,5,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,مال روڈ.MP4,مال روڈ,6,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,مالمو.MP4,مالمو,5,5,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,9,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,میزان بنک.MP4,میزان بنک,8,5,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,میو.MP4,میو,3,4,0.0,0.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,ولید.MP4,ولید,4,6,0.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,11,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,چلڈرن.MP4,چلڈرن,5,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,ڈوسے.MP4,ڈوسے,4,4,1.0,1.0,-0.5,-0.5,False,40 letters (before)
+signer3-F,ژالہ باری.MP4,ژالہ باری,8,10,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,کومل.MP4,کومل,4,5,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,12,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,گنگارام.MP4,گنگا رام,7,8,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,گورمے.MP4,گورمے,5,4,1.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,گھركی.MP4,گھرکی,5,5,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer3-F,یونائیڈ بنک.MP4,یونائیڈ بنک,10,9,0.0,1.0,-0.5,-0.5,True,40 letters (before)
+signer4-L,آئی یونٹ.MP4,آئی یونٹ,7,1,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,آرٹیکل.MP4,آرٹیکل,6,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,آڑو.MP4,آڑو,3,3,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,الائیٹك بنک.MP4,الائیٹک بنک,10,5,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,الحبیب بنک.MP4,الحبیب بنک,9,3,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,الفلاح بنک.MP4,الفلاح بنک,9,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,اکرم.MP4,اکرم,4,5,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,تخلیق.MP4,تخلیق,5,5,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,ثمر.MP4,ثمر,3,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,جناح.MP4,جناح,4,4,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,جوہر ٹاؤن.MP4,جوہر ٹاؤن,8,6,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,جیل روڈ.MP4,جیل روڈ,6,6,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,جے ایس بنک.MP4,جے ایس بنک,8,8,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,حبیب بنک.MP4,حبیب بنک,7,7,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,دھرم پورہ.MP4,دھرم پورہ,8,7,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,ذرات.MP4,ذرات,4,4,0.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,رائیونڈ.MP4,رائیونڈ,7,8,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,راحت.MP4,راحت,4,3,0.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,سروسز.MP4,سروسز,5,5,0.0,0.0,0.0,-0.5,False,40 letters (before)
+signer4-L,سونیری بنک.MP4,سونیری بنک,9,12,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,سٹیشن.MP4,سٹیشن,5,4,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,سٹینڈرڈچارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,14,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,سٹیٹ بنک.MP4,سٹیٹ بنک,7,7,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,ضلع.MP4,ضلع,3,2,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,طاقت.MP4,طاقت,4,1,0.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,ظروف.MP4,ظروف,4,4,0.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,ظلم.MP4,ظلم,3,3,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,عمران.MP4,عمران,5,5,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,عکسری بنک.MP4,عسکری بنک,8,9,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,غائب.MP4,غائب,4,4,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,غیر حاضر.MP4,غیر حاضر,7,7,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,فیصل بنک.MP4,فیصل بنک,7,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,مال روڈ.MP4,مال روڈ,6,8,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,مالمو.MP4,مالمو,5,4,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,ماڈل ٹاؤن.MP4,ماڈل ٹاؤن,8,8,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,میزان بنک.MP4,میزان بنک,8,8,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,میو.MP4,میو,3,3,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,ولید.MP4,ولید,4,4,0.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,8,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,چلڈرن.MP4,چلڈرن,5,2,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,ڈوسے.MP4,ڈوسے,4,2,1.0,1.0,0.0,-0.5,False,40 letters (before)
+signer4-L,ژالہ باری.MP4,ژالہ باری,8,2,0.0,0.0,0.0,-0.5,True,40 letters (before)
+signer4-L,کومل.MP4,کومل,4,2,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,13,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,گنگارام.MP4,گنگا رام,7,6,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,گورمے.MP4,گورمے,5,6,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,گھرکی.MP4,گھرکی,5,3,1.0,1.0,0.0,-0.5,True,40 letters (before)
+signer4-L,یونائیڈ بنک.MP4,یونائیڈ بنک,10,14,0.0,1.0,0.0,-0.5,True,40 letters (before)
+signer5-R,آرٹیکل.MP4,آرٹیکل,6,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,آڑو.MP4,آڑو,3,3,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,الفلاح بنک.MP4,الفلاح بنک,9,9,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,تخلیق.MP4,تخلیق,5,6,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,ثمر.MP4,ثمر,3,2,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,جے ایس بنک.MP4,جے ایس بنک,8,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,دھرم پورہ.MP4,دھرم پورہ,8,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,ذرات.MP4,ذرات,4,5,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,سمر.MP4,سمر,3,2,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,سونیری بنک.MP4,سونیری بنک,9,6,0.0,0.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,سٹیٹ بنک.MP4,سٹیٹ بنک,7,8,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,ضلع.MP4,ضلع,3,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,طاقت.MP4,طاقت,4,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,ظروف.MP4,ظروف,4,4,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,ظلم.MP4,ظلم,3,3,0.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,عسکری بنک.MP4,عسکری بنک,8,7,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,عكسری بنک.MP4,عسکری بنک,8,8,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,غائب.MP4,غائب,4,4,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,غیر حاضر.MP4,غیر حاضر,7,9,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,مالمو.MP4,مالمو,5,6,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,ڈوسے.MP4,ڈوسے,4,3,1.0,1.0,-0.5,-1.0,False,40 letters (before)
+signer5-R,ژالہ باری.MP4,ژالہ باری,8,8,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,12,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,گورمے.MP4,گورمے,5,4,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer5-R,یونائینٹد بنک.MP4,یونائینٹد بنک,12,11,1.0,1.0,-0.5,-1.0,True,40 letters (before)
+signer1-F,آئی یونٹ.MP4,آئی یونٹ,7,8,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,آرٹیکل.MP4,آرٹیکل,6,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,آڑو.MP4,آڑو,3,2,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,الائیڈ بنک.MP4,الائیڈ بنک,9,11,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,الحبیب بنک.MP4,الحبیب بنک,9,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,الفلاح بنک.MP4,الفلاح بنک,9,12,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,اکرم.MP4,اکرم,4,6,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,تخلیق.MP4,تخلیق,5,6,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,ثمر.MP4,ثمر,3,3,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,جناح.MP4,جناح,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,جوہر ٹاون.MP4,جوہر ٹاؤن,8,6,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,جیل روڈ.MP4,جیل روڈ,6,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,جے ایس بنک.MP4,جے ایس بنک,8,10,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,حبیب بنک.MP4,حبیب بنک,7,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,دھرم پورہ.MP4,دھرم پورہ,8,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,ذرات.MP4,ذرات,4,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,رائیونڈ.MP4,رائیونڈ,7,10,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,راحت.MP4,راحت,4,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,سروسز.MP4,سروسز,5,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,سونیری بنک.MP4,سونیری بنک,9,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,سٹیشن.MP4,سٹیشن,5,6,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,سٹینڈرڈ چارٹرڈ بنك.MP4,سٹینڈرڈ چارٹرڈ بنک,16,7,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,ضلع.MP4,ضلع,3,3,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,طاقت.MP4,طاقت,4,6,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,ظروف.MP4,ظروف,4,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,ظلم.MP4,ظلم,3,4,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,عمران.MP4,عمران,5,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,عکسری بنک.MP4,عسکری بنک,8,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,غائب.MP4,غائب,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,غیر حاضر.MP4,غیر حاضر,7,9,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,فیصل بنک.MP4,فیصل بنک,7,11,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,مال روڈ.MP4,مال روڈ,6,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,مالمو.MP4,مالمو,5,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,10,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,میزان بنک.MP4,میزان بنک,8,11,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,میو.MP4,میو,3,2,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,ولید.MP4,ولید,4,7,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,13,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,چلڈرن.MP4,چلڈرن,5,6,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,ڈوسے.MP4,ڈوسے,4,4,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer1-F,ژالہ باری.MP4,ژالہ باری,8,11,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,کومل.MP4,کومل,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,13,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,گنگا رام.MP4,گنگا رام,7,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,گورمے.MP4,گورمے,5,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,گھرکی.MP4,گھرکی,5,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer1-F,یونائیٹڈ بنک.MP4,یونائیٹڈ بنک,11,13,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer2-F,آئی یونٹ.MP4,آئی یونٹ,7,6,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,آرٹیکل.MP4,آرٹیکل,6,5,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,آڑو.MP4,آڑو,3,3,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,الائیڈ بنک.MP4,الائیڈ بنک,9,8,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,الحبیب بنک.MP4,الحبیب بنک,9,10,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,الفلا ح بنک.MP4,الفلاح بنک,9,6,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,اکرم.MP4,اکرم,4,4,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,تخلیق.MP4,تخلیق,5,5,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,ثمر.MP4,ثمر,3,3,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,جناح.MP4,جناح,4,5,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,جوہر ٹاون.MP4,جوہر ٹاؤن,8,10,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,جیل روڈ.MP4,جیل روڈ,6,6,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,جے ایس بنک.MP4,جے ایس بنک,8,5,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,حبیب بنک.MP4,حبیب بنک,7,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,دھرم پورہ.MP4,دھرم پورہ,8,10,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,ذرات.MP4,ذرات,4,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,رائیونڈ.MP4,رائیونڈ,7,8,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,راحت.MP4,راحت,4,5,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,سروسز.MP4,سروسز,5,4,0.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,سونیری بنک.MP4,سونیری بنک,9,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,سٹیشن.MP4,سٹیشن,5,4,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,سٹینڈرڈچارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,17,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,6,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,شاہدرہ.MP4,شاہدرہ,6,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,ضلع.MP4,ضلع,3,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,طاقت.MP4,طاقت,4,5,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,ظروف.MP4,ظروف,4,3,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,ظلم.MP4,ظلم,3,3,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,عسکری بنک.MP4,عسکری بنک,8,5,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,عمران.MP4,عمران,5,6,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,غائب.MP4,غائب,4,5,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,غیر حاضر.MP4,غیر حاضر,7,6,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,فیصل بنک.MP4,فیصل بنک,7,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,مال روڈ.MP4,مال روڈ,6,6,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,مالمو.MP4,مالمو,5,6,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,11,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,میزان بنک.MP4,میزان بنک,8,7,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,میو.MP4,میو,3,3,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,ولید.MP4,ولید,4,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,12,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,چلڈرن.MP4,چلڈرن,5,5,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,ڈوسے.MP4,ڈوسے,4,6,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer2-F,ژالہ باری.MP4,ژالہ باری,8,9,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,کومل.MP4,کومل,4,4,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,10,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,گنگارام.MP4,گنگا رام,7,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,گورمے.MP4,گورمے,5,5,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,گھرکی.MP4,گھرکی,5,5,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer2-F,یونائیڈ بنک.MP4,یونائیڈ بنک,10,11,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer3-F,آئی یونٹ.MP4,آئی یونٹ,7,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,آرٹیکل.MP4,آرٹیکل,6,7,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,الائیڈ بنک.MP4,الائیڈ بنک,9,5,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,الحبیب بنک.MP4,الحبیب بنک,9,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,الفلاح بنک.MP4,الفلاح بنک,9,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,اکرم.MP4,اکرم,4,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,تخلیق.MP4,تخلیق,5,7,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,ثمر.MP4,ثمر,3,2,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,جناح.MP4,جناح,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,جیل روڈ.MP4,جیل روڈ,6,3,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,جے ایس بنک.MP4,جے ایس بنک,8,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,حبیب بنک.MP4,حبیب بنک,7,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,دھرم پورہ.MP4,دھرم پورہ,8,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,ذرات.MP4,ذرات,4,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,رائیونڈ.MP4,رائیونڈ,7,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,راحت.MP4,راحت,4,6,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,سروسز.MP4,سروسز,5,4,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,سونیری بنک.MP4,سونیری بنک,9,7,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,سٹیشن.MP4,سٹیشن,5,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,سٹینڈرڈ چارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,12,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,سٹیٹ بنک.MP4,سٹیٹ بنک,7,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,ضلع.MP4,ضلع,3,4,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,طاقت.MP4,طاقت,4,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,ظروف.MP4,ظروف,4,7,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,ظلم.MP4,ظلم,3,3,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,عمران.MP4,عمران,5,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,غائب.MP4,غائب,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,غیر حاضر.MP4,غیر حاضر,7,8,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,فیصل بنک.MP4,فیصل بنک,7,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,مال روڈ.MP4,مال روڈ,6,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,مالمو.MP4,مالمو,5,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,ماڈل ٹاون.MP4,ماڈل ٹاؤن,8,9,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,میزان بنک.MP4,میزان بنک,8,5,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,میو.MP4,میو,3,4,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,ولید.MP4,ولید,4,6,0.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,11,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,چلڈرن.MP4,چلڈرن,5,4,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,ڈوسے.MP4,ڈوسے,4,4,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer3-F,ژالہ باری.MP4,ژالہ باری,8,10,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,کومل.MP4,کومل,4,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,12,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,گنگارام.MP4,گنگا رام,7,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,گورمے.MP4,گورمے,5,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,گھركی.MP4,گھرکی,5,5,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer3-F,یونائیڈ بنک.MP4,یونائیڈ بنک,10,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,آئی یونٹ.MP4,آئی یونٹ,7,1,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,آرٹیکل.MP4,آرٹیکل,6,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,آڑو.MP4,آڑو,3,3,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,الائیٹك بنک.MP4,الائیٹک بنک,10,5,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,الحبیب بنک.MP4,الحبیب بنک,9,3,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,الفلاح بنک.MP4,الفلاح بنک,9,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,اکرم.MP4,اکرم,4,5,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,تخلیق.MP4,تخلیق,5,5,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,ثمر.MP4,ثمر,3,4,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,جناح.MP4,جناح,4,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,جوہر ٹاؤن.MP4,جوہر ٹاؤن,8,6,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,جیل روڈ.MP4,جیل روڈ,6,6,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,جے ایس بنک.MP4,جے ایس بنک,8,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,حبیب بنک.MP4,حبیب بنک,7,7,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,دھرم پورہ.MP4,دھرم پورہ,8,7,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,ذرات.MP4,ذرات,4,4,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,رائیونڈ.MP4,رائیونڈ,7,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,راحت.MP4,راحت,4,3,0.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,سروسز.MP4,سروسز,5,5,0.0,0.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,سونیری بنک.MP4,سونیری بنک,9,12,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,سٹیشن.MP4,سٹیشن,5,4,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,سٹینڈرڈچارٹرڈ.MP4,سٹینڈرڈ چارٹرڈ,13,14,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,سٹیٹ بنک.MP4,سٹیٹ بنک,7,7,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,ضلع.MP4,ضلع,3,2,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,طاقت.MP4,طاقت,4,1,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,ظروف.MP4,ظروف,4,4,0.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,ظلم.MP4,ظلم,3,3,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,عمران.MP4,عمران,5,5,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,عکسری بنک.MP4,عسکری بنک,8,9,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,غائب.MP4,غائب,4,4,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,غیر حاضر.MP4,غیر حاضر,7,7,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,فیصل بنک.MP4,فیصل بنک,7,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,مال روڈ.MP4,مال روڈ,6,8,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,مالمو.MP4,مالمو,5,4,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,ماڈل ٹاؤن.MP4,ماڈل ٹاؤن,8,8,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,میزان بنک.MP4,میزان بنک,8,8,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,میو.MP4,میو,3,3,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,ولید.MP4,ولید,4,4,0.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,ٹھوکر نیاز بیگ.MP4,ٹھوکر نیاز بیگ,12,8,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,چلڈرن.MP4,چلڈرن,5,2,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,ڈوسے.MP4,ڈوسے,4,2,1.0,1.0,-0.5,-1.0,False,30 static letters + slots
+signer4-L,ژالہ باری.MP4,ژالہ باری,8,2,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,کومل.MP4,کومل,4,2,0.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,13,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,گنگارام.MP4,گنگا رام,7,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,گورمے.MP4,گورمے,5,6,1.0,1.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,گھرکی.MP4,گھرکی,5,3,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer4-L,یونائیڈ بنک.MP4,یونائیڈ بنک,10,14,0.0,0.0,-0.5,-1.0,True,30 static letters + slots
+signer5-R,آرٹیکل.MP4,آرٹیکل,6,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,آڑو.MP4,آڑو,3,3,0.0,0.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,الفلاح بنک.MP4,الفلاح بنک,9,9,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,تخلیق.MP4,تخلیق,5,6,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,ثمر.MP4,ثمر,3,2,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,جے ایس بنک.MP4,جے ایس بنک,8,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,دھرم پورہ.MP4,دھرم پورہ,8,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,ذرات.MP4,ذرات,4,5,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,سمر.MP4,سمر,3,2,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,سونیری بنک.MP4,سونیری بنک,9,6,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,سٹیٹ بنک.MP4,سٹیٹ بنک,7,8,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,شاہدرہ.MP4,شاہدرہ,6,6,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,ضلع.MP4,ضلع,3,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,طاقت.MP4,طاقت,4,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,ظروف.MP4,ظروف,4,4,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,ظلم.MP4,ظلم,3,3,0.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,عسکری بنک.MP4,عسکری بنک,8,7,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,عكسری بنک.MP4,عسکری بنک,8,8,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,غائب.MP4,غائب,4,4,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,غیر حاضر.MP4,غیر حاضر,7,9,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,مالمو.MP4,مالمو,5,6,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,ڈوسے.MP4,ڈوسے,4,3,1.0,1.0,-1.0,-1.0,False,30 static letters + slots
+signer5-R,ژالہ باری.MP4,ژالہ باری,8,8,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,کیکس اینڈ بیکس.MP4,کیکس اینڈ بیکس,12,12,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,گورمے.MP4,گورمے,5,4,1.0,1.0,-1.0,-1.0,True,30 static letters + slots
+signer5-R,یونائینٹد بنک.MP4,یونائینٹد بنک,12,11,0.0,1.0,-1.0,-1.0,True,30 static letters + slots

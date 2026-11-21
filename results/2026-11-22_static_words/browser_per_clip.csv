@@ -1,0 +1,437 @@
+model,signer,word,n_holds,best,top1,top3,agree,n_scored,shown,shown_agree2,shown_agree3,dynamic_word
+all,signer1-F,آئی یونٹ,8,جے ایس بنک,0,1,4,8,False,False,False,True
+all,signer1-F,آرٹیکل,8,رائیونڈ,0,1,2,7,False,False,False,True
+all,signer1-F,آڑو,2,میو,0,0,0,3,False,False,False,True
+all,signer1-F,الائیڈ بنک,11,الائیڈ بنک,1,1,7,9,True,True,True,True
+all,signer1-F,الحبیب بنک,9,الحبیب بنک,1,1,7,9,True,True,True,True
+all,signer1-F,الفلاح بنک,12,الفلاح بنک,1,1,8,9,True,True,True,True
+all,signer1-F,اکرم,6,مال روڈ,0,0,2,6,False,False,False,True
+all,signer1-F,تخلیق,6,تخلیق,1,1,3,5,True,True,True,False
+all,signer1-F,ثمر,3,ثمر,1,1,2,3,True,True,False,True
+all,signer1-F,جناح,4,جناح,1,1,3,4,True,True,True,True
+all,signer1-F,جوہر ٹاؤن,6,جوہر ٹاؤن,1,1,6,8,True,True,True,True
+all,signer1-F,جیل روڈ,7,جیل روڈ,1,1,4,6,True,True,True,True
+all,signer1-F,جے ایس بنک,10,الائیٹک بنک,0,0,5,10,False,False,False,True
+all,signer1-F,حبیب بنک,7,حبیب بنک,1,1,6,7,True,True,True,True
+all,signer1-F,دھرم پورہ,9,دھرم پورہ,1,1,6,8,True,True,True,True
+all,signer1-F,ذرات,5,ذرات,1,1,2,4,False,False,False,False
+all,signer1-F,رائیونڈ,10,الائیڈ بنک,0,0,3,9,False,False,False,True
+all,signer1-F,راحت,5,راحت,1,1,4,4,True,True,True,False
+all,signer1-F,سروسز,5,سروسز,1,1,4,5,True,True,True,False
+all,signer1-F,سونیری بنک,9,سونیری بنک,1,1,7,9,True,True,True,True
+all,signer1-F,سٹیشن,6,سٹیٹ بنک,0,1,4,7,False,False,False,True
+all,signer1-F,سٹینڈرڈ چارٹرڈ بنک,7,میزان بنک,0,0,2,8,False,False,False,True
+all,signer1-F,سٹیٹ بنک,6,سٹیٹ بنک,1,1,6,7,True,True,True,True
+all,signer1-F,شاہدرہ,6,آرٹیکل,0,1,2,6,False,False,False,True
+all,signer1-F,ضلع,3,ظلم,0,0,2,3,True,True,False,False
+all,signer1-F,طاقت,6,گنگا رام,0,1,3,7,False,False,False,False
+all,signer1-F,ظروف,5,ظروف,1,1,4,4,True,True,True,False
+all,signer1-F,ظلم,4,ظلم,1,1,2,3,True,True,False,True
+all,signer1-F,عمران,5,اکرم,0,1,4,4,True,True,True,True
+all,signer1-F,عسکری بنک,8,سونیری بنک,0,1,3,9,False,False,False,True
+all,signer1-F,غائب,4,جناح,0,1,2,4,False,False,False,True
+all,signer1-F,غیر حاضر,9,سونیری بنک,0,1,0,9,False,False,False,False
+all,signer1-F,فیصل بنک,11,الائیٹک بنک,0,0,5,10,False,False,False,True
+all,signer1-F,مال روڈ,8,ماڈل ٹاؤن,0,1,4,8,False,False,False,True
+all,signer1-F,مالمو,4,مالمو,1,1,3,5,True,True,True,True
+all,signer1-F,ماڈل ٹاؤن,10,ماڈل ٹاؤن,1,1,7,8,True,True,True,True
+all,signer1-F,میزان بنک,11,یونائینٹد بنک,0,0,7,12,False,False,False,True
+all,signer1-F,میو,2,میو,1,1,2,3,False,False,False,True
+all,signer1-F,ولید,7,سٹیٹ بنک,0,0,0,7,False,False,False,False
+all,signer1-F,ٹھوکر نیاز بیگ,13,ٹھوکر نیاز بیگ,1,1,11,12,True,True,True,True
+all,signer1-F,چلڈرن,6,مالمو,0,1,4,5,True,True,True,True
+all,signer1-F,ڈوسے,4,ڈوسے,1,1,3,4,True,True,True,False
+all,signer1-F,ژالہ باری,11,ژالہ باری,1,1,8,8,True,True,True,True
+all,signer1-F,کومل,4,کومل,1,1,4,4,True,True,True,True
+all,signer1-F,کیکس اینڈ بیکس,13,کیکس اینڈ بیکس,1,1,9,12,True,True,True,True
+all,signer1-F,گنگا رام,8,گنگا رام,1,1,6,7,True,True,True,True
+all,signer1-F,گورمے,8,گنگا رام,0,1,4,7,False,False,False,True
+all,signer1-F,گھرکی,4,ولید,0,1,2,4,False,False,False,True
+all,signer1-F,یونائیٹڈ بنک,13,یونائینٹد بنک,0,1,9,12,True,True,True,True
+all,signer2-F,آئی یونٹ,6,آئی یونٹ,1,1,4,7,False,False,False,True
+all,signer2-F,آرٹیکل,5,اکرم,0,1,3,4,True,True,True,True
+all,signer2-F,آڑو,3,میو,0,0,2,3,True,True,False,True
+all,signer2-F,الائیڈ بنک,8,الائیڈ بنک,1,1,6,9,True,True,True,True
+all,signer2-F,الحبیب بنک,10,الحبیب بنک,1,1,8,9,True,True,True,True
+all,signer2-F,الفلاح بنک,6,فیصل بنک,0,1,2,7,False,False,False,True
+all,signer2-F,اکرم,4,اکرم,1,1,2,4,False,False,False,True
+all,signer2-F,تخلیق,5,تخلیق,1,1,4,5,True,True,True,False
+all,signer2-F,ثمر,3,ثمر,1,1,2,3,True,True,False,True
+all,signer2-F,جناح,5,مالمو,0,1,2,5,False,False,False,True
+all,signer2-F,جوہر ٹاؤن,10,جوہر ٹاؤن,1,1,8,8,True,True,True,True
+all,signer2-F,جیل روڈ,6,مال روڈ,0,1,4,6,True,True,True,True
+all,signer2-F,جے ایس بنک,5,مالمو,0,0,1,5,False,False,False,True
+all,signer2-F,حبیب بنک,7,حبیب بنک,1,1,6,7,True,True,True,True
+all,signer2-F,دھرم پورہ,10,الائیٹک بنک,0,1,5,10,False,False,False,True
+all,signer2-F,ذرات,4,ذرات,1,1,4,4,True,True,True,False
+all,signer2-F,رائیونڈ,8,رائیونڈ,1,1,5,7,True,True,True,True
+all,signer2-F,راحت,5,چلڈرن,0,1,1,5,False,False,False,False
+all,signer2-F,سروسز,4,کومل,0,0,1,4,False,False,False,False
+all,signer2-F,سونیری بنک,7,سونیری بنک,1,1,7,9,True,True,True,True
+all,signer2-F,سٹیشن,4,اکرم,0,1,1,4,False,False,False,True
+all,signer2-F,سٹینڈرڈ چارٹرڈ,17,سٹینڈرڈ چارٹرڈ بنک,0,1,5,16,False,False,False,True
+all,signer2-F,سٹیٹ بنک,6,سٹیٹ بنک,1,1,5,7,True,True,True,True
+all,signer2-F,شاہدرہ,7,ژالہ باری,0,0,2,8,False,False,False,True
+all,signer2-F,ضلع,4,ضلع,1,1,3,3,True,True,True,False
+all,signer2-F,طاقت,5,مالمو,0,0,2,5,False,False,False,False
+all,signer2-F,ظروف,3,ظروف,1,1,3,4,True,True,True,False
+all,signer2-F,ظلم,3,ظلم,1,1,3,3,True,True,True,True
+all,signer2-F,عسکری بنک,5,عمران,0,0,1,5,False,False,False,True
+all,signer2-F,عمران,6,عمران,1,1,3,5,True,True,True,True
+all,signer2-F,غائب,5,مالمو,0,0,2,5,False,False,False,True
+all,signer2-F,غیر حاضر,6,غیر حاضر,1,1,3,7,False,False,False,False
+all,signer2-F,فیصل بنک,7,فیصل بنک,1,1,6,7,True,True,True,True
+all,signer2-F,مال روڈ,6,مال روڈ,1,1,3,6,False,False,False,True
+all,signer2-F,مالمو,6,مالمو,1,1,5,5,True,True,True,True
+all,signer2-F,ماڈل ٹاؤن,11,ماڈل ٹاؤن,1,1,8,8,True,True,True,True
+all,signer2-F,میزان بنک,7,سٹیٹ بنک,0,1,3,7,False,False,False,True
+all,signer2-F,میو,3,میو,1,1,1,3,False,False,False,True
+all,signer2-F,ولید,4,ولید,1,1,3,4,True,True,True,False
+all,signer2-F,ٹھوکر نیاز بیگ,12,ٹھوکر نیاز بیگ,1,1,9,12,True,True,True,True
+all,signer2-F,چلڈرن,5,چلڈرن,1,1,4,5,True,True,True,True
+all,signer2-F,ڈوسے,6,ڈوسے,1,1,4,4,True,True,True,False
+all,signer2-F,ژالہ باری,9,ژالہ باری,1,1,8,8,True,True,True,True
+all,signer2-F,کومل,4,کومل,1,1,3,4,True,True,True,True
+all,signer2-F,کیکس اینڈ بیکس,10,یونائیٹڈ بنک,0,0,7,11,True,True,True,True
+all,signer2-F,گنگا رام,7,گنگا رام,1,1,3,7,False,False,False,True
+all,signer2-F,گورمے,5,گورمے,1,1,4,5,True,True,True,True
+all,signer2-F,گھرکی,5,گھرکی,1,1,3,5,True,True,True,True
+all,signer2-F,یونائیڈ بنک,11,یونائیڈ بنک,1,1,8,10,True,True,True,True
+all,signer3-F,آئی یونٹ,8,الائیڈ بنک,0,0,4,9,False,False,False,True
+all,signer3-F,آرٹیکل,7,آرٹیکل,1,1,4,6,True,True,True,True
+all,signer3-F,الائیڈ بنک,5,چلڈرن,0,0,2,5,False,False,False,True
+all,signer3-F,الحبیب بنک,7,سٹیٹ بنک,0,1,5,7,True,True,True,True
+all,signer3-F,الفلاح بنک,6,رائیونڈ,0,1,2,7,False,False,False,True
+all,signer3-F,اکرم,4,کومل,0,1,2,4,False,False,False,True
+all,signer3-F,تخلیق,7,ماڈل ٹاؤن,0,0,3,8,False,False,False,False
+all,signer3-F,ثمر,2,ظلم,0,0,2,3,False,False,False,True
+all,signer3-F,جناح,4,جناح,1,1,2,4,False,False,False,True
+all,signer3-F,جیل روڈ,3,سمر,0,0,1,3,False,False,False,True
+all,signer3-F,جے ایس بنک,7,جے ایس بنک,1,1,4,8,False,False,False,True
+all,signer3-F,حبیب بنک,5,حبیب بنک,1,1,5,7,True,True,True,True
+all,signer3-F,دھرم پورہ,9,دھرم پورہ,1,1,6,8,True,True,True,True
+all,signer3-F,ذرات,5,ذرات,1,1,3,4,True,True,True,False
+all,signer3-F,رائیونڈ,8,رائیونڈ,1,1,5,7,True,True,True,True
+all,signer3-F,راحت,6,مالمو,0,0,2,5,False,False,False,False
+all,signer3-F,سروسز,4,سروسز,1,1,3,5,True,True,True,False
+all,signer3-F,سونیری بنک,7,جے ایس بنک,0,1,5,8,True,True,True,True
+all,signer3-F,سٹیشن,5,سٹیشن,1,1,2,5,False,False,False,True
+all,signer3-F,سٹینڈرڈ چارٹرڈ,12,سٹینڈرڈ چارٹرڈ,1,1,7,13,False,False,False,True
+all,signer3-F,سٹیٹ بنک,4,راحت,0,0,3,4,True,True,True,True
+all,signer3-F,ضلع,4,ضلع,1,1,3,3,True,True,True,False
+all,signer3-F,طاقت,5,مالمو,0,0,4,5,True,True,True,False
+all,signer3-F,ظروف,7,مال روڈ,0,0,0,6,False,False,False,False
+all,signer3-F,ظلم,3,کومل,0,0,2,4,False,False,False,True
+all,signer3-F,عمران,7,عمران,1,1,4,5,True,True,True,True
+all,signer3-F,غائب,4,غائب,1,1,3,4,True,True,True,True
+all,signer3-F,غیر حاضر,8,غیر حاضر,1,1,3,7,False,False,False,False
+all,signer3-F,فیصل بنک,5,راحت,0,0,2,4,False,False,False,True
+all,signer3-F,مال روڈ,4,اکرم,0,0,2,4,False,False,False,True
+all,signer3-F,مالمو,5,مالمو,1,1,5,5,True,True,True,True
+all,signer3-F,ماڈل ٹاؤن,9,الفلاح بنک,0,1,4,9,False,False,False,True
+all,signer3-F,میزان بنک,5,مالمو,0,0,2,5,False,False,False,True
+all,signer3-F,میو,4,سروسز,0,1,3,5,True,True,True,True
+all,signer3-F,ولید,6,مال روڈ,0,0,5,6,True,True,True,False
+all,signer3-F,ٹھوکر نیاز بیگ,11,یونائیٹڈ بنک,0,1,1,11,False,False,False,True
+all,signer3-F,چلڈرن,4,چلڈرن,1,1,3,5,True,True,True,True
+all,signer3-F,ڈوسے,4,ڈوسے,1,1,3,4,True,True,True,False
+all,signer3-F,ژالہ باری,10,ژالہ باری,1,1,7,8,True,True,True,True
+all,signer3-F,کومل,5,کومل,1,1,4,4,True,True,True,True
+all,signer3-F,کیکس اینڈ بیکس,12,کیکس اینڈ بیکس,1,1,7,12,False,False,False,True
+all,signer3-F,گنگا رام,8,گنگا رام,1,1,6,7,True,True,True,True
+all,signer3-F,گورمے,4,اکرم,0,0,2,4,False,False,False,True
+all,signer3-F,گھرکی,5,گھرکی,1,1,3,5,True,True,True,True
+all,signer3-F,یونائیڈ بنک,9,یونائیڈ بنک,1,1,6,10,True,True,True,True
+all,signer4-L,آئی یونٹ,1,سمر,0,0,1,3,False,False,False,True
+all,signer4-L,آرٹیکل,6,آرٹیکل,1,1,4,6,True,True,True,True
+all,signer4-L,آڑو,3,میو,0,0,1,3,False,False,False,True
+all,signer4-L,الائیٹک بنک,5,سٹیٹ بنک,0,0,4,7,False,False,False,True
+all,signer4-L,الحبیب بنک,3,میو,0,0,0,3,False,False,False,True
+all,signer4-L,الفلاح بنک,8,الائیڈ بنک,0,0,6,9,True,True,True,True
+all,signer4-L,اکرم,5,چلڈرن,0,0,2,5,False,False,False,True
+all,signer4-L,تخلیق,5,آرٹیکل,0,0,2,6,False,False,False,False
+all,signer4-L,ثمر,4,اکرم,0,0,3,4,True,True,True,True
+all,signer4-L,جناح,4,ڈوسے,0,0,2,4,False,False,False,True
+all,signer4-L,جوہر ٹاؤن,6,گھرکی,0,0,2,5,False,False,False,True
+all,signer4-L,جیل روڈ,6,جیل روڈ,1,1,4,6,True,True,True,True
+all,signer4-L,جے ایس بنک,8,جے ایس بنک,1,1,7,8,True,True,True,True
+all,signer4-L,حبیب بنک,7,حبیب بنک,1,1,3,7,False,False,False,True
+all,signer4-L,دھرم پورہ,7,آرٹیکل,0,1,4,6,True,True,True,True
+all,signer4-L,ذرات,4,گھرکی,0,0,3,5,True,True,True,False
+all,signer4-L,رائیونڈ,8,رائیونڈ,1,1,4,7,False,False,False,True
+all,signer4-L,راحت,3,سمر,0,0,1,3,False,False,False,False
+all,signer4-L,سروسز,5,آرٹیکل,0,0,3,6,False,False,False,False
+all,signer4-L,سونیری بنک,12,کیکس اینڈ بیکس,0,0,6,12,False,False,False,True
+all,signer4-L,سٹیشن,4,اکرم,0,1,1,4,False,False,False,True
+all,signer4-L,سٹینڈرڈ چارٹرڈ,14,سٹینڈرڈ چارٹرڈ,1,1,6,13,False,False,False,True
+all,signer4-L,سٹیٹ بنک,7,سٹیٹ بنک,1,1,5,7,True,True,True,True
+all,signer4-L,شاہدرہ,6,مال روڈ,0,0,2,6,False,False,False,True
+all,signer4-L,ضلع,2,ضلع,1,1,2,3,False,False,False,False
+all,signer4-L,طاقت,1,سمر,0,0,1,3,False,False,False,False
+all,signer4-L,ظروف,4,ظروف,1,1,2,4,False,False,False,False
+all,signer4-L,ظلم,3,ظلم,1,1,2,3,True,True,False,True
+all,signer4-L,عمران,5,عمران,1,1,3,5,True,True,True,True
+all,signer4-L,عسکری بنک,9,الائیڈ بنک,0,0,3,9,False,False,False,True
+all,signer4-L,غائب,4,جناح,0,0,1,4,False,False,False,True
+all,signer4-L,غیر حاضر,7,عسکری بنک,0,1,4,8,False,False,False,False
+all,signer4-L,فیصل بنک,6,حبیب بنک,0,1,4,7,False,False,False,True
+all,signer4-L,مال روڈ,8,الائیڈ بنک,0,0,5,9,False,False,False,True
+all,signer4-L,مالمو,4,کومل,0,0,2,4,False,False,False,True
+all,signer4-L,ماڈل ٹاؤن,8,ژالہ باری,0,0,5,8,True,True,True,True
+all,signer4-L,میزان بنک,8,جے ایس بنک,0,0,5,8,True,True,True,True
+all,signer4-L,میو,3,غائب,0,1,2,4,False,False,False,True
+all,signer4-L,ولید,4,ظلم,0,0,1,3,False,False,False,False
+all,signer4-L,ٹھوکر نیاز بیگ,8,ماڈل ٹاؤن,0,0,4,8,False,False,False,True
+all,signer4-L,چلڈرن,2,ثمر,0,0,0,3,False,False,False,True
+all,signer4-L,ڈوسے,2,سمر,0,0,2,3,False,False,False,False
+all,signer4-L,ژالہ باری,2,میو,0,0,1,3,False,False,False,True
+all,signer4-L,کومل,2,آڑو,0,1,1,3,False,False,False,True
+all,signer4-L,کیکس اینڈ بیکس,13,کیکس اینڈ بیکس,1,1,12,12,True,True,True,True
+all,signer4-L,گنگا رام,6,گنگا رام,1,1,4,7,False,False,False,True
+all,signer4-L,گورمے,6,گورمے,1,1,3,5,True,True,True,True
+all,signer4-L,گھرکی,3,سمر,0,0,1,3,False,False,False,True
+all,signer4-L,یونائیڈ بنک,14,کیکس اینڈ بیکس,0,0,9,12,True,True,True,True
+all,signer5-R,آرٹیکل,7,آرٹیکل,1,1,5,6,True,True,True,True
+all,signer5-R,آڑو,3,میو,0,0,1,3,False,False,False,True
+all,signer5-R,الفلاح بنک,9,الفلاح بنک,1,1,5,9,False,False,False,True
+all,signer5-R,تخلیق,6,مالمو,0,0,3,5,True,True,True,False
+all,signer5-R,ثمر,2,ثمر,1,1,2,3,False,False,False,True
+all,signer5-R,جے ایس بنک,7,جے ایس بنک,1,1,5,8,True,True,True,True
+all,signer5-R,دھرم پورہ,7,دھرم پورہ,1,1,5,8,True,True,True,True
+all,signer5-R,ذرات,5,ذرات,1,1,2,4,False,False,False,False
+all,signer5-R,سمر,2,سمر,1,1,2,3,False,False,False,True
+all,signer5-R,سونیری بنک,6,سٹیٹ بنک,0,0,3,7,False,False,False,True
+all,signer5-R,سٹیٹ بنک,8,سٹیٹ بنک,1,1,7,7,True,True,True,True
+all,signer5-R,شاہدرہ,6,شاہدرہ,1,1,4,6,True,True,True,True
+all,signer5-R,ضلع,4,ضلع,1,1,3,3,True,True,True,False
+all,signer5-R,طاقت,4,ڈوسے,0,1,2,4,False,False,False,False
+all,signer5-R,ظروف,4,ظروف,1,1,4,4,True,True,True,False
+all,signer5-R,ظلم,3,سمر,0,1,1,3,False,False,False,True
+all,signer5-R,عسکری بنک,7,عسکری بنک,1,1,5,8,True,True,True,True
+all,signer5-R,عسکری بنک,8,سونیری بنک,0,1,5,9,False,False,False,True
+all,signer5-R,غائب,4,عمران,0,1,2,5,False,False,False,True
+all,signer5-R,غیر حاضر,9,سونیری بنک,0,0,2,9,False,False,False,False
+all,signer5-R,مالمو,6,مالمو,1,1,5,5,True,True,True,True
+all,signer5-R,ڈوسے,3,ڈوسے,1,1,3,4,True,True,True,False
+all,signer5-R,ژالہ باری,8,ژالہ باری,1,1,5,8,True,True,True,True
+all,signer5-R,کیکس اینڈ بیکس,12,کیکس اینڈ بیکس,1,1,8,12,True,True,True,True
+all,signer5-R,گورمے,4,اکرم,0,0,2,4,False,False,False,True
+all,signer5-R,یونائینٹد بنک,11,یونائیٹڈ بنک,0,1,7,11,True,True,True,True
+static,signer1-F,آئی یونٹ,8,الحبیب بنک,0,0,2,8,False,False,False,True
+static,signer1-F,آرٹیکل,8,الحبیب بنک,0,0,3,8,False,False,False,True
+static,signer1-F,آڑو,2,میو,0,0,1,2,False,False,False,True
+static,signer1-F,الائیڈ بنک,11,الائیڈ بنک,1,1,7,7,True,True,True,True
+static,signer1-F,الحبیب بنک,9,الحبیب بنک,1,1,7,8,True,True,True,True
+static,signer1-F,الفلاح بنک,12,الفلاح بنک,1,1,8,8,True,True,True,True
+static,signer1-F,اکرم,6,مال روڈ,0,0,2,5,False,False,False,True
+static,signer1-F,تخلیق,6,تخلیق,1,1,3,5,True,True,True,False
+static,signer1-F,ثمر,3,اکرم,0,1,2,3,True,True,False,True
+static,signer1-F,جناح,4,ولید,0,0,1,4,False,False,False,True
+static,signer1-F,جوہر ٹاؤن,6,سروسز,0,0,3,5,True,True,True,True
+static,signer1-F,جیل روڈ,7,جیل روڈ,1,1,4,5,True,True,True,True
+static,signer1-F,جے ایس بنک,10,کیکس اینڈ بیکس,0,0,6,11,False,False,False,True
+static,signer1-F,حبیب بنک,7,حبیب بنک,1,1,6,6,True,True,True,True
+static,signer1-F,دھرم پورہ,9,سونیری بنک,0,0,3,7,False,False,False,True
+static,signer1-F,ذرات,5,ذرات,1,1,2,4,False,False,False,False
+static,signer1-F,رائیونڈ,10,الائیٹک بنک,0,0,4,7,False,False,False,True
+static,signer1-F,راحت,5,راحت,1,1,4,4,True,True,True,False
+static,signer1-F,سروسز,5,سروسز,1,1,4,5,True,True,True,False
+static,signer1-F,سونیری بنک,9,سونیری بنک,1,1,7,7,True,True,True,True
+static,signer1-F,سٹیشن,6,سروسز,0,0,4,5,True,True,True,True
+static,signer1-F,سٹینڈرڈ چارٹرڈ بنک,7,الفلاح بنک,0,0,2,8,False,False,False,True
+static,signer1-F,سٹیٹ بنک,6,حبیب بنک,0,0,3,6,False,False,False,True
+static,signer1-F,شاہدرہ,6,آرٹیکل,0,0,3,4,True,True,True,True
+static,signer1-F,ضلع,3,ظلم,0,1,2,2,True,True,False,False
+static,signer1-F,طاقت,6,طاقت,1,1,4,4,True,True,True,False
+static,signer1-F,ظروف,5,ظروف,1,1,4,4,True,True,True,False
+static,signer1-F,ظلم,4,ظروف,0,0,1,4,False,False,False,True
+static,signer1-F,عمران,5,غیر حاضر,0,0,4,7,False,False,False,True
+static,signer1-F,عسکری بنک,8,عسکری بنک,1,1,5,7,True,True,True,True
+static,signer1-F,غائب,4,غائب,1,1,2,3,True,True,False,True
+static,signer1-F,غیر حاضر,9,غیر حاضر,1,1,4,7,False,False,False,False
+static,signer1-F,فیصل بنک,11,کیکس اینڈ بیکس,0,0,4,11,False,False,False,True
+static,signer1-F,مال روڈ,8,مال روڈ,1,1,4,5,True,True,True,True
+static,signer1-F,مالمو,4,ولید,0,1,1,4,False,False,False,True
+static,signer1-F,ماڈل ٹاؤن,10,کیکس اینڈ بیکس,0,0,6,11,False,False,False,True
+static,signer1-F,میزان بنک,11,کیکس اینڈ بیکس,0,0,4,11,False,False,False,True
+static,signer1-F,میو,2,میو,1,1,2,2,False,False,False,True
+static,signer1-F,ولید,7,جیل روڈ,0,0,3,5,True,True,True,False
+static,signer1-F,ٹھوکر نیاز بیگ,13,ٹھوکر نیاز بیگ,1,1,8,9,True,True,True,True
+static,signer1-F,چلڈرن,6,مال روڈ,0,0,2,5,False,False,False,True
+static,signer1-F,ڈوسے,4,ڈوسے,1,1,3,4,True,True,True,False
+static,signer1-F,ژالہ باری,11,ژالہ باری,1,1,7,7,True,True,True,True
+static,signer1-F,کومل,4,کومل,1,1,3,3,True,True,True,True
+static,signer1-F,کیکس اینڈ بیکس,13,کیکس اینڈ بیکس,1,1,10,11,True,True,True,True
+static,signer1-F,گنگا رام,8,گنگا رام,1,1,5,5,True,True,True,True
+static,signer1-F,گورمے,8,سونیری بنک,0,1,4,7,False,False,False,True
+static,signer1-F,گھرکی,4,ولید,0,1,2,4,False,False,False,True
+static,signer1-F,یونائیٹڈ بنک,13,کیکس اینڈ بیکس,0,1,4,11,False,False,False,True
+static,signer2-F,آئی یونٹ,6,آرٹیکل,0,0,1,4,False,False,False,True
+static,signer2-F,آرٹیکل,5,آرٹیکل,1,1,3,4,True,True,True,True
+static,signer2-F,آڑو,3,اکرم,0,0,2,3,True,True,False,True
+static,signer2-F,الائیڈ بنک,8,الائیڈ بنک,1,1,6,7,True,True,True,True
+static,signer2-F,الحبیب بنک,10,الحبیب بنک,1,1,8,8,True,True,True,True
+static,signer2-F,الفلاح بنک,6,الفلاح بنک,1,1,6,8,True,True,True,True
+static,signer2-F,اکرم,4,اکرم,1,1,2,3,True,True,False,True
+static,signer2-F,تخلیق,5,تخلیق,1,1,4,5,True,True,True,False
+static,signer2-F,ثمر,3,میو,0,1,0,2,False,False,False,True
+static,signer2-F,جناح,5,راحت,0,0,0,4,False,False,False,True
+static,signer2-F,جوہر ٹاؤن,10,ٹھوکر نیاز بیگ,0,0,5,9,False,False,False,True
+static,signer2-F,جیل روڈ,6,مال روڈ,0,1,4,5,True,True,True,True
+static,signer2-F,جے ایس بنک,5,راحت,0,1,2,4,False,False,False,True
+static,signer2-F,حبیب بنک,7,حبیب بنک,1,1,5,6,True,True,True,True
+static,signer2-F,دھرم پورہ,10,الائیڈ بنک,0,0,5,7,True,True,True,True
+static,signer2-F,ذرات,4,ذرات,1,1,4,4,True,True,True,False
+static,signer2-F,رائیونڈ,8,رائیونڈ,1,1,5,5,True,True,True,True
+static,signer2-F,راحت,5,راحت,1,1,3,4,True,True,True,False
+static,signer2-F,سروسز,4,کومل,0,0,3,3,True,True,True,False
+static,signer2-F,سونیری بنک,7,سونیری بنک,1,1,7,7,True,True,True,True
+static,signer2-F,سٹیشن,4,گورمے,0,0,2,4,False,False,False,True
+static,signer2-F,سٹینڈرڈ چارٹرڈ,17,سٹینڈرڈ چارٹرڈ,1,1,6,10,True,True,True,True
+static,signer2-F,سٹیٹ بنک,6,حبیب بنک,0,0,3,6,False,False,False,True
+static,signer2-F,شاہدرہ,7,ژالہ باری,0,0,2,7,False,False,False,True
+static,signer2-F,ضلع,4,ضلع,1,1,3,3,True,True,True,False
+static,signer2-F,طاقت,5,گھرکی,0,1,1,4,False,False,False,False
+static,signer2-F,ظروف,3,ظروف,1,1,3,4,True,True,True,False
+static,signer2-F,ظلم,3,ضلع,0,1,2,3,True,True,False,True
+static,signer2-F,عسکری بنک,5,راحت,0,0,2,4,False,False,False,True
+static,signer2-F,عمران,6,آرٹیکل,0,0,2,4,False,False,False,True
+static,signer2-F,غائب,5,جیل روڈ,0,0,2,5,False,False,False,True
+static,signer2-F,غیر حاضر,6,غیر حاضر,1,1,4,7,False,False,False,False
+static,signer2-F,فیصل بنک,7,فیصل بنک,1,1,5,6,True,True,True,True
+static,signer2-F,مال روڈ,6,جیل روڈ,0,1,5,5,True,True,True,True
+static,signer2-F,مالمو,6,ولید,0,0,3,4,True,True,True,True
+static,signer2-F,ماڈل ٹاؤن,11,ژالہ باری,0,0,3,7,False,False,False,True
+static,signer2-F,میزان بنک,7,الفلاح بنک,0,0,5,8,True,True,True,True
+static,signer2-F,میو,3,میو,1,1,2,2,True,True,False,True
+static,signer2-F,ولید,4,ولید,1,1,4,4,True,True,True,False
+static,signer2-F,ٹھوکر نیاز بیگ,12,ٹھوکر نیاز بیگ,1,1,6,9,True,True,True,True
+static,signer2-F,چلڈرن,5,گھرکی,0,0,3,4,True,True,True,True
+static,signer2-F,ڈوسے,6,ڈوسے,1,1,4,4,True,True,True,False
+static,signer2-F,ژالہ باری,9,ژالہ باری,1,1,7,7,True,True,True,True
+static,signer2-F,کومل,4,کومل,1,1,3,3,True,True,True,True
+static,signer2-F,کیکس اینڈ بیکس,10,یونائیٹڈ بنک,0,1,7,7,True,True,True,True
+static,signer2-F,گنگا رام,7,ژالہ باری,0,0,4,7,False,False,False,True
+static,signer2-F,گورمے,5,گورمے,1,1,4,4,True,True,True,True
+static,signer2-F,گھرکی,5,گھرکی,1,1,3,4,True,True,True,True
+static,signer2-F,یونائیڈ بنک,11,کیکس اینڈ بیکس,0,1,4,11,False,False,False,True
+static,signer3-F,آئی یونٹ,8,ژالہ باری,0,0,2,7,False,False,False,True
+static,signer3-F,آرٹیکل,7,عسکری بنک,0,0,4,7,False,False,False,True
+static,signer3-F,الائیڈ بنک,5,راحت,0,0,3,4,True,True,True,True
+static,signer3-F,الحبیب بنک,7,الحبیب بنک,1,1,6,8,True,True,True,True
+static,signer3-F,الفلاح بنک,6,الفلاح بنک,1,1,6,8,True,True,True,True
+static,signer3-F,اکرم,4,کومل,0,1,3,3,True,True,True,True
+static,signer3-F,تخلیق,7,تخلیق,1,1,3,5,True,True,True,False
+static,signer3-F,ثمر,2,سمر,0,0,1,2,False,False,False,True
+static,signer3-F,جناح,4,راحت,0,1,2,4,False,False,False,True
+static,signer3-F,جیل روڈ,3,راحت,0,0,2,4,False,False,False,True
+static,signer3-F,جے ایس بنک,7,جے ایس بنک,1,1,4,6,True,True,True,True
+static,signer3-F,حبیب بنک,5,راحت,0,1,3,4,True,True,True,True
+static,signer3-F,دھرم پورہ,9,سونیری بنک,0,1,1,7,False,False,False,True
+static,signer3-F,ذرات,5,ذرات,1,1,3,4,True,True,True,False
+static,signer3-F,رائیونڈ,8,الحبیب بنک,0,0,3,8,False,False,False,True
+static,signer3-F,راحت,6,غیر حاضر,0,1,2,7,False,False,False,False
+static,signer3-F,سروسز,4,سروسز,1,1,4,5,True,True,True,False
+static,signer3-F,سونیری بنک,7,جے ایس بنک,0,0,5,6,True,True,True,True
+static,signer3-F,سٹیشن,5,مال روڈ,0,0,2,5,False,False,False,True
+static,signer3-F,سٹینڈرڈ چارٹرڈ,12,سٹینڈرڈ چارٹرڈ,1,1,7,10,True,True,True,True
+static,signer3-F,سٹیٹ بنک,4,راحت,0,0,4,4,True,True,True,True
+static,signer3-F,ضلع,4,ظروف,0,1,1,4,False,False,False,False
+static,signer3-F,طاقت,5,مال روڈ,0,1,4,5,True,True,True,False
+static,signer3-F,ظروف,7,رائیونڈ,0,1,3,5,True,True,True,False
+static,signer3-F,ظلم,3,ولید,0,0,1,4,False,False,False,True
+static,signer3-F,عمران,7,غیر حاضر,0,0,4,7,False,False,False,True
+static,signer3-F,غائب,4,غائب,1,1,3,3,True,True,True,True
+static,signer3-F,غیر حاضر,8,غیر حاضر,1,1,3,7,False,False,False,False
+static,signer3-F,فیصل بنک,5,راحت,0,0,4,4,True,True,True,True
+static,signer3-F,مال روڈ,4,اکرم,0,1,2,3,True,True,False,True
+static,signer3-F,مالمو,5,مال روڈ,0,1,4,5,True,True,True,True
+static,signer3-F,ماڈل ٹاؤن,9,الفلاح بنک,0,0,4,8,False,False,False,True
+static,signer3-F,میزان بنک,5,جیل روڈ,0,0,3,5,True,True,True,True
+static,signer3-F,میو,4,سروسز,0,0,3,5,True,True,True,True
+static,signer3-F,ولید,6,مال روڈ,0,0,5,5,True,True,True,False
+static,signer3-F,ٹھوکر نیاز بیگ,11,ٹھوکر نیاز بیگ,1,1,8,9,True,True,True,True
+static,signer3-F,چلڈرن,4,اکرم,0,1,2,3,True,True,False,True
+static,signer3-F,ڈوسے,4,ڈوسے,1,1,3,4,True,True,True,False
+static,signer3-F,ژالہ باری,10,ژالہ باری,1,1,7,7,True,True,True,True
+static,signer3-F,کومل,5,جیل روڈ,0,1,1,5,False,False,False,True
+static,signer3-F,کیکس اینڈ بیکس,12,کیکس اینڈ بیکس,1,1,6,11,False,False,False,True
+static,signer3-F,گنگا رام,8,گنگا رام,1,1,5,5,True,True,True,True
+static,signer3-F,گورمے,4,ڈوسے,0,1,2,4,False,False,False,True
+static,signer3-F,گھرکی,5,گھرکی,1,1,2,4,False,False,False,True
+static,signer3-F,یونائیڈ بنک,9,الحبیب بنک,0,1,2,8,False,False,False,True
+static,signer4-L,آئی یونٹ,1,ضلع,0,0,1,3,False,False,False,True
+static,signer4-L,آرٹیکل,6,آرٹیکل,1,1,4,4,True,True,True,True
+static,signer4-L,آڑو,3,اکرم,0,0,1,3,False,False,False,True
+static,signer4-L,الائیٹک بنک,5,جیل روڈ,0,0,2,5,False,False,False,True
+static,signer4-L,الحبیب بنک,3,میو,0,0,1,2,False,False,False,True
+static,signer4-L,الفلاح بنک,8,الائیڈ بنک,0,1,5,7,True,True,True,True
+static,signer4-L,اکرم,5,چلڈرن,0,1,2,4,False,False,False,True
+static,signer4-L,تخلیق,5,تخلیق,1,1,3,5,True,True,True,False
+static,signer4-L,ثمر,4,اکرم,0,0,2,3,True,True,False,True
+static,signer4-L,جناح,4,ڈوسے,0,0,2,4,False,False,False,True
+static,signer4-L,جوہر ٹاؤن,6,سروسز,0,0,2,5,False,False,False,True
+static,signer4-L,جیل روڈ,6,مال روڈ,0,1,4,5,True,True,True,True
+static,signer4-L,جے ایس بنک,8,جے ایس بنک,1,1,6,6,True,True,True,True
+static,signer4-L,حبیب بنک,7,حبیب بنک,1,1,5,6,True,True,True,True
+static,signer4-L,دھرم پورہ,7,جیل روڈ,0,0,1,5,False,False,False,True
+static,signer4-L,ذرات,4,گھرکی,0,0,4,4,True,True,True,False
+static,signer4-L,رائیونڈ,8,رائیونڈ,1,1,5,5,True,True,True,True
+static,signer4-L,راحت,3,سمر,0,1,1,2,False,False,False,False
+static,signer4-L,سروسز,5,آرٹیکل,0,0,4,4,True,True,True,False
+static,signer4-L,سونیری بنک,12,کیکس اینڈ بیکس,0,0,7,11,True,True,True,True
+static,signer4-L,سٹیشن,4,اکرم,0,0,1,3,False,False,False,True
+static,signer4-L,سٹینڈرڈ چارٹرڈ,14,سٹینڈرڈ چارٹرڈ,1,1,6,10,True,True,True,True
+static,signer4-L,سٹیٹ بنک,7,عسکری بنک,0,0,5,7,True,True,True,True
+static,signer4-L,شاہدرہ,6,آرٹیکل,0,0,3,4,True,True,True,True
+static,signer4-L,ضلع,2,ضلع,1,1,2,3,False,False,False,False
+static,signer4-L,طاقت,1,سمر,0,0,1,2,False,False,False,False
+static,signer4-L,ظروف,4,ظروف,1,1,2,4,False,False,False,False
+static,signer4-L,ظلم,3,ظلم,1,1,2,2,True,True,False,True
+static,signer4-L,عمران,5,سروسز,0,1,2,5,False,False,False,True
+static,signer4-L,عسکری بنک,9,سونیری بنک,0,1,5,7,True,True,True,True
+static,signer4-L,غائب,4,ولید,0,1,0,4,False,False,False,True
+static,signer4-L,غیر حاضر,7,عسکری بنک,0,1,6,7,True,True,True,False
+static,signer4-L,فیصل بنک,6,حبیب بنک,0,1,3,6,False,False,False,True
+static,signer4-L,مال روڈ,8,الائیڈ بنک,0,1,5,7,True,True,True,True
+static,signer4-L,مالمو,4,ولید,0,0,2,4,False,False,False,True
+static,signer4-L,ماڈل ٹاؤن,8,الفلاح بنک,0,0,4,8,False,False,False,True
+static,signer4-L,میزان بنک,8,الائیڈ بنک,0,0,5,7,True,True,True,True
+static,signer4-L,میو,3,کومل,0,1,1,3,False,False,False,True
+static,signer4-L,ولید,4,ولید,1,1,2,4,False,False,False,False
+static,signer4-L,ٹھوکر نیاز بیگ,8,عسکری بنک,0,0,3,7,False,False,False,True
+static,signer4-L,چلڈرن,2,راحت,0,0,2,4,False,False,False,True
+static,signer4-L,ڈوسے,2,سمر,0,1,1,2,False,False,False,False
+static,signer4-L,ژالہ باری,2,سمر,0,0,0,2,False,False,False,True
+static,signer4-L,کومل,2,سمر,0,1,1,2,False,False,False,True
+static,signer4-L,کیکس اینڈ بیکس,13,کیکس اینڈ بیکس,1,1,11,11,True,True,True,True
+static,signer4-L,گنگا رام,6,گھرکی,0,1,2,4,False,False,False,True
+static,signer4-L,گورمے,6,گورمے,1,1,4,4,True,True,True,True
+static,signer4-L,گھرکی,3,سمر,0,0,1,2,False,False,False,True
+static,signer4-L,یونائیڈ بنک,14,کیکس اینڈ بیکس,0,0,10,11,True,True,True,True
+static,signer5-R,آرٹیکل,7,عسکری بنک,0,0,4,7,False,False,False,True
+static,signer5-R,آڑو,3,اکرم,0,0,2,3,True,True,False,True
+static,signer5-R,الفلاح بنک,9,الفلاح بنک,1,1,5,8,True,True,True,True
+static,signer5-R,تخلیق,6,غیر حاضر,0,0,5,7,True,True,True,False
+static,signer5-R,ثمر,2,ثمر,1,1,2,2,False,False,False,True
+static,signer5-R,جے ایس بنک,7,جے ایس بنک,1,1,5,6,True,True,True,True
+static,signer5-R,دھرم پورہ,7,جیل روڈ,0,0,2,5,False,False,False,True
+static,signer5-R,ذرات,5,ذرات,1,1,2,4,False,False,False,False
+static,signer5-R,سمر,2,سمر,1,1,2,2,False,False,False,True
+static,signer5-R,سونیری بنک,6,عسکری بنک,0,1,4,7,False,False,False,True
+static,signer5-R,سٹیٹ بنک,8,الفلاح بنک,0,0,3,8,False,False,False,True
+static,signer5-R,شاہدرہ,6,مال روڈ,0,0,2,5,False,False,False,True
+static,signer5-R,ضلع,4,ضلع,1,1,3,3,True,True,True,False
+static,signer5-R,طاقت,4,ڈوسے,0,1,2,4,False,False,False,False
+static,signer5-R,ظروف,4,ظروف,1,1,4,4,True,True,True,False
+static,signer5-R,ظلم,3,کومل,0,0,2,3,True,True,False,True
+static,signer5-R,عسکری بنک,7,عسکری بنک,1,1,5,7,True,True,True,True
+static,signer5-R,عسکری بنک,8,عسکری بنک,1,1,5,7,True,True,True,True
+static,signer5-R,غائب,4,غائب,1,1,2,3,True,True,False,True
+static,signer5-R,غیر حاضر,9,عسکری بنک,0,0,3,7,False,False,False,False
+static,signer5-R,مالمو,6,مال روڈ,0,0,3,5,True,True,True,True
+static,signer5-R,ڈوسے,3,ڈوسے,1,1,3,4,True,True,True,False
+static,signer5-R,ژالہ باری,8,ژالہ باری,1,1,5,7,True,True,True,True
+static,signer5-R,کیکس اینڈ بیکس,12,کیکس اینڈ بیکس,1,1,9,11,True,True,True,True
+static,signer5-R,گورمے,4,ڈوسے,0,0,2,4,False,False,False,True
+static,signer5-R,یونائینٹد بنک,11,کیکس اینڈ بیکس,0,0,4,11,False,False,False,True

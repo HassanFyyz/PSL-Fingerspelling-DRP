@@ -177,19 +177,25 @@ def _data(free_pts=OUT_PTS, free_meta=OUT_META):
     return _DATA[key]
 
 
-def clips_for(train_signers, test_signer, scores="vote", seed=0, make_model=None):
+def clips_for(train_signers, test_signer, scores="vote", seed=0, make_model=None,
+              static_only=False):
     """Clips of `test_signer`, scored by a model fitted on `train_signers` only.
 
     Each clip carries two score sequences from that one model:
       "oracle"  the pseudo-labelled holds (letter count known)
       "free"    the holds Algorithm 2 found unaided
     and `prior`, the letter frequencies of the training signers.
+    static_only=True trains on the static letters only (splits.DYNAMIC_LETTERS
+    removed from the training rows); the test clips are unchanged.
     """
     import evaluation as ev
     from word_decode import vote_share
 
     d = _data()
     tr = np.isin(d["sg"], list(train_signers))
+    if static_only:
+        from splits import DYNAMIC_LETTERS
+        tr &= ~np.isin(d["y"], DYNAMIC_LETTERS)
     if make_model is not None:
         model = make_model(seed).fit(d["F"][tr], d["y"][tr])
         score = model.predict_proba
@@ -214,7 +220,7 @@ def signers():
     return sorted(set(_data()["sg"]))
 
 
-def loso_clips(scores="vote", seed=0, make_model=None):
+def loso_clips(scores="vote", seed=0, make_model=None, static_only=False):
     """Every clip, each scored by a model that never saw its signer.
 
     `scores` is "vote" (one-vs-one vote share, what the browser computes;
@@ -225,11 +231,11 @@ def loso_clips(scores="vote", seed=0, make_model=None):
     S = signers()
     clips = []
     for s in S:
-        clips += clips_for([t for t in S if t != s], s, scores, seed, make_model)
+        clips += clips_for([t for t in S if t != s], s, scores, seed, make_model, static_only)
     return clips, _data()["lex"]
 
 
-def nested_clips(scores="proba", seed=0, make_model=None):
+def nested_clips(scores="proba", seed=0, make_model=None, static_only=False):
     """For tuning a decoder without touching the held-out signer.
 
     Returns ({signer: {"test": clips, "tune": clips}}, lexicon). "test" is the
@@ -244,8 +250,8 @@ def nested_clips(scores="proba", seed=0, make_model=None):
         train = [t for t in S if t != s]
         tune = []
         for h in train:
-            tune += clips_for([t for t in train if t != h], h, scores, seed, make_model)
-        out[s] = {"test": clips_for(train, s, scores, seed, make_model), "tune": tune}
+            tune += clips_for([t for t in train if t != h], h, scores, seed, make_model, static_only)
+        out[s] = {"test": clips_for(train, s, scores, seed, make_model, static_only), "tune": tune}
     return out, _data()["lex"]
 
 
