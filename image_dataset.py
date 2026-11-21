@@ -94,3 +94,26 @@ def extract(root=ROOT, force=False, verbose=True):
 def load():
     return np.load(CACHE_PTS), pd.read_csv(CACHE_META, encoding="utf-8")
 
+
+# ─── official PSL reference images ───────────────────────────────────────────
+# Screenshots from the PSL website in letter_sheets/<code>_<letter>/official/.
+# Someone else's material: git-ignored, local only, like Kamran's set.
+OFFICIAL_GLOB = os.path.join("letter_sheets", "*", "official", "*")
+
+
+def official():
+    """(P, M) for the official reference images in which a hand is found."""
+    import glob
+    from crop_dataset import make_detector
+    det = make_detector()
+    rows, pts = [], []
+    for f in sorted(glob.glob(OFFICIAL_GLOB)):
+        if not f.lower().endswith(IMAGE_EXT):
+            continue
+        letter = os.path.basename(os.path.dirname(os.path.dirname(f))).split("_", 1)[1]
+        p, hand, mode = _detect(det, _read(f))
+        rows.append((LETTER_FIX.get(letter, letter), f, hand, mode, int(p is not None)))
+        pts.append(p if p is not None else np.full((21, 3), np.nan, np.float32))
+    M = pd.DataFrame(rows, columns=["letter", "file", "hand", "found_in", "detected"])
+    keep = (M.detected == 1).to_numpy()
+    return np.array(pts)[keep], M[keep].reset_index(drop=True)
