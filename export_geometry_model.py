@@ -36,6 +36,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
 from hand_geometry import hand_features
+from splits import DYNAMIC_LETTERS
 
 PTS_PATH = "hold_landmarks.npy"
 META_PATH = "hold_meta.csv"
@@ -49,14 +50,25 @@ OUT_DIR_KAMRAN = "web/model_geom_kamran"
 
 
 def training_data(pts_path=PTS_PATH, meta_path=META_PATH, with_kamran=False,
-                  with_official=False, with_video=True):
+                  with_official=False, with_video=True, static_only=True):
     """(F, y, signers): our holds + calibration takes, plus Kamran's / official images if asked.
 
     with_video=False drops the pseudo-labelled video holds (signers without the
     'user-' prefix) and keeps only the calibration takes from our own files.
     Kamran's rows: hand found, exact duplicate files dropped, signer 'kamran-images'.
     Official rows: the PSL website screenshots, signer 'official-psl'.
+    static_only=True (the default since 22 Nov) drops every row of the 11 dynamic
+    letters (splits.DYNAMIC_LETTERS) from every source, so the model has the 30
+    static letters as its classes. `--all-letters` restores the old 41-class model.
     """
+    F, y, g = _all_rows(pts_path, meta_path, with_kamran, with_official, with_video)
+    if static_only:
+        keep = ~np.isin(y, DYNAMIC_LETTERS)
+        F, y, g = F[keep], y[keep], g[keep]
+    return F, y, g
+
+
+def _all_rows(pts_path, meta_path, with_kamran, with_official, with_video):
     P = np.load(pts_path)
     M = pd.read_csv(meta_path)
     if not with_video:
@@ -109,23 +121,33 @@ def video_test_accuracy(F, y, Fv, yv, sv):
 
 
 def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out_dir=None,
-          with_kamran=False, with_official=False, with_video=True):
+          with_kamran=False, with_official=False, with_video=True, static_only=True):
     private = with_kamran or with_official
     out_dir = out_dir or (OUT_DIR_KAMRAN if private else OUT_DIR)
     os.makedirs(out_dir, exist_ok=True)
-    F, y, signers = training_data(pts_path, meta_path, with_kamran, with_official, with_video)
+    F, y, signers = training_data(pts_path, meta_path, with_kamran, with_official, with_video,
+                                  static_only)
+    print(f"{len(F)} training rows, {len(set(y))} letters"
+          + (" (static only)" if static_only else " (all letters)"))
 
-    print("computing leave-one-signer-out accuracy (40-letter folds only)...")
+    print("computing leave-one-signer-out accuracy (folds with at least 10 letters)...")
     if with_video:
         own = ~np.isin(signers, ["kamran-images", "official-psl"])
         loso = loso_accuracy(F[own], y[own], signers[own],
                              extra=(F[~own], y[~own]) if private else None)
     else:
         # no video hold is in training, so the five video signers are an outside test
-        Fv, yv, sv = training_data(pts_path, meta_path)
+        Fv, yv, sv = training_data(pts_path, meta_path, static_only=static_only)
         v = ~pd.Series(sv).str.startswith("user-").to_numpy()
         loso = video_test_accuracy(F, y, Fv[v], yv[v], sv[v])
     print(f"  LOSO: {loso:.3f}")
+    # majority baseline under the same protocol: the most common training letter, scored per
+    # dataset signer and averaged like `loso`
+    vid = ~pd.Series(signers).str.startswith("user-").to_numpy() & \
+        ~np.isin(signers, ["kamran-images", "official-psl"])
+    common = pd.Series(y).value_counts().index[0]
+    majority = float(np.mean([(y[signers == s] == common).mean() for s in sorted(set(signers[vid]))])) \
+        if vid.any() else None
 
     scaler = StandardScaler().fit(F)
     Fs = scaler.transform(F)
@@ -161,19 +183,27 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
         "private": bool(private),
         "training_sources": {"video_holds": bool(with_video), "calibration": True,
                              "kamran_images": bool(with_kamran), "official_psl": bool(with_official)},
+        "static_only": bool(static_only),
+        "dynamic_letters": list(DYNAMIC_LETTERS) if static_only else [],
         "honest_accuracy": {
             "kamran_images": ("Kamran's images are in the training rows of every fold and are never "
                               "a test fold; the test signer is always one of ours.") if with_kamran else None,
             "no_video": ("No video hold is in training; letter_acc is the mean over the five video "
                          "signers used as an outside test, scored against their pseudo-labels.")
                         if not with_video else None,
-            "protocol": "leave-one-signer-out over the 40-letter folds; the two "
-                        "calibration-session folds (2 letters each) are excluded "
-                        "as not comparable. The shipped model trains on everyone.",
+            "protocol": "leave-one-signer-out; a signer is a fold only if it holds at least "
+                        "10 letters (the five dataset signers and the 13 Nov calibration "
+                        "session); the smaller calibration sessions are always training. "
+                        "letter_majority is the most common letter scored on the dataset "
+                        "signers. The shipped model trains on everyone."
+                        + (" Static letters only: the 11 dynamic letters are removed from "
+                           "training and from the test holds." if static_only else ""),
             "letter_acc": round(loso, 3),
-            "letter_majority": 0.098,
-            "note": "No lexicon decoding changes here -- same word-decode logic "
-                    "as the HOG model, scored against the same 54-word vocabulary.",
+            "letter_majority": None if majority is None else round(majority, 3),
+            "note": ("The lexicon keeps all 54 words. A dynamic letter in a word is a slot "
+                     "the decoder fills with any hold or skips (word_decode.js); the model "
+                     "never outputs it." if static_only else
+                     "Same 54-word lexicon; every letter is a class."),
         },
         "lexicon": {w: list(ls) for w, ls in mapping.items()},
     }
@@ -191,4 +221,4 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
 if __name__ == "__main__":
     import sys
     build(with_kamran="--with-kamran" in sys.argv, with_official="--with-official" in sys.argv,
-          with_video="--no-video" not in sys.argv)
+          with_video="--no-video" not in sys.argv, static_only="--all-letters" not in sys.argv)

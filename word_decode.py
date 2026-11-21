@@ -25,6 +25,15 @@ alignment_decoder.ipynb:
    and a skipped letter `dele`, on the same scale, so no length normalisation
    and no hold-count filter are needed.
 
+3. WILDCARD SLOTS (22 Nov). The letter model covers the 30 static letters only
+   (splits.DYNAMIC_LETTERS are out of scope), but the lexicon keeps all 54 words,
+   44 of which contain a dynamic letter. A letter listed in `wild_letters` that the
+   model has no class for is a slot: it may take any one hold at score `wild`
+   (0 = no evidence either way, on the likelihood-ratio scale) or be skipped at
+   `dele` like any other letter. Without this, a word with a letter outside the
+   classes is dropped from the ranking. With a model that has every letter as a
+   class nothing changes.
+
 This needs real probabilities. The browser's vote share is not one, and dividing
 it by the prior makes things worse; use `prior=None` with vote share.
 """
@@ -78,13 +87,16 @@ def decode_current(probs, classes, lexicon, slack=1, pen=0.7):
     return [w for _, w in scored]
 
 
-def decode_aligned(probs, classes, lexicon, prior=None, ins=-1.0, dele=-1.0, floor=1e-6):
+def decode_aligned(probs, classes, lexicon, prior=None, ins=-1.0, dele=-1.0, floor=1e-6,
+                   wild_letters=(), wild=0.0):
     """Ranked list of words by best alignment of holds to letters.
 
     probs    (n_holds, n_classes) class scores; rows are renormalised to sum 1
     prior    {letter: frequency} from the TRAINING signers, or None for uniform
     ins      score of a hold matched to no letter (<= 0)
     dele     score of a letter matched to no hold (<= 0)
+    wild_letters  letters that become slots when they are not in `classes`
+    wild     score of a hold matched to a slot
     """
     n = len(probs)
     k = len(classes)
@@ -96,10 +108,11 @@ def decode_aligned(probs, classes, lexicon, prior=None, ins=-1.0, dele=-1.0, flo
               if prior is not None else np.full(k, 1.0 / k))
         G = np.log(np.maximum(P, floor)) - np.log(pr)      # gain of matching hold i to class c
     scored = []
+    wild_set = set(wild_letters)
     for word, letters in lexicon.items():
-        if any(l not in ci for l in letters):
+        if any(l not in ci and l not in wild_set for l in letters):
             continue
-        idx = [ci[l] for l in letters]
+        idx = [ci.get(l, -1) for l in letters]              # -1: a slot
         m = len(idx)
         prev = np.arange(m + 1) * dele                      # no holds used yet
         for i in range(n):
@@ -107,7 +120,8 @@ def decode_aligned(probs, classes, lexicon, prior=None, ins=-1.0, dele=-1.0, flo
             cur[0] = prev[0] + ins
             g = G[i]
             for j in range(1, m + 1):
-                cur[j] = max(prev[j - 1] + g[idx[j - 1]], prev[j] + ins, cur[j - 1] + dele)
+                gain = wild if idx[j - 1] < 0 else g[idx[j - 1]]
+                cur[j] = max(prev[j - 1] + gain, prev[j] + ins, cur[j - 1] + dele)
             prev = cur
         scored.append((prev[m], word))
     scored.sort(key=lambda t: -t[0])
@@ -119,7 +133,7 @@ GRID_DELE = (-0.5, -1.0, -2.0, -3.0)
 
 
 def tune_aligned(clips, lexicon, which="free", use_prior=True,
-                 grid_ins=GRID_INS, grid_dele=GRID_DELE):
+                 grid_ins=GRID_INS, grid_dele=GRID_DELE, wild_letters=(), wild=0.0):
     """(ins, dele) with the best top-1 on `clips`, ties broken by top-3.
 
     Pass clips the test signer is not part of (end_to_end.nested_clips "tune").
@@ -130,7 +144,8 @@ def tune_aligned(clips, lexicon, which="free", use_prior=True,
             t1 = t3 = 0
             for c in clips:
                 r = decode_aligned(c[which], c["classes"], lexicon,
-                                   c["prior"] if use_prior else None, ins, dele)
+                                   c["prior"] if use_prior else None, ins, dele,
+                                   wild_letters=wild_letters, wild=wild)
                 t1 += r[:1] == [c["word"]]
                 t3 += c["word"] in r[:3]
             if best is None or (t1, t3) > best[0]:

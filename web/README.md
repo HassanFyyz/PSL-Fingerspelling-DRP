@@ -39,26 +39,35 @@ This replaced an earlier HOG-image + logistic-regression model that scored only 
 `hand_geometry.py` for why geometry features plus a kernel SVM do much better than an image crop
 plus a linear model on this little data.
 
-Measured leave-one-signer-out (40-letter folds only — the two calibration-session folds hold
-only 2 letters each and are excluded as not comparable):
+**Scope (since 22 Nov): the 30 static letters.** The 11 letters signed with movement
+(آ ؤ ئ ج ش م ن ٹ ڑ ھ ہ) are not classes. The lexicon keeps all 54 words; a moving letter in
+a word is a slot the decoder fills with any hold or skips (`word_decode.js`), and the word
+support test counts only the letters the model can read. Measured leave-one-signer-out on
+the five dataset signers (`results/2026-11-22_static_words/`):
 
-| | result | chance / baseline |
-|---|---|---|
-| per letter | 26.4 % (interval 22.6–30.4 %) | 10.0 % majority (40 classes) |
-| word, unaided holds, old decoder | 23.6 % top-1 | 1.9 % (1 in 54) |
-| word, unaided holds, alignment decoder (what the page runs) | 51.9 % top-1, 70.7 % top-3 | |
+| | 30 static letters (shipped) | 41-letter model (before) | chance |
+|---|---|---|---|
+| per letter, calibration in training | 39.8 % | 28.0 % | |
+| word, unaided holds, alignment decoder (what the page runs) | 40.7 % top-1, 59.9 % top-3 | 51.9 % top-1, 70.7 % top-3 | 1.9 % (1 in 54) |
+| word shown / right when shown | 55.5 % / 61.2 % | 50.5 % / 79.1 % | |
 
-The letter figure excludes the calibration rows from training and test. The word figures are
-measured with the segmenter finding the holds itself; see `end_to_end_words.ipynb` and
-`alignment_decoder.ipynb`. With Platt probabilities and a likelihood ratio the same decoder
-reaches 75 % offline, but the browser model exports vote share, not probabilities.
+The static model reads letters better and words worse: the 41-letter model used the moving
+letters' held hand shape as evidence for the 44 words that contain one. Earlier, 41-letter
+figures: per letter 26.4 % without calibration (interval 22.6–30.4 %); old decoder 23.6 % top-1.
+
+The letter figures keep the calibration rows in training and test only on the dataset
+signers. The word figures are measured with the segmenter finding the holds itself (word
+models are trained on the dataset signers only); see `end_to_end_words.ipynb`,
+`alignment_decoder.ipynb` and `results/2026-11-22_static_words/`. With Platt probabilities
+and a likelihood ratio the same decoder reaches 68 % (static) / 75 % (41 letters) offline,
+but the browser model exports vote share, not probabilities.
 
 **What the page shows.** The top line is the letter read for each hold, unaltered. A
 dictionary word is suggested only when at least 3 holds were signed and at least 60 % of the
-word's letters match a hold's top 3; otherwise the page says there is no close match. On the
-dataset clips a word is then shown about half the time and is right about 79 % of the time
-when shown (threshold chosen on those clips, so optimistic). `node web/test_align.mjs` checks
-the decoder's behaviour.
+word's readable letters match a hold's top 3; otherwise the page says there is no close
+match. With the static model a word is then shown on 56 % of the dataset clips and is right
+61 % of the time when shown (threshold chosen on those clips for the 41-letter model).
+`node web/test_align.mjs` checks the decoder's behaviour, including slots.
 
 **Calibration.** The shipped model includes the developer's own recordings: ا (alif) and ک
 (kaf) from two October sessions and ب (be) from 12 November. Live, right hand, those three
@@ -82,7 +91,7 @@ person at a webcam is the leave-one-signer-out one above.
 | `hand_geometry.js` | Joint angles + normalised distances, ported from `hand_geometry.py` |
 | `svm_classifier.js` | Weight loading, libsvm one-vs-one decode, lexicon decoder (current model) |
 | `word_decode.js` | Lexicon scoring shared by both classifiers |
-| `model_geom/` | `geom_model.json` (manifest + lexicon) + SVM weight `.bin` files (~600 KB) |
+| `model_geom/` | `geom_model.json` (manifest + lexicon + `dynamic_letters`) + SVM weight `.bin` files (~500 KB) |
 | `test_svm.mjs` | JS vs Python parity on the OVO decode, checked against `SVC.predict()` |
 | `hog.js`, `classifier.js`, `model/` | the earlier HOG + logistic-regression model, kept for reference, no longer loaded by `index.html` |
 | `test_classifier.mjs` | JS vs Python parity for the HOG model |

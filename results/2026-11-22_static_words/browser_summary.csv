@@ -1,0 +1,7 @@
+setting,clips,top-1 %,CI lo,CI hi,top-3 %,shown %,shown right %,shown_agree2 %,shown_agree2 right %,shown_agree3 %,shown_agree3 right %
+"browser, 40 letters (before)",218,51.9,37.8,61.3,70.7,50.5,79.1,50.5,79.1,47.7,79.8
+"browser,    words with a moving letter",171,52.1,38.7,60.9,73.2,50.9,79.3,50.9,79.3,48.0,79.3
+"browser,    fully static words",47,51.4,34.0,64.0,62.3,48.9,78.3,48.9,78.3,46.8,81.8
+"browser, 30 static letters + slots",218,40.7,30.7,48.7,59.9,55.5,61.2,55.5,61.2,49.1,64.5
+"browser,    words with a moving letter",171,35.2,25.7,41.9,53.7,52.6,58.9,52.6,58.9,45.0,62.3
+"browser,    fully static words",47,61.4,46.8,76.6,82.3,66.0,67.7,66.0,67.7,63.8,70.0

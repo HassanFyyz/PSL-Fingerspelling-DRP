@@ -20,7 +20,7 @@
  * confidence and good enough for top-k display and lexicon scoring.
  */
 import { handFeatures } from "./hand_geometry.js";
-import * as wd from "./word_decode.js?v=20261112";   // keep in step with index.html
+import * as wd from "./word_decode.js?v=20261122";   // keep in step with index.html
 
 export class SvmClassifier {
   constructor(manifest, sv, dualCoef, intercept, scalerMean, scalerScale) {
@@ -131,5 +131,9 @@ export class SvmClassifier {
   top(probs, k = 3) { return wd.top(this.classes, probs, k); }
   rawWord(probSeq) { return wd.rawWord(this.classes, probSeq); }
   decodeWord(probSeq, opts = {}) { return wd.decodeWord(this.classIndex, this.lexicon, probSeq, opts); }
-  decodeAligned(probSeq, opts = {}) { return wd.decodeAligned(this.classIndex, this.lexicon, probSeq, opts); }
+  // dynamic letters (not classes of a static-letter model) become decoder slots
+  decodeAligned(probSeq, opts = {}) {
+    return wd.decodeAligned(this.classIndex, this.lexicon, probSeq,
+                            { wildLetters: this.manifest.dynamic_letters || [], ...opts });
+  }
 }
