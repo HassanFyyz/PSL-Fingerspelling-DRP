@@ -4,23 +4,25 @@
  * already ran in pure Python before anything was ported -- re-run here against
  * the actual JS so a future edit to either side cannot drift silently.
  *
- * Usage: node web/test_svm.mjs web/svm_fixture.json
+ * Usage: node web/test_svm.mjs web/svm_fixture.json [model_dir]
+ *        node web/test_svm.mjs web/model_geom_kamran/svm_fixture.json web/model_geom_kamran
  */
 import { readFileSync } from "node:fs";
 import { handFeatures } from "./hand_geometry.js";
 
 const path = process.argv[2] || "web/svm_fixture.json";
-const manifest = JSON.parse(readFileSync("web/model_geom/geom_model.json", "utf8"));
+const dir = process.argv[3] || "web/model_geom";
+const manifest = JSON.parse(readFileSync(`${dir}/geom_model.json`, "utf8"));
 
 function f32(file) {
   const buf = readFileSync(file);
   return new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
 }
-const sv = f32("web/model_geom/geom_sv.bin");
-const dualCoef = f32("web/model_geom/geom_dualcoef.bin");
-const intercept = f32("web/model_geom/geom_intercept.bin");
-const mean = f32("web/model_geom/geom_scaler_mean.bin");
-const scale = f32("web/model_geom/geom_scaler_scale.bin");
+const sv = f32(`${dir}/geom_sv.bin`);
+const dualCoef = f32(`${dir}/geom_dualcoef.bin`);
+const intercept = f32(`${dir}/geom_intercept.bin`);
+const mean = f32(`${dir}/geom_scaler_mean.bin`);
+const scale = f32(`${dir}/geom_scaler_scale.bin`);
 
 const nFeat = manifest.n_feat, nSv = manifest.n_sv, nClasses = manifest.n_classes, gamma = manifest.gamma;
 const start = new Int32Array(nClasses + 1);
