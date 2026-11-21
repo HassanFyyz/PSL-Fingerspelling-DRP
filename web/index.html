@@ -109,17 +109,22 @@
       <div class="caveat">
         The top line is what was read, one letter per hold, with nothing
         changed. A dictionary word is suggested only when at least 3 letters
-        were signed and at least 60 % of that word's letters match what was
-        read (each within the model's top 3 for its hold); otherwise none is
-        shown. The match allows extra or missing holds; the dictionary has
-        54 words, so anything else can only appear in the top line. Word-level
-        accuracy for this updated model has not yet been measured.
-        This experimental build recognises <b>41 letters</b>, including ء,
-        and includes calibration takes from Abdullah and Hassan. Held-out
-        takes from the same sitting scored <b>92.3 %</b>; this does not measure
-        performance on a new day or a new person. On the five original dataset
-        signers held out in turn, accuracy against pseudo-labels was
-        <b>28.0 %</b> with calibration (26.8 % before these new takes).
+        were signed and at least 60 % of the word's readable letters match
+        what was read (each within the model's top 3 for its hold); otherwise
+        none is shown. The match allows extra or missing holds; the dictionary
+        has 54 words, so anything else can only appear in the top line.
+        This build recognises the <b>30 static letters</b>. The 11 letters
+        signed with movement (آ ؤ ئ ج ش م ن ٹ ڑ ھ ہ) are outside what it can
+        read and never appear in the top line; a dictionary word containing
+        them can still be suggested from its other letters.
+        Calibration takes from Abdullah and Hassan are included. Held-out
+        takes from the same sitting scored about <b>92 %</b>; this does not
+        measure performance on a new day or a new person. On the five original
+        dataset signers held out in turn, letter accuracy against pseudo-labels
+        was <b>39.8 %</b> (static letters, calibration in training). Words, on
+        the same signers with holds found automatically: right first guess
+        <b>40.7 %</b> of the time (51.9 % for the earlier 41-letter model,
+        which also read the moving letters' hand shapes).
         Either hand is read the
         same way (the model uses joint angles and distances, which mirroring
         does not change), but every training signer used their right hand, so
@@ -154,8 +159,8 @@ import { StreamingSegmenter, MIN_VIABLE_FPS, STILL_SPEED, MOVE_DIST } from "./so
 // script fails to load and Start camera does nothing. Bump it with any edit
 // to svm_classifier.js or word_decode.js (and the same string inside
 // svm_classifier.js).
-import { SvmClassifier } from "./svm_classifier.js?v=20261112";
-import { MIN_HOLDS } from "./word_decode.js?v=20261112";
+import { SvmClassifier } from "./svm_classifier.js?v=20261122";
+import { MIN_HOLDS } from "./word_decode.js?v=20261122";
 
 const V = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
 const MODEL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/" +
@@ -260,7 +265,9 @@ function renderWord() {
   out.style.opacity = "1";
   out.textContent = best.word;
   const others = cands.slice(1).filter(c => c.shown).slice(0, 2).map(c => c.word);
-  alts.textContent = `${best.agree} of ${best.nLetters} letters match`
+  const moving = best.nLetters - best.nScored;
+  alts.textContent = `${best.agree} of ${best.nScored} letters match`
+    + (moving ? ` (+${moving} moving letter${moving === 1 ? "" : "s"}, not read)` : "")
     + (others.length ? `   ·   also fits: ${others.join("  ·  ")}` : "");
 }
 
