@@ -1,4 +1,8 @@
-# Step 3, point 1: flagging bad letter-sheet crops (23 Nov 2026)
+# Step 3, point 1: flagging bad letter-sheet crops (23 Nov 2026, corrected the same day)
+
+> **Corrected.** Re-run after removing Kamran's idle-hand rows
+> (`results/2026-11-23_kamran_idle_hand/`). The flags changed little (round B: 506 dropped
+> instead of 513); the judge-reliability numbers changed a lot.
 
 `flag_sheets.py` judges each of the 1,028 static-letter sheet crops (video holds). Thresholds
 were fixed before any score was looked at:
@@ -9,40 +13,38 @@ were fixed before any score was looked at:
 - **other signers**: a model trained on the other four sheet signers does not have the label in
   its top 3. Reported only; it does not decide drops.
 
-A crop is **dropped** if it fails *clean* or *neighbour*. To keep the clean test (`clean_eval.py`)
-honest, the clean judge never uses the group its round tests: round A's judge is trained on our
-calibration takes, round B's on Kamran's images. Every crop's word position was verified against
-`word_letter_mapping.json` (1,345 of 1,345 match).
+A crop is **dropped** if it fails *clean* or *neighbour*. The clean judge never uses the group its
+round tests: round A's judge is trained on our calibration takes, round B's on Kamran's images.
+Every crop's word position was verified against `word_letter_mapping.json` (1,345 of 1,345).
 
 ## Results
 
-| | round A judge (our 291 takes) | round B judge (Kamran's 2,360 images) |
+| | round A judge (our 291 takes) | round B judge (Kamran's 1,211 images) |
 |---|---|---|
-| crops dropped | 578 (56%) | 513 (50%) |
-| of which the judge's top guess is the previous / next letter of the word | 32% | **44%** (224 crops) |
+| crops dropped | 578 (56%) | 506 (49%) |
+| of which the judge's top guess is the previous / next letter of the word | 32% | **44%** (223 crops) |
 | same rate among crops kept | 4% | 4% |
-| **judge reliability**: correctly labelled clean examples it would flag | **54%** (on Kamran's images) | **11%** (on our takes) |
+| judge reliability: correctly labelled clean examples it would flag | 17.8% (on Kamran's images) | 8.6% (on our takes) |
 
-- **The timing slip is real and common.** With the reliable judge (B), 224 crops, about one sheet
-  crop in five, look most like the letter next to them in the word. Among kept crops that happens
-  4% of the time.
-- **Two independent judges agree.** 398 crops (39%) are flagged by both the Kamran judge and the
-  other-signer judge, which share no training data. 90% of the other-signer flags are also B drops.
-- **Round A's judge is too weak to clean with.** Trained on two people, it would flag 54% of
-  correctly labelled images. Its drops are mostly noise. (This diagnostic was measured on
-  Kamran's images, the group round A tests, so it is reported but must not tune anything.)
-- **Not one signer's fault.** Drop rates are 44–56% for every signer (B); signer4-L is not the worst.
-- **Letters.** Highest B drop rates: چ 100% (8 crops), ح 81%, ث 75% (4), ل 61%, ڈ 59%, ی 58%.
-  For **ح** the Kamran judge rejects 81% but the other sheet signers only 42%: like ک (step 2),
-  the sheets and Kamran may sign ح differently. Lowest: ذ ض 20%, ط 25%.
-- Some flags are not wrong labels but blurred or in-between frames: the crop is still a bad
-  training example, so dropping it is the intended effect.
+- **The timing slip is real and common.** 223 crops, about one sheet crop in five, look most like
+  the letter next to them in the word; among kept crops that happens 4% of the time.
+- **Two independent judges agree** on 394 crops (38%): the Kamran judge and the other-signer
+  judge share no training data.
+- **Not one signer's fault.** Round B drop rates are 43–55% for every signer.
+- **Letters.** Highest round-B drop rates: چ 100% (8 crops), ح 85%, ث 75% (4), and 60% for
+  ظ خ غ ل پ. The sheet ح crops are visibly wrong (fists, open palms; the official ح is two
+  fingers sideways, thumb tucked). Lowest: ذ ض 20%, ط 25%.
+- Some flags are blurred or in-between frames rather than wrong labels; those are still bad
+  training examples.
+- Before the correction, round A's judge looked useless (it "flagged" 54% of correct labels).
+  That came from the idle-hand rows in the test, not from the judge.
 
 ## Decision for point 3 (made 23 Nov, before the re-test)
 
-Round A's judge is unreliable, so in round A a crop is dropped only when **two judges agree**:
-round A's judge *and* the other-signer check (neither uses Kamran's images). The judge-alone rule
-is reported as well. Round B keeps its own judge. Re-test: `results/2026-11-23_cleaned_test/`.
+In round A a crop is dropped only when **two judges agree** (round A's judge and the
+other-signer check; neither uses Kamran's images). It was chosen while round A's judge looked
+unreliable; it stands as decided, and the judge-alone rule is reported as well. Round B keeps
+its own judge. Re-test: `results/2026-11-23_cleaned_test/`.
 
 ## Files
 

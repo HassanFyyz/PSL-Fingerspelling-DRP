@@ -119,3 +119,6 @@ scratch/
 tmp/
 *.tmp
 *.log
+
+# blind review pages embed the official PSL screenshots (not ours to publish)
+results/*/review_page.html

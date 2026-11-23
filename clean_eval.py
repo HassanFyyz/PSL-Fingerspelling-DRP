@@ -8,23 +8,26 @@ cannot tell whether the sheets help. This test uses only correctly labelled data
 as the answer key:
 
   K  Kamran's images: one letter per folder (signer(s) unknown, one group)
-  C  our calibration takes: each take is one letter signed on purpose
+  C  our calibration takes (Hassan, Abdullah): each take is one letter signed on purpose
+  P:<name>  each NEW person recorded with add_calibration.py --signer user-<name>-<date>
+     (any calibration signer not Hassan / Abdullah); one group per person
   S  the video holds behind the letter sheets (five dataset signers)
 
 All static letters only (splits.DYNAMIC_LETTERS removed everywhere).
 
-Training options, each scored in two rounds; a group is never in training when
-it is the test group:
+Training options, each scored with every clean group as the test group in turn
+(a round); the test group is never in training. With today's data there are two
+rounds; each new person with >= MIN_LETTERS letters adds one:
 
-  option            round A: test K        round B: test C
-  sheets only       train S                train S
-  clean only        train C                train K
-  clean + sheets    train S + C            train S + K      (= what we ship now)
+  option            round A: test K        round B: test C        round P:<name>
+  sheets only       train S                train S                train S
+  clean only        train C (+ people)     train K (+ people)     train K + C + other people
+  clean + sheets    train S + C (+ ...)    train S + K (+ ...)    train S + K + C + ...
 
 DECISION RULE (fixed 23 Nov, before the first run). Primary model: the shipped
 SVM recipe. Compare "clean only" with "clean + sheets" on accuracy:
-  * clean only ahead by >= 3 points in BOTH rounds  -> take the sheets out of training
-  * clean + sheets ahead by >= 3 points in BOTH rounds -> keep them
+  * clean only ahead by >= 3 points in EVERY round  -> take the sheets out of training
+  * clean + sheets ahead by >= 3 points in EVERY round -> keep them
   * anything else -> undecided: try cleaned sheets (bad crops dropped) and more people
 ExtraTrees is reported as a check; if it disagrees with the SVM the result is
 called undecided whatever the SVM says.
@@ -46,26 +49,53 @@ from splits import DYNAMIC_LETTERS
 OUT = os.path.join("results", "2026-11-23_clean_test")
 MARGIN = 3.0                                   # points, see DECISION RULE
 
-OPTIONS = {"sheets only": {"S"}, "clean only": {"C", "K"}, "clean + sheets": {"S", "C", "K"}}
-ROUNDS = {"A: test Kamran": "K", "B: test calibration": "C"}
+MIN_LETTERS = 15                               # a new person needs this many letters to be a round
+ROUNDS = {"A: test Kamran": "K", "B: test calibration": "C"}   # new people are added in rounds()
 MODELS = {"SVM": models.svm, "ExtraTrees": models.extra_trees}
 
 
+def person_of(signer):
+    """Clean group of a calibration signer: 'C' for Hassan / Abdullah, 'P:<name>' otherwise."""
+    rest = signer[len("user-"):]
+    if rest.startswith(("hassan", "abdullah", "mixed-abdullah-hassan")):
+        return "C"
+    return "P:" + rest.split("-")[0]
+
+
 def groups():
-    """{'S'|'C'|'K': (features, letters, source)} for the static letters."""
+    """{'S'|'C'|'K'|'P:<name>': (features, letters, source)} for the static letters."""
     P = np.load("hold_landmarks.npy")
     M = pd.read_csv("hold_meta.csv")
     out = {}
     cal = M.signer.str.startswith("user-").to_numpy()
-    for name, mask in (("S", ~cal), ("C", cal)):
+    who = np.array([person_of(s) if c else "S" for s, c in zip(M.signer, cal)], dtype=object)
+    for name in ["S", "C"] + sorted(set(who) - {"S", "C"}):
+        mask = who == name
         out[name] = (hand_features(P[mask]), M.letter.to_numpy()[mask], M.signer.to_numpy()[mask])
-    PK, MK = image_dataset.load()
-    keep = ((MK.detected == 1) & ~MK.duplicated("sha1")).to_numpy()
-    out["K"] = (hand_features(PK[keep]), MK.letter.to_numpy()[keep], MK.split.to_numpy()[keep])
+    PK, MK = image_dataset.load_usable()        # idle-hand rows dropped (image_dataset docstring)
+    out["K"] = (hand_features(PK), MK.letter.to_numpy(), MK.split.to_numpy())
     for name, (F, y, src) in out.items():
         st = ~np.isin(y, DYNAMIC_LETTERS)
         out[name] = (F[st], y[st], src[st])
     return out
+
+
+def clean_names(G):
+    return [n for n in G if n != "S"]
+
+
+def rounds(G):
+    """{round name: test group}: K, C, and every new person with enough letters."""
+    out = dict(ROUNDS)
+    for n in clean_names(G):
+        if n.startswith("P:") and len(set(G[n][1])) >= MIN_LETTERS:
+            out[f"{n[2:]}: test {n[2:]}"] = n
+    return out
+
+
+def options(G):
+    clean = set(clean_names(G))
+    return {"sheets only": {"S"}, "clean only": clean, "clean + sheets": clean | {"S"}}
 
 
 def stack(G, names):
@@ -92,9 +122,9 @@ def run(seed=0, verbose=True):
         for n, (F, y, _) in G.items():
             print(f"  {n}: {len(y)} rows, {len(set(y))} letters")
     rows, recalls, preds = [], {}, []
-    for rname, test in ROUNDS.items():
+    for rname, test in rounds(G).items():
         Fte, yte = G[test][0], G[test][1]
-        for oname, opt in OPTIONS.items():
+        for oname, opt in options(G).items():
             train = opt - {test}
             Ftr, ytr = stack(G, train)
             assert test not in train
@@ -116,7 +146,7 @@ def run(seed=0, verbose=True):
 
     # paired comparisons on the same test rows: clean only vs the other two
     comp = []
-    for rname in ROUNDS:
+    for rname in rounds(G):
         for mname in MODELS:
             for other in ("clean + sheets", "sheets only"):
                 a = T[(T["round"] == rname) & (T.model == mname)].set_index("option")

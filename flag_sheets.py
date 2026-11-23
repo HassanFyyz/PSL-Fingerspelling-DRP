@@ -113,6 +113,17 @@ def flag(seed=0):
     return M
 
 
+def drop_for_export(clean_F, clean_y, seed=0):
+    """occ keys ('signer|video|pos') of static sheet crops to drop when exporting a model
+    with cleaned sheets: same rule as the rounds (clean or neighbour check), with one judge
+    trained on all the clean rows given (our takes, plus Kamran's images when available)."""
+    F, M = sheet_rows()
+    m = models.extra_trees(seed).fit(clean_F, clean_y)
+    M = judge(m, F, M, "E")
+    occ = M.signer + "|" + M.video + "|" + M.pos.astype(str)
+    return set(occ[M.E_drop.to_numpy()])
+
+
 def summary(M):
     by = lambda key: M.groupby(key).agg(
         crops=("letter", "size"),
