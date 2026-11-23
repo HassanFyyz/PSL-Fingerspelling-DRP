@@ -1,0 +1,9 @@
+round,model,clean only vs,accuracy diff pts,macro recall diff pts,letter CI lo,letter CI hi,letters better,letters worse
+A: test Kamran,SVM,clean + sheets,-5.21,-4.96,-12.51,2.57,10,18
+A: test Kamran,SVM,sheets only,0.13,0.02,-9.08,9.28,13,16
+A: test Kamran,ExtraTrees,clean + sheets,-7.29,-7.51,-13.7,-1.24,8,19
+A: test Kamran,ExtraTrees,sheets only,-1.4,-1.75,-11.03,7.74,12,18
+B: test calibration,SVM,clean + sheets,1.03,0.91,-9.67,11.15,9,10
+B: test calibration,SVM,sheets only,16.84,17.91,2.91,33.24,16,7
+B: test calibration,ExtraTrees,clean + sheets,1.37,1.33,-5.0,8.33,6,3
+B: test calibration,ExtraTrees,sheets only,23.71,23.0,10.0,36.33,18,2

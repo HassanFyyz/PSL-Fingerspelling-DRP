@@ -1,0 +1,13 @@
+round,option,model,train,train rows,test rows,accuracy %,macro recall %
+A: test Kamran,sheets only,SVM,S,1028,2360,28.39,29.9
+A: test Kamran,sheets only,ExtraTrees,S,1028,2360,32.29,33.91
+A: test Kamran,clean only,SVM,C,291,2360,28.52,29.92
+A: test Kamran,clean only,ExtraTrees,C,291,2360,30.89,32.16
+A: test Kamran,clean + sheets,SVM,C+S,1319,2360,33.73,34.88
+A: test Kamran,clean + sheets,ExtraTrees,C+S,1319,2360,38.18,39.67
+B: test calibration,sheets only,SVM,S,1028,291,35.05,35.67
+B: test calibration,sheets only,ExtraTrees,S,1028,291,45.02,47.0
+B: test calibration,clean only,SVM,K,2360,291,51.89,53.58
+B: test calibration,clean only,ExtraTrees,K,2360,291,68.73,70.0
+B: test calibration,clean + sheets,SVM,K+S,3388,291,50.86,52.67
+B: test calibration,clean + sheets,ExtraTrees,K+S,3388,291,67.35,68.67

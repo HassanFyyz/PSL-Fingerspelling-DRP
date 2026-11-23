@@ -24,7 +24,9 @@ import cv2
 import numpy as np
 import pandas as pd
 
-ROOT = "PSL_Fingerspelling_Image_Dataset"
+# The folder can live outside the repo: set PSL_KAMRAN_DIR to its path, e.g.
+#   PSL_KAMRAN_DIR=~/Desktop/train python clean_eval.py
+ROOT = os.path.expanduser(os.environ.get("PSL_KAMRAN_DIR", "PSL_Fingerspelling_Image_Dataset"))
 CACHE_PTS = os.path.join(ROOT, "landmarks.npy")
 CACHE_META = os.path.join(ROOT, "landmarks_meta.csv")
 LETTER_FIX = {"ك": "ک"}          # Arabic kaf -> Urdu kaf
