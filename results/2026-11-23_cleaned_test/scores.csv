@@ -1,0 +1,25 @@
+round,drop rule,model,test rows,sheet crops dropped,option,train rows,accuracy %,macro recall %,random min %,random max %
+A: test Kamran,A,SVM,2360,414,clean only,291,28.52,29.92,,
+A: test Kamran,A,SVM,2360,414,clean + all sheets,1319,33.73,34.88,,
+A: test Kamran,A,SVM,2360,414,clean + cleaned sheets,905,33.77,35.01,,
+A: test Kamran,A,SVM,2360,414,clean + random-dropped (mean of 10),905,31.61,32.84,29.96,32.71
+A: test Kamran,A,ExtraTrees,2360,414,clean only,291,30.89,32.16,,
+A: test Kamran,A,ExtraTrees,2360,414,clean + all sheets,1319,38.18,39.67,,
+A: test Kamran,A,ExtraTrees,2360,414,clean + cleaned sheets,905,35.93,37.26,,
+A: test Kamran,A,ExtraTrees,2360,414,clean + random-dropped (mean of 10),905,36.01,37.39,34.92,37.08
+A: test Kamran,"A, as first fixed",SVM,2360,578,clean only,291,28.52,29.92,,
+A: test Kamran,"A, as first fixed",SVM,2360,578,clean + all sheets,1319,33.73,34.88,,
+A: test Kamran,"A, as first fixed",SVM,2360,578,clean + cleaned sheets,741,34.53,35.81,,
+A: test Kamran,"A, as first fixed",SVM,2360,578,clean + random-dropped (mean of 10),741,31.09,32.11,28.01,33.98
+A: test Kamran,"A, as first fixed",ExtraTrees,2360,578,clean only,291,30.89,32.16,,
+A: test Kamran,"A, as first fixed",ExtraTrees,2360,578,clean + all sheets,1319,38.18,39.67,,
+A: test Kamran,"A, as first fixed",ExtraTrees,2360,578,clean + cleaned sheets,741,34.92,36.18,,
+A: test Kamran,"A, as first fixed",ExtraTrees,2360,578,clean + random-dropped (mean of 10),741,35.03,36.16,33.05,36.82
+B: test calibration,B,SVM,291,513,clean only,2360,51.89,53.58,,
+B: test calibration,B,SVM,291,513,clean + all sheets,3388,50.86,52.67,,
+B: test calibration,B,SVM,291,513,clean + cleaned sheets,2875,56.7,58.27,,
+B: test calibration,B,SVM,291,513,clean + random-dropped (mean of 10),2875,49.59,51.06,46.74,53.26
+B: test calibration,B,ExtraTrees,291,513,clean only,2360,68.73,70.0,,
+B: test calibration,B,ExtraTrees,291,513,clean + all sheets,3388,67.35,68.67,,
+B: test calibration,B,ExtraTrees,291,513,clean + cleaned sheets,2875,70.1,71.33,,
+B: test calibration,B,ExtraTrees,291,513,clean + random-dropped (mean of 10),2875,67.01,68.33,64.6,68.73

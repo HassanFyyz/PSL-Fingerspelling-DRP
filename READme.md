@@ -236,7 +236,13 @@
     - **About half the crops fail**, for every signer (44–56%). **One sheet crop in five looks most like the letter next to it in its word** (224 crops; 4% among kept crops): the timing slip seen in the letter sheets is common. Two judges with no shared data agree on 39% of crops.
     - The judge trained on our two people is too weak to clean with (it would flag 54% of correctly labelled images); the Kamran-trained judge flags 11%.
     - **ح may be signed differently in the sheets and in Kamran's set** (rejected 81% by the Kamran judge, 42% by the other signers), like ک.
-    - **To decide before the re-test:** round A cleaning by its own judge (as fixed) or only where two judges agree.
+    - **Decided before the re-test:** in round A a crop is dropped only where two judges agree.
+
+28. **Step 3, point 3: the clean test with cleaned sheets** (`cleaned_eval.py`, `results/2026-11-23_cleaned_test/`).
+    - **With the reliable (Kamran-trained) judge, cleaning works:** testing on our calibration takes, SVM 50.9% (all sheets) → **56.7%** (cleaned), ExtraTrees 67.4 → **70.1%**, both above every random-drop draw (at most 53.3 / 68.7) and above clean data alone (51.9 / 68.7).
+    - **With the weak judge (trained on our two people), it does not:** testing on Kamran's images, ExtraTrees 38.2% (all sheets) vs 35.9% (cleaned) vs 36.0% (random drop); SVM 33.7 / 33.8 / 31.6.
+    - **Verdict by the fixed rule: undecided** (SVM says keep only the cleaned sheets; ExtraTrees' gain over clean data in round B is 1.4 points, under the 3-point margin).
+    - Suggested, not done: clean the sheets for the shipped model with a judge trained on Kamran's images + our takes. Point 4 (look at the flagged crops) and new people can settle it.
 
 **Immediate next actions (in progress or queued):**
 - [~] **PERSONAL CALIBRATION — top priority for a working demo.** *All 30 static letters now have calibration takes (#23); the 11 dynamic letters are out of scope. Still needed: a recording on a different day to test on, and a check of the 13 Nov labels against the official signs.* Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.

@@ -1,0 +1,3 @@
+per model: {'SVM': 'keep only the cleaned sheets', 'ExtraTrees': 'undecided'}
+final: undecided
+checks: {'SVM': {'cleaned beats all sheets in both rounds': True, 'cleaned beats random dropping in both rounds': True}, 'ExtraTrees': {'cleaned beats all sheets in both rounds': False, 'cleaned beats random dropping in both rounds': False}}

@@ -38,15 +38,11 @@ calibration takes, round B's on Kamran's images. Every crop's word position was 
 - Some flags are not wrong labels but blurred or in-between frames: the crop is still a bad
   training example, so dropping it is the intended effect.
 
-## Decision needed before point 3 (the re-test)
+## Decision for point 3 (made 23 Nov, before the re-test)
 
-The rule fixed in advance drops crops on the judge of each round. For round A that judge is
-unreliable. Before any re-test score is computed, choose round A's cleaning:
-
-1. **as fixed** (round A judge alone), or
-2. **two judges must agree**: round A judge *and* the other-signer check (neither uses Kamran's images).
-
-Point 3 will report both either way; the choice is which one counts.
+Round A's judge is unreliable, so in round A a crop is dropped only when **two judges agree**:
+round A's judge *and* the other-signer check (neither uses Kamran's images). The judge-alone rule
+is reported as well. Round B keeps its own judge. Re-test: `results/2026-11-23_cleaned_test/`.
 
 ## Files
 
