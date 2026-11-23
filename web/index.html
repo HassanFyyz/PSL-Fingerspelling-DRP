@@ -119,12 +119,12 @@
         them can still be suggested from its other letters.
         Calibration takes from Abdullah and Hassan are included. Held-out
         takes from the same sitting scored about <b>92 %</b>; this does not
-        measure performance on a new day or a new person. On the five original
-        dataset signers held out in turn, letter accuracy against pseudo-labels
-        was <b>39.8 %</b> (static letters, calibration in training). Words, on
-        the same signers with holds found automatically: right first guess
-        <b>40.7 %</b> of the time (51.9 % for the earlier 41-letter model,
-        which also read the moving letters' hand shapes).
+        measure performance on a new day or a new person. Trained on these
+        takes and on the dataset video holds that passed a label check (517 of
+        1,028; about half had wrong labels), the public model reads
+        <b>70.8 %</b> of letters right on correctly labelled images of people
+        it has never seen (Kamran's image set, 2,322 images). Words were last
+        measured with the previous model: right first guess 40.7 % of the time.
         Either hand is read the
         same way (the model uses joint angles and distances, which mirroring
         does not change), but every training signer used their right hand, so

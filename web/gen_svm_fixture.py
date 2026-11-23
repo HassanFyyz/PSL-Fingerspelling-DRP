@@ -25,7 +25,8 @@ P = np.load("hold_landmarks.npy")
 M = pd.read_csv("hold_meta.csv")
 # same flags as export_geometry_model.py; the cases stay drawn from all our rows
 F, y, g = training_data(with_kamran=WITH_KAMRAN, with_official="--with-official" in sys.argv,
-                        with_video="--no-video" not in sys.argv)
+                        with_video="--no-video" not in sys.argv,
+                        clean_sheets="--clean-sheets" in sys.argv)
 
 scaler = StandardScaler().fit(F)
 model = SVC(C=10, gamma="scale", class_weight="balanced")

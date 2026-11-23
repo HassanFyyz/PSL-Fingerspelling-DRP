@@ -261,12 +261,17 @@
     - **Usable: 2,863 images, 2,322 of the static letters (54–119 per letter)**, almost double the 1,211 without them. Steps 2–3 re-run (#26–#28): the SVM trained on his images now scores 64.3% on our takes (57.7% before recovery).
     - Other copies of Kamran's folder still hold the one-hand cache: copy `landmarks.npy` and `landmarks_meta.csv` from Abdullah's, or run `python image_dataset.py` there.
 
+32. **Final models for this round** (`results/2026-11-23_summary.md`).
+    - **Public model (website): our takes + the sheet pictures that passed the label check** (517 of 1,028; `export_geometry_model.py --clean-sheets`). **70.8%** on Kamran's images, people it never saw (67.8% with all sheets). JS parity 0 mismatches.
+    - **Private model (lab machines, git-ignored): Kamran's 2,322 images + our takes, no sheets** (`--with-kamran --no-video`). Estimated **64.3%** for new people (Kamran-only training, tested on our takes); tried live by Abdullah on 23 Nov, with and without his takes in training: reads static letters well.
+    - Earlier 26–40% figures were scored against wrong sheet labels and are not comparable.
+
 **Immediate next actions (in progress or queued):**
-- [ ] **Rebuild the private browser model** with the re-detected landmarks (copy the new cache first, #31): `python export_geometry_model.py --with-kamran --with-official` (on the machine with the official images). The current `web/model_geom_kamran/` was trained on them (#29).
+- [ ] **Rebuild the private browser model on other machines** (copy the new cache first, #31), as in #32: `python export_geometry_model.py --with-kamran --no-video`. Done on Abdullah's Mac. Old command for reference: `python export_geometry_model.py --with-kamran --with-official` (on the machine with the official images). The current `web/model_geom_kamran/` was trained on them (#29).
 - [x] **Recover Kamran's idle-hand images** — done: 1,316 recovered, 2,863 usable (#31). Copy the new cache to other copies of his folder.
 - [x] **Blind review of the sheet flags** — done: 85% of dropped crops wrong vs 20% of kept (#30).
 - [ ] **Record new people and a different-day session** (`calibration/RECORDING_PROTOCOL.md`).
-- [ ] **Decide the sheets per model** (#28, #30): for the SVM, public model `--clean-sheets` (70.8% vs 67.8% with all sheets), private model `--no-video` (64.3% vs 57.7%). New people will confirm.
+- [x] **Sheets per model** — public `--clean-sheets`, private `--with-kamran --no-video` (#32). New people will confirm.
 - [ ] **ExtraTrees in the browser?** 5–7 points ahead of the SVM on clean answer keys (#26).
 - [~] **PERSONAL CALIBRATION — top priority for a working demo.** *All 30 static letters now have calibration takes (#23); the 11 dynamic letters are out of scope. Still needed: a recording on a different day to test on, and a check of the 13 Nov labels against the official signs.* Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.

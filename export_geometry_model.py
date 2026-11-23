@@ -29,6 +29,7 @@ serves that without the extra machinery.
 """
 import json
 import os
+import sys
 
 import numpy as np
 import pandas as pd
@@ -74,7 +75,7 @@ def training_data(pts_path=PTS_PATH, meta_path=META_PATH, with_kamran=False,
         if not (static_only and with_video):
             raise ValueError("--clean-sheets needs the static-letter model with video holds")
         drop = np.isin(occ, list(_sheet_drops(F, y, g)))
-        print(f"cleaned sheets: dropping {int(drop.sum())} of {int((occ != '').sum())} video holds")
+        print(f"cleaned sheets: dropping {int(drop.sum())} of {int((occ != '').sum())} video holds", file=sys.stderr)
         F, y, g = F[~drop], y[~drop], g[~drop]
     return F, y, g
 
@@ -91,10 +92,10 @@ def _sheet_drops(F, y, g):
             st = ~MK.letter.isin(DYNAMIC_LETTERS).to_numpy()
             Fc = np.vstack([Fc, hand_features(PK[st])])
             yc = np.concatenate([yc, MK.letter.to_numpy()[st]])
-            print("cleaned sheets: judge uses our takes + Kamran's images")
+            print("cleaned sheets: judge uses our takes + Kamran's images", file=sys.stderr)
         except (FileNotFoundError, OSError):
             print("cleaned sheets: Kamran's images not found, judge uses our takes only "
-                  "(weaker: see results/2026-11-23_sheet_flags/)")
+                  "(weaker: see results/2026-11-23_sheet_flags/)", file=sys.stderr)
     return flag_sheets.drop_for_export(Fc, yc)
 
 
