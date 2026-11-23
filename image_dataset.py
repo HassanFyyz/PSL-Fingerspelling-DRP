@@ -24,9 +24,10 @@ was made with a one-hand detector, which picked the idle hand in 1,348 of 2,902
 usable images (46%): every one of them has the hand centre below y = 900 of
 1080 with the fingers pointing down, and no image has its hand centre between
 y = 700 and 900, so the cut at IDLE_Y is exact. `load_usable()` drops them.
-`extract(two_hands=True)` re-detects up to two hands and keeps the higher one,
-which recovers those images; it needs the MediaPipe model file, so run it on a
-machine that can download it:  PSL_KAMRAN_DIR=~/Desktop/train python image_dataset.py
+`extract(two_hands=True)` re-detects up to two hands and keeps the higher one:
+    PSL_KAMRAN_DIR=~/Desktop/train python image_dataset.py
+Run on 23 Nov: hands in 2,952 of 2,952 images, 1,316 idle hands replaced by the
+signing hand, 48 still idle (dropped), 2,863 usable.
 """
 import hashlib
 import os

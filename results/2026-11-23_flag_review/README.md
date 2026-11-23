@@ -1,5 +1,8 @@
 # Step 3, point 4: blind visual check of the sheet-crop flags (23 Nov 2026)
 
+*The review used the round-B flags as they were before Kamran's images were re-detected (506
+dropped crops); the final flags (497) differ in a few crops.*
+
 **Question.** Do the crops the round-B judge drops (`results/2026-11-23_sheet_flags/`) really
 show the wrong letter? A person who knows the signs answers this without any model score.
 

@@ -1,8 +1,8 @@
-# Step 3, point 1: flagging bad letter-sheet crops (23 Nov 2026, corrected the same day)
+# Step 3, point 1: flagging bad letter-sheet crops (23 Nov 2026, final)
 
-> **Corrected.** Re-run after removing Kamran's idle-hand rows
-> (`results/2026-11-23_kamran_idle_hand/`). The flags changed little (round B: 506 dropped
-> instead of 513); the judge-reliability numbers changed a lot.
+> **Data history.** Re-run on Kamran's re-detected images (2,322 static; see
+> `results/2026-11-23_kamran_idle_hand/`). Round B dropped 513 crops with the idle hands in,
+> 506 without them, 497 now. The blind review (point 4) used the 506-crop version.
 
 `flag_sheets.py` judges each of the 1,028 static-letter sheet crops (video holds). Thresholds
 were fixed before any score was looked at:
@@ -19,21 +19,21 @@ Every crop's word position was verified against `word_letter_mapping.json` (1,34
 
 ## Results
 
-| | round A judge (our 291 takes) | round B judge (Kamran's 1,211 images) |
+| | round A judge (our 291 takes) | round B judge (Kamran's 2,322 images) |
 |---|---|---|
-| crops dropped | 578 (56%) | 506 (49%) |
-| of which the judge's top guess is the previous / next letter of the word | 32% | **44%** (223 crops) |
-| same rate among crops kept | 4% | 4% |
-| judge reliability: correctly labelled clean examples it would flag | 17.8% (on Kamran's images) | 8.6% (on our takes) |
+| crops dropped | 578 (56%) | 497 (48%) |
+| of which the judge's top guess is the previous / next letter of the word | 32% | **46%** (231 crops) |
+| same rate among crops kept | 4% | 3% |
+| judge reliability: correctly labelled clean examples it would flag | 16.6% (on Kamran's images) | 7.2% (on our takes) |
 
-- **The timing slip is real and common.** 223 crops, about one sheet crop in five, look most like
-  the letter next to them in the word; among kept crops that happens 4% of the time.
-- **Two independent judges agree** on 394 crops (38%): the Kamran judge and the other-signer
+- **The timing slip is real and common.** 231 crops, more than one sheet crop in five, look most
+  like the letter next to them in the word; among kept crops that happens 3% of the time.
+- **Two independent judges agree** on 392 crops (38%): the Kamran judge and the other-signer
   judge share no training data.
-- **Not one signer's fault.** Round B drop rates are 43–55% for every signer.
-- **Letters.** Highest round-B drop rates: چ 100% (8 crops), ح 85%, ث 75% (4), and 60% for
+- **Not one signer's fault.** Round B drop rates are 44–55% for every signer.
+- **Letters.** Highest round-B drop rates: چ 100% (8 crops), ح 81%, ث 75% (4), and 60% for
   ظ خ غ ل پ. The sheet ح crops are visibly wrong (fists, open palms; the official ح is two
-  fingers sideways, thumb tucked). Lowest: ذ ض 20%, ط 25%.
+  fingers sideways, thumb tucked). Lowest: ض 20%, ط 25% (4 crops), ت 26%.
 - Some flags are blurred or in-between frames rather than wrong labels; those are still bad
   training examples.
 - Before the correction, round A's judge looked useless (it "flagged" 54% of correct labels).
