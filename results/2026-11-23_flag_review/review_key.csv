@@ -1,0 +1,81 @@
+item,signer,video,pos,letter,alt,label_side,flagged,tile_file
+1,signer3-F,اکرم.MP4,1,ک,ر,right,True,06A9_07.png
+2,signer1-F,دھرم پورہ.MP4,0,د,و,right,True,062F_09.png
+3,signer3-F,تخلیق.MP4,4,ق,ط,left,True,0642_00.png
+4,signer2-F,تخلیق.MP4,4,ق,ع,left,False,0642_01.png
+5,signer1-F,غیر حاضر.MP4,5,ض,ز,right,False,0636_05.png
+6,signer3-F,ثمر.MP4,0,ث,و,right,False,062B_03.png
+7,signer3-F,ٹھوکر نیاز بیگ.MP4,11,گ,ء,left,False,06AF_09.png
+8,signer4-L,کیکس اینڈ بیکس.MP4,2,ک,ژ,left,False,06A9_09.png
+9,signer3-F,طاقت.MP4,0,ط,ا,right,True,0637_01.png
+10,signer4-L,ضلع.MP4,0,ض,ڈ,left,True,0636_07.png
+11,signer3-F,ولید.MP4,3,د,و,left,True,062F_00.png
+12,signer4-L,سٹینڈرڈچارٹرڈ.MP4,11,ر,ط,left,True,0631_12.png
+13,signer5-R,غیر حاضر.MP4,0,غ,ث,left,False,063A_01.png
+14,signer2-F,ٹھوکر نیاز بیگ.MP4,11,گ,ا,left,True,06AF_04.png
+15,signer1-F,ٹھوکر نیاز بیگ.MP4,11,گ,ء,left,False,06AF_05.png
+16,signer5-R,جے ایس بنک.MP4,1,ے,ا,left,False,06D2_01.png
+17,signer2-F,سٹینڈرڈچارٹرڈ.MP4,12,ڈ,ط,right,False,0688_09.png
+18,signer3-F,تخلیق.MP4,0,ت,ص,right,True,062A_04.png
+19,signer2-F,ثمر.MP4,0,ث,ت,right,True,062B_02.png
+20,signer5-R,ژالہ باری.MP4,0,ژ,ر,right,False,0698_01.png
+21,signer4-L,ڈوسے.MP4,3,ے,ص,left,False,06D2_12.png
+22,signer2-F,ژالہ باری.MP4,0,ژ,ر,right,False,0698_03.png
+23,signer4-L,سٹینڈرڈچارٹرڈ.MP4,5,ر,ط,right,True,0631_10.png
+24,signer1-F,ولید.MP4,0,و,ت,right,False,0648_03.png
+25,signer4-L,عکسری بنک.MP4,1,س,ک,right,True,0633_03.png
+26,signer3-F,تخلیق.MP4,1,خ,ص,left,True,062E_00.png
+27,signer5-R,سٹیٹ بنک.MP4,6,ک,ژ,right,False,06A9_12.png
+28,signer3-F,ذرات.MP4,0,ذ,ت,left,False,0630_01.png
+29,signer3-F,دھرم پورہ.MP4,4,پ,ط,right,True,067E_00.png
+30,signer3-F,میزان بنک.MP4,2,ز,د,right,False,0632_04.png
+31,signer5-R,ظروف.MP4,3,ف,ا,right,True,0641_10.png
+32,signer1-F,ثمر.MP4,0,ث,س,right,True,062B_01.png
+33,signer4-L,الفلاح بنک.MP4,2,ف,ل,right,True,0641_03.png
+34,signer4-L,فیصل بنک.MP4,0,ف,ب,right,False,0641_06.png
+35,signer5-R,طاقت.MP4,2,ق,ع,left,False,0642_06.png
+36,signer4-L,سٹینڈرڈچارٹرڈ.MP4,9,ر,س,left,True,0631_11.png
+37,signer1-F,ضلع.MP4,2,ع,ق,left,False,0639_10.png
+38,signer5-R,دھرم پورہ.MP4,4,پ,ز,left,True,067E_03.png
+39,signer2-F,تخلیق.MP4,1,خ,ء,right,False,062E_01.png
+40,signer1-F,طاقت.MP4,0,ط,ظ,left,False,0637_02.png
+41,signer1-F,ژالہ باری.MP4,0,ژ,ا,right,True,0698_02.png
+42,signer4-L,گورمے.MP4,4,ے,غ,left,False,06D2_00.png
+43,signer2-F,طاقت.MP4,0,ط,ڈ,right,False,0637_00.png
+44,signer5-R,الفلاح بنک.MP4,2,ف,ا,left,True,0641_01.png
+45,signer3-F,عمران.MP4,0,ع,غ,right,False,0639_02.png
+46,signer4-L,میزان بنک.MP4,2,ز,ا,right,True,0632_00.png
+47,signer2-F,ظروف.MP4,3,ف,ث,right,False,0641_05.png
+48,signer3-F,سروسز.MP4,4,ز,س,left,True,0632_09.png
+49,signer2-F,چلڈرن.MP4,0,چ,ز,left,True,0686_05.png
+50,signer3-F,ضلع.MP4,0,ض,ظ,left,False,0636_02.png
+51,signer3-F,ظروف.MP4,3,ف,ذ,left,True,0641_13.png
+52,signer2-F,فیصل بنک.MP4,0,ف,ے,left,False,0641_04.png
+53,signer3-F,الفلاح بنک.MP4,2,ف,ل,right,True,0641_12.png
+54,signer5-R,غیر حاضر.MP4,5,ض,ر,left,False,0636_04.png
+55,signer2-F,ضلع.MP4,0,ض,ز,right,False,0636_00.png
+56,signer4-L,اکرم.MP4,2,ر,ب,left,True,0631_02.png
+57,signer4-L,ژالہ باری.MP4,0,ژ,ر,right,True,0698_04.png
+58,signer2-F,الفلا ح بنک.MP4,2,ف,ل,left,True,0641_11.png
+59,signer1-F,اکرم.MP4,1,ک,ر,left,True,06A9_04.png
+60,signer1-F,ڈوسے.MP4,3,ے,ص,left,False,06D2_06.png
+61,signer5-R,الفلاح بنک.MP4,5,ح,ب,right,True,062D_01.png
+62,signer3-F,گنگارام.MP4,2,گ,غ,right,False,06AF_13.png
+63,signer4-L,تخلیق.MP4,4,ق,ع,right,False,0642_02.png
+64,signer1-F,فیصل بنک.MP4,0,ف,ث,right,False,0641_00.png
+65,signer1-F,دھرم پورہ.MP4,4,پ,ح,right,False,067E_04.png
+66,signer3-F,فیصل بنک.MP4,0,ف,ی,left,True,0641_09.png
+67,signer4-L,الفلاح بنک.MP4,5,ح,پ,left,True,062D_03.png
+68,signer1-F,ضلع.MP4,0,ض,ل,right,True,0636_08.png
+69,signer2-F,جے ایس بنک.MP4,1,ے,ص,left,True,06D2_10.png
+70,signer1-F,الفلاح بنک.MP4,2,ف,ل,left,True,0641_07.png
+71,signer4-L,ظروف.MP4,3,ف,ب,right,False,0641_02.png
+72,signer5-R,ضلع.MP4,2,ع,غ,left,False,0639_01.png
+73,signer5-R,تخلیق.MP4,4,ق,ع,right,False,0642_03.png
+74,signer3-F,طاقت.MP4,2,ق,س,left,True,0642_04.png
+75,signer4-L,طاقت.MP4,2,ق,ت,right,True,0642_08.png
+76,signer4-L,تخلیق.MP4,0,ت,ز,right,False,062A_06.png
+77,signer3-F,ڈوسے.MP4,3,ے,س,left,True,06D2_07.png
+78,signer2-F,ڈوسے.MP4,3,ے,گ,right,False,06D2_04.png
+79,signer2-F,دھرم پورہ.MP4,4,پ,و,left,True,067E_01.png
+80,signer5-R,الفلاح بنک.MP4,8,ک,ذ,left,False,06A9_05.png

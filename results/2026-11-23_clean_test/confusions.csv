@@ -1,0 +1,831 @@
+round,option,model,letter,pred,count
+A: test Kamran,sheets only,SVM,ء,ا,42
+A: test Kamran,clean only,ExtraTrees,ا,س,36
+A: test Kamran,clean only,ExtraTrees,ق,ء,36
+A: test Kamran,clean only,SVM,ض,ظ,35
+A: test Kamran,clean only,SVM,ق,ء,35
+A: test Kamran,sheets only,ExtraTrees,ذ,ر,32
+A: test Kamran,sheets only,ExtraTrees,گ,ح,31
+A: test Kamran,sheets only,ExtraTrees,چ,ب,31
+A: test Kamran,clean + sheets,SVM,ء,ا,31
+A: test Kamran,sheets only,SVM,گ,ح,30
+A: test Kamran,clean + sheets,ExtraTrees,گ,ز,29
+A: test Kamran,clean + sheets,SVM,گ,ز,29
+A: test Kamran,clean only,ExtraTrees,ض,ظ,29
+A: test Kamran,clean only,SVM,گ,ز,29
+A: test Kamran,clean only,ExtraTrees,گ,ز,29
+A: test Kamran,sheets only,ExtraTrees,ء,ا,28
+A: test Kamran,clean only,SVM,ا,س,27
+A: test Kamran,sheets only,SVM,چ,ر,26
+A: test Kamran,sheets only,SVM,ط,ڈ,26
+A: test Kamran,sheets only,ExtraTrees,ط,ڈ,25
+A: test Kamran,sheets only,ExtraTrees,ز,ل,24
+A: test Kamran,sheets only,SVM,ز,ل,22
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ر,22
+A: test Kamran,clean only,SVM,غ,ع,22
+A: test Kamran,sheets only,SVM,گ,ا,20
+A: test Kamran,clean + sheets,ExtraTrees,ء,ا,20
+A: test Kamran,clean only,SVM,گ,ء,20
+A: test Kamran,clean only,SVM,و,ی,20
+A: test Kamran,clean only,ExtraTrees,و,ی,20
+A: test Kamran,clean only,ExtraTrees,گ,ء,20
+A: test Kamran,clean + sheets,SVM,گ,ا,19
+A: test Kamran,clean only,ExtraTrees,غ,ث,18
+A: test Kamran,clean only,SVM,ک,ر,18
+A: test Kamran,sheets only,SVM,ص,ے,16
+A: test Kamran,sheets only,ExtraTrees,ز,پ,16
+A: test Kamran,clean only,SVM,ڈ,ط,16
+A: test Kamran,sheets only,ExtraTrees,ژ,ک,16
+A: test Kamran,clean + sheets,SVM,ز,ل,16
+A: test Kamran,clean + sheets,SVM,غ,ع,16
+A: test Kamran,clean only,SVM,ژ,ر,16
+A: test Kamran,clean + sheets,ExtraTrees,ط,ڈ,16
+A: test Kamran,sheets only,SVM,ذ,ر,15
+A: test Kamran,sheets only,SVM,ص,ا,15
+A: test Kamran,clean + sheets,SVM,ط,ڈ,15
+A: test Kamran,sheets only,ExtraTrees,ث,غ,14
+A: test Kamran,sheets only,SVM,ص,ل,14
+A: test Kamran,clean only,ExtraTrees,ر,ژ,14
+A: test Kamran,clean only,SVM,ز,پ,14
+A: test Kamran,clean + sheets,SVM,ص,ل,14
+A: test Kamran,sheets only,ExtraTrees,ء,گ,14
+A: test Kamran,clean only,SVM,ل,پ,13
+A: test Kamran,clean only,SVM,ز,ح,13
+A: test Kamran,sheets only,SVM,ع,ل,13
+A: test Kamran,clean + sheets,SVM,ح,ر,13
+A: test Kamran,sheets only,SVM,پ,ل,13
+A: test Kamran,clean + sheets,SVM,پ,ا,13
+A: test Kamran,sheets only,SVM,ح,ا,13
+A: test Kamran,sheets only,ExtraTrees,ل,گ,12
+A: test Kamran,clean + sheets,ExtraTrees,گ,ء,12
+A: test Kamran,clean only,SVM,خ,ژ,12
+A: test Kamran,clean only,SVM,پ,ح,12
+A: test Kamran,clean + sheets,SVM,ز,پ,12
+A: test Kamran,clean + sheets,SVM,ص,ا,12
+A: test Kamran,sheets only,SVM,غ,ع,12
+A: test Kamran,clean + sheets,ExtraTrees,ل,گ,12
+A: test Kamran,clean + sheets,ExtraTrees,ء,گ,12
+A: test Kamran,clean + sheets,SVM,ع,ل,12
+A: test Kamran,clean only,ExtraTrees,خ,ژ,12
+A: test Kamran,sheets only,ExtraTrees,غ,ع,11
+A: test Kamran,sheets only,SVM,ح,ر,11
+A: test Kamran,clean only,SVM,گ,پ,11
+A: test Kamran,sheets only,ExtraTrees,ث,و,11
+A: test Kamran,sheets only,ExtraTrees,ع,ق,11
+A: test Kamran,clean only,SVM,ک,پ,11
+A: test Kamran,clean + sheets,ExtraTrees,ث,غ,11
+A: test Kamran,clean + sheets,SVM,ک,و,11
+A: test Kamran,clean only,SVM,د,ز,11
+A: test Kamran,clean only,ExtraTrees,ڈ,ز,11
+A: test Kamran,clean + sheets,ExtraTrees,ز,ل,11
+A: test Kamran,clean + sheets,ExtraTrees,ز,پ,11
+A: test Kamran,clean + sheets,ExtraTrees,ک,گ,11
+A: test Kamran,sheets only,SVM,ح,ل,11
+A: test Kamran,sheets only,ExtraTrees,ک,گ,11
+A: test Kamran,clean only,ExtraTrees,گ,پ,10
+A: test Kamran,clean only,SVM,ع,ء,10
+A: test Kamran,clean only,ExtraTrees,ب,چ,10
+A: test Kamran,clean only,ExtraTrees,پ,ح,10
+A: test Kamran,sheets only,SVM,ا,چ,10
+A: test Kamran,clean + sheets,ExtraTrees,ز,گ,10
+A: test Kamran,sheets only,SVM,ز,ت,10
+B: test calibration,sheets only,SVM,غ,ع,10
+B: test calibration,clean only,SVM,ظ,ض,10
+A: test Kamran,sheets only,ExtraTrees,گ,ا,10
+A: test Kamran,sheets only,SVM,خ,ا,10
+A: test Kamran,sheets only,ExtraTrees,ص,ا,9
+A: test Kamran,clean + sheets,SVM,پ,و,9
+A: test Kamran,sheets only,SVM,ز,پ,9
+A: test Kamran,sheets only,ExtraTrees,س,ا,9
+B: test calibration,sheets only,ExtraTrees,ظ,ض,9
+A: test Kamran,clean + sheets,ExtraTrees,ع,ق,9
+B: test calibration,clean only,ExtraTrees,ظ,ض,9
+B: test calibration,sheets only,SVM,گ,ا,9
+A: test Kamran,sheets only,SVM,ت,ر,9
+A: test Kamran,clean + sheets,SVM,ح,ل,9
+A: test Kamran,sheets only,SVM,ک,و,9
+A: test Kamran,clean + sheets,SVM,ت,ر,9
+A: test Kamran,clean only,ExtraTrees,ک,پ,9
+A: test Kamran,clean only,SVM,ت,ق,9
+B: test calibration,clean only,SVM,ح,خ,8
+B: test calibration,sheets only,ExtraTrees,ر,ک,8
+B: test calibration,sheets only,ExtraTrees,غ,ع,8
+B: test calibration,clean only,SVM,ا,ص,8
+B: test calibration,sheets only,ExtraTrees,ص,ے,8
+A: test Kamran,sheets only,SVM,ز,ا,8
+A: test Kamran,clean only,SVM,ح,پ,8
+A: test Kamran,clean only,SVM,ت,ذ,8
+A: test Kamran,clean only,SVM,ط,ز,8
+A: test Kamran,clean + sheets,ExtraTrees,ح,گ,8
+A: test Kamran,clean only,ExtraTrees,ط,ز,8
+A: test Kamran,clean only,ExtraTrees,ل,ث,8
+A: test Kamran,clean only,SVM,ڈ,ز,8
+A: test Kamran,clean only,ExtraTrees,ت,ر,8
+A: test Kamran,sheets only,ExtraTrees,ز,ت,8
+A: test Kamran,sheets only,ExtraTrees,ح,گ,8
+B: test calibration,clean + sheets,ExtraTrees,ظ,ض,8
+A: test Kamran,clean + sheets,SVM,خ,ت,8
+B: test calibration,clean + sheets,SVM,غ,ع,8
+B: test calibration,sheets only,SVM,ء,ا,8
+B: test calibration,sheets only,ExtraTrees,چ,ب,8
+A: test Kamran,sheets only,SVM,پ,و,8
+A: test Kamran,sheets only,SVM,خ,ل,8
+A: test Kamran,clean + sheets,SVM,ز,ت,8
+A: test Kamran,clean only,ExtraTrees,ز,ڈ,7
+A: test Kamran,clean only,ExtraTrees,ز,ء,7
+A: test Kamran,clean only,ExtraTrees,ز,پ,7
+A: test Kamran,sheets only,ExtraTrees,ف,ب,7
+A: test Kamran,clean only,ExtraTrees,ص,ا,7
+A: test Kamran,clean only,SVM,ا,ص,7
+B: test calibration,sheets only,SVM,ظ,ض,7
+A: test Kamran,clean only,ExtraTrees,ط,ڈ,7
+B: test calibration,sheets only,SVM,ر,ک,7
+B: test calibration,sheets only,SVM,د,ز,7
+A: test Kamran,sheets only,SVM,ء,گ,7
+A: test Kamran,clean + sheets,SVM,ز,ا,7
+A: test Kamran,clean only,SVM,ف,ب,7
+A: test Kamran,sheets only,ExtraTrees,ء,ق,7
+B: test calibration,clean only,SVM,ڈ,ط,7
+A: test Kamran,clean + sheets,ExtraTrees,پ,ح,7
+B: test calibration,sheets only,ExtraTrees,ح,پ,7
+B: test calibration,clean only,ExtraTrees,ڈ,ط,7
+B: test calibration,clean + sheets,SVM,ظ,ض,7
+A: test Kamran,clean + sheets,SVM,ء,گ,7
+B: test calibration,clean + sheets,ExtraTrees,ح,پ,7
+B: test calibration,clean + sheets,SVM,ح,خ,7
+B: test calibration,clean only,ExtraTrees,ح,خ,7
+A: test Kamran,clean + sheets,ExtraTrees,ق,ء,7
+A: test Kamran,clean only,ExtraTrees,پ,خ,7
+A: test Kamran,clean only,ExtraTrees,پ,چ,7
+A: test Kamran,clean + sheets,ExtraTrees,ف,ب,6
+B: test calibration,clean only,SVM,ک,پ,6
+B: test calibration,sheets only,ExtraTrees,ء,ا,6
+B: test calibration,clean only,SVM,د,ز,6
+A: test Kamran,sheets only,SVM,ی,و,6
+B: test calibration,clean + sheets,ExtraTrees,د,ز,6
+B: test calibration,clean + sheets,SVM,ء,ا,6
+B: test calibration,clean + sheets,SVM,ک,ل,6
+B: test calibration,sheets only,SVM,ق,ع,6
+B: test calibration,sheets only,SVM,ک,ل,6
+B: test calibration,sheets only,ExtraTrees,گ,ا,6
+B: test calibration,sheets only,ExtraTrees,پ,ت,6
+A: test Kamran,clean + sheets,ExtraTrees,پ,ک,6
+B: test calibration,clean only,SVM,گ,ء,6
+B: test calibration,sheets only,ExtraTrees,د,ز,6
+B: test calibration,sheets only,ExtraTrees,ذ,ر,6
+A: test Kamran,sheets only,SVM,خ,ت,6
+A: test Kamran,sheets only,ExtraTrees,ح,ل,6
+A: test Kamran,clean + sheets,SVM,ص,ے,6
+A: test Kamran,sheets only,ExtraTrees,پ,خ,6
+A: test Kamran,clean + sheets,SVM,ف,ب,6
+A: test Kamran,clean only,SVM,ء,ز,6
+A: test Kamran,clean only,SVM,ا,گ,6
+A: test Kamran,clean only,SVM,ء,پ,6
+A: test Kamran,clean only,ExtraTrees,ح,ث,6
+A: test Kamran,clean only,SVM,س,گ,6
+A: test Kamran,clean + sheets,SVM,ی,و,6
+A: test Kamran,clean + sheets,SVM,ژ,ر,6
+A: test Kamran,clean only,ExtraTrees,ر,ذ,6
+A: test Kamran,clean only,ExtraTrees,ذ,ز,6
+A: test Kamran,clean only,ExtraTrees,ف,ب,6
+A: test Kamran,clean only,ExtraTrees,ع,ق,6
+A: test Kamran,clean + sheets,ExtraTrees,ز,ڈ,6
+B: test calibration,sheets only,SVM,خ,ل,6
+A: test Kamran,clean + sheets,ExtraTrees,ت,ر,6
+A: test Kamran,clean + sheets,ExtraTrees,ح,ر,6
+B: test calibration,clean only,SVM,ق,ع,5
+B: test calibration,clean only,SVM,ذ,ع,5
+B: test calibration,clean only,SVM,و,ع,5
+B: test calibration,sheets only,SVM,ض,ظ,5
+A: test Kamran,clean only,ExtraTrees,ع,ء,5
+A: test Kamran,clean + sheets,ExtraTrees,پ,خ,5
+B: test calibration,sheets only,SVM,ل,ف,5
+A: test Kamran,clean only,ExtraTrees,ل,پ,5
+A: test Kamran,clean only,ExtraTrees,پ,ژ,5
+B: test calibration,clean + sheets,SVM,گ,ا,5
+B: test calibration,clean only,ExtraTrees,گ,ء,5
+B: test calibration,clean only,ExtraTrees,ی,و,5
+B: test calibration,clean only,SVM,غ,ع,5
+A: test Kamran,sheets only,ExtraTrees,ث,د,5
+A: test Kamran,clean only,SVM,چ,پ,5
+A: test Kamran,sheets only,ExtraTrees,ی,و,5
+A: test Kamran,sheets only,ExtraTrees,پ,غ,5
+A: test Kamran,clean + sheets,SVM,ذ,د,5
+B: test calibration,sheets only,SVM,ح,ی,5
+B: test calibration,sheets only,ExtraTrees,ی,و,5
+A: test Kamran,clean + sheets,SVM,چ,ی,5
+A: test Kamran,clean + sheets,SVM,ل,و,5
+A: test Kamran,sheets only,ExtraTrees,ذ,د,5
+B: test calibration,sheets only,ExtraTrees,ط,ڈ,5
+B: test calibration,sheets only,ExtraTrees,ق,ع,5
+A: test Kamran,sheets only,SVM,ث,ل,5
+B: test calibration,clean + sheets,ExtraTrees,ر,ک,5
+A: test Kamran,sheets only,SVM,ل,و,5
+A: test Kamran,sheets only,SVM,چ,ب,5
+A: test Kamran,sheets only,SVM,چ,ی,5
+A: test Kamran,clean + sheets,SVM,ث,د,5
+A: test Kamran,clean only,ExtraTrees,ت,د,5
+A: test Kamran,clean only,ExtraTrees,ا,ص,5
+A: test Kamran,clean only,SVM,ح,ر,5
+B: test calibration,clean + sheets,ExtraTrees,ق,ع,5
+B: test calibration,clean + sheets,ExtraTrees,گ,ء,5
+B: test calibration,clean + sheets,ExtraTrees,ی,و,5
+A: test Kamran,clean only,ExtraTrees,ح,ر,5
+B: test calibration,clean + sheets,SVM,ر,ک,5
+A: test Kamran,sheets only,ExtraTrees,ت,ر,5
+A: test Kamran,sheets only,SVM,ث,غ,5
+A: test Kamran,sheets only,SVM,ذ,د,5
+A: test Kamran,sheets only,SVM,ث,د,5
+A: test Kamran,sheets only,ExtraTrees,ت,ک,5
+A: test Kamran,clean only,SVM,ذ,د,4
+B: test calibration,sheets only,SVM,ی,و,4
+A: test Kamran,clean + sheets,ExtraTrees,ت,ک,4
+A: test Kamran,clean only,ExtraTrees,غ,خ,4
+B: test calibration,clean only,SVM,ث,ع,4
+B: test calibration,sheets only,SVM,چ,ب,4
+A: test Kamran,clean + sheets,ExtraTrees,د,س,4
+B: test calibration,sheets only,SVM,چ,ر,4
+A: test Kamran,clean only,ExtraTrees,ز,گ,4
+A: test Kamran,clean + sheets,ExtraTrees,پ,ے,4
+A: test Kamran,clean + sheets,ExtraTrees,ذ,د,4
+B: test calibration,sheets only,ExtraTrees,ء,ق,4
+B: test calibration,clean only,SVM,ز,د,4
+B: test calibration,clean only,ExtraTrees,پ,ز,4
+B: test calibration,clean only,ExtraTrees,ث,ع,4
+B: test calibration,clean + sheets,SVM,ق,ع,4
+B: test calibration,clean + sheets,SVM,ص,ل,4
+B: test calibration,clean only,ExtraTrees,پ,خ,4
+B: test calibration,clean only,ExtraTrees,غ,ع,4
+A: test Kamran,clean only,ExtraTrees,ذ,ح,4
+B: test calibration,sheets only,SVM,ط,ڈ,4
+B: test calibration,clean only,SVM,ی,و,4
+B: test calibration,sheets only,ExtraTrees,خ,پ,4
+A: test Kamran,clean only,ExtraTrees,د,س,4
+B: test calibration,sheets only,SVM,ص,ل,4
+A: test Kamran,clean only,ExtraTrees,ز,د,4
+B: test calibration,sheets only,SVM,پ,ا,4
+B: test calibration,sheets only,SVM,ذ,ر,4
+B: test calibration,sheets only,SVM,ع,ل,4
+B: test calibration,sheets only,SVM,ت,ا,4
+B: test calibration,sheets only,ExtraTrees,پ,گ,4
+A: test Kamran,clean + sheets,SVM,ق,ء,4
+A: test Kamran,clean + sheets,SVM,چ,ب,4
+A: test Kamran,sheets only,ExtraTrees,ز,گ,4
+A: test Kamran,sheets only,ExtraTrees,ز,ڈ,4
+A: test Kamran,sheets only,ExtraTrees,د,س,4
+B: test calibration,sheets only,SVM,ز,ی,4
+A: test Kamran,sheets only,SVM,د,س,4
+A: test Kamran,sheets only,SVM,ذ,ل,4
+A: test Kamran,sheets only,ExtraTrees,ح,ر,4
+A: test Kamran,sheets only,ExtraTrees,ح,غ,4
+A: test Kamran,sheets only,SVM,خ,ژ,4
+A: test Kamran,clean only,ExtraTrees,ء,ق,4
+B: test calibration,clean + sheets,ExtraTrees,پ,ز,4
+A: test Kamran,clean only,SVM,ح,ت,4
+A: test Kamran,clean + sheets,SVM,ژ,ک,4
+A: test Kamran,clean only,SVM,خ,پ,4
+B: test calibration,clean + sheets,ExtraTrees,پ,خ,4
+A: test Kamran,sheets only,SVM,ژ,ک,4
+A: test Kamran,sheets only,SVM,ژ,س,4
+A: test Kamran,sheets only,SVM,ع,ق,4
+A: test Kamran,clean only,SVM,ز,ڈ,4
+B: test calibration,clean + sheets,ExtraTrees,غ,ع,4
+A: test Kamran,clean + sheets,ExtraTrees,ژ,ک,4
+A: test Kamran,clean + sheets,SVM,ث,س,4
+B: test calibration,clean + sheets,ExtraTrees,ڈ,ط,4
+B: test calibration,clean + sheets,SVM,ذ,ر,4
+B: test calibration,clean + sheets,SVM,ز,د,4
+A: test Kamran,clean only,ExtraTrees,ح,ت,4
+A: test Kamran,clean only,SVM,ط,پ,4
+A: test Kamran,clean only,SVM,ز,د,4
+A: test Kamran,clean only,SVM,غ,ق,4
+A: test Kamran,sheets only,SVM,ف,ب,4
+A: test Kamran,clean only,SVM,غ,ء,4
+A: test Kamran,sheets only,ExtraTrees,ژ,ر,4
+A: test Kamran,sheets only,SVM,ا,ط,4
+A: test Kamran,sheets only,ExtraTrees,ص,گ,4
+A: test Kamran,clean only,SVM,ژ,ت,4
+A: test Kamran,clean + sheets,SVM,ز,گ,4
+A: test Kamran,clean + sheets,SVM,د,س,4
+A: test Kamran,sheets only,SVM,ا,غ,4
+A: test Kamran,sheets only,ExtraTrees,چ,غ,4
+A: test Kamran,sheets only,ExtraTrees,پ,ک,4
+A: test Kamran,clean only,ExtraTrees,ت,ز,4
+B: test calibration,clean only,SVM,پ,ع,3
+A: test Kamran,clean only,ExtraTrees,ز,غ,3
+A: test Kamran,clean only,ExtraTrees,ع,خ,3
+B: test calibration,sheets only,ExtraTrees,ز,ڈ,3
+A: test Kamran,clean only,ExtraTrees,ط,ف,3
+B: test calibration,sheets only,ExtraTrees,ذ,و,3
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ح,3
+A: test Kamran,clean + sheets,ExtraTrees,ع,ء,3
+A: test Kamran,clean + sheets,ExtraTrees,ع,ل,3
+B: test calibration,sheets only,SVM,ص,ے,3
+B: test calibration,sheets only,SVM,ص,ا,3
+A: test Kamran,clean only,ExtraTrees,د,ز,3
+A: test Kamran,clean only,ExtraTrees,ذ,د,3
+B: test calibration,sheets only,ExtraTrees,خ,ق,3
+B: test calibration,sheets only,ExtraTrees,ث,ع,3
+B: test calibration,sheets only,SVM,ک,ر,3
+B: test calibration,sheets only,SVM,پ,ر,3
+B: test calibration,clean + sheets,SVM,پ,ا,3
+B: test calibration,clean + sheets,SVM,ف,ب,3
+B: test calibration,clean + sheets,SVM,ک,ر,3
+B: test calibration,clean + sheets,SVM,گ,ء,3
+B: test calibration,clean + sheets,SVM,پ,ی,3
+A: test Kamran,clean only,ExtraTrees,ک,ژ,3
+B: test calibration,clean only,ExtraTrees,د,ز,3
+B: test calibration,clean + sheets,SVM,ی,و,3
+A: test Kamran,clean only,ExtraTrees,ک,ر,3
+B: test calibration,clean only,ExtraTrees,ز,گ,3
+B: test calibration,clean only,SVM,خ,پ,3
+B: test calibration,clean only,SVM,ز,گ,3
+B: test calibration,clean only,ExtraTrees,پ,ت,3
+A: test Kamran,clean only,SVM,ث,پ,3
+A: test Kamran,clean only,SVM,ب,چ,3
+A: test Kamran,clean + sheets,SVM,ث,و,3
+A: test Kamran,clean only,SVM,ذ,ح,3
+B: test calibration,clean + sheets,SVM,د,ز,3
+B: test calibration,clean + sheets,SVM,د,ل,3
+B: test calibration,clean + sheets,SVM,ض,ظ,3
+B: test calibration,clean + sheets,SVM,ز,ع,3
+B: test calibration,clean + sheets,SVM,ث,ع,3
+B: test calibration,clean + sheets,SVM,ح,پ,3
+B: test calibration,clean + sheets,SVM,خ,پ,3
+A: test Kamran,clean + sheets,SVM,خ,ا,3
+A: test Kamran,clean + sheets,SVM,گ,و,3
+B: test calibration,clean + sheets,ExtraTrees,پ,ت,3
+A: test Kamran,clean + sheets,SVM,ا,س,3
+A: test Kamran,clean + sheets,SVM,ث,ل,3
+A: test Kamran,clean only,SVM,ع,پ,3
+A: test Kamran,clean only,SVM,غ,پ,3
+A: test Kamran,clean only,SVM,ص,ء,3
+A: test Kamran,sheets only,SVM,ط,ی,3
+A: test Kamran,sheets only,SVM,غ,ا,3
+A: test Kamran,sheets only,SVM,ل,گ,3
+A: test Kamran,clean only,SVM,ذ,ز,3
+B: test calibration,clean + sheets,ExtraTrees,ز,گ,3
+B: test calibration,clean + sheets,ExtraTrees,ذ,و,3
+B: test calibration,clean + sheets,ExtraTrees,ء,ق,3
+A: test Kamran,sheets only,SVM,گ,و,3
+A: test Kamran,clean + sheets,SVM,ب,د,3
+A: test Kamran,clean + sheets,SVM,ت,ل,3
+A: test Kamran,clean only,SVM,پ,ر,3
+A: test Kamran,clean only,SVM,ف,پ,3
+A: test Kamran,sheets only,SVM,ث,و,3
+A: test Kamran,sheets only,SVM,ز,گ,3
+A: test Kamran,sheets only,SVM,ت,ا,3
+A: test Kamran,sheets only,ExtraTrees,ح,ک,3
+A: test Kamran,sheets only,ExtraTrees,ع,ل,3
+A: test Kamran,clean + sheets,SVM,ذ,ل,3
+A: test Kamran,sheets only,ExtraTrees,ذ,غ,3
+A: test Kamran,clean + sheets,SVM,ل,ر,3
+A: test Kamran,sheets only,ExtraTrees,ذ,ڈ,3
+A: test Kamran,sheets only,ExtraTrees,ط,غ,3
+A: test Kamran,sheets only,ExtraTrees,ص,ل,3
+A: test Kamran,sheets only,ExtraTrees,ز,ض,3
+A: test Kamran,clean + sheets,SVM,ل,گ,3
+B: test calibration,sheets only,SVM,ا,گ,3
+A: test Kamran,clean + sheets,SVM,ع,ء,3
+B: test calibration,sheets only,SVM,ح,غ,3
+B: test calibration,sheets only,SVM,ذ,و,3
+A: test Kamran,clean + sheets,ExtraTrees,ص,ا,3
+B: test calibration,sheets only,SVM,ث,ع,3
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ڈ,3
+A: test Kamran,clean + sheets,ExtraTrees,ت,گ,2
+B: test calibration,sheets only,SVM,ی,ص,2
+A: test Kamran,clean + sheets,ExtraTrees,ث,خ,2
+B: test calibration,sheets only,SVM,ڈ,ل,2
+A: test Kamran,clean + sheets,ExtraTrees,ز,د,2
+A: test Kamran,clean + sheets,ExtraTrees,ح,ت,2
+A: test Kamran,clean + sheets,ExtraTrees,ز,ک,2
+B: test calibration,sheets only,SVM,پ,ی,2
+A: test Kamran,clean + sheets,ExtraTrees,ص,ء,2
+A: test Kamran,clean only,ExtraTrees,ز,ق,2
+A: test Kamran,clean only,ExtraTrees,ص,ث,2
+A: test Kamran,clean only,ExtraTrees,ط,چ,2
+A: test Kamran,clean only,ExtraTrees,ع,ث,2
+A: test Kamran,clean only,ExtraTrees,ذ,ر,2
+A: test Kamran,clean only,ExtraTrees,ذ,ژ,2
+A: test Kamran,clean only,ExtraTrees,ر,ت,2
+B: test calibration,sheets only,ExtraTrees,ا,ے,2
+B: test calibration,sheets only,ExtraTrees,ث,و,2
+B: test calibration,sheets only,ExtraTrees,ح,ژ,2
+B: test calibration,clean only,SVM,پ,ل,2
+B: test calibration,sheets only,ExtraTrees,ا,ص,2
+A: test Kamran,clean + sheets,SVM,غ,ا,2
+A: test Kamran,clean + sheets,SVM,ف,ر,2
+A: test Kamran,clean + sheets,SVM,ط,ی,2
+B: test calibration,sheets only,SVM,ف,ب,2
+A: test Kamran,clean + sheets,ExtraTrees,ب,چ,2
+B: test calibration,clean only,SVM,س,پ,2
+B: test calibration,clean only,SVM,ف,ب,2
+B: test calibration,clean only,SVM,ح,پ,2
+B: test calibration,clean only,ExtraTrees,ق,ز,2
+B: test calibration,clean only,ExtraTrees,ق,ع,2
+B: test calibration,clean only,SVM,ء,ع,2
+B: test calibration,clean only,SVM,ء,ق,2
+A: test Kamran,clean only,SVM,ت,ز,2
+A: test Kamran,clean only,SVM,ت,پ,2
+B: test calibration,clean only,ExtraTrees,س,ت,2
+B: test calibration,clean only,ExtraTrees,غ,ذ,2
+A: test Kamran,clean only,ExtraTrees,گ,ح,2
+A: test Kamran,clean only,ExtraTrees,ے,ص,2
+A: test Kamran,clean only,ExtraTrees,ک,ث,2
+B: test calibration,clean only,ExtraTrees,ح,پ,2
+A: test Kamran,clean only,ExtraTrees,ف,ذ,2
+B: test calibration,clean only,ExtraTrees,ء,ع,2
+B: test calibration,clean only,ExtraTrees,ء,ق,2
+A: test Kamran,clean + sheets,SVM,ذ,ر,2
+A: test Kamran,clean + sheets,SVM,ذ,چ,2
+A: test Kamran,clean + sheets,SVM,ذ,ی,2
+A: test Kamran,clean + sheets,SVM,ر,ح,2
+A: test Kamran,sheets only,ExtraTrees,چ,پ,2
+A: test Kamran,sheets only,SVM,ا,س,2
+A: test Kamran,sheets only,ExtraTrees,ف,ر,2
+A: test Kamran,sheets only,ExtraTrees,ف,گ,2
+A: test Kamran,sheets only,ExtraTrees,ق,گ,2
+A: test Kamran,sheets only,ExtraTrees,ز,چ,2
+A: test Kamran,sheets only,ExtraTrees,ص,ع,2
+A: test Kamran,sheets only,ExtraTrees,ط,ب,2
+B: test calibration,clean + sheets,SVM,پ,ل,2
+B: test calibration,clean + sheets,SVM,ڈ,ط,2
+B: test calibration,clean + sheets,SVM,ڈ,ل,2
+B: test calibration,clean + sheets,SVM,گ,ز,2
+B: test calibration,clean + sheets,SVM,س,ا,2
+B: test calibration,clean + sheets,SVM,س,ع,2
+B: test calibration,clean + sheets,SVM,ص,ا,2
+B: test calibration,clean + sheets,SVM,ق,ت,2
+B: test calibration,clean + sheets,SVM,ت,گ,2
+B: test calibration,clean + sheets,SVM,ذ,و,2
+A: test Kamran,clean only,ExtraTrees,ح,پ,2
+A: test Kamran,clean only,SVM,د,س,2
+B: test calibration,clean + sheets,SVM,ء,ق,2
+A: test Kamran,clean only,ExtraTrees,ت,ع,2
+A: test Kamran,clean only,ExtraTrees,ت,پ,2
+A: test Kamran,clean only,ExtraTrees,ث,ف,2
+A: test Kamran,clean + sheets,SVM,ڈ,ب,2
+A: test Kamran,clean + sheets,SVM,گ,ح,2
+A: test Kamran,clean + sheets,SVM,ث,غ,2
+A: test Kamran,clean + sheets,SVM,ح,ا,2
+B: test calibration,clean + sheets,ExtraTrees,ف,ب,2
+A: test Kamran,clean + sheets,ExtraTrees,گ,ح,2
+A: test Kamran,clean + sheets,ExtraTrees,ی,ب,2
+A: test Kamran,sheets only,ExtraTrees,ت,گ,2
+A: test Kamran,sheets only,ExtraTrees,ح,پ,2
+A: test Kamran,sheets only,ExtraTrees,خ,ق,2
+A: test Kamran,sheets only,ExtraTrees,خ,گ,2
+A: test Kamran,clean only,SVM,ل,ع,2
+A: test Kamran,clean only,SVM,گ,ح,2
+A: test Kamran,clean only,SVM,ے,ص,2
+A: test Kamran,sheets only,ExtraTrees,ا,س,2
+A: test Kamran,clean + sheets,SVM,ط,ب,2
+A: test Kamran,clean + sheets,SVM,ز,چ,2
+A: test Kamran,clean + sheets,SVM,ص,ع,2
+A: test Kamran,clean only,SVM,ع,ز,2
+A: test Kamran,clean only,SVM,ع,غ,2
+A: test Kamran,clean only,SVM,ع,ق,2
+A: test Kamran,clean only,SVM,ع,گ,2
+A: test Kamran,clean only,SVM,ز,گ,2
+A: test Kamran,clean only,SVM,ص,ث,2
+A: test Kamran,clean only,SVM,ذ,ر,2
+A: test Kamran,clean only,SVM,ذ,ژ,2
+A: test Kamran,clean only,SVM,ر,ژ,2
+B: test calibration,clean + sheets,ExtraTrees,ح,خ,2
+B: test calibration,clean + sheets,ExtraTrees,ذ,ر,2
+B: test calibration,clean + sheets,ExtraTrees,س,ت,2
+B: test calibration,clean + sheets,ExtraTrees,ا,ے,2
+B: test calibration,clean + sheets,ExtraTrees,ت,ک,2
+B: test calibration,clean + sheets,ExtraTrees,ث,ع,2
+A: test Kamran,sheets only,SVM,ڈ,ب,2
+A: test Kamran,sheets only,SVM,ک,ر,2
+A: test Kamran,sheets only,SVM,ل,ر,2
+A: test Kamran,sheets only,SVM,پ,ا,2
+A: test Kamran,sheets only,SVM,ع,ی,2
+A: test Kamran,sheets only,SVM,ز,ڈ,2
+A: test Kamran,sheets only,SVM,ص,ع,2
+A: test Kamran,sheets only,SVM,ط,ب,2
+A: test Kamran,sheets only,SVM,ذ,گ,2
+A: test Kamran,sheets only,SVM,ذ,ی,2
+A: test Kamran,sheets only,SVM,ر,ح,2
+A: test Kamran,sheets only,SVM,ز,ر,2
+A: test Kamran,sheets only,SVM,ح,غ,2
+A: test Kamran,sheets only,SVM,ذ,ڈ,2
+A: test Kamran,sheets only,SVM,ب,د,2
+A: test Kamran,sheets only,SVM,ت,ل,2
+A: test Kamran,sheets only,SVM,ث,ر,2
+A: test Kamran,clean + sheets,ExtraTrees,چ,ب,2
+B: test calibration,sheets only,SVM,پ,ل,2
+A: test Kamran,clean + sheets,ExtraTrees,ف,ر,2
+A: test Kamran,clean + sheets,ExtraTrees,ف,گ,2
+A: test Kamran,clean + sheets,ExtraTrees,ق,گ,2
+B: test calibration,sheets only,ExtraTrees,د,خ,2
+B: test calibration,sheets only,ExtraTrees,ز,چ,2
+A: test Kamran,clean + sheets,ExtraTrees,ط,ب,2
+A: test Kamran,clean + sheets,ExtraTrees,ط,غ,2
+B: test calibration,sheets only,ExtraTrees,چ,ر,2
+B: test calibration,sheets only,ExtraTrees,ک,پ,2
+B: test calibration,sheets only,ExtraTrees,گ,ق,2
+B: test calibration,sheets only,ExtraTrees,س,ص,2
+B: test calibration,sheets only,ExtraTrees,غ,ر,2
+B: test calibration,sheets only,ExtraTrees,ف,ب,2
+B: test calibration,sheets only,ExtraTrees,ق,ل,2
+B: test calibration,sheets only,SVM,ز,چ,2
+B: test calibration,sheets only,SVM,س,غ,2
+B: test calibration,sheets only,ExtraTrees,س,ا,2
+B: test calibration,sheets only,SVM,ث,و,2
+B: test calibration,sheets only,SVM,ث,گ,2
+B: test calibration,sheets only,SVM,خ,ا,2
+B: test calibration,sheets only,SVM,خ,ی,2
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ژ,1
+A: test Kamran,clean + sheets,ExtraTrees,ص,ع,1
+B: test calibration,sheets only,SVM,ح,ا,1
+B: test calibration,sheets only,SVM,ح,ژ,1
+A: test Kamran,clean + sheets,SVM,پ,ح,1
+A: test Kamran,clean + sheets,SVM,پ,ق,1
+A: test Kamran,clean + sheets,SVM,پ,ل,1
+A: test Kamran,clean + sheets,SVM,چ,ر,1
+A: test Kamran,sheets only,ExtraTrees,ذ,ل,1
+A: test Kamran,sheets only,ExtraTrees,ذ,پ,1
+A: test Kamran,sheets only,ExtraTrees,ر,ح,1
+A: test Kamran,sheets only,ExtraTrees,ز,خ,1
+A: test Kamran,clean + sheets,SVM,ع,ق,1
+A: test Kamran,clean + sheets,SVM,ع,ی,1
+A: test Kamran,clean + sheets,SVM,غ,گ,1
+A: test Kamran,clean + sheets,SVM,ف,و,1
+A: test Kamran,clean + sheets,SVM,ف,ی,1
+A: test Kamran,clean + sheets,SVM,ق,ی,1
+A: test Kamran,clean + sheets,SVM,ل,ا,1
+A: test Kamran,clean + sheets,SVM,ل,ی,1
+B: test calibration,sheets only,SVM,ف,ح,1
+B: test calibration,sheets only,SVM,ق,ت,1
+B: test calibration,sheets only,SVM,ق,و,1
+A: test Kamran,clean + sheets,SVM,ظ,ب,1
+A: test Kamran,clean + sheets,SVM,ع,ب,1
+A: test Kamran,clean + sheets,SVM,ع,د,1
+A: test Kamran,clean + sheets,SVM,ع,ز,1
+A: test Kamran,clean + sheets,SVM,ع,غ,1
+B: test calibration,clean only,SVM,ط,ز,1
+B: test calibration,clean only,SVM,غ,ت,1
+B: test calibration,clean only,SVM,ق,ت,1
+B: test calibration,clean only,SVM,ق,ز,1
+B: test calibration,clean only,SVM,پ,ت,1
+B: test calibration,sheets only,SVM,ت,ب,1
+B: test calibration,sheets only,SVM,ت,گ,1
+A: test Kamran,clean + sheets,ExtraTrees,ب,گ,1
+A: test Kamran,sheets only,SVM,ط,د,1
+A: test Kamran,sheets only,SVM,ظ,ب,1
+A: test Kamran,sheets only,SVM,ظ,ڈ,1
+A: test Kamran,sheets only,SVM,ع,ب,1
+A: test Kamran,sheets only,SVM,ع,د,1
+A: test Kamran,sheets only,SVM,غ,ل,1
+A: test Kamran,sheets only,SVM,ف,ر,1
+A: test Kamran,sheets only,SVM,ف,ل,1
+A: test Kamran,sheets only,SVM,ر,ظ,1
+A: test Kamran,sheets only,SVM,ز,د,1
+A: test Kamran,sheets only,SVM,ز,و,1
+A: test Kamran,sheets only,SVM,ز,چ,1
+A: test Kamran,sheets only,SVM,س,ر,1
+A: test Kamran,sheets only,SVM,س,ز,1
+A: test Kamran,sheets only,SVM,س,غ,1
+A: test Kamran,sheets only,SVM,ص,ط,1
+A: test Kamran,sheets only,SVM,ب,ل,1
+A: test Kamran,sheets only,SVM,ث,ا,1
+A: test Kamran,sheets only,SVM,ث,س,1
+A: test Kamran,sheets only,SVM,ح,و,1
+A: test Kamran,sheets only,SVM,خ,غ,1
+A: test Kamran,sheets only,SVM,د,ا,1
+A: test Kamran,sheets only,SVM,د,چ,1
+A: test Kamran,sheets only,SVM,ذ,چ,1
+A: test Kamran,clean + sheets,ExtraTrees,چ,پ,1
+A: test Kamran,clean + sheets,ExtraTrees,ذ,غ,1
+B: test calibration,sheets only,SVM,و,د,1
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ز,1
+A: test Kamran,clean + sheets,ExtraTrees,د,گ,1
+A: test Kamran,sheets only,ExtraTrees,د,ا,1
+A: test Kamran,clean + sheets,SVM,ط,ر,1
+A: test Kamran,sheets only,SVM,ب,ر,1
+A: test Kamran,clean only,SVM,ر,گ,1
+A: test Kamran,clean only,SVM,ز,ت,1
+A: test Kamran,clean only,SVM,ز,ذ,1
+A: test Kamran,clean only,SVM,ز,ط,1
+A: test Kamran,clean only,SVM,س,پ,1
+A: test Kamran,clean only,SVM,ص,پ,1
+A: test Kamran,clean only,SVM,ط,ف,1
+A: test Kamran,clean only,SVM,ط,ڈ,1
+B: test calibration,clean + sheets,ExtraTrees,ث,ط,1
+B: test calibration,clean + sheets,ExtraTrees,ح,ژ,1
+B: test calibration,clean + sheets,ExtraTrees,ذ,ڈ,1
+B: test calibration,clean + sheets,ExtraTrees,ز,د,1
+B: test calibration,clean + sheets,ExtraTrees,س,ا,1
+B: test calibration,clean + sheets,ExtraTrees,ص,ے,1
+A: test Kamran,clean only,SVM,ذ,پ,1
+A: test Kamran,clean only,SVM,ذ,ڈ,1
+A: test Kamran,sheets only,SVM,ژ,ا,1
+A: test Kamran,sheets only,SVM,ژ,ر,1
+A: test Kamran,sheets only,SVM,ی,ز,1
+B: test calibration,clean + sheets,ExtraTrees,ء,ل,1
+B: test calibration,clean + sheets,ExtraTrees,ء,گ,1
+B: test calibration,clean + sheets,ExtraTrees,ت,ر,1
+B: test calibration,clean + sheets,ExtraTrees,ت,گ,1
+B: test calibration,clean + sheets,ExtraTrees,ث,د,1
+A: test Kamran,sheets only,SVM,ف,و,1
+A: test Kamran,sheets only,SVM,ف,ی,1
+A: test Kamran,sheets only,SVM,ق,ل,1
+A: test Kamran,sheets only,SVM,ق,ی,1
+A: test Kamran,sheets only,SVM,ل,ا,1
+A: test Kamran,sheets only,SVM,ل,ی,1
+A: test Kamran,sheets only,SVM,پ,غ,1
+A: test Kamran,sheets only,SVM,چ,ل,1
+A: test Kamran,sheets only,ExtraTrees,ب,گ,1
+A: test Kamran,sheets only,ExtraTrees,ث,ی,1
+B: test calibration,clean + sheets,ExtraTrees,ق,ت,1
+A: test Kamran,clean + sheets,ExtraTrees,گ,ا,1
+A: test Kamran,clean + sheets,ExtraTrees,ی,و,1
+A: test Kamran,clean + sheets,SVM,ا,غ,1
+A: test Kamran,clean + sheets,SVM,ا,چ,1
+A: test Kamran,clean + sheets,SVM,ب,ر,1
+A: test Kamran,clean only,SVM,ل,ء,1
+A: test Kamran,clean only,SVM,ل,د,1
+A: test Kamran,clean only,SVM,پ,ق,1
+A: test Kamran,clean only,SVM,پ,چ,1
+A: test Kamran,clean only,SVM,پ,ژ,1
+A: test Kamran,clean only,SVM,چ,ب,1
+A: test Kamran,sheets only,ExtraTrees,ا,ط,1
+A: test Kamran,sheets only,ExtraTrees,ب,ر,1
+A: test Kamran,clean + sheets,SVM,ز,ڈ,1
+A: test Kamran,clean + sheets,SVM,س,ر,1
+A: test Kamran,clean + sheets,SVM,ص,ط,1
+A: test Kamran,clean + sheets,SVM,ض,ظ,1
+A: test Kamran,clean + sheets,SVM,ط,د,1
+A: test Kamran,clean only,SVM,غ,ژ,1
+A: test Kamran,clean only,SVM,ف,ذ,1
+A: test Kamran,clean only,SVM,ق,گ,1
+A: test Kamran,clean only,SVM,ظ,ط,1
+A: test Kamran,clean only,SVM,ع,و,1
+A: test Kamran,clean only,SVM,غ,ث,1
+A: test Kamran,clean only,SVM,غ,ح,1
+B: test calibration,clean + sheets,ExtraTrees,غ,ر,1
+A: test Kamran,clean + sheets,SVM,ز,د,1
+A: test Kamran,clean + sheets,SVM,ز,ر,1
+A: test Kamran,clean + sheets,SVM,ز,و,1
+B: test calibration,clean + sheets,SVM,ذ,ڈ,1
+B: test calibration,clean + sheets,SVM,ز,ڈ,1
+B: test calibration,clean + sheets,SVM,ز,گ,1
+B: test calibration,clean + sheets,SVM,ص,ے,1
+B: test calibration,clean + sheets,SVM,ع,ت,1
+B: test calibration,clean + sheets,SVM,غ,ت,1
+B: test calibration,clean + sheets,SVM,و,د,1
+B: test calibration,clean + sheets,SVM,و,ی,1
+A: test Kamran,clean only,ExtraTrees,ث,ی,1
+A: test Kamran,clean only,SVM,د,گ,1
+B: test calibration,clean + sheets,ExtraTrees,ک,پ,1
+B: test calibration,clean + sheets,ExtraTrees,گ,ز,1
+B: test calibration,clean + sheets,ExtraTrees,گ,س,1
+B: test calibration,clean + sheets,SVM,ت,ا,1
+B: test calibration,clean + sheets,SVM,ت,ب,1
+B: test calibration,clean + sheets,SVM,ث,گ,1
+A: test Kamran,clean + sheets,SVM,ژ,ا,1
+A: test Kamran,clean only,ExtraTrees,ب,ذ,1
+A: test Kamran,clean only,ExtraTrees,ب,ف,1
+A: test Kamran,clean only,ExtraTrees,ب,پ,1
+A: test Kamran,clean only,ExtraTrees,ت,ح,1
+A: test Kamran,clean only,ExtraTrees,ت,ق,1
+A: test Kamran,clean only,ExtraTrees,ت,ژ,1
+A: test Kamran,clean only,ExtraTrees,ث,ص,1
+A: test Kamran,clean + sheets,SVM,ب,ل,1
+A: test Kamran,clean + sheets,SVM,ث,ا,1
+A: test Kamran,clean + sheets,SVM,ث,ر,1
+A: test Kamran,clean + sheets,SVM,ح,و,1
+A: test Kamran,clean + sheets,SVM,خ,ژ,1
+B: test calibration,clean + sheets,ExtraTrees,و,د,1
+A: test Kamran,clean only,SVM,د,ء,1
+A: test Kamran,clean only,SVM,د,ذ,1
+B: test calibration,clean only,ExtraTrees,ء,گ,1
+B: test calibration,clean only,ExtraTrees,ا,ص,1
+B: test calibration,clean only,ExtraTrees,ا,ے,1
+B: test calibration,clean only,ExtraTrees,ت,ر,1
+B: test calibration,clean only,ExtraTrees,ت,ک,1
+B: test calibration,clean only,ExtraTrees,ت,گ,1
+B: test calibration,clean only,ExtraTrees,ح,ژ,1
+B: test calibration,clean only,ExtraTrees,ذ,ث,1
+A: test Kamran,sheets only,ExtraTrees,پ,و,1
+A: test Kamran,sheets only,ExtraTrees,ڈ,ض,1
+A: test Kamran,sheets only,SVM,ا,ح,1
+A: test Kamran,clean + sheets,SVM,د,ا,1
+A: test Kamran,clean + sheets,SVM,د,ز,1
+A: test Kamran,clean + sheets,SVM,د,چ,1
+A: test Kamran,clean + sheets,SVM,ذ,گ,1
+B: test calibration,clean + sheets,SVM,ی,ص,1
+A: test Kamran,sheets only,ExtraTrees,ع,ک,1
+A: test Kamran,sheets only,ExtraTrees,ع,گ,1
+A: test Kamran,sheets only,ExtraTrees,غ,خ,1
+A: test Kamran,sheets only,ExtraTrees,غ,گ,1
+A: test Kamran,sheets only,ExtraTrees,ل,ح,1
+A: test Kamran,sheets only,ExtraTrees,ل,ے,1
+A: test Kamran,sheets only,ExtraTrees,پ,ع,1
+A: test Kamran,sheets only,ExtraTrees,پ,ق,1
+B: test calibration,clean + sheets,SVM,پ,ت,1
+B: test calibration,clean + sheets,SVM,پ,خ,1
+B: test calibration,clean + sheets,SVM,پ,ک,1
+A: test Kamran,sheets only,ExtraTrees,س,غ,1
+A: test Kamran,sheets only,ExtraTrees,ص,غ,1
+A: test Kamran,sheets only,ExtraTrees,ص,ے,1
+A: test Kamran,sheets only,ExtraTrees,ع,ز,1
+A: test Kamran,sheets only,ExtraTrees,ع,و,1
+B: test calibration,clean only,SVM,ا,پ,1
+B: test calibration,clean only,SVM,ب,ف,1
+B: test calibration,clean only,SVM,ت,ح,1
+B: test calibration,clean only,SVM,ت,ر,1
+B: test calibration,clean only,SVM,ت,ک,1
+B: test calibration,clean only,SVM,ت,گ,1
+B: test calibration,clean only,SVM,ث,ص,1
+B: test calibration,clean only,SVM,ص,پ,1
+A: test Kamran,clean only,SVM,ت,ع,1
+A: test Kamran,clean only,SVM,ت,ژ,1
+A: test Kamran,clean only,SVM,ث,ف,1
+B: test calibration,clean only,ExtraTrees,ص,گ,1
+B: test calibration,clean only,ExtraTrees,ف,ب,1
+B: test calibration,clean only,ExtraTrees,ق,ت,1
+B: test calibration,clean only,ExtraTrees,گ,ز,1
+B: test calibration,clean only,ExtraTrees,گ,س,1
+A: test Kamran,clean only,ExtraTrees,پ,ز,1
+A: test Kamran,clean only,ExtraTrees,چ,ف,1
+A: test Kamran,clean only,ExtraTrees,گ,ت,1
+A: test Kamran,clean only,SVM,ء,ح,1
+A: test Kamran,clean only,SVM,ا,پ,1
+A: test Kamran,clean only,SVM,ب,ر,1
+A: test Kamran,clean only,SVM,ب,پ,1
+A: test Kamran,clean only,SVM,ت,ر,1
+A: test Kamran,clean only,ExtraTrees,ع,پ,1
+A: test Kamran,clean only,ExtraTrees,غ,ح,1
+A: test Kamran,clean only,ExtraTrees,ف,ث,1
+A: test Kamran,clean only,ExtraTrees,ف,پ,1
+A: test Kamran,clean only,ExtraTrees,ق,خ,1
+A: test Kamran,clean only,ExtraTrees,ل,ص,1
+A: test Kamran,clean only,ExtraTrees,ل,ع,1
+A: test Kamran,clean only,ExtraTrees,پ,ث,1
+B: test calibration,sheets only,SVM,چ,ل,1
+A: test Kamran,clean + sheets,ExtraTrees,ز,ع,1
+A: test Kamran,clean + sheets,ExtraTrees,ز,ح,1
+A: test Kamran,clean + sheets,ExtraTrees,ب,ر,1
+A: test Kamran,clean + sheets,ExtraTrees,ا,س,1
+B: test calibration,sheets only,SVM,گ,ت,1
+A: test Kamran,clean + sheets,ExtraTrees,ذ,ک,1
+B: test calibration,sheets only,SVM,د,ی,1
+A: test Kamran,clean only,ExtraTrees,س,خ,1
+A: test Kamran,clean only,ExtraTrees,ص,ء,1
+A: test Kamran,clean only,ExtraTrees,ظ,ڈ,1
+A: test Kamran,clean only,ExtraTrees,ع,د,1
+A: test Kamran,clean + sheets,ExtraTrees,ص,ث,1
+B: test calibration,sheets only,SVM,چ,ا,1
+A: test Kamran,clean + sheets,ExtraTrees,ح,ل,1
+A: test Kamran,clean + sheets,ExtraTrees,س,غ,1
+B: test calibration,sheets only,ExtraTrees,ت,ک,1
+B: test calibration,sheets only,ExtraTrees,ث,ب,1
+B: test calibration,sheets only,ExtraTrees,ح,گ,1
+B: test calibration,sheets only,SVM,س,گ,1
+B: test calibration,sheets only,SVM,ض,ل,1
+B: test calibration,sheets only,SVM,ط,ی,1
+A: test Kamran,clean only,ExtraTrees,د,ء,1
+A: test Kamran,clean only,ExtraTrees,ذ,ت,1
+B: test calibration,clean only,SVM,پ,خ,1
+B: test calibration,clean only,SVM,پ,ز,1
+B: test calibration,clean only,SVM,ک,ت,1
+B: test calibration,clean only,SVM,گ,ز,1
+B: test calibration,clean only,SVM,گ,س,1
+B: test calibration,clean only,SVM,گ,ع,1
+B: test calibration,sheets only,ExtraTrees,ت,ر,1
+B: test calibration,sheets only,ExtraTrees,ت,و,1
+A: test Kamran,clean + sheets,ExtraTrees,غ,ع,1
+A: test Kamran,clean + sheets,ExtraTrees,غ,ق,1
+A: test Kamran,clean + sheets,ExtraTrees,ل,ح,1
+A: test Kamran,clean + sheets,ExtraTrees,ل,ص,1
+A: test Kamran,clean + sheets,ExtraTrees,پ,غ,1
+A: test Kamran,clean + sheets,ExtraTrees,پ,ق,1
+A: test Kamran,clean + sheets,ExtraTrees,پ,چ,1
+A: test Kamran,clean + sheets,ExtraTrees,چ,غ,1
+B: test calibration,sheets only,ExtraTrees,ز,د,1
+B: test calibration,sheets only,ExtraTrees,ز,ل,1
+A: test Kamran,clean + sheets,ExtraTrees,ط,چ,1
+A: test Kamran,clean + sheets,ExtraTrees,ع,ث,1
+A: test Kamran,clean + sheets,ExtraTrees,ع,د,1
+A: test Kamran,clean + sheets,ExtraTrees,ع,ز,1
+A: test Kamran,clean + sheets,ExtraTrees,ع,گ,1
+A: test Kamran,clean + sheets,ExtraTrees,غ,خ,1
+B: test calibration,sheets only,ExtraTrees,پ,ل,1
+B: test calibration,sheets only,ExtraTrees,ڈ,ط,1
+B: test calibration,sheets only,ExtraTrees,گ,ز,1
+B: test calibration,sheets only,ExtraTrees,گ,س,1
+B: test calibration,sheets only,SVM,ء,ق,1
+B: test calibration,sheets only,SVM,ء,گ,1
+A: test Kamran,clean only,ExtraTrees,ع,ز,1
+B: test calibration,sheets only,ExtraTrees,ذ,ڈ,1
+B: test calibration,sheets only,SVM,ذ,ڈ,1
+B: test calibration,sheets only,SVM,ز,ح,1
+B: test calibration,sheets only,SVM,ز,د,1
+B: test calibration,sheets only,SVM,ز,ل,1
+B: test calibration,sheets only,SVM,س,ع,1
+B: test calibration,sheets only,ExtraTrees,ص,ا,1
+B: test calibration,sheets only,ExtraTrees,ق,ت,1
+B: test calibration,sheets only,ExtraTrees,و,د,1
