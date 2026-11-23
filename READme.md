@@ -231,6 +231,13 @@
     - **ExtraTrees is clearly ahead of the SVM on clean keys** (+4.5 pts round A, +16.8 round B); on the pseudo-labelled test it was within 1 point (#24).
     - **Kamran's folder can stay outside the repo:** `PSL_KAMRAN_DIR=~/Desktop/train` (`image_dataset.py`).
 
+27. **Step 3, point 1: bad sheet crops flagged** (`flag_sheets.py`, `results/2026-11-23_sheet_flags/`).
+    - Each static sheet crop is judged by a model trained on clean data only (never the group the clean test tests) and by the other four sheet signers. Thresholds fixed before scoring.
+    - **About half the crops fail**, for every signer (44–56%). **One sheet crop in five looks most like the letter next to it in its word** (224 crops; 4% among kept crops): the timing slip seen in the letter sheets is common. Two judges with no shared data agree on 39% of crops.
+    - The judge trained on our two people is too weak to clean with (it would flag 54% of correctly labelled images); the Kamran-trained judge flags 11%.
+    - **ح may be signed differently in the sheets and in Kamran's set** (rejected 81% by the Kamran judge, 42% by the other signers), like ک.
+    - **To decide before the re-test:** round A cleaning by its own judge (as fixed) or only where two judges agree.
+
 **Immediate next actions (in progress or queued):**
 - [~] **PERSONAL CALIBRATION — top priority for a working demo.** *All 30 static letters now have calibration takes (#23); the 11 dynamic letters are out of scope. Still needed: a recording on a different day to test on, and a check of the 13 Nov labels against the official signs.* Record Hassan signing each of the 40 letters 5–6 times (~20 min), train on those crops, and test on himself. This removes every objection to the current model at once: his lighting, his room, his hand, his signing style, and *real* labels because he knows what he signed. The cross-signer model is 13.6% because it has never seen the user; a per-user model has none of that gap. It is also a defensible research position rather than a workaround, given that cross-signer transfer is precisely what this project showed fails. Needs: a capture mode in `web/` (the "Save crops" button is most of it), plus a small training script.
 - [ ] **Train a small CNN on the hand crops at the segmented hold frames** — the crops already exist, the segmenter already says which frames to use, and the result above says appearance is where the missing signal must be. This is the direct next experiment.

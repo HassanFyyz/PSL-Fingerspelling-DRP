@@ -1,0 +1,14 @@
+,value
+crops,1028.0
+A: dropped,578.0
+A: by clean check,565.0
+A: by neighbour check only,13.0
+B: dropped,513.0
+B: by clean check,497.0
+B: by neighbour check only,16.0
+dropped in both rounds,489.0
+other-signer flags,444.0
+other-signer flags also dropped in A,414.0
+other-signer flags also dropped in B,398.0
+"round A: judge on C, correct K labels outside top 3",54.3
+"round B: judge on K, correct C labels outside top 3",11.0
