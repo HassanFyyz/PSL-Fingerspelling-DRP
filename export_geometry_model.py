@@ -50,52 +50,22 @@ OUT_DIR_KAMRAN = "web/model_geom_kamran"
 
 
 def training_data(pts_path=PTS_PATH, meta_path=META_PATH, with_kamran=False,
-                  with_official=False, with_video=True, static_only=True, clean_sheets=False):
+                  with_official=False, with_video=True, static_only=True):
     """(F, y, signers): our holds + calibration takes, plus Kamran's / official images if asked.
 
     with_video=False drops the pseudo-labelled video holds (signers without the
     'user-' prefix) and keeps only the calibration takes from our own files.
-    Kamran's rows: image_dataset.load_usable() (hand found, no duplicate files, no idle
-    hand), signer 'kamran-images'.
+    Kamran's rows: hand found, exact duplicate files dropped, signer 'kamran-images'.
     Official rows: the PSL website screenshots, signer 'official-psl'.
     static_only=True (the default since 22 Nov) drops every row of the 11 dynamic
     letters (splits.DYNAMIC_LETTERS) from every source, so the model has the 30
     static letters as its classes. `--all-letters` restores the old 41-class model.
-    clean_sheets=True (`--clean-sheets`, off by default) drops the video holds that
-    flag_sheets.drop_for_export() flags (results/2026-11-23_cleaned_test/): the judge is
-    trained on our calibration takes plus Kamran's images when his folder is available
-    (PSL_KAMRAN_DIR), even for the public model, whose weights still never contain them.
     """
-    F, y, g, occ = _all_rows(pts_path, meta_path, with_kamran, with_official, with_video)
+    F, y, g = _all_rows(pts_path, meta_path, with_kamran, with_official, with_video)
     if static_only:
         keep = ~np.isin(y, DYNAMIC_LETTERS)
-        F, y, g, occ = F[keep], y[keep], g[keep], occ[keep]
-    if clean_sheets:
-        if not (static_only and with_video):
-            raise ValueError("--clean-sheets needs the static-letter model with video holds")
-        drop = np.isin(occ, list(_sheet_drops(F, y, g)))
-        print(f"cleaned sheets: dropping {int(drop.sum())} of {int((occ != '').sum())} video holds")
-        F, y, g = F[~drop], y[~drop], g[~drop]
+        F, y, g = F[keep], y[keep], g[keep]
     return F, y, g
-
-
-def _sheet_drops(F, y, g):
-    """Flagged sheet crops, judged by everything clean we can see (never shipped by this)."""
-    import flag_sheets
-    clean = pd.Series(g).str.startswith("user-").to_numpy() | (g == "kamran-images")
-    Fc, yc = F[clean], y[clean]
-    if not (g == "kamran-images").any():
-        try:
-            import image_dataset
-            PK, MK = image_dataset.load_usable()
-            st = ~MK.letter.isin(DYNAMIC_LETTERS).to_numpy()
-            Fc = np.vstack([Fc, hand_features(PK[st])])
-            yc = np.concatenate([yc, MK.letter.to_numpy()[st]])
-            print("cleaned sheets: judge uses our takes + Kamran's images")
-        except (FileNotFoundError, OSError):
-            print("cleaned sheets: Kamran's images not found, judge uses our takes only "
-                  "(weaker: see results/2026-11-23_sheet_flags/)")
-    return flag_sheets.drop_for_export(Fc, yc)
 
 
 def _all_rows(pts_path, meta_path, with_kamran, with_official, with_video):
@@ -105,22 +75,20 @@ def _all_rows(pts_path, meta_path, with_kamran, with_official, with_video):
         keep = M.signer.str.startswith("user-").to_numpy()
         P, M = P[keep], M[keep].reset_index(drop=True)
     F, y, g = hand_features(P), M.letter.to_numpy(), M.signer.to_numpy()
-    occ = np.where(M.signer.str.startswith("user-"), "", M.occ).astype(object)
     if with_official:
         import image_dataset
         PO, MO = image_dataset.official()
         F = np.vstack([F, hand_features(PO)])
         y = np.concatenate([y, MO.letter.to_numpy()])
         g = np.concatenate([g, np.array(["official-psl"] * len(MO), dtype=object)])
-        occ = np.concatenate([occ, np.array([""] * len(MO), dtype=object)])
     if with_kamran:
         import image_dataset
-        PK, MK = image_dataset.load_usable()    # idle-hand rows dropped (image_dataset docstring)
-        F = np.vstack([F, hand_features(PK)])
-        y = np.concatenate([y, MK.letter.to_numpy()])
-        g = np.concatenate([g, np.array(["kamran-images"] * len(MK), dtype=object)])
-        occ = np.concatenate([occ, np.array([""] * len(MK), dtype=object)])
-    return F, y, g, occ
+        PK, MK = image_dataset.load()
+        keep = ((MK.detected == 1) & ~MK.duplicated("sha1")).to_numpy()
+        F = np.vstack([F, hand_features(PK[keep])])
+        y = np.concatenate([y, MK.letter.to_numpy()[keep]])
+        g = np.concatenate([g, np.array(["kamran-images"] * int(keep.sum()), dtype=object)])
+    return F, y, g
 
 
 def loso_accuracy(F, y, signers, exclude_single_letter_folds=True, extra=None):
@@ -153,13 +121,12 @@ def video_test_accuracy(F, y, Fv, yv, sv):
 
 
 def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out_dir=None,
-          with_kamran=False, with_official=False, with_video=True, static_only=True,
-          clean_sheets=False):
+          with_kamran=False, with_official=False, with_video=True, static_only=True):
     private = with_kamran or with_official
     out_dir = out_dir or (OUT_DIR_KAMRAN if private else OUT_DIR)
     os.makedirs(out_dir, exist_ok=True)
     F, y, signers = training_data(pts_path, meta_path, with_kamran, with_official, with_video,
-                                  static_only, clean_sheets)
+                                  static_only)
     print(f"{len(F)} training rows, {len(set(y))} letters"
           + (" (static only)" if static_only else " (all letters)"))
 
@@ -217,7 +184,6 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
         "training_sources": {"video_holds": bool(with_video), "calibration": True,
                              "kamran_images": bool(with_kamran), "official_psl": bool(with_official)},
         "static_only": bool(static_only),
-        "sheets": "none" if not with_video else ("cleaned" if clean_sheets else "all"),
         "dynamic_letters": list(DYNAMIC_LETTERS) if static_only else [],
         "honest_accuracy": {
             "kamran_images": ("Kamran's images are in the training rows of every fold and are never "
@@ -255,5 +221,4 @@ def build(pts_path=PTS_PATH, meta_path=META_PATH, mapping_path=MAPPING_PATH, out
 if __name__ == "__main__":
     import sys
     build(with_kamran="--with-kamran" in sys.argv, with_official="--with-official" in sys.argv,
-          with_video="--no-video" not in sys.argv, static_only="--all-letters" not in sys.argv,
-          clean_sheets="--clean-sheets" in sys.argv)
+          with_video="--no-video" not in sys.argv, static_only="--all-letters" not in sys.argv)
