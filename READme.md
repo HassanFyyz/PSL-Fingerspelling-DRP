@@ -249,10 +249,16 @@
     - **New people are ready to add:** `clean_eval.py` makes each new calibration signer (`user-<name>-<date>`) a test round; recording protocol in `calibration/RECORDING_PROTOCOL.md`.
     - **`export_geometry_model.py --clean-sheets`** (off by default) drops the flagged sheet crops (511 of 1,028) using a judge trained on our takes + Kamran's images. Not used for any shipped model yet.
 
+30. **Blind review of the sheet flags: the flags are real** (`results/2026-11-23_flag_review/`).
+    - 80 sheet crops (40 the Kamran-trained judge drops, 40 it keeps), shuffled; the reviewer picked the letter each crop shows without knowing which were flagged.
+    - **85% of the dropped crops are wrong** by eye (34 of 40; 71–93%), against **20% of the kept ones** (7 of 35 judged; 10–36%). p = 1×10⁻⁸.
+    - **About half of all static sheet crops are wrong or unusable** (0.49 × 85% + 0.51 × 20% ≈ 52%), from the most trusted crops of each letter. This confirms the concern that started steps 2–3: the letter sheets train the model on wrong labels.
+    - Cleaning with this judge is justified by the review alone. Cleaned sheets still carry about 20% wrong labels.
+
 **Immediate next actions (in progress or queued):**
 - [ ] **Rebuild the private browser model** without the idle-hand rows: `python export_geometry_model.py --with-kamran --with-official` (on the machine with the official images). The current `web/model_geom_kamran/` was trained on them (#29).
 - [ ] **Recover Kamran's 1,348 idle-hand images:** `PSL_KAMRAN_DIR=~/Desktop/train python image_dataset.py` on a machine that can download MediaPipe's model, then re-run `clean_eval.py`, `flag_sheets.py`, `cleaned_eval.py`.
-- [ ] **Blind review of the sheet flags** (`results/2026-11-23_flag_review/`, about 15 minutes), then `score_review.py`.
+- [x] **Blind review of the sheet flags** — done: 85% of dropped crops wrong vs 20% of kept (#30).
 - [ ] **Record new people and a different-day session** (`calibration/RECORDING_PROTOCOL.md`).
 - [ ] **Decide the sheets per model** once the review and new people are in: public model (no Kamran) keep them; private model none or `--clean-sheets` (#26, #28).
 - [ ] **ExtraTrees in the browser?** 8–13 points ahead of the SVM on clean answer keys (#26).

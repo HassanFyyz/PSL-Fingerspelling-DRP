@@ -24,8 +24,29 @@ sample is, if anything, easier on the labels than the full set.
 ones, the flags pick out real errors, and cleaning the sheets with this judge is justified
 independently of any test score.
 
+## Result (reviewed 23 Nov, all 80 answered)
+
+| crops | reviewer: label right | reviewer: label wrong | can't tell | label wrong % (95% interval) |
+|---|---|---|---|---|
+| **dropped by the judge** (40) | 6 | **34** (20 the judge's letter, 14 neither) | 0 | **85%** (71–93%) |
+| kept by the judge (40) | 28 | 7 (1 the judge's letter, 6 neither) | 5 | 20% (10–36%) |
+
+Fisher exact test, dropped vs kept: p = 1×10⁻⁸.
+
+- **The flags are real.** A person who knows the signs, not told which crops were flagged, called
+  85% of the dropped crops wrong. When the judge named a different letter, the reviewer agreed
+  with it in half of the dropped crops (20 of 40).
+- **The kept crops are not clean either:** about one in five is still wrong by the reviewer's
+  eye, so cleaned sheets carry roughly 20% label noise.
+- **Most sheet crops are wrong.** Weighting by how many crops the judge drops (49%) and keeps
+  (51%) gives about 0.49 × 85% + 0.51 × 20% ≈ **52% of static sheet crops wrong or unusable**.
+  This sample comes from the most trusted crops of each letter (the sheet tiles), so the full set
+  is probably no better.
+- This settles point 4: cleaning with the Kamran-trained judge removes mostly real errors,
+  independently of any test score.
+
 ## Files
 
 - `review_key.csv`: the 80 items (signer, video, position, label, alternative, side, flagged)
 - `build_review.py`, `cut_tiles.py`, `score_review.py`
-- after review: `flag_review_answers.csv`, `review_scored.csv`, `review_summary.csv`
+- `flag_review_answers.csv` (the reviewer's answers), `review_scored.csv`, `review_summary.csv`
